@@ -5,9 +5,34 @@ import models.*;
 
 public class BasicTest extends UnitTest {
 
+   @Before
+    public void setup() {
+        Fixtures.deleteAllModels();
+    }
+
     @Test
-    public void aVeryImportantThingToTest() {
-        assertEquals(2, 1 + 1);
+    public void createAndRetrieveUser() {
+
+        // Create a new user and save it
+        new User ("bob.the.builder1@gmail.com", "Bob", "secret").save();
+
+        // Retrieve the user with e-mail address bob@gmail.com
+        User bob = User.find("byEmail", "bob.the.builder1@gmail.com").first();
+
+        // Test
+        assertNotNull(bob);
+        assertEquals("Bob", bob.fullname);
+    }
+
+    @Test
+    public void tryAuthenticateAsUser() {
+        // Create a new user and save it
+        new User("bob.the.builder2@gmail.com", "Bob", "secret").save();
+
+        // Test
+        assertNotNull(User.authenticate("bob.the.builder2@gmail.com", "secret"));
+        assertNull(User.authenticate("bob.the.builder2@gmail.com", "badpassword"));
+        assertNull(User.authenticate("tom@gmail.com", "secret"));
     }
 
 }
