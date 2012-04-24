@@ -14,3 +14,8 @@ tmp
 test-result
 eclipse
 server.pid
+composmentis.iml
+composmentis.ipr
+composmentis.iws
+.project
+.classpath
