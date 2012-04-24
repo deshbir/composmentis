@@ -1,6 +1,7 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
+#{secure.check 'admin'}
 <table class="table table-striped table-bordered table-condensed">
     <thead>
     <tr>
@@ -21,3 +22,4 @@
     #{/list}
     </tbody>
 </table>
+#{/secure.check}
