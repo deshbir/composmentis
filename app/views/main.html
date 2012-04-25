@@ -32,7 +32,19 @@
                     Heavyweight Champion, George Foreman who was heavily favored to win the fight. </p>
                 <small>Zaire, 1974</small>
             </blockquote>
-            <a class="btn btn-primary btn-large" href="/login">Sign In</a>
+
+            <!--The Play secure module authenticate() stores the 'username' in session
+                upon successful login/authentication. -->
+            #{if session.username}
+                <!-- You can show users' profile -->
+                <span class="label label-success">Hello ${session.username}</span>
+                <a class="btn btn-mini" href="/logout">Log out</a>
+            #{/if}
+            #{else}
+                <!-- Show login form now. You can create a login template-tag form and call it here. -->
+                <a class="btn btn-primary btn-large" href="/login">Sign In</a>
+            #{/else}
+
         </div>
         <!-- /span3 -->
 
