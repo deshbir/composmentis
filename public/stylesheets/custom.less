@@ -9,6 +9,7 @@
         font-size: 40px;
         font-weight: 600;
         line-height: 44px;
+        letter-spacing: -1px;
         padding-bottom: 15px;
     }
 
@@ -16,6 +17,11 @@
         font-size: 24px;
         line-height: 28px;
     }
+
+    .btn {
+        font-size: 20px;
+    }
+
 
     #header {
         padding: 0px 0px 20px 0px;
@@ -70,5 +76,38 @@
 
 }
 
+
+/* ---------- Responsive ------------ */
+
+// Landscape phones and down
+@media (max-width: 480px) {
+
+    #hero  {
+        h1 {
+            font-size: 32px;
+            line-height: 36px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 20px;
+        }
+
+        a   {
+            width: 90%;
+        }
+
+    }
+
+}
+
+// Landscape phone to portrait tablet
+//@media (max-width: 767px) {  }
+
+// Portrait tablet to landscape and desktop
+//@media (min-width: 768px) and (max-width: 979px) {  }
+
+// Large desktop
+//@media (min-width: 1200px) {  }
 
 
