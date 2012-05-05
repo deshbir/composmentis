@@ -11,7 +11,6 @@
     <!-- Le stylesheets-->
     <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/bootstrap.less'}"/>
     <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/responsive.less'}"/>
-    <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/custom.less'}"/>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -23,46 +22,114 @@
 
 </head>
 <body>
-<div class="container">
-
-    <div class="row">
+<div id="hero" class="container">
+    <div id="header" class="row">
         <div class="span12">
-            <h1>NGL</h1>
+            <img src="@{'/public/images/ngldemo/logo.png'}">
+            <h2>NGL</h>
         </div>
     </div>
-
     <div class="row">
-        <div class="span5">
-            <h2>Online classroom for english learning</h2>
-            <p>Looking for a quick and easy way to implement new and exiting</p>
-            <a class="btn btn-primary btn-large" href="">New Users (Register)</a>
-            <a class="btn btn-large" href="">Returning Users (Sign In)</a>
+        <div class="span6">
+            <h1>Online classroom for english learning</h1>
+            <p>Looking for a quick and easy way to implement new and exciting ideas in your classroom?</p>
+            <p><a class="btn btn-large" href="">New Users <small>(Register)</small></a></p>
+            <p><a class="btn btn-large" href="">Returning Users <small>(Sign In)</small></a></p>
         </div>
 
-        <div class="span7">
-            <div id="myeltCarousel" class="carousel slide">
+        <div class="span5 offset1">
+            <div id="carouseltop" class="carousel slide">
                 <!-- Carousel items -->
                 <div class="carousel-inner">
                     <div class="item active">
                         <img src="@{'/public/images/ngldemo/home/gc.png'}" alt="">
-                        <div class="carousel-caption">
-                            <h4>Grammar Cafe</h4>
-                            <p>.....</p>
-                        </div>
                     </div>
                     <div class="item">
                         <img src="@{'/public/images/ngldemo/home/gc.png'}" alt="">
-                        <div class="carousel-caption">
-                            <h4>Vision</h4>
-                            <p>......</p>
-                        </div>
                     </div>
                 </div>
                 <!-- Carousel nav -->
-                <a class="carousel-control left" href="#myeltCarousel" data-slide="prev">&lsaquo;</a>
-                <a class="carousel-control right" href="#myeltCarousel" data-slide="next">&rsaquo;</a>
+                <a class="carousel-control left" href="#carouseltop" data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="#carouseltop" data-slide="next">&rsaquo;</a>
             </div>
-            <a class="btn btn-info btn-large" href="">Take a Tour</a>
+            <a class="btn btn-large" href="">Take a Tour</a>
+        </div>
+    </div>
+</div>
+<div id="products" class="container">
+    <div class="row">
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_030_pencil.png'}">
+            <h3>eEnglish</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor. Aenean volutpat velit lectus, non lacinia ante.</p>
+        </div>
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_010_envelope.png'}">
+            <h3>Grammar Cafe</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor. Aenean volutpat velit lectus, non lacinia ante.</p>
+        </div>
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_039_notes.png'}">
+            <h3>TOEFL iBT&reg; Online</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor. Aenean volutpat velit lectus, non lacinia ante.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_042_pie_chart.png'}">
+            <h3>Milestones</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor. Aenean volutpat velit lectus, non lacinia ante.</p>
+        </div>
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_060_compass.png'}">
+            <h3>World Pass Online</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor. Aenean volutpat velit lectus, non lacinia ante.</p>
+        </div>
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_163_iphone.png'}">
+            <h3>My FCE</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor. Aenean volutpat velit lectus, non lacinia ante.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_043_group.png'}">
+            <h3>Visions</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor. Aenean volutpat velit lectus, non lacinia ante.</p>
+        </div>
+    </div>
+</div>
+
+<div id="support" class="container">
+    <div class="row">
+        <div class="span4">
+            <h2>For Teachers</h2>
+            <ul>
+                <li>Hundreds of pre-built Heinle online exercises, practice tests, and activities</li>
+                <li>Assign activities in a few quick, easy steps</li>
+                <li>Consolidate and reinforce classroom learning or for self study</li>
+                <li>Track individual student and classroom progress</li>
+                <li>Create individual and classroom grade reports</li>
+                <li>Save time planning lessons</li>
+            </ul>
+        </div>
+        <div class="span4">
+            <h2>For Students</h2>
+            <ul>
+                <li>Study outside of the classroom -- anywhere, anytime</li>
+                <li>Track progress to see how well skills have been mastered</li>
+                <li>Get instant feedback through automatically graded activities</li>
+                <li>Work with interactive activities including audio and video</li>
+            </ul>
+        </div>
+        <div class="span4">
+            <h2>About</h2>
+            <p>MyELT delivers engaging activities to English language learners which reinforce and consolidate the language and skills covered in each Heinle program.</p>
+        </div>
+    </div>
+    <div id="footer" class="row">
+        <div class="span12">
+            <p>Copyright 2012 HEINLE, Cengage Learning</p>
         </div>
     </div>
 </div>
@@ -80,13 +147,17 @@
         charset="${_response_encoding}"></script>
 <script src="@{'/public/bootstrap/js/bootstrap-popover.js'}" type="text/javascript"
         charset="${_response_encoding}"></script>
+<script src="@{'/public/bootstrap/js/bootstrap-dropdown.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
 <script src="@{'/public/bootstrap/js/bootstrap-transition.js'}" type="text/javascript"
         charset="${_response_encoding}"></script>
+
 
 <script type="text/javascript">
     $('.carousel').carousel();
     $('.popover-test').popover();
     $('.tooltip-test').tooltip();
+    $().dropdown();
 </script>
 
 </body>
