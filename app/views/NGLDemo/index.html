@@ -22,19 +22,32 @@
 
 </head>
 <body>
+
+
 <div id="hero" class="container">
-    <div id="header" class="row">
-        <div class="span12">
-            <img src="@{'/public/images/ngldemo/logo.png'}">
-            <h2>NGL</h>
-            <div class="btn-group">
-                <button class="btn dropdown-toggle" data-toggle="dropdown">English <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Spanish</a></li>
-                    <li><a href="#">Simplified Chinese</a></li>
-                    <li><a href="#">Arabic</a></li>
-                </ul>
-            </div><!-- /btn-group -->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="#"><img src="@{'/public/images/ngldemo/logo.png'}" alt="">NGL</a>
+                <div class="nav-collapse">
+                    <ul class="nav pull-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Select Language<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">English</a></li>
+                                <li><a href="#">Spanish</a></li>
+                                <li><a href="#">Simplified Chinese</a></li>
+                                <li><a href="#">Arabic</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
         </div>
     </div>
     <div class="row">
@@ -156,6 +169,8 @@
 <script src="@{'/public/bootstrap/js/bootstrap-popover.js'}" type="text/javascript"
         charset="${_response_encoding}"></script>
 <script src="@{'/public/bootstrap/js/bootstrap-dropdown.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/bootstrap/js/bootstrap-collapse.js'}" type="text/javascript"
         charset="${_response_encoding}"></script>
 <script src="@{'/public/bootstrap/js/bootstrap-transition.js'}" type="text/javascript"
         charset="${_response_encoding}"></script>

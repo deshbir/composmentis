@@ -1,11 +1,11 @@
-@baseFontFamily:    'Lucida Casual',  'HelveticaNeue', 'Comic Sans MS';
+@baseFontFamily:    'Lucida Casual', 'Comic Sans MS', 'HelveticaNeue';
+@baseThemeColor:    #C8E1BD;
 
 #hero  {
-    background-color: #C8E1BD;
+    background-color: @baseThemeColor;
     padding: 10px 20px 20px 20px;
-    color: #000000;
+    color: @textColor;
     h1 {
-
         font-size: 40px;
         font-weight: 600;
         line-height: 44px;
@@ -82,42 +82,49 @@
 
 }
 
+/* --------- Navbar ------------------ */
 
-/* ---------- Responsive ------------ */
+// Navbar
+@navbarHeight:                    40px;
+@navbarBackground:                @baseThemeColor;
+@navbarBackgroundHighlight:       @grayDark;
+@navbarLinkBackgroundHover:       transparent;
 
-// Landscape phones and down
-@media (max-width: 480px) {
+@navbarText:                      @grayDark;
+@navbarLinkColor:                 @grayDark;
+@navbarLinkColorHover:            #000000;
 
-    #hero  {
-        h1 {
-            font-size: 32px;
-            line-height: 36px;
+
+.navbar {
+
+    padding-top: 0px;
+
+    margin-bottom: 0px;
+
+    .brand {
+        color: @textColor;
+        font-size: 26px;
+        font-weight: 400;
+
+        img {
+            padding-right: 10px;
         }
-
-        p {
-            font-size: 18px;
-            line-height: 20px;
-        }
-
-        p a   {
-            width: 90%;
-        }
-
-        .carousel-control   {
-            width: 40px;
-        }
-
     }
 
+    .navbar-inner {
+        background-color: @baseThemeColor;
+        background-image: none;
+        background-repeat: none;
+        border-radius: 0px 0px 0px 0px;
+        box-shadow: none;
+        min-height: 40px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .nav .dropdown-toggle .caret, .navbar .nav .open.dropdown .caret {
+        border-top-color: @grayDark;
+    }
 }
-
-// Landscape phone to portrait tablet
-//@media (max-width: 767px) {  }
-
-// Portrait tablet to landscape and desktop
-//@media (min-width: 768px) and (max-width: 979px) {  }
-
-// Large desktop
-//@media (min-width: 1200px) {  }
 
 
