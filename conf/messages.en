@@ -1,0 +1,39 @@
+# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+
+global.header.brand=NGL
+global.header.langsel=Change Language
+global.footer.copyright=Copyright 2012 HEINLE, Cengage Learning
+
+global.loremipsum.3=Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor. Aenean volutpat velit lectus, non lacinia ante.
+
+registration.new=New Users
+registration.reg=Register
+registration.returning=Returning Users
+registration.signin=Sign In
+
+home.hero.heading1=Online classroom for english learning
+home.hero.heading2=Looking for a quick and easy way to implement new and exciting ideas in your classroom?
+home.hero.tour=Take a tour
+
+home.footer.teachers.heading1=For Teachers
+home.footer.teachers.l1=Hundreds of pre-built Heinle online exercises, practice tests, and activities
+home.footer.teachers.l2=Assign activities in a few quick, easy steps
+home.footer.teachers.l3=Consolidate and reinforce classroom learning or for self study
+home.footer.teachers.l4=Track individual student and classroom progress
+home.footer.teachers.l5=Create individual and classroom grade reports
+home.footer.teachers.l6=Save time planning lessons
+
+home.footer.students.heading1=For Students
+home.footer.students.l1=Study outside of the classroom -- anywhere, anytime
+home.footer.students.l2=Track progress to see how well skills have been mastered
+home.footer.students.l3=Get instant feedback through automatically graded activities
+home.footer.students.l4=Work with interactive activities including audio and video
+
+home.footer.about.heading1=About
+home.footer.about.p1=NGL delivers engaging activities to English language learners which reinforce and consolidate the language and skills covered in each Heinle program.
+
+global.footer.copyright=Copyright 2012 HEINLE, Cengage Learning
+
+

@@ -7,7 +7,7 @@ import java.util.*;
 
 import models.*;
 
-public class Application extends Controller {
+public class Application extends Global {
 
     public static void index() {
         List<User> allUsers = User.findAll();

@@ -1,0 +1,27 @@
+# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+home.hero.heading1=英語学習のためのオンライン教室
+home.hero.heading2=あなたの教室で新しいエキサイティングなアイデアを実装するための迅速かつ簡単な方法をお探しですか？
+global.loremipsum.3=馯みゅ じょじホ 檨ぬ儦る苯 檣秞襞クォい お䨯䤩楎りゅ, 䣵もゝ穯ぽ 䨦か饊ゐ	て 襃氩褦壎鄩 覦ユ ゆ覦ユ, 鄩䪦禞 代䤣監奯ギャ 馜とひゃ叧滯 择土 ミャ禧 䝣りょグィ驦びゃ 䣵も
+global.header.langsel=言語の変更
+registration.new=新規ユーザー
+registration.reg=登録
+registration.returning=返すユーザー
+registration.signin=サインイン
+home.hero.tour=ツアーを見る
+home.footer.teachers.heading1=教師のための
+home.footer.teachers.l1=既成のHeinleオンライン演習、模擬試験、および活動の数百
+home.footer.teachers.l2=いくつかの簡単な、簡単な手順での活動を割り当てる
+home.footer.teachers.l3=教室での学習や自習のための統合と強化
+home.footer.teachers.l4=個々の学生や教室の進行状況を追跡
+home.footer.teachers.l5=個々と教室グレードのレポートを作成する
+home.footer.teachers.l6=時間計画レッスンを保存する
+home.footer.students.heading1=学生のための
+home.footer.students.l1=教室の外で勉強する - いつでも、どこでも
+home.footer.students.l2=スキルが習得されたかよく見て進捗状況を追跡
+home.footer.students.l3=自動的に採点活動を通じて即座にフィードバックを得る
+home.footer.students.l4=オーディオやビデオなどインタラクティブな活動と連携
+home.footer.about.heading1=お問い合わせ
+home.footer.about.p1=NGLは、言語や各Heinleプログラムでカバー力を強化し、統合する英語学習者のための活動を魅力的な提供しています。
+global.footer.copyright=著作権2012 HEINLEは、便宜的に提供
