@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
 <head>
     <meta charset="${_response_encoding}">
     <title>Rumble in the Jungle!</title>
@@ -22,7 +22,7 @@
 
 
 </head>
-<body>
+<body #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
 <!-- Top Green section - the Big Hero Unit -->
 <div id="hero" class="container">
     <!-- Top  Navbar for logo, brand, menu, and language selection -->
