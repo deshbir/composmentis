@@ -2,12 +2,14 @@
 <div class="container" xmlns="http://www.w3.org/1999/html">
     <div class="row-fluid">
         <div class="span12">
-            <h1>Log In</h1>
+            <h2>Log In</h2>
             <p/>
             <p>Enter your credentials</p>
         </div>
         <div class="span6">
-            <form class="well" action="/login" method="post" accept-charset="utf-8" enctype="application/x-www-form-urlencoded">
+            <form class="well"  action="/login"
+                                method="post"
+                                accept-charset="utf-8" enctype="application/x-www-form-urlencoded">
 
                 #{if flash.error}
                     <div class="alert alert-error">

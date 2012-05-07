@@ -12,7 +12,11 @@ public class NGLDemo extends Global {
 
     public static void index() {
        render();
-       request.getBase();
+    }
+
+    public static void login() {
+        render();
+
     }
 
 }
