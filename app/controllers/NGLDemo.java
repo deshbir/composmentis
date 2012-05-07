@@ -19,4 +19,9 @@ public class NGLDemo extends Global {
 
     }
 
+    public static void home() {
+        render();
+
+    }
+
 }

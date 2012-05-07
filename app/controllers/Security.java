@@ -9,11 +9,11 @@ public class Security extends Secure.Security {
     }
 
     static void onDisconnected() {
-        Application.index();
+        NGLDemo.index();
     }
 
     static void onAuthenticated() {
-        Application.index();
+        NGLDemo.home();
     }
 
     static boolean check(String profile) {
