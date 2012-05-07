@@ -23,16 +23,16 @@
 
 </head>
 <body>
-
-
+<!-- Top Green section - the Big Hero Unit -->
 <div id="hero" class="container">
+    <!-- Top  Navbar for logo, brand, menu, and language selection -->
     <div class="navbar">
         <div class="navbar-inner">
             <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                <a class="btn btn-navbar" data-toggle="collapse"
+                   data-target=".nav-collapse">
+                    <!-- This is shown for mobile devices - collapsed icon -->
+                    <i class="icon-align-justify"></i>
                 </a>
                 <a class="brand" href="#"><img src="@{'/public/images/ngldemo/logo.png'}" alt="">NGL</a>
                 <div class="nav-collapse">
@@ -76,7 +76,9 @@
             <p><a class="btn btn-large" href="">&{'home.hero.tour'}</a></p>
         </div>
     </div>
-</div>
+</div>  <!-- End of Hero Unit -->
+
+<!-- Three column, but responsive, product descriptions -->
 <div id="products" class="container">
     <div class="row">
         <div class="span4">
@@ -158,15 +160,23 @@
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-#{press.script src:'javascripts/jquery-1.7.1.min.js', compress:false /}
-#{press.script 'bootstrap/js/bootstrap-carousel.js' /}
-#{press.script 'bootstrap/js/bootstrap-tooltip.js' /}
-#{press.script 'bootstrap/js/bootstrap-popover.js' /}
-#{press.script 'bootstrap/js/bootstrap-dropdown.js' /}
-#{press.script 'bootstrap/js/bootstrap-collapse.js' /}
-#{press.script 'bootstrap/js/bootstrap-transition.js' /}
-#{press.script 'javascripts/hide-addressbar.js' /}
-#{press.compressed-script /}
+<script src="@{'/public/javascripts/jquery-1.7.1.min.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/bootstrap/js/bootstrap-carousel.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/bootstrap/js/bootstrap-tooltip.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/bootstrap/js/bootstrap-popover.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/bootstrap/js/bootstrap-dropdown.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/bootstrap/js/bootstrap-collapse.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/bootstrap/js/bootstrap-transition.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/hide-addressbar.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+
 
 <script type="text/javascript">
     $('.carousel').carousel();
