@@ -1,44 +1,32 @@
-#{extends 'Secure/layout.html' /}
-<div class="container" xmlns="http://www.w3.org/1999/html">
-    <div class="row-fluid">
-        <div class="span12">
-            <h2>Log In</h2>
-            <p/>
-            <p>Enter your credentials</p>
-        </div>
-        <div class="span6">
-            <form class="well"  action="/login"
-                                method="post"
-                                accept-charset="utf-8" enctype="application/x-www-form-urlencoded">
+#{extends 'NGLDemo/layout.html' /}
 
-                #{if flash.error}
-                    <div class="alert alert-error">
-                    &{flash.error}
-                    </div>
-                #{/if}
-                #{if flash.success}
-                    <div class="alert alert-success">
-                    &{flash.success}
-                    </div>
-                #{/if}
-                <fieldset>
-                    <input type="text" name="username"  class="input-xlarge" placeholder="Email" value="${flash.username}">
-                    <input type="password" name="password" class="input-xlarge" placeholder="Password">
-                    <label class="checkbox">
-                        <input type="checkbox" name="remember" ${flash.remember ? 'checked="true"' : ''}> Remember me</label>
-                </fieldset>
-                <button type="submit" class="btn btn-primary">Sign in</button>
-            </form>
-        </div>
-        <div class="span12">
-            <p>If you don't have an account with us yet you can sign up here..</p>
-        </div>
+<div class="row">
+    <div class="span12">
+        <h2>Log in to your Account</h2>
+        <hr/>
     </div>
-
-
-    <hr>
-
-    <footer>
-        <p>&copy; Black 2012</p>
-    </footer>
 </div>
+<div class="row">
+    <div class="span12">
+        <form class="well loginform" action="/login"
+              method="post"
+              accept-charset="utf-8" enctype="application/x-www-form-urlencoded">
+        #{if flash.error}
+            <div class="alert alert-error">&{flash.error}</div>
+        #{/if}
+        #{if flash.success}
+            <div class="alert alert-success">&{flash.success}</div>
+        #{/if}
+            <fieldset>
+                <input type="text" name="username" class="input-xlarge" placeholder="Email" value="${flash.username}">
+                <input type="password" name="password" class="input-xlarge" placeholder="Password">
+                <label class="checkbox">
+                    <input type="checkbox" name="remember" ${flash.remember ? 'checked="true"' : ''}> Remember
+                    me</label>
+            </fieldset>
+            <p><button type="submit" class="btn btn-large">Log in <small>(submit)</small></button></p>
+        </form>
+    </div>
+</div>
+
+

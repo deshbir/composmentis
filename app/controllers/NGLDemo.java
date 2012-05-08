@@ -14,11 +14,6 @@ public class NGLDemo extends Global {
        render();
     }
 
-    public static void login() {
-        render();
-
-    }
-
     public static void home() {
         render();
 

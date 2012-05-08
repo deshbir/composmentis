@@ -1,6 +1,8 @@
 package controllers;
 
 import models.*;
+import play.i18n.Lang;
+import play.mvc.Before;
 
 public class Security extends Secure.Security {
 

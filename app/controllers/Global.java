@@ -22,11 +22,29 @@ public class Global extends Controller {
             unauthorized( "Compro Technologies DEMO site" );
         }
 
-        //Get Language Selection
-        String lang = request.params.get("lang");
-        if(lang!=null)  {
-            Lang.set(lang);
+        //Get Language Selections from Request & Cookie
+        String lang_from_request = request.params.get("lang");
+        Http.Cookie lang_from_cookie = request.cookies.get("lang");
+
+
+        if(lang_from_request != null)  {
+            //User has specifically requested a language change
+            Lang.set(lang_from_request);
+
+            //Update the cookie (if its not the same value)
+            if(lang_from_cookie != null && !lang_from_cookie.value.equalsIgnoreCase(lang_from_request))
+            {
+                response.setCookie("lang", lang_from_request);
+            }
         }
+        else
+        {
+            //Set the last language selected by the user (cookie)
+            if(lang_from_cookie!=null && !lang_from_cookie.value.equalsIgnoreCase(lang_from_request))    {
+                Lang.set(lang_from_cookie.value);
+            }
+        }
+
     }
 
 

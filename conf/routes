@@ -4,7 +4,6 @@
 
 # Home page
 GET     /                                       NGLDemo.index
-
 *      /admin                                   module:crud
 *       /                                       module:secure
 
