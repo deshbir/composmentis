@@ -26,13 +26,17 @@ public class Global extends Controller {
         String lang_from_request = request.params.get("lang");
         Http.Cookie lang_from_cookie = request.cookies.get("lang");
 
-
         if(lang_from_request != null)  {
             //User has specifically requested a language change
             Lang.set(lang_from_request);
 
             //Update the cookie (if its not the same value)
             if(lang_from_cookie != null && !lang_from_cookie.value.equalsIgnoreCase(lang_from_request))
+            {
+                response.setCookie("lang", lang_from_request);
+            }
+
+            if(lang_from_cookie == null)
             {
                 response.setCookie("lang", lang_from_request);
             }

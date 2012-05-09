@@ -13,9 +13,6 @@ GET     /favicon.ico                            404
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
 
-# Press routes
-*       /                                       module:press
-
 # Catch all
 *       /{controller}                           {controller}.index
 *       /{controller}/                          {controller}.index

@@ -19,4 +19,13 @@ public class NGLDemo extends Global {
 
     }
 
+    public static void login() {
+        render();
+
+    }
+
+    public static void launch_activity() {
+        render();
+    }
+
 }
