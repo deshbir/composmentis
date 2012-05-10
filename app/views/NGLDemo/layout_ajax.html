@@ -1,0 +1,43 @@
+<!-- Top Green Nav bar -->
+<div id="main-header" class="container">
+    <!-- Top  Navbar for logo, brand, menu, and language selection -->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse"
+                   data-target=".nav-collapse">
+                    <!-- This is shown for mobile devices - collapsed icon -->
+                    <i class="icon-align-justify"></i>
+                </a>
+                <a class="brand" href="#index"><img src="@{'/public/images/ngldemo/logo.png'}" alt="">NGL</a>
+                <div class="nav-collapse">
+                    <ul class="nav pull-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">&{'global.header.langsel'}<span>(${lang.toString()})</span><b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="${request.url.split("\\?lang")[0]}?lang=en">English</a></li>
+                                <li><a href="${request.url.split("\\?lang")[0]}?lang=ja">Japanease</a></li>
+                                <li><a href="${request.url.split("\\?lang")[0]}?lang=ar">Arabic</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+</div>  <!-- End of Hero Unit -->
+
+<!-- Main Page -->
+<div id="main-body" class="container">
+    #{doLayout /}
+</div>
+
+<!-- Footer -->
+<div id="main-footer" class="container">
+    <div class="row">
+        <div class="span12">
+            <p>&{'global.footer.copyright'}</p>
+        </div>
+    </div>
+</div>
+

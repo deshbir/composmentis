@@ -1,4 +1,4 @@
-#{extends 'NGLDemo/layout.html' /}
+#{extends 'NGLDemo/layout_ajax.html' /}
 <div class="btn-group" data-toggle="buttons-radio">
     <button class="btn" data-toggle="button">Self Learner</button>
     <button class="btn toggle-on" data-toggle="button">Instructor-lead</button>
@@ -18,8 +18,8 @@
                         <h2>Instructor(s):<strong>John Doe</strong><a href="#"><i class="icon-envelope"></i></a></h2>
                         <h3><em>1st June 2012 to 31st July 2012</em></h3>
                         <p>&{'global.loremipsum.3'}&{'global.loremipsum.3'}</p>
-                        <a class="btn" href="@{NGLDemo.launch_activity()}">Start Assignments & Tests &gt;&gt;</a></p>
-                        <a class="btn" href="@{NGLDemo.launch_activity()}">View Gradebook / Progress &gt;&gt;</a></p>
+                        <a class="btn" href="#launch_activity">Start Assignments & Tests &gt;&gt;</a></p>
+                        <a class="btn" href="#launch_activity">View Gradebook / Progress &gt;&gt;</a></p>
                         <h2>Related materials / books:</h2>
                         <ul class="unstyled">
                             <li><a>Pathways Level 1</a></li>

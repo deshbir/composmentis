@@ -1,0 +1,133 @@
+<!-- Top Green section - the Big Hero Unit -->
+<div id="hero" class="container">
+    <!-- Top  Navbar for logo, brand, menu, and language selection -->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse"
+                   data-target=".nav-collapse">
+                    <!-- This is shown for mobile devices - collapsed icon -->
+                    <i class="icon-align-justify"></i>
+                </a>
+                <a class="brand" href="#"><img src="@{'/public/images/ngldemo/logo.png'}" alt="">NGL</a>
+                <div class="nav-collapse">
+                    <ul class="nav pull-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">&{'global.header.langsel'}<span>(${lang.toString()})</span><b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="${request.url.split("\\?lang")[0]}?lang=en">English</a></li>
+                                <li><a href="${request.url.split("\\?lang")[0]}?lang=ja">Japanease</a></li>
+                                <li><a href="${request.url.split("\\?lang")[0]}?lang=ar">Arabic</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span6">
+            <h1>&{'home.hero.heading1'}</h1>
+            <p>&{'home.hero.heading2'}</p>
+            <p><a class="btn btn-large" href="#login">&{'registration.new'} <small>(&{'registration.reg'})</small></a></p>
+            <p><a class="btn btn-large" href="#login">&{'registration.returning'} <small>(&{'registration.signin'})</small></a></p>
+        </div>
+
+        <div class="span5 offset1">
+            <div id="carouseltop" class="carousel slide">
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="@{'/public/images/ngldemo/home/gc.png'}" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="@{'/public/images/ngldemo/home/gc.png'}" alt="">
+                    </div>
+                </div>
+                <!-- Carousel nav -->
+                <a class="carousel-control left" href="#carouseltop" data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="#carouseltop" data-slide="next">&rsaquo;</a>
+            </div>
+            <p><a class="btn btn-large" href="">&{'home.hero.tour'}</a></p>
+        </div>
+    </div>
+</div>  <!-- End of Hero Unit -->
+
+<!-- Three column, but responsive, product descriptions -->
+<div id="products" class="container">
+    <div class="row">
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_030_pencil.png'}">
+            <h3>eEnglish</h2>
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_010_envelope.png'}">
+            <h3>Grammar Cafe</h2>
+            <p>&{'global.loremipsum.3'}</p>
+            </div>
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_039_notes.png'}">
+            <h3>TOEFL iBT&reg; Online</h2>
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_042_pie_chart.png'}">
+            <h3>Milestones</h2>
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_060_compass.png'}">
+            <h3>World Pass Online</h2>
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_163_iphone.png'}">
+            <h3>My FCE</h2>
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_043_group.png'}">
+            <h3>Visions</h2>
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
+    </div>
+</div>
+
+<div id="support" class="container">
+    <div class="row">
+        <div class="span4">
+            <h2>&{'home.footer.teachers.heading1'}</h2>
+            <ul>
+                <li>&{'home.footer.teachers.l1'}</li>
+                <li>&{'home.footer.teachers.l2'}</li>
+                <li>&{'home.footer.teachers.l3'}</li>
+                <li>&{'home.footer.teachers.l4'}</li>
+                <li>&{'home.footer.teachers.l5'}</li>
+                <li>&{'home.footer.teachers.l6'}</li>
+            </ul>
+        </div>
+        <div class="span4">
+            <h2>&{'home.footer.students.heading1'}</h2>
+            <ul>
+                <li>&{'home.footer.students.l1'}</li>
+                <li>&{'home.footer.students.l2'}</li>
+                <li>&{'home.footer.students.l3'}</li>
+                <li>&{'home.footer.students.l4'}</li>
+             </ul>
+        </div>
+        <div class="span4">
+            <h2>&{'home.footer.about.heading1'}</h2>
+            <p>&{'home.footer.about.p1'}</p>
+        </div>
+    </div>
+    <div id="footer" class="row">
+        <div class="span12">
+            <p>&{'global.footer.copyright'}</p>
+        </div>
+    </div>
+</div>

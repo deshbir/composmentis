@@ -1,4 +1,4 @@
-#{extends 'NGLDemo/layout.html' /}
+#{extends 'NGLDemo/layout_ajax.html' /}
 
 <div class="row">
     <div class="span12">
@@ -9,7 +9,7 @@
 <div class="row">
     <div class="span12">
 
-        <form class="well loginform" action="@{NGLDemo.home()}"
+        <form class="well loginform" action="#home"
               method="post"
               accept-charset="utf-8" enctype="application/x-www-form-urlencoded">
 
@@ -28,7 +28,7 @@
                     <input type="checkbox" name="remember" ${flash.remember ? 'checked="true"' : ''}> Remember
                     me</label>
             </fieldset>
-            <p><button type="submit" class="btn btn-large">Log in <small>(submit)</small></button></p>
+            <a href="#home" class="btn btn-large">Log in <small>(submit)</small></a>
         </form>
     </div>
 </div>

@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                                       NGLDemo.index
+GET     /                                       NGLDemo.start
 *      /admin                                   module:crud
 *       /                                       module:secure
 
