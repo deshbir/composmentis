@@ -1,29 +1,97 @@
 #{extends 'NGLDemo/layout.html' /}
-
-
+<div class="btn-group" data-toggle="buttons-radio">
+    <button class="btn" data-toggle="button">Self Learner</button>
+    <button class="btn toggle-on" data-toggle="button">Instructor-lead</button>
+</div>
+<h1>Courses</h1>
 <div class="row">
-    <div class="span2">
-        <p>&{'global.loremipsum.3'}</p>
+    <div class="span8">
+        <div class="accordion" id="courselist">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="courselist" href="#course1">
+                        Learning Basic English, Part 1 <span>(CNB00321)</span>
+                    </a>
+                </div>
+                <div id="course1" class="accordion-body collapse in">
+                    <div class="accordion-inner">
+                        <h2>Instructor(s):<strong>John Doe</strong><a href="#"><i class="icon-envelope"></i></a></h2>
+                        <h3><em>1st June 2012 to 31st July 2012</em></h3>
+                        <p>&{'global.loremipsum.3'}&{'global.loremipsum.3'}</p>
+                        <a class="btn" href="@{NGLDemo.launch_activity()}">Start Assignments & Tests &gt;&gt;</a></p>
+                        <a class="btn" href="@{NGLDemo.launch_activity()}">View Gradebook / Progress &gt;&gt;</a></p>
+                        <h2>Related materials / books:</h2>
+                        <ul class="unstyled">
+                            <li><a>Pathways Level 1</a></li>
+                            <li><a>Pathways Level 2</a></li>
+                            <li><a>Pathways Level 3</a></li>
+                            <li><a>Pathways Level 4</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="courselist" href="#course2">
+                        Learning Basic English, Part 2 <span>(CNB00322)</span>
+                    </a>
+                </div>
+                <div id="course2" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="courselist" href="#course3">
+                       Pronunciation <span>(CNB00101)</span>
+                    </a>
+                </div>
+                <div id="course3" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="courselist" href="#course4">
+                        TOEFL <span>(TFL0001)</span>
+                    </a>
+                </div>
+                <div id="course4" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="span2">
-        <p>&{'global.loremipsum.3'}</p>
-    </div>
-    <div class="span2">
-        <p>&{'global.loremipsum.3'}</p>
-    </div>
-    <div class="span2">
-        <p>&{'global.loremipsum.3'}</p>
-    </div>
-    <div class="span2">
-        <p>&{'global.loremipsum.3'}</p>
-    </div>
-    <div class="span2">
-        <p>&{'global.loremipsum.3'}</p>
+    <div class="span4">
+        <h2>Add new resources...</h2>
+        <p>Do you have a new <strong>product code</strong> packaged as part of your NGL textbook (looks like <em>TLE365-4F9T2MERUYX82</em>)? <a class="btn" href="#">Register product code</a></p>
+        <p>Do you have a <strong>course key</strong> supplied by your teacher (looks like <em>E-Y5RKWWZMPSY55</em>)?<a class="btn" href="#">Register course key</a></p>
+        <p>Looking for an existing instructor-led course?<a class="btn" href="#">Enroll into a course</a></p>
+        <h2>Related links...</h2>
+        <ul class="unstyled">
+            <li><a>...........</a></li>
+            <li><a>...........</a></li>
+        </ul>
     </div>
 </div>
+
+<h1>Dictionaries and Resources</h1>
 <div class="row">
-    <div class="span12">
-        <a class="btn btn-large" href="@{NGLDemo.launch_activity()}">Launch Activity</a></p>
+    <div class="span3">
+        <h3>American English</h3>
+        <img src="@{'/public/images/ngldemo/dummy_image_type1.png'}">
+        <p>&{'global.loremipsum.3'}</p>
+    </div>
+    <div class="span3">
+        <h3>Collins COBUILD</h3>
+        <img src="@{'/public/images/ngldemo/dummy_image_type1.png'}">
+        <p>&{'global.loremipsum.3'}</p>
     </div>
 </div>
 
