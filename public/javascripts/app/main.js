@@ -11,7 +11,7 @@ $(document).ready(function () {
         render:function () {
 
             $.ajax({
-                url: "ngldemo/index_ajax",
+                url: "ngldemo/index",
 
                 success:function(data) {
                     $("#backbone_container").html( data );
@@ -34,11 +34,11 @@ $(document).ready(function () {
         render:function () {
 
              $.ajax({
-             url: "ngldemo/login",
+                 url: "ngldemo/login",
 
-             success:function(data) {
-                $("#backbone_container").html( data );
-             }
+                 success:function(data) {
+                    $("#backbone_container").html( data );
+                 }
              });
 
             //$("#container").html(this.template);

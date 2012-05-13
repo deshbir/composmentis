@@ -1,3 +1,6 @@
+<!-- This section is not needed for single page apps -->
+#{if play.configuration["application.delivery"] == "traditional"}
+
 <!DOCTYPE html>
 
 <html>
@@ -25,6 +28,9 @@
 
 <body #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
 
+#{/if}<!-- This section is not needed for single page apps -->
+
+
 <!-- Top Green Nav bar -->
 <div id="main-header" class="container">
     <!-- Top  Navbar for logo, brand, menu, and language selection -->
@@ -36,7 +42,7 @@
                     <!-- This is shown for mobile devices - collapsed icon -->
                     <i class="icon-align-justify"></i>
                 </a>
-                <a class="brand" href="@{NGLDemo.index()}"><img src="@{'/public/images/ngldemo/logo.png'}" alt="">NGL</a>
+                <a class="brand" href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.index()}#{/if}#{else}#index#{/else}"><img src="@{'/public/images/ngldemo/logo.png'}" alt="">NGL</a>
                 <div class="nav-collapse">
                     <ul class="nav pull-right">
                         <li class="dropdown">
@@ -67,6 +73,9 @@
         </div>
     </div>
 </div>
+
+<!-- This section is not needed for single page apps -->
+#{if play.configuration["application.delivery"] == "traditional"}
 
 <!-- Le javascript
 ================================================== -->
@@ -99,4 +108,4 @@
 
 </body>
 </html>
-
+#{/if}<!-- This section is not needed for single page apps -->

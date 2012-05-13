@@ -3,8 +3,14 @@
 # ~~~~
 
 # Home page
-GET     /                                       NGLDemo.start
-*      /admin                                   module:crud
+#{if play.configuration["application.delivery"] == "traditional"}
+GET     /                                       NGLDemo.index
+#{/if}#{else}
+GET     /                                       NGLDemo.singlepage
+#{/else}
+
+# Modules
+*       /admin                                  module:crud
 *       /                                       module:secure
 
 # Ignore favicon requests

@@ -1,4 +1,4 @@
-#{extends 'NGLDemo/layout_ajax.html' /}
+#{extends 'NGLDemo/layout.html' /}
 
 <div class="row">
     <div class="span12">
@@ -28,7 +28,7 @@
                     <input type="checkbox" name="remember" ${flash.remember ? 'checked="true"' : ''}> Remember
                     me</label>
             </fieldset>
-            <a href="#home" class="btn btn-large">Log in <small>(submit)</small></a>
+            <a href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.home()}#{/if}#{else}#home#{/else}" class="btn btn-large">Log in <small>(submit)</small></a>
         </form>
     </div>
 </div>

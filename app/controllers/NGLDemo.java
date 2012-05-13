@@ -10,16 +10,12 @@ import models.*;
 
 public class NGLDemo extends Global {
 
-    public static void start() {
+    public static void singlepage() {
         render();
     }
 
     public static void index() {
        render();
-    }
-
-    public static void index_ajax() {
-        render();
     }
 
     public static void home() {
