@@ -1,9 +1,9 @@
 #{extends 'NGLDemo/layout.html' /}
 <div class="btn-group" data-toggle="buttons-radio">
-    <button class="btn" data-toggle="button">Self Learner</button>
-    <button class="btn toggle-on" data-toggle="button">Instructor-lead</button>
+    <button class="btn" data-toggle="button">&{'global.model.selflearner'}</button>
+    <button class="btn toggle-on" data-toggle="button">&{'global.model.instructorled'}</button>
 </div>
-<h1>Courses</h1>
+<h1>&{'courses.title'}</h1>
 <div class="row">
     <div class="span8">
         <div class="accordion" id="courselist">
@@ -15,12 +15,12 @@
                 </div>
                 <div id="course1" class="accordion-body collapse in">
                     <div class="accordion-inner">
-                        <h2>Instructor(s):<strong>John Doe</strong><a href="#"><i class="icon-envelope"></i></a></h2>
+                        <h2>&{'courses.course.Instructors'}:<strong>John Doe</strong><a href="#"><i class="icon-envelope"></i></a></h2>
                         <h3><em>1st June 2012 to 31st July 2012</em></h3>
                         <p>&{'global.loremipsum.3'}&{'global.loremipsum.3'}</p>
-                        <a class="btn" href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.launch_activity()}#{/if}#{else}#launch_activity#{/else}">Start Assignments & Tests &gt;&gt;</a></p>
-                        <a class="btn" href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.launch_activity()}#{/if}#{else}#launch_activity#{/else}">View Gradebook / Progress &gt;&gt;</a></p>
-                        <h2>Related materials / books:</h2>
+                        <a class="btn" href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.launch_activity()}#{/if}#{else}#launch_activity#{/else}">&{'courses.course.launch'} &gt;&gt;</a></p>
+                        <a class="btn" href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.launch_activity()}#{/if}#{else}#launch_activity#{/else}">&{'courses.course.grades'} &gt;&gt;</a></p>
+                        <h2>&{'courses.course.related'}:</h2>
                         <ul class="unstyled">
                             <li><a>Pathways Level 1</a></li>
                             <li><a>Pathways Level 2</a></li>
@@ -38,7 +38,7 @@
                 </div>
                 <div id="course2" class="accordion-body collapse">
                     <div class="accordion-inner">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    &{'global.loremipsum.3'}&{'global.loremipsum.3'}
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                 </div>
                 <div id="course3" class="accordion-body collapse">
                     <div class="accordion-inner">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    &{'global.loremipsum.3'}&{'global.loremipsum.3'}
                     </div>
                 </div>
             </div>
@@ -62,18 +62,18 @@
                 </div>
                 <div id="course4" class="accordion-body collapse">
                     <div class="accordion-inner">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    &{'global.loremipsum.3'}&{'global.loremipsum.3'}
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="span4">
-        <h2>Add new resources...</h2>
-        <p>Do you have a new <strong>product code</strong> packaged as part of your NGL textbook (looks like <em>TLE365-4F9T2MERUYX82</em>)? <a class="btn" href="#">Register product code</a></p>
-        <p>Do you have a <strong>course key</strong> supplied by your teacher (looks like <em>E-Y5RKWWZMPSY55</em>)?<a class="btn" href="#">Register course key</a></p>
-        <p>Looking for an existing instructor-led course?<a class="btn" href="#">Enroll into a course</a></p>
-        <h2>Related links...</h2>
+        <h2>&{'courses.addnewresources.h1'}...</h2>
+        <p>&{'courses.productcode.p'} <a class="btn" href="#">&{'courses.productcode.button'}</a></p>
+        <p>&{'courses.coursekey.p'} <a class="btn" href="#">&{'courses.coursekey.button'}</a></p>
+        <p>&{'courses.enroll.p'} <a class="btn" href="#">&{'courses.enroll.button'}</a></p>
+        <h2>&{'courses.relatedlinks.h1'}...</h2>
         <ul class="unstyled">
             <li><a>...........</a></li>
             <li><a>...........</a></li>
@@ -81,7 +81,7 @@
     </div>
 </div>
 
-<h1>Dictionaries and Resources</h1>
+<h1>&{'dictionaries.title'}</h1>
 <div class="row">
     <div class="span3">
         <h3>American English</h3>

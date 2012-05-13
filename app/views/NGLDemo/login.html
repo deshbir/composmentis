@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="span12">
-        <h2>Log in to your Account</h2>
+        <h2>&{'login.h1'}</h2>
         <hr/>
     </div>
 </div>
@@ -13,7 +13,7 @@
               method="post"
               accept-charset="utf-8" enctype="application/x-www-form-urlencoded">
 
-            <label>Enter your credentials</label>
+            <label>&{'login.h2'}</label>
 
         #{if flash.error}
             <div class="alert alert-error">&{flash.error}</div>
@@ -22,13 +22,12 @@
             <div class="alert alert-success">&{flash.success}</div>
         #{/if}
             <fieldset>
-                <input type="text" name="username" class="input-xlarge" placeholder="Email" value="${flash.username}">
-                <input type="password" name="password" class="input-xlarge" placeholder="Password">
+                <input type="text" name="username" class="input-xlarge" placeholder="&{'login.email'}" value="${flash.username}">
+                <input type="password" name="password" class="input-xlarge" placeholder="&{'login.password'}">
                 <label class="checkbox">
-                    <input type="checkbox" name="remember" ${flash.remember ? 'checked="true"' : ''}> Remember
-                    me</label>
+                    <input type="checkbox" name="remember" ${flash.remember ? 'checked="true"' : ''}> &{'login.rememberme'}</label>
             </fieldset>
-            <a href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.home()}#{/if}#{else}#home#{/else}" class="btn btn-large">Log in <small>(submit)</small></a>
+            <a href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.home()}#{/if}#{else}#home#{/else}" class="btn btn-large">&{'login.submit'}</a>
         </form>
     </div>
 </div>

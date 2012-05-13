@@ -8,6 +8,9 @@ global.footer.copyright=Copyright 2012 HEINLE, Cengage Learning
 
 global.loremipsum.3=Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor. Aenean volutpat velit lectus, non lacinia ante.
 
+global.model.selflearner=Self Learner
+global.model.instructorled=Instructor-led
+
 registration.new=New Users
 registration.reg=Register
 registration.returning=Returning Users
@@ -35,5 +38,40 @@ home.footer.about.heading1=About
 home.footer.about.p1=NGL delivers engaging activities to English language learners which reinforce and consolidate the language and skills covered in each Heinle program.
 
 global.footer.copyright=Copyright 2012 HEINLE, Cengage Learning
+
+login.h1=Log in to your Account
+login.h2=Enter your credentials
+login.email=Email
+login.password=Password
+login.rememberme=Remember Me
+login.submit=Log in (submit)
+
+courses.title=Courses
+courses.addnewresources.h1=Add new resources
+courses.productcode.button=Register product code
+courses.productcode.p=Do you have a new product code packaged as part of your NGL textbook (looks like TLE365-4F9T2MERUYX82)?
+courses.coursekey.button=Register course key
+courses.coursekey.p=Do you have a course key supplied by your teacher (looks like E-Y5RKWWZMPSY55)?
+courses.enroll.button=Enroll into a course
+courses.enroll.p=Looking for an existing instructor-led course?
+courses.relatedlinks.h1=Related links...
+
+courses.course.Instructors=Instructor(s)
+courses.course.launch=Start Assignments & Tests
+courses.course.grades=View Gradebook / Progress
+
+courses.course.related=Related Materials / books
+
+dictionaries.title=Dictionaries and Resources
+coursematerials.title=Course Materials
+
+activity.tools.submit=Submit
+activity.tools.retake=Retake
+activity.tools.tableofcontents=Table of Contents
+activity.tools.shownanswers=Show Answers
+activity.tools.1of10=1 of 10
+
+
+
 
 
