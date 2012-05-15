@@ -1,9 +1,12 @@
 #{extends 'NGLDemo/layout.html' /}
-<div class="btn-group" data-toggle="buttons-radio">
+
+<div class="btn-group rightfloat" data-toggle="buttons-radio">
     <button class="btn" data-toggle="button">&{'global.model.selflearner'}</button>
     <button class="btn toggle-on" data-toggle="button">&{'global.model.instructorled'}</button>
 </div>
-<h1>&{'courses.title'}</h1>
+
+<h1 class="page-header">&{'courses.title'}</h1>
+
 <div class="row">
     <div class="span8">
         <div class="accordion" id="courselist">
@@ -14,19 +17,23 @@
                     </a>
                 </div>
                 <div id="course1" class="accordion-body collapse in">
-                    <div class="accordion-inner">
-                        <h2>&{'courses.course.Instructors'}:<strong>John Doe</strong><a href="#"><i class="icon-envelope"></i></a></h2>
-                        <h3><em>1st June 2012 to 31st July 2012</em></h3>
-                        <p>&{'global.loremipsum.3'}&{'global.loremipsum.3'}</p>
-                        <a class="btn" href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.launch_activity()}#{/if}#{else}#launch_activity#{/else}">&{'courses.course.launch'} &gt;&gt;</a></p>
-                        <a class="btn" href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.launch_activity()}#{/if}#{else}#launch_activity#{/else}">&{'courses.course.grades'} &gt;&gt;</a></p>
-                        <h2>&{'courses.course.related'}:</h2>
-                        <ul class="unstyled">
-                            <li><a>Pathways Level 1</a></li>
-                            <li><a>Pathways Level 2</a></li>
-                            <li><a>Pathways Level 3</a></li>
-                            <li><a>Pathways Level 4</a></li>
-                        </ul>
+                    <div class="accordion-inner row">
+                        <div class="span6">
+                            <h2>&{'courses.course.Instructors'}:<strong>John Doe</strong><a href="#"><i class="icon-envelope"></i></a></h2>
+                            <h3><em>1st June 2012 to 31st July 2012</em></h3>
+                            <p>&{'global.loremipsum.3'}&{'global.loremipsum.3'}</p>
+                            <a class="btn" href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.launch_activity()}#{/if}#{else}#launch_activity#{/else}">&{'courses.course.launch'} &gt;&gt;</a></p>
+                            <a class="btn" href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.launch_activity()}#{/if}#{else}#launch_activity#{/else}">&{'courses.course.grades'} &gt;&gt;</a></p>
+                        </div>
+                        <div class="span6">
+                            <h2>&{'courses.course.related'}:</h2>
+                            <ul class="unstyled">
+                                <li><a>Pathways Level 1</a></li>
+                                <li><a>Pathways Level 2</a></li>
+                                <li><a>Pathways Level 3</a></li>
+                                <li><a>Pathways Level 4</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,12 +90,12 @@
 
 <h1>&{'dictionaries.title'}</h1>
 <div class="row">
-    <div class="span3">
+    <div class="span4">
         <h3>American English</h3>
         <img src="@{'/public/images/ngldemo/dummy_image_type1.png'}">
         <p>&{'global.loremipsum.3'}</p>
     </div>
-    <div class="span3">
+    <div class="span4">
         <h3>Collins COBUILD</h3>
         <img src="@{'/public/images/ngldemo/dummy_image_type1.png'}">
         <p>&{'global.loremipsum.3'}</p>
