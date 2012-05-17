@@ -53,3 +53,5 @@ activity.tools.shownanswers=回答を表示する
 activity.tools.submit=提出する
 activity.tools.tableofcontents=逶ョ谺
 activity.tools.1of10=10の1
+login.button.action=ログイン
+login.button.small=提出する
