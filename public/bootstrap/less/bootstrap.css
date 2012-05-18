@@ -3675,6 +3675,20 @@ a.thumbnail:hover {
 
     /* Styling the default accordion headers */
 
+    /* Custom section for showing a list of additional resources */
+
+    /* Customize the login form */
+
+    /* Custom styles for page header */
+
+    /* Make the buttons for the activity toolbar smaller */
+
+    /* Customize the breadcrumb - no border */
+
+    /* Customize well, make darker, less padding */
+
+    /* Activity Engine Styles */
+
 }
 #main-body h1,
 #main-body h2,
@@ -3739,6 +3753,50 @@ a.thumbnail:hover {
 }
 #main-body .ngl-page-header {
     padding: 15px 0px 20px 0px;
+}
+#main-body .header-no-space {
+    padding: 15px 0px 0px 0px;
+}
+#main-body .activitytools {
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+#main-body .activitytools .btn {
+    font-size: 12px;
+    line-height: 18px;
+    border-color: #000000;
+    border-width: 2px;
+}
+#main-body .breadcrumb {
+    background-color: none;
+    background-image: none;
+    border: 0px;
+    padding: 0px;
+    margin-bottom: 0px;
+}
+#main-body .dark-well {
+    background-color: #DDDDDD;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+#main-body .aContainerDiv {
+    border: 2px solid #2c2c2c;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #ffffff;
+}
+#main-body .activityContainer {
+    margin-top: 10px;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+}
+#main-body #containerDiv {
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
 }
 /*-- Main Page Footer */
 #main-footer {

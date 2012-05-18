@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<activity templateid="DNDFS" activityid="" defaultscore="1" generatorid="PageSeeder" datetimestamp="">
+	<directions>
+		<content type="text" tag="directions"><![CDATA[Drag the correct option from the set of <b>scrambled words</b> and drop that option from its default position into its correct slot in a predetermined screen area (the drop slots) to form a correct and meaningful sentence. Click Submit to check your answers.]]></content>
+	</directions>
+	<helpinfo/>
+	<questionsets>
+		<questionset>
+			<question>
+				<content type="number" tag="blankCount">5</content>
+			</question>
+			<options>
+				<option>
+					<content type="text" tag="optionText">a gift</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">gave</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">yesterday</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">him</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">she</content>
+				</option>
+			</options>
+			<answers>
+				<answer>
+					<content type="text" tag="answerText">she gave him a gift yesterday</content>
+				</answer>
+			</answers>
+		</questionset>
+		<questionset>
+			<question>
+				<content type="number" tag="blankCount">6</content>
+			</question>
+			<options>
+				<option>
+					<content type="text" tag="optionText">her</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">Ahmed</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">a watch</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">gives</content>
+				</option>
+			</options>
+			<answers>
+				<answer>
+					<content type="text" tag="answerText">Ahmed gives her a watch</content>
+				</answer>
+			</answers>
+		</questionset>
+		<questionset>
+			<question>
+				<content type="number" tag="blankCount">5</content>
+			</question>
+			<options>
+				<option>
+					<content type="text" tag="optionText">Geeta plays</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">Raj plays</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">carrom</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">badminton</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">while</content>
+				</option>
+			</options>
+			<answers>
+				<answer>
+					<content type="text" tag="answerText">Raj plays badminton while Geeta plays carrom</content>
+				</answer>
+				<answer>
+					<content type="text" tag="answerText">Geeta plays badminton while Raj plays carrom</content>
+				</answer>
+				<answer>
+					<content type="text" tag="answerText">Raj plays carrom while Geeta plays badminton</content>
+				</answer>
+				<answer>
+					<content type="text" tag="answerText">Geeta plays carrom while Raj plays badminton</content>
+				</answer>
+			</answers>
+		</questionset>
+		<questionset>
+			<question>
+				<content type="number" tag="blankCount">4</content>
+			</question>
+			<options>
+				<option>
+					<content type="text" tag="optionText">a lot</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">calls</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">she</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">me</content>
+				</option>
+			</options>
+			<answers>
+				<answer>
+					<content type="text" tag="answerText">she calls me a lot</content>
+				</answer>
+			</answers>
+		</questionset>
+		<questionset>
+			<question>
+				<content type="number" tag="blankCount">4</content>
+			</question>
+			<options>
+				<option>
+					<content type="text" tag="optionText">it</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">sent</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">I</content>
+				</option>
+				<option>
+					<content type="text" tag="optionText">to him</content>
+				</option>
+			</options>
+			<answers>
+				<answer>
+					<content type="text" tag="answerText">I sent it to him</content>
+				</answer>
+			</answers>
+		</questionset>
+		
+	</questionsets>
+</activity>

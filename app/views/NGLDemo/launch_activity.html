@@ -1,58 +1,75 @@
 #{extends 'NGLDemo/layout.html' /}
-<h1>&{'coursematerials.title'}</h1>
-<div class="btn-toolbar rightfloat">
+
+<h1 class="ngl-page-header header-no-space">&{'coursematerials.title'}</h1>
+<ul class="breadcrumb">
+
+    <li><a href="#">Milestones Level 1</a> <span class="divider">/</span></li>
+    <li><a href="#">Unit 1</a> <span class="divider">/</span></li>
+    <li><a href="#">Lesson A</a> <span class="divider">/</span></li>
+    <li class="active">Drag & Drop, Form a Sentence</li>
+</ul>
+
+<div class="btn-toolbar rightfloat activitytools">
     <div class="btn-group">
-        <a class="btn btn-small" href="#"><i class="icon-arrow-left"></i></a>
-        <a class="btn btn-small" href="#">&{'activity.tools.tableofcontents'}</a>
-        <a class="btn btn-small" href="#"><i class="icon-arrow-right"></i></a>
+        <a class="btn btn-arrow" href="#"><i class="icon-arrow-left"></i></a>
+        <a class="btn btn-toc" href="#">&{'activity.tools.tableofcontents'}</a>
+        <a class="btn btn-arrow" href="#"><i class="icon-arrow-right"></i></a>
     </div>
     <div class="btn-group">
-        <a class="btn btn-small" href="#">&{'activity.tools.retake'}</a>
+        <a class="btn btn-retake" href="#">&{'activity.tools.retake'}</a>
     </div>
     <div class="btn-group">
-        <a class="btn btn-small" href="#">&{'activity.tools.submit'}</a>
+        <a class="btn btn-submit" href="#">&{'activity.tools.submit'}</a>
     </div>
 </div>
-<div class="clearboth"></div>
 
-<div class="well">
+
+<div class="clearboth well dark-well">
     <h2>Milestones Tracker</h2>
-    <h4>Drag & Drop, Form a Sentence</h4>
+    <h3><strong>Drag & Drop, Form a Sentence</strong></h3>
     <p>&{'global.loremipsum.3'} </p>
 
         <div id="engine"></div>
         <div class="row">
             <div class="span10 offset1">
-                <img src="@{'/public/images/ngldemo/dummy_activity.png'}">
+                <div data-scrollable="y">
+                    <div class="activityContainer">
+                        <div class="aContainerDiv">
+                            <div id="containerParent">
+                                <div id="containerDiv"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+
         <div class="row">
            <div class="span10 offset1">
-                <div class="btn-toolbar">
+                <div class="btn-toolbar activitytools">
                     <div class="btn-group">
-                        <a class="btn btn-large" href="#">&{'activity.tools.shownanswers'}</a>
+                        <a class="btn btn-small" href="#">&{'activity.tools.shownanswers'}</a>
                     </div>
                     <div class="btn-group">
-                        <a class="btn btn-large" href="#"> &lt;&lt; </a>
-                        <a class="btn btn-large" href="#">&{'activity.tools.1of10'}</a>
-                        <a class="btn btn-large" href="#"> &gt;&gt; </a>
+                        <a class="btn" href="#"> &lt;&lt; </a>
+                        <a class="btn" href="#">&{'activity.tools.1of10'}</a>
+                        <a class="btn" href="#"> &gt;&gt; </a>
                     </div>
                 </div>
             </div>
         </div>
 </div>
 
-<div class="btn-toolbar rightfloat">
+<div class="btn-toolbar rightfloat activitytools">
     <div class="btn-group">
-        <a class="btn btn-small" href="#"><i class="icon-arrow-left"></i></a>
-        <a class="btn btn-small" href="#">&{'activity.tools.tableofcontents'}</a>
-        <a class="btn btn-small" href="#"><i class="icon-arrow-right"></i></a>
+        <a class="btn btn-arrow" href="#"><i class="icon-arrow-left"></i></a>
+        <a class="btn btn-toc" href="#">&{'activity.tools.tableofcontents'}</a>
+        <a class="btn btn-arrow" href="#"><i class="icon-arrow-right"></i></a>
     </div>
     <div class="btn-group">
-        <a class="btn btn-small" href="#">&{'activity.tools.retake'}</a>
-    </div>
-    <div class="btn-group">
-        <a class="btn btn-small" href="#">&{'activity.tools.submit'}</a>
+        <a class="btn btn-retake" href="#">&{'activity.tools.retake'}</a>
+        <a class="btn btn-submit" href="#">&{'activity.tools.submit'}</a>
     </div>
 </div>
 <div class="clearboth"></div>

@@ -632,6 +632,21 @@
     #main-body .accordion-heading .accordion-toggle {
         padding: 8px 10px;
     }
+    #main-body .activitytools {
+        float: none;
+    }
+    #main-body .activitytools .btn-group {
+        display: block;
+    }
+    #main-body .activitytools .btn-group .btn {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+    #main-body .activitytools .btn-group .btn-submit, #main-body .activitytools .btn-group .btn-retake {
+        width: 40%;
+    }
 }
 @media (max-width: 767px) {
     /* Navbar customization */
