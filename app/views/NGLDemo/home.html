@@ -1,38 +1,38 @@
 #{extends 'NGLDemo/layout.html' /}
 
-<div class="btn-group rightfloat" data-toggle="buttons-radio">
-    <button class="btn" data-toggle="button">&{'global.model.selflearner'}</button>
-    <button class="btn toggle-on" data-toggle="button">&{'global.model.instructorled'}</button>
-</div>
-
-<h1 class="page-header">&{'courses.title'}</h1>
+<h1 class="ngl-page-header">&{'courses.title'}</h1>
 
 <div class="row">
     <div class="span8">
         <div class="accordion" id="courselist">
             <div class="accordion-group">
                 <div class="accordion-heading">
+
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="courselist" href="#course1">
-                        Learning Basic English, Part 1 <span>(CNB00321)</span>
+                        <img src="@{'/public/images/glyphicons/glyphicons_153_more_windows.png'}">
+                        <span>Learning English, Part 1</span>
+                        <small>CNB00321</small>
                     </a>
                 </div>
                 <div id="course1" class="accordion-body collapse in">
-                    <div class="accordion-inner row">
-                        <div class="span6">
-                            <h2>&{'courses.course.Instructors'}:<strong>John Doe</strong><a href="#"><i class="icon-envelope"></i></a></h2>
-                            <h3><em>1st June 2012 to 31st July 2012</em></h3>
-                            <p>&{'global.loremipsum.3'}&{'global.loremipsum.3'}</p>
-                            <a class="btn" href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.launch_activity()}#{/if}#{else}#launch_activity#{/else}">&{'courses.course.launch'} &gt;&gt;</a></p>
-                            <a class="btn" href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.launch_activity()}#{/if}#{else}#launch_activity#{/else}">&{'courses.course.grades'} &gt;&gt;</a></p>
-                        </div>
-                        <div class="span6">
-                            <h2>&{'courses.course.related'}:</h2>
-                            <ul class="unstyled">
-                                <li><a>Pathways Level 1</a></li>
-                                <li><a>Pathways Level 2</a></li>
-                                <li><a>Pathways Level 3</a></li>
-                                <li><a>Pathways Level 4</a></li>
-                            </ul>
+                    <div class="accordion-inner">
+                        <div class="row-fluid">
+                            <div class="span8">
+                                <h2>&{'courses.course.Instructors'}: <strong>John Doe</strong></h2>
+                                <p><small>1st June 2012 to 31st July 2012</small></p>
+                                <p>&{'global.loremipsum.3'}</p>
+                                <a class="btn" href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.launch_activity()}#{/if}#{else}#launch_activity#{/else}">&{'courses.course.launch'} &gt;&gt;</a></p>
+                                <a class="btn" href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.launch_activity()}#{/if}#{else}#launch_activity#{/else}">&{'courses.course.grades'} &gt;&gt;</a></p>
+                            </div>
+                            <div class="span4">
+                                <h2>&{'courses.course.related'}:</h2>
+                                <ul class="unstyled">
+                                    <li><a>Pathways Level 1</a></li>
+                                    <li><a>Pathways Level 2</a></li>
+                                    <li><a>Pathways Level 3</a></li>
+                                    <li><a>Pathways Level 4</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,9 @@
             <div class="accordion-group">
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="courselist" href="#course2">
-                        Learning Basic English, Part 2 <span>(CNB00322)</span>
+                        <img src="@{'/public/images/glyphicons/glyphicons_153_more_windows.png'}">
+                        <span>Learning English, Part 2</span>
+                        <small>CNB00322</small>
                     </a>
                 </div>
                 <div id="course2" class="accordion-body collapse">
@@ -52,7 +54,9 @@
             <div class="accordion-group">
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="courselist" href="#course3">
-                       Pronunciation <span>(CNB00101)</span>
+                        <img src="@{'/public/images/glyphicons/glyphicons_153_more_windows.png'}">
+                        <span>Pronunciation</span>
+                        <small>CNB00101</small>
                     </a>
                 </div>
                 <div id="course3" class="accordion-body collapse">
@@ -64,7 +68,9 @@
             <div class="accordion-group">
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="courselist" href="#course4">
-                        TOEFL <span>(TFL0001)</span>
+                        <img src="@{'/public/images/glyphicons/glyphicons_153_more_windows.png'}">
+                        <span>TOEFL</span>
+                        <small>TFL0001</small>
                     </a>
                 </div>
                 <div id="course4" class="accordion-body collapse">
@@ -77,9 +83,12 @@
     </div>
     <div class="span4">
         <h2>&{'courses.addnewresources.h1'}...</h2>
-        <p>&{'courses.productcode.p'} <a class="btn" href="#">&{'courses.productcode.button'}</a></p>
-        <p>&{'courses.coursekey.p'} <a class="btn" href="#">&{'courses.coursekey.button'}</a></p>
-        <p>&{'courses.enroll.p'} <a class="btn" href="#">&{'courses.enroll.button'}</a></p>
+        <ul class="unstyled resources-list">
+            <li>&{'courses.productcode.p'} <a class="btn" href="#">&{'courses.productcode.button'}</a></li>
+            <li>&{'courses.coursekey.p'} <a class="btn" href="#">&{'courses.coursekey.button'}</a></li>
+            <li>&{'courses.enroll.p'} <a class="btn" href="#">&{'courses.enroll.button'}</a></li>
+        </ul>
+
         <h2>&{'courses.relatedlinks.h1'}...</h2>
         <ul class="unstyled">
             <li><a>...........</a></li>
@@ -88,17 +97,21 @@
     </div>
 </div>
 
-<h1>&{'dictionaries.title'}</h1>
+<h1 class="ngl-page-header">&{'dictionaries.title'}</h1>
 <div class="row">
-    <div class="span4">
+    <div class="span4 media">
         <h3>American English</h3>
-        <img src="@{'/public/images/ngldemo/dummy_image_type1.png'}">
-        <p>&{'global.loremipsum.3'}</p>
+        <a class="pull-left" href="#"><img src="@{'/public/images/ngldemo/dummy_image_type2.png'}"></a>
+        <div class="media-body">
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
     </div>
-    <div class="span4">
+    <div class="span4 media">
         <h3>Collins COBUILD</h3>
-        <img src="@{'/public/images/ngldemo/dummy_image_type1.png'}">
-        <p>&{'global.loremipsum.3'}</p>
+        <a class="pull-left" href="#"><img src="@{'/public/images/ngldemo/dummy_image_type2.png'}"></a>
+        <div class="media-body">
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
     </div>
 </div>
 

@@ -114,6 +114,7 @@
 
 /* Main Page Header */
 #main-header  {
+
     background-color: @NGLThemeColor;
     padding: 0px 20px 0px 20px;
 
@@ -127,13 +128,66 @@
 
 /*-- Main Page Body */
 #main-body   {
-    padding: 20px;
 
-
+   padding: 0px 20px 0px 20px;
 /* Remove later*/
     border-left: 2px solid;
     border-right: 2px solid;
 /* -- */
+
+/* Default font-weight for Lucida Causual is very bold!*/
+    h1, h2, h3, h4, h5, h6  {
+        font-weight:500;
+    }
+
+    /* Make the default button bigger*/
+    .btn    {
+        font-size: 14px;
+        line-height: 24px;
+        border-color: #000000;
+        border-width: 2px;
+    }
+
+    /* Styling the default accordion headers */
+    .accordion-heading .accordion-toggle {
+        font-size: 18px;
+        color: @grayDark;
+        img {
+            height: 20px;
+        }
+        small {
+            color: #999999;
+            font-size: 11px;
+        }
+    }
+
+    .accordion-group {
+        border: 2px solid #000000;
+    }
+    .accordion-inner {
+        border-top: 2px solid #000000;
+        h2  {
+            font-size: 16px;
+            line-height: 24px;
+            padding-right: 10px;
+        }
+
+
+    }
+
+    .resources-list
+    {
+        li  {
+            font-size: 14px;
+            padding-top: 5px;
+            padding-bottom: 10px;
+        }
+
+        .btn    {
+            margin-top: 5px;
+        }
+    }
+
 
     .loginform    {
         fieldset    {
@@ -153,6 +207,10 @@
             font-family: @baseFontFamily;
             font-size: 20px
         }
+    }
+
+    .ngl-page-header    {
+        padding: 15px 0px 20px 0px;
     }
 
 }
@@ -175,16 +233,12 @@
     float: right;
 }
 
+.leftfloat {
+    float: left;
+}
+
+
 .clearboth {
     clear: both;
 }
 
-/* ----- Accordion ------ */
-
-// Group == heading + body
-.accordion-group {
-    border: 2px solid #000000;
-}
-.accordion-inner {
-    border-top: 2px solid #000000;
-}
