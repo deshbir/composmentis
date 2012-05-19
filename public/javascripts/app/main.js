@@ -10,12 +10,8 @@ $(document).ready(function () {
 
         render:function () {
 
-            $.ajax({
-                url: "ngldemo/index",
-
-                success:function(data) {
-                    $("#backbone_container").html( data );
-                }
+            TemplateCache.templateManager.get('ngldemo/index', function(template){
+                $("#backbone_container").html( template );
             });
 
             //$("#container").html(this.template);
@@ -33,13 +29,9 @@ $(document).ready(function () {
 
         render:function () {
 
-             $.ajax({
-                 url: "ngldemo/login",
-
-                 success:function(data) {
-                    $("#backbone_container").html( data );
-                 }
-             });
+            TemplateCache.templateManager.get('ngldemo/login', function(template){
+                $("#backbone_container").html( template );
+            });
 
             //$("#container").html(this.template);
         }
@@ -56,12 +48,8 @@ $(document).ready(function () {
 
         render:function () {
 
-            $.ajax({
-                url: "ngldemo/home",
-
-                success:function(data) {
-                    $("#backbone_container").html( data );
-                }
+            TemplateCache.templateManager.get('ngldemo/home', function(template){
+                $("#backbone_container").html( template );
             });
 
             //$("#container").html(this.template);
@@ -79,15 +67,24 @@ $(document).ready(function () {
 
         render:function () {
 
-            $.ajax({
-                url: "ngldemo/launch_activity",
-
-                success:function(data) {
-                    $("#backbone_container").html( data );
-                }
+            TemplateCache.templateManager.get('ngldemo/launch_activity', function(template){
+                $("#backbone_container").html( template );
             });
 
+            $LAB.setOptions({AlwaysPreserveOrder:true})
+                .script(['/public/javascripts/activityengine/kinetic-v3.9.3.js',
+                         '/public/javascripts/activityengine/raf.js',
+                         '/public/javascripts/activityengine/animate.js',
+                         '/public/javascripts/activityengine/scroller.js',
+                         '/public/javascripts/activityengine/easyScroller.js',
+                         '/public/javascripts/activityengine/container.js',
+                         '/public/javascripts/activityengine/activity.js',
+                         '/public/javascripts/activityengine/activity-engine-init.js']).wait(function() {
+                    ActivityEngineInit.init();
+                });
+
             //$("#container").html(this.template);
+
         }
 
     });
