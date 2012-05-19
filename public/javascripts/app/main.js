@@ -94,10 +94,10 @@ $(document).ready(function () {
 
     var AppRouter = Backbone.Router.extend({
         routes:{
-            "index":"Index",
-            "login":"Login",
-            "home":"Home",
-            "launch_activity":"Launch_Activity"
+            "ngldemo/index":"Index",
+            "ngldemo/login":"Login",
+            "ngldemo/home":"Home",
+            "ngldemo/launch_activity":"Launch_Activity"
         },
 
         Index:function () {

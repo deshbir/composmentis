@@ -23,7 +23,7 @@
                 <label class="checkbox">
                     <input type="checkbox" name="remember" ${flash.remember ? 'checked="true"' : ''}> &{'login.rememberme'}</label>
             </fieldset>
-            <p><a href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.home()}#{/if}#{else}#home#{/else}" class="btn btn-large">&{'login.button.action'} <small>(&{'login.button.small'})</small></a></p>
+            <p><a href="#{route-uri '/ngldemo/home'/} " class="btn btn-large">&{'login.button.action'} <small>(&{'login.button.small'})</small></a></p>
         </form>
     </div>
 </div>

@@ -63,8 +63,8 @@
         <div class="span6">
             <h1>&{'home.hero.heading1'}</h1>
             <p>&{'home.hero.heading2'}</p>
-            <p><a class="btn btn-large" href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.login()}#{/if}#{else}#login#{/else}">&{'registration.new'} <small>(&{'registration.reg'})</small></a></p>
-            <p><a class="btn btn-large" href="#{if play.configuration["application.delivery"] == "traditional"}@{NGLDemo.login()}#{/if}#{else}#login#{/else}">&{'registration.returning'} <small>(&{'registration.signin'})</small></a></p>
+            <p><a class="btn btn-large" href="#{route-uri "/ngldemo/login" /}">&{'registration.new'} <small>(&{'registration.reg'})</small></a></p>
+            <p><a class="btn btn-large" href="#{route-uri "/ngldemo/login" /}">&{'registration.returning'} <small>(&{'registration.signin'})</small></a></p>
         </div>
 
         <div class="span5 offset1">
