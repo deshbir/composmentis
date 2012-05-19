@@ -23,6 +23,7 @@
     #main-body   {
 
         padding: 0 10px;
+        padding-bottom: 20px;
 
         .loginform    {
             .input-xlarge   {
@@ -55,22 +56,33 @@
             padding: 8px 10px;
         }
 
+        .activitytools-top   {
+            display: none;
+        }
+
         .activitytools  {
             float: none;
-            .btn-group {
-                display: block;
+            .btn-group-action    {
+                width: 100%;
+                margin-left: 0px;
 
-                .btn    {
-                    margin-top: 5px;
-                    margin-bottom: 5px;
-                    margin-left: 2px;
-                    margin-right: 2px;
+                .btn-retake, .btn-submit, .btn-toc    {
+                    width: 92%;
+                    font-size: 14px;
+                    line-height: 28px;
+                    margin-top: 2px;
                 }
-                .btn-submit, .btn-retake{
-                    width: 40%;
+
+                .btn-toc-next, .btn-toc-prev    {
+                    display: none;
+                }
+
+                .btn-toc    {
+                    border-radius: 4px;
                 }
 
             }
+
         }
     }
 }

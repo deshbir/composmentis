@@ -89,6 +89,11 @@
             padding-right: 10px;
         }
     }
+    .divider-vertical {
+        border-style: 2px;
+        height: 20px;
+        margin-top: 10px;
+    }
 
     .navbar-inner {
         background-color: @NGLThemeColor;
@@ -99,6 +104,20 @@
         min-height: 40px;
         padding-left: 0px;
         padding-right: 0px;
+
+        .nav-collapse    {
+            /* Customize font of the Menu items (bigger)*/
+            margin-top: 5px;
+            margin-bottom: 5px;
+
+            li  {
+                font-size: 16px;
+                li  {
+                    font-size: 13px;
+                }
+            }
+
+        }
     }
 
     .nav .dropdown-toggle .caret, .navbar .nav .open.dropdown .caret {
@@ -129,7 +148,7 @@
 /*-- Main Page Body */
 #main-body   {
 
-   padding: 0px 20px 0px 20px;
+   padding: 0px 20px 20px 20px;
 /* Remove later*/
     border-left: 2px solid;
     border-right: 2px solid;
@@ -144,7 +163,7 @@
     .btn    {
         font-size: 14px;
         line-height: 24px;
-        border-color: #000000;
+        border-color: @grayDark;
         border-width: 2px;
     }
 
@@ -161,17 +180,15 @@
         }
     }
     .accordion-group {
-        border: 2px solid #000000;
+        border: 2px solid @grayLight;
     }
     .accordion-inner {
-        border-top: 2px solid #000000;
+        border-top: 2px solid @grayLight;
         h2  {
             font-size: 16px;
             line-height: 24px;
             padding-right: 10px;
         }
-
-
     }
 
     /* Custom section for showing a list of additional resources */
@@ -235,11 +252,11 @@
         background-color: none;
         background-image: none;
         border: 0px;
-        padding: 0px;
-        margin-bottom: 0px;
+
+        margin-bottom: 10px;
     }
 
-    /* Customize well, make darker, less padding */
+    /* Custom well, make darker, less padding */
     .dark-well {
         background-color: #DDDDDD;
         padding: 10px;

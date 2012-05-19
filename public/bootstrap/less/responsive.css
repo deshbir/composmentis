@@ -609,6 +609,7 @@
     /*-- Main Page Body */
     #main-body {
         padding: 0 10px;
+        padding-bottom: 20px;
     }
     #main-body .loginform .input-xlarge {
         width: 95%;
@@ -632,20 +633,27 @@
     #main-body .accordion-heading .accordion-toggle {
         padding: 8px 10px;
     }
+    #main-body .activitytools-top {
+        display: none;
+    }
     #main-body .activitytools {
         float: none;
     }
-    #main-body .activitytools .btn-group {
-        display: block;
+    #main-body .activitytools .btn-group-action {
+        width: 100%;
+        margin-left: 0px;
     }
-    #main-body .activitytools .btn-group .btn {
+    #main-body .activitytools .btn-group-action .btn-retake, #main-body .activitytools .btn-group-action .btn-submit, #main-body .activitytools .btn-group-action .btn-toc {
+        width: 92%;
+        font-size: 14px;
+        line-height: 28px;
         margin-top: 5px;
-        margin-bottom: 5px;
-        margin-left: 2px;
-        margin-right: 2px;
     }
-    #main-body .activitytools .btn-group .btn-submit, #main-body .activitytools .btn-group .btn-retake {
-        width: 40%;
+    #main-body .activitytools .btn-group-action .btn-toc-next, #main-body .activitytools .btn-group-action .btn-toc-prev {
+        display: none;
+    }
+    #main-body .activitytools .btn-group-action .btn-toc {
+        border-radius: 4px;
     }
 }
 @media (max-width: 767px) {
