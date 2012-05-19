@@ -30,6 +30,7 @@
 
 #{/if}<!-- This section is not needed for single page apps -->
 
+<div data-scrollable="y">
 <!-- Top Green Nav bar -->
 <div id="main-header" class="container">
     <!-- Top  Navbar for logo, brand, menu, and language selection -->
@@ -91,6 +92,7 @@
     </div>
 </div>
 
+</div>
 <!-- This section is not needed for single page apps -->
 #{if play.configuration["application.delivery"] == "traditional"}
 
@@ -116,10 +118,38 @@
 <script src="@{'/public/javascripts/hide-addressbar.js'}" type="text/javascript"
         charset="${_response_encoding}"></script>
 
+<script src="@{'/public/javascripts/activityengine/kinetic-v3.9.3.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/activityengine/raf.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/activityengine/animate.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/activityengine/scroller.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/activityengine/easyScroller.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/activityengine/container.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/activityengine/activity.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+
 <script type="text/javascript">
     $('.carousel').carousel();
     $().dropdown();
     $('.toggle-on').button('toggle')
+</script>
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+        // Handler for .ready() called.
+        window.addEventListener('load', initialize, false);
+        window.addEventListener('resize', onResize, false);
+        var navParent = document.getElementById("navParent");
+        if(navParent != null && navParent.children== undefined){
+            addListenerToButtons(navParent.children);
+        }
+    });
 </script>
 
 </body>

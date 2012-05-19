@@ -1,4 +1,4 @@
-#{extends 'NGLDemo/layout.html' /}
+#{extends 'NGLDemo/layout_activity.html' /}
 
 <h1 class="ngl-page-header header-no-space">&{'coursematerials.title'}</h1>
 <ul class="breadcrumb">
@@ -31,16 +31,8 @@
 
         <div id="engine"></div>
         <div class="row">
-            <div class="span10 offset1">
-                <div data-scrollable="y">
-                    <div class="activityContainer">
-                        <div class="aContainerDiv">
-                            <div id="containerParent">
-                                <div id="containerDiv"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div id="containerParent" class="span10 offset1">
+                <div id="containerDiv"></div>
             </div>
         </div>
 
