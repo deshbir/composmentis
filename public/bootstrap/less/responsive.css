@@ -647,13 +647,18 @@
         width: 92%;
         font-size: 14px;
         line-height: 28px;
-        margin-top: 5px;
+        margin-top: 2px;
     }
     #main-body .activitytools .btn-group-action .btn-toc-next, #main-body .activitytools .btn-group-action .btn-toc-prev {
         display: none;
     }
     #main-body .activitytools .btn-group-action .btn-toc {
         border-radius: 4px;
+    }
+    #main-body #containerParent {
+        border: 2px solid #2c2c2c;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 }
 @media (max-width: 767px) {

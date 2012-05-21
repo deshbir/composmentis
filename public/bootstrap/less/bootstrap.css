@@ -3584,6 +3584,7 @@ a.thumbnail:hover {
     font-size: 20px;
 }
 #products {
+    background-color: #ffffff;
     padding: 20px;
     /* Remove later*/
 
@@ -3643,6 +3644,7 @@ a.thumbnail:hover {
     min-height: 40px;
     padding-left: 0px;
     padding-right: 0px;
+    -webkit-box-shadow: none;
 }
 .navbar .navbar-inner .nav-collapse {
     /* Customize font of the Menu items (bigger)*/
@@ -3679,6 +3681,7 @@ a.thumbnail:hover {
 }
 /*-- Main Page Body */
 #main-body {
+    background-color: #ffffff;
     padding: 0px 20px 20px 20px;
     /* Remove later*/
 
@@ -3795,24 +3798,14 @@ a.thumbnail:hover {
     padding: 10px;
     margin-bottom: 5px;
 }
-#main-body .aContainerDiv {
+#main-body #containerParent {
     border: 2px solid #2c2c2c;
     padding-top: 40px;
     padding-bottom: 40px;
     background-color: #ffffff;
 }
-#main-body .activityContainer {
-    margin-top: 10px;
-    margin-top: 0px;
-    margin-right: auto;
-    margin-bottom: 0px;
-    margin-left: auto;
-}
 #main-body #containerDiv {
-    margin-top: 0px;
-    margin-right: auto;
-    margin-bottom: 0px;
-    margin-left: auto;
+    margin: auto;
 }
 /*-- Main Page Footer */
 #main-footer {
