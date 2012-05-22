@@ -56,7 +56,6 @@ function Question() {
 }
 
 var containerBoxNameMap = new Object();
-var containersMidY = 0;
 var layers = new Array();
 var stage = null;
 var containerBoxes = new Array();
@@ -100,6 +99,29 @@ function initialize() {
 
     // bringing first question to top.
     layers[0].moveToTop();
+    if(document.getElementById('scrollableDiv')==undefined) {
+        enableScrolling();
+        tempfunction();
+    }
+}
+
+
+function enableScrolling() {
+    var body = document.body;
+    var scrollableDiv = document.createElement('div');
+    scrollableDiv.setAttribute('id',"scrollableDiv");
+
+    while (body.hasChildNodes()) {
+        var node = body.lastChild;
+        scrollableDiv.appendChild(node);
+        // Don't know how that is working without ever removing the children from body node.
+        //    	body.removeChild(node);
+    }
+    scrollableDiv.setAttribute('data-scrollable','y');
+    body.appendChild(scrollableDiv);
+
+    var height = "height:"+window.innerHeight+"px";
+    document.body.setAttribute('style',height);
 }
 
 /*
@@ -315,9 +337,6 @@ function paintContainerBox(layer, options, startX, optionGroup) {
         containerBoxes.push(containerBox);
         optionGroup.add(containerBox);
         containerBoxNameMap[optionBoxName]=questionBox;
-        if(num == options.length-1) {
-            containersMidY=layer.usedY;
-        }
     }
 }
 
@@ -352,7 +371,8 @@ function paintOptionBox(layer, questions, startX, optionGroup) {
             align: "center",
             dragBounds:{
                 top: 0,
-                left: 0,
+                left: optionWidth/2,
+                right:stage.getWidth()-optionWidth/2
             }
         });
         optionBox.width = containerWidth;
@@ -406,8 +426,9 @@ function paintAnswerPlaceHolder(layer, questions, startX, optionGroup){
         var placeHolder = new Kinetic.Shape({
             drawFunc: function(){
                 var context = this.getContext();
+                context.strokeStyle = "black";
+                context.lineWidth = 2;
                 context.moveTo(hMargin + (optionHeight/2), vMargin + optionHeight);
-
                 context.lineTo((optionHeight/2) + width + hMargin, vMargin + optionHeight);
                 context.stroke();
             },
@@ -463,43 +484,42 @@ function addEventQuestionBox(layer, box, startX) {
                 marginTop = (containerHeight - optionHeight)/2;
 
 
-                if(this.attrs.y > containersMidY+(box.height/2)) {
+
+                var container = findContainer(layer, box, startX);
+
+                if(container == undefined ){
+                    resetBox(layer, this);
+                    return;
+                }
+                var containerName = container.name;
+                var containerNumber = parseInt(containerName.substring(containerName.indexOf(",")+1,containerName.indexOf("b")));
+                var questionNum = parseInt(containerName.substring(0,containerName.indexOf("l")));
+                if( containerNumber > (questions[questionNum].options.length)){
 
                     resetBox(layer, this);
-                } else {
-                    var container = findContainer(layer, box, startX);
-
-                    if(container == undefined ){
-                        resetBox(layer, this);
-                        return;
-                    }
-
-                    if(parseInt(container.name.substr(3,1)) > (questions[parseInt(container.name.substr(0,1))].options.length)){
-
-                        resetBox(layer, this);
-                        return;
-                    }
-                    if(container.empty==true) {
-                        container.empty=false;
-                        container.child=this;
-                        if(this.owner!=null) {
-                            this.owner.empty=true;
-                        }
-                        this.owner=container;
-
-
-                        this.transitionTo({
-                            rotation: 0,
-                            x: container.attrs.x + marginLeft,
-                            y: container.attrs.y + marginTop,
-                            alpha: 3,
-                            duration:.25
-                        });
-                        container=null;
-                    } else {
-                        resetBox(layer, this);
-                    }
+                    return;
                 }
+                if(container.empty==true) {
+                    container.empty=false;
+                    container.child=this;
+                    if(this.owner!=null) {
+                        this.owner.empty=true;
+                    }
+                    this.owner=container;
+
+
+                    this.transitionTo({
+                        rotation: 0,
+                        x: container.attrs.x + marginLeft,
+                        y: container.attrs.y + marginTop,
+                        alpha: 3,
+                        duration:.25
+                    });
+                    container=null;
+                } else {
+                    resetBox(layer, this);
+                }
+
             }
 
         );

@@ -120,8 +120,9 @@ $(document).ready(function () {
     });
 
     var app_router = new AppRouter;
-    var indexView = new IndexView();
     Backbone.history.start();
 
-
+    if(window.location.href.indexOf("#") == -1) {
+        app_router.navigate("ngldemo/index",{trigger:true});
+    }
 });
