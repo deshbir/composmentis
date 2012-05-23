@@ -4,7 +4,7 @@
 
 # Home page
 #{if play.configuration["application.delivery"] == "traditional"}
-GET     /                                       NGLDemo.index
+GET     /                                       NGLDemo.splash
 #{/if}#{else}
 GET     /                                       NGLDemo.singlepage
 #{/else}

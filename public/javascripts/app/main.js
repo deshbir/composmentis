@@ -38,6 +38,25 @@ $(document).ready(function () {
 
     });
 
+    var SplashView = Backbone.View.extend({
+
+        //template:_.template($('#login-template').html()),
+
+        initialize:function () {
+            this.render();
+        },
+
+        render:function () {
+
+            TemplateCache.templateManager.get('ngldemo/splash', function(template){
+                $("#backbone_container").html( template );
+            });
+
+            //$("#container").html(this.template);
+        }
+
+    });
+
     var HomeView = Backbone.View.extend({
 
         //template:_.template($('#login-template').html()),
@@ -48,7 +67,7 @@ $(document).ready(function () {
 
         render:function () {
 
-            TemplateCache.templateManager.get('ngldemo/home/ddd', function(template){
+            TemplateCache.templateManager.get('ngldemo/home', function(template){
                 $("#backbone_container").html( template );
             });
 
@@ -94,7 +113,8 @@ $(document).ready(function () {
             "ngldemo/index":"Index",
             "ngldemo/login":"Login",
             "ngldemo/home":"Home",
-            "ngldemo/launch_activity":"Launch_Activity"
+            "ngldemo/launch_activity":"Launch_Activity",
+            "ngldemo/splash":"Splash"
         },
 
         Index:function () {
@@ -115,6 +135,11 @@ $(document).ready(function () {
         Launch_Activity:function () {
             loginView = new Launch_ActivityView();
 
+        },
+
+        Splash:function () {
+            demoView = new SplashView();
+
         }
 
     });
@@ -123,7 +148,7 @@ $(document).ready(function () {
     Backbone.history.start();
 
     if(window.location.href.indexOf("#") == -1) {
-        app_router.navigate("ngldemo/index",{trigger:true});
+        app_router.navigate("ngldemo/splash",{trigger:true});
     }
 
     $.ajaxSetup({
@@ -135,8 +160,24 @@ $(document).ready(function () {
     }) .ajaxStop(function(){
         $("#loadingIcon").hide();
     }).ajaxError(function(event, request, settings, error) {
-        $(".modal-body").innerHTML = request.responseText;
-        $("#errorModal").show();
+
+        $("#error-modal .modal-body").html(request.responseText);
+        $("#error-modal .error-status-code").html("Status code:" + request.status);
+        $("#error-modal .error-message").html("Error Message:" + error);
+        $("#error-modal .error-url").html("URL:" + settings.url);
+
+        //launch error modal dialog such that it centers itself, and width is based on the content.
+        $('#error-modal').modal({
+            backdrop: true,
+            keyboard: true
+        }).css({
+                width: 'auto',
+                'margin-left': function () {
+                    return -($(this).width() / 2);
+                }
+        });
+        //app_router.navigate("ngldemo/login",{trigger:true});
+        window.history.back();
     });
 
 });

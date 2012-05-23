@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 
+<!-- This section is not needed for single page apps -->
+#{if play.configuration["application.delivery"] == "traditional"}
+
 <html>
 <head>
     <meta charset="${_response_encoding}">
     <title>Rumble in the Jungle!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NLG Looking Ahead Demo, 2012">
+    <meta name="description" content="NGL Looking Ahead Demo, 2012">
     <meta name="author" content="Compro Technologies Pvt. Ltd.">
     <!-- Le stylesheets-->
-#{if "ar".equals(lang.toString())}
-    <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/bootstrap-rtl.css'}"/>
-    <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/responsive-rtl.css'}"/>
-#{/if}#{else}
+    #{if "ar".equals(lang.toString())}
+        <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/bootstrap-rtl.css'}"/>
+        <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/responsive-rtl.css'}"/>
+    #{/if}#{else}
     <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/bootstrap.less'}"/>
     <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/responsive.less'}"/>
 #{/else}
@@ -21,45 +24,41 @@
     <![endif]-->
 
     <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+
+
 </head>
 <body #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
 
-<!-- Error model content -->
-<div id="error-modal" class="modal fade hide">
-    <div class='modal-header'>
-        <button class='close' data-dismiss='modal'>&times;</button>
-        <h2>Server Error</h2>
-        <h3 class="error-status-code">sfdfsd</h3>
-        <h4 class="error-message">fsdsdf</h4>
-        <h5 class="error-url">sdffsd</h5>
-    </div>
-    <div class='modal-body'>sdhfgsdj fsd fsdgfsdf sdgfsjgfsd</div>
-    <div class='modal-footer'>
-        <a href='#' class='btn' data-dismiss='modal' >Close</a>
-    </div>
-</div>
-<!-- Model close here -->
+#{/if}<!-- This section is not needed for single page apps -->
 
-<div id="backbone_container"/>
+
+<div class="container splash">
+        <div>
+            <h1>National Geographic Learning (NGL)</h1>
+            <h2>Wireframes - "Looking Ahead" <small>v0.1, June 10th, 2012</small></h2>
+            <p>This demo website depicts a conceptual set of working wireframes for the National Geographic "looking ahead" strategy. This wireframe do not represent any particular visual design or approach, but are meant demonstrate key technical and functional capabilities of the front-end frames.</p>
+            <p><a class="btn btn-large" href="#{route-uri "/ngldemo/index" /}">NGConnect theme<small>(start)</small></a></p>
+            <p><a class="btn btn-large" href="#{route-uri "/ngldemo/index" /}">MyELT theme<small>(start)</small></a></p>
+
+
+            <p><a class="btn" href="#{route-uri "/ngldemo/index" /}">Android app<small>(download)</small></a></p>
+            <p><a class="btn" href="#{route-uri "/ngldemo/index" /}">iOS app<small>(register)</small></a></p>
+        </div>
+        <div>
+            <p>Developed by Compro Technologies Ltd.</p>
+            <p>Copyright National Geographic Learning, 2012</p>
+        </div>
+
+</div>  <!-- End of Hero Unit -->
+
+
+#{if play.configuration["application.delivery"] == "traditional"}
 
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="@{'/public/javascripts/jquery-1.7.1.min.js'}" type="text/javascript"
         charset="${_response_encoding}"></script>
-<script src="@{'/public/javascripts/underscore-1.3.3.js'}" type="text/javascript"
-        charset="${_response_encoding}"></script>
-<script src="@{'/public/javascripts/backbone.js'}" type="text/javascript"
-        charset="${_response_encoding}"></script>
-<script src="@{'/public/javascripts/mustache-0.5.0-dev.js'}" type="text/javascript"
-        charset="${_response_encoding}"></script>
-<script src="@{'/public/javascripts/template-cache.js'}" type="text/javascript"
-        charset="${_response_encoding}"></script>
-<script src="@{'/public/javascripts/LAB-2.0.3.js'}" type="text/javascript"
-        charset="${_response_encoding}"></script>
-<script src="@{'/public/javascripts/app/main.js'}" type="text/javascript"
-        charset="${_response_encoding}"></script>
-
 <script src="@{'/public/bootstrap/js/bootstrap-carousel.js'}" type="text/javascript"
         charset="${_response_encoding}"></script>
 <script src="@{'/public/bootstrap/js/bootstrap-tooltip.js'}" type="text/javascript"
@@ -70,11 +69,8 @@
         charset="${_response_encoding}"></script>
 <script src="@{'/public/bootstrap/js/bootstrap-collapse.js'}" type="text/javascript"
         charset="${_response_encoding}"></script>
-<script src="@{'/public/bootstrap/js/bootstrap-modal.js'}" type="text/javascript"
-        charset="${_response_encoding}"></script>
 <script src="@{'/public/bootstrap/js/bootstrap-transition.js'}" type="text/javascript"
         charset="${_response_encoding}"></script>
-
 <script src="@{'/public/javascripts/hide-addressbar.js'}" type="text/javascript"
         charset="${_response_encoding}"></script>
 
@@ -88,6 +84,5 @@
 </script>
 
 </body>
-
 </html>
-
+#{/if}<!-- This section is not needed for single page apps -->

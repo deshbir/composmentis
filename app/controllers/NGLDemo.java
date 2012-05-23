@@ -32,4 +32,8 @@ public class NGLDemo extends Global {
         render();
     }
 
+    public static void splash() {
+        render();
+    }
+
 }

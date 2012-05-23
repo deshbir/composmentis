@@ -103,6 +103,7 @@ function initialize() {
         enableScrolling();
         tempfunction();
     }
+    scrollCanvas();
 }
 
 
@@ -473,7 +474,7 @@ function addEventQuestionBox(layer, box, startX) {
     var stage = layer.getStage();
 
     if(box.attrs.draggable==true) {
-        box.on("dragstart",function(){
+        box.on("touchstart",function(){
 
             isDraggableElement = true;
         });
@@ -624,4 +625,29 @@ function addOptionBoxtoLayer(layer, optionBox, optionBoxCopy , startX, optionGro
 
 function showLayer(layerNum) {
     layers[layerNum].moveToTop();
+}
+
+/*
+ * function to scroll on canvas (without flick)
+ */
+var startPos = 0;
+function scrollCanvas(){
+    var div = document.getElementById('containerDiv');
+
+    div.ontouchstart = function(e){
+
+        if(isDraggableElement){
+            return;
+        }
+        startPos = e.pageY;
+        document.getElementById('containerDiv').ontouchmove =  function(e){
+            window.scrollTo(0, startPos - e.pageY+window.pageYOffset);
+
+        };
+    };
+
+    document.ontouchend = function(){
+
+        document.getElementById('containerDiv').ontouchmove = null;
+    };
 }
