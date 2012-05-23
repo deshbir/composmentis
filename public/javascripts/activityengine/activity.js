@@ -117,7 +117,7 @@ function enableScrolling() {
         // Don't know how that is working without ever removing the children from body node.
         //    	body.removeChild(node);
     }
-    scrollableDiv.setAttribute('data-scrollable','y');
+    //scrollableDiv.setAttribute('data-scrollable','y');
     body.appendChild(scrollableDiv);
 
     var height = "height:"+window.innerHeight+"px";

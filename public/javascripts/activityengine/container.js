@@ -138,3 +138,7 @@ function readQuestionsFromXml(fileName) {
     }
     return questions;
 }
+
+function changeLanguage(languageParam) {
+    language = languageParam;
+}

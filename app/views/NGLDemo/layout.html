@@ -1,7 +1,6 @@
+<!DOCTYPE html>
 <!-- This section is not needed for single page apps -->
 #{if play.configuration["application.delivery"] == "traditional"}
-
-<!DOCTYPE html>
 
 <html>
 <head>
@@ -11,10 +10,10 @@
     <meta name="description" content="NLG Looking Ahead Demo, 2012">
     <meta name="author" content="Compro Technologies Pvt. Ltd.">
     <!-- Le stylesheets-->
-#{if "ar".equals(lang.toString())}
-    <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/bootstrap-rtl.css'}"/>
-    <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/responsive-rtl.css'}"/>
-#{/if}#{else}
+    #{if "ar".equals(lang.toString())}
+        <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/bootstrap-rtl.css'}"/>
+        <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/responsive-rtl.css'}"/>
+    #{/if}#{else}
     <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/bootstrap.less'}"/>
     <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/responsive.less'}"/>
 #{/else}
@@ -30,6 +29,19 @@
 
 #{/if}<!-- This section is not needed for single page apps -->
 
+<!-- sample modal content -->
+<div id="errorModal" class="modal fade">
+    <div class='modal-header'>
+        <button class='close' data-dismiss='modal'>&times;</button>
+        <h3>Error Details</h3>
+    </div>
+    <div class='modal-body'></div>
+    <div class='modal-footer'>
+        <a href='#' class='btn' data-dismiss='modal' >Close</a>
+    </div>
+</div>
+<!-- Model close here -->
+
 <!-- Top Green Nav bar -->
 <div id="main-header" class="container">
     <!-- Top  Navbar for logo, brand, menu, and language selection -->
@@ -42,6 +54,9 @@
                     <i class="icon-align-justify"></i>
                 </a>
                 <a class="brand" href="#{route-uri '/ngldemo/index'/}"><img src="@{'/public/images/ngldemo/logo.png'}" alt="">NGL</a>
+                <div id="loadingIcon">
+                    <img src="@{'/public/images/ajax_loader.gif'}">
+                </div>
                 <div class="nav-collapse">
 
                     <ul class="nav pull-right">
@@ -79,7 +94,7 @@
 
 <!-- Main Page -->
 <div id="main-body" class="container">
-    #{doLayout /}
+#{doLayout /}
 </div>
 
 <!-- Footer -->

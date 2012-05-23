@@ -48,7 +48,7 @@ $(document).ready(function () {
 
         render:function () {
 
-            TemplateCache.templateManager.get('ngldemo/home', function(template){
+            TemplateCache.templateManager.get('ngldemo/home/ddd', function(template){
                 $("#backbone_container").html( template );
             });
 
@@ -125,4 +125,18 @@ $(document).ready(function () {
     if(window.location.href.indexOf("#") == -1) {
         app_router.navigate("ngldemo/index",{trigger:true});
     }
+
+    $.ajaxSetup({
+        global: true
+    });
+
+    $(document).ajaxStart(function(){
+        $("#loadingIcon").show();
+    }) .ajaxStop(function(){
+        $("#loadingIcon").hide();
+    }).ajaxError(function(event, request, settings, error) {
+        $(".modal-body").innerHTML = request.responseText;
+        $("#errorModal").show();
+    });
+
 });
