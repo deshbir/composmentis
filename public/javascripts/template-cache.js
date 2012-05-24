@@ -6,6 +6,9 @@ TemplateCache = new function() {
 			var template = this.templates[id];
 			if (template) {
 				callback(template);
+           } else if (global_offline_mode){
+                var template = preloaderViews[id];
+                callback(template);
 			} else {
 				var that = this;
 				$.ajax({

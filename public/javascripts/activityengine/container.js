@@ -43,8 +43,9 @@ function selectQuestion(buttonClicked, buttons){
 
 
 function displayQuestion(layerNum) {
+
     stage.setSize(canvasWidth, layers[layerNum].usedY + containerHeight+2);
-    document.getElementById("containerDiv").style.height = (layers[layerNum].usedY+containerHeight+10)+"px";
+    document.getElementById("containerDiv").style.height = (layers[layerNum].usedY+containerHeight+2)+"px";
     document.getElementById("containerDiv").style.width = canvasWidth+"px";
     showLayer(layerNum);
 }
@@ -73,17 +74,28 @@ function getMaxOptions(questions) {
 
 function getContainerWidth(maxOptions) {
     var totalOptions = maxOptions;
+
+    var containerDiv = document.getElementById("containerDiv");
+
     var reqWidth = containerWidth*totalOptions;
-    var container = document.getElementById("containerParent");
-    var availWidth = container.offsetWidth - 10;
-    while (availWidth < reqWidth) {
+    var availWidth = containerDiv.offsetWidth-4;
+
+    while (availWidth < reqWidth ) {
         totalOptions = Math.round(totalOptions/2);
         reqWidth = containerWidth*totalOptions;
-        useMargin = false;
+        useOptionNum = true;
     }
+
+    //updating rowspacing
+    if(useOptionNum){
+        rowSpacing = containerHeight/2;
+    }
+    else{
+        rowSpacing = containerHeight;
+    }
+
     return reqWidth;
 }
-
 
 /*
  * Function to read questions from the input XML file.

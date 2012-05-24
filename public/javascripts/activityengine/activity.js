@@ -30,14 +30,16 @@ Kinetic.Shape.prototype.height=0;
 /*
  *configurations
  */
+//spacing between options row and placeholders row
+var rowSpacing = 0;
 
 var margin = 0;
-var useMargin = true;
+var useOptionNum = false;
 var currentQuestion = 0;
 
 //width, height of hidden containers
 var containerWidth = 120;
-var containerHeight = 50;
+var containerHeight = 70;
 
 //width, height of draggable options
 var optionWidth = 110;
@@ -81,6 +83,10 @@ function initialize() {
 
     // calculating width of the container, based upon the number of questions.
     canvasWidth = getContainerWidth(maxOptions);
+    var containerParentWidth = document.getElementById("containerParent").offsetWidth;
+    margin = (containerParentWidth-canvasWidth)*3/8;
+    canvasWidth = canvasWidth + (containerParentWidth-canvasWidth)*3/4;
+
 
     // creating a different layers for each question
     for(var questionNum= 0; questionNum < questions.length; questionNum++){
@@ -99,10 +105,6 @@ function initialize() {
 
     // bringing first question to top.
     layers[0].moveToTop();
-    if(document.getElementById('scrollableDiv')==undefined) {
-        enableScrolling();
-        tempfunction();
-    }
     scrollCanvas();
 }
 
@@ -153,7 +155,7 @@ function onResize() {
 
     //re-initialize global objects to their initial state
 
-    useMargin = true;
+    useOptionNum = false;
     maxUsedX = 0;
     containerBoxNameMap = new Object();
     optionBoxes = new Array();
@@ -225,9 +227,9 @@ function paintActivity(questions, layers, maxOptions){
     var layerWidthMax = 0;
     for(var i = 0; i < questions.length ; i++){
 
-        if(useMargin) {
-            layers[i].usedX += (maxOptions-questions[i].options.length)*containerWidth/2;
-        }
+
+        layers[i].usedX += (maxOptions-questions[i].options.length)*containerWidth/2 + margin;
+
 
         var question = paintQuestion(questions[i].options, layers[i]);
 
@@ -267,8 +269,8 @@ function paintQuestion(options, layer){
     var outerRectangle =  new Kinetic.Rect({
 
         width: canvasWidth,
-        height:layer.usedY + containerHeight + 2,
-        fill:"white",
+        height:layer.usedY + containerHeight + rowSpacing,
+        fill:"white"
     });
 
 
@@ -292,8 +294,7 @@ function paintQuestion(options, layer){
 
     //starting new level for answer options
     layer.usedX = usedX;
-    layer.usedY = layer.usedY + 2*containerHeight;
-
+    layer.usedY = layer.usedY + containerHeight + rowSpacing;
 
     paintOptionBox(layer, options, layer.usedX, optionGroup);
 
@@ -330,7 +331,12 @@ function paintContainerBox(layer, options, startX, optionGroup) {
 
         //starting new level for the answer options
         if(num == options.length){
-            layer.usedY = layer.usedY + 2*containerHeight;
+            if(!useOptionNum){
+                layer.usedY = layer.usedY + containerHeight + rowSpacing;
+            }
+            else{
+                layer.usedY = layer.usedY + containerHeight + rowSpacing/2;
+            }
             layer.usedX = startX;
         }
 
@@ -420,24 +426,34 @@ function paintOptionBox(layer, questions, startX, optionGroup) {
  */
 
 function paintAnswerPlaceHolder(layer, questions, startX, optionGroup){
-    var width = optionWidth - optionHeight;
+    var width = optionWidth*0.8;
     var vMargin = (containerHeight - optionHeight)/2;
-    var hMargin = (containerWidth - optionWidth)/2;
+    var hMargin = optionWidth*0.1;//(containerWidth - optionWidth)/2;
+    var optionNum;
     for(var num=0;num<questions.length;num++) {
+        //add option numbers if all options are not in a single row
+        if(useOptionNum){
+            optionNum = num+1;
+        }
+        else optionNum = "";
+
+
         var placeHolder = new Kinetic.Shape({
             drawFunc: function(){
                 var context = this.getContext();
                 context.strokeStyle = "black";
                 context.lineWidth = 2;
-                context.moveTo(hMargin + (optionHeight/2), vMargin + optionHeight);
-                context.lineTo((optionHeight/2) + width + hMargin, vMargin + optionHeight);
+                context.fillText( this.attrs.name, hMargin, vMargin + optionHeight+10);
+                context.moveTo(hMargin, vMargin + optionHeight);
+                context.lineTo(width + hMargin, vMargin + optionHeight);
                 context.stroke();
             },
             stroke: "#339900",
             width:containerWidth,
             height:containerHeight,
             strokeWidth: 2,
-            listening:false
+            listening:false,
+            name:optionNum
         });
 
         placeHolder.width = containerWidth;
@@ -488,7 +504,7 @@ function addEventQuestionBox(layer, box, startX) {
 
                 var container = findContainer(layer, box, startX);
 
-                if(container == undefined ){
+                if(container == undefined || container == null ){
                     resetBox(layer, this);
                     return;
                 }
@@ -543,7 +559,10 @@ function findContainer(layer, box, startX){
     var boxInHeight = boxesInHeight(layer, box);
 
     var containerNumberX = boxInWidth - Math.round((layer.usedX - box.attrs.x + box.width/2)/box.width)+1;
-    var containerNumberY = boxInHeight - Math.round(((layer.usedY+box.height) - box.attrs.y)/box.height)+1;
+    var containerNumberY = boxInHeight - Math.round(((layer.usedY+box.height- rowSpacing) - box.attrs.y)/box.height)+1;
+    if(containerNumberX<1 || containerNumberY < 1){
+        return null;
+    }
     var containerName = Math.round(boxInWidth*(containerNumberY - 1)+containerNumberX)+ "";
 
     var container = containerBoxNameMap[layerName +"l,"+containerName+"b"];
@@ -551,7 +570,10 @@ function findContainer(layer, box, startX){
 }
 
 function boxesInHeight(layer, box) {
-    return ((layer.usedY+box.height)/box.height);
+
+    return ((layer.usedY + box.height- rowSpacing)/box.height);
+
+
 }
 
 function boxesInWidth(layer, box, startX) {
