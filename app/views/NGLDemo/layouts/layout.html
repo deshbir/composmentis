@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-#{if play.configuration["application.delivery"] == "traditional"}
+#{if flash.get("application.delivery") == "traditional"}
 <!-- This section is not needed for single page apps -->
 <html>
 <head>
@@ -19,7 +19,7 @@
 <!-- Footer -->
 #{layout-navigation-bottom /}
 
-#{if play.configuration["application.delivery"] == "traditional"}
+#{if flash.get("application.delivery") == "traditional"}
 <!-- This section is not needed for single page apps -->
 <!-- Le javascript
 ================================================== -->

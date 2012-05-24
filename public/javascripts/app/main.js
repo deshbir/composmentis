@@ -111,10 +111,15 @@ $(document).ready(function () {
     var AppRouter = Backbone.Router.extend({
         routes:{
             "ngldemo/index":"Index",
+            "ngldemo/:theme/:deliverymode/index":"Index",
             "ngldemo/login":"Login",
+            "ngldemo/:theme/:deliverymode/login":"Login",
             "ngldemo/home":"Home",
+            "ngldemo/:theme/:deliverymode/home":"Home",
             "ngldemo/activity":"Activity",
-            "ngldemo/splash":"Splash"
+            "ngldemo/:theme/:deliverymode/activity":"Activity",
+            "ngldemo/splash":"Splash",
+            "ngldemo/:theme/:deliverymode/splash":"Splash"
         },
 
         Index:function () {
