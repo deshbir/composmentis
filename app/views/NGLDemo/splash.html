@@ -1,46 +1,20 @@
 <!DOCTYPE html>
-
-<!-- This section is not needed for single page apps -->
+#{set title:'NGL Looking Ahead | Wireframes' /}
 #{if play.configuration["application.delivery"] == "traditional"}
-
+<!-- This section is not needed for single page apps -->
 <html>
 <head>
-    <meta charset="${_response_encoding}">
-    <title>Rumble in the Jungle!</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NGL Looking Ahead Demo, 2012">
-    <meta name="author" content="Compro Technologies Pvt. Ltd.">
-    <!-- Le stylesheets-->
-    #{if "ar".equals(lang.toString())}
-        <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/bootstrap-rtl.css'}"/>
-        <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/responsive-rtl.css'}"/>
-    #{/if}#{else}
-    <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/bootstrap.less'}"/>
-    <link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/responsive.less'}"/>
-#{/else}
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-
-
+#{layout-html-header /}
 </head>
 <body #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
-
-#{/if}<!-- This section is not needed for single page apps -->
-
+#{/if}
 
 <div class="container splash">
     <div class="row">
         <div class="span12">
             <h1>National Geographic Learning (NGL)</h1>
             <h2>Wireframes - "Looking Ahead" <small>v0.1, June 10th, 2012</small></h2>
-
             <h6>Copyright 2012, National Geographic Learning</h6>
-
-
             <p>A conceptual demo for set of working wire-frames representing the National Geographic Learning "looking ahead" strategy. These wire-frames are not meant to imply any particular visual design/approach, instead they demonstrate some of the key technical and functional capabilities of front-end framework.</p>
             <p>The examples, content, text used across these wire-frames are placeholders only, and have not been validated for accuracy or correct contextual application.</p>
             <p>
@@ -48,7 +22,6 @@
                 <a class="btn btn-large" href="#{route-uri "/ngldemo/index" /}">NGConnect theme<small> (start)</small></a>
                 <a class="btn btn-large" href="#{route-uri "/ngldemo/index" /}">MyELT theme<small> (start)</small></a>
             </p>
-
             <p>
                 <span>Native app options:</span>
                 <a class="btn btn-large" href="#{route-uri "/ngldemo/index" /}">Android app<small> (download)</small></a>
@@ -60,36 +33,11 @@
 
 
 #{if play.configuration["application.delivery"] == "traditional"}
-
+<!-- This section is not needed for single page apps -->
 <!-- Le javascript
 ================================================== -->
+#{layout-scripts-global /}
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="@{'/public/javascripts/jquery-1.7.1.min.js'}" type="text/javascript"
-        charset="${_response_encoding}"></script>
-<script src="@{'/public/bootstrap/js/bootstrap-carousel.js'}" type="text/javascript"
-        charset="${_response_encoding}"></script>
-<script src="@{'/public/bootstrap/js/bootstrap-tooltip.js'}" type="text/javascript"
-        charset="${_response_encoding}"></script>
-<script src="@{'/public/bootstrap/js/bootstrap-popover.js'}" type="text/javascript"
-        charset="${_response_encoding}"></script>
-<script src="@{'/public/bootstrap/js/bootstrap-dropdown.js'}" type="text/javascript"
-        charset="${_response_encoding}"></script>
-<script src="@{'/public/bootstrap/js/bootstrap-collapse.js'}" type="text/javascript"
-        charset="${_response_encoding}"></script>
-<script src="@{'/public/bootstrap/js/bootstrap-transition.js'}" type="text/javascript"
-        charset="${_response_encoding}"></script>
-<script src="@{'/public/javascripts/hide-addressbar.js'}" type="text/javascript"
-        charset="${_response_encoding}"></script>
-
-
-<script type="text/javascript">
-    $('.carousel').carousel();
-    $('.popover-test').popover();
-    $('.tooltip-test').tooltip();
-    $().dropdown();
-
-</script>
-
 </body>
 </html>
-#{/if}<!-- This section is not needed for single page apps -->
+#{/if}
