@@ -1,9 +1,32 @@
 @baseFontFamily:    'Lucida Casual', 'Comic Sans MS', 'HelveticaNeue';
-@NGLThemeColor:    #C8E1BD;
+@NGLThemeColor: #e4e8e6;
 //@NGLThemeColor:    #F9E689;
 
 body    {
     //background: url(/public/images/16x16_ccc_transparent.gif);
+}
+
+.splash    {
+    position:absolute;
+    width:800px;
+    height:400px;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    margin-top:-200px; /* negative number 1/2 height */
+    margin-left:-400px; /* negative number 1/2 width */
+    border: 2px solid;
+    background-color: @NGLThemeColor;
+
+    h2  {
+        margin-bottom: 5px;
+    }
+    h6  {
+        margin-bottom: 10px;
+    }
+    span    {
+        font-size: 16px;
+    }
 }
 
 #hero  {
@@ -71,18 +94,7 @@ body    {
 
 }
 
-.splash    {
-    position:absolute;
-    width:800px;
-    height:400px;
-    padding: 20px;
-    top: 50%;
-    left: 50%;
-    margin-top:-200px; /* negative number 1/2 height */
-    margin-left:-400px; /* negative number 1/2 width */
-    outline:1px solid #CCC;
-    overflow:none;
-}
+
 
 /* --------- Navbar ------------------ */
 @navbarHeight:                    40px;
