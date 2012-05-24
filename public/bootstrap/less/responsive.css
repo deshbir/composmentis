@@ -592,6 +592,13 @@
 }
 /* ---------- Responsive ------------ */
 @media (max-width: 480px) {
+    .splash {
+        padding: 10px;
+        margin: 0px auto;
+    }
+    .splash .btn {
+        width: 80%;
+    }
     #hero h1 {
         font-size: 32px;
         line-height: 36px;
