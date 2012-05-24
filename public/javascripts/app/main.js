@@ -76,7 +76,7 @@ $(document).ready(function () {
 
     });
 
-    var Launch_ActivityView = Backbone.View.extend({
+    var ActivityView = Backbone.View.extend({
 
         //template:_.template($('#login-template').html()),
 
@@ -86,7 +86,7 @@ $(document).ready(function () {
 
         render:function () {
 
-            TemplateCache.templateManager.get('ngldemo/launch_activity', function (template) {
+            TemplateCache.templateManager.get('ngldemo/activity', function (template) {
                 $("#backbone_container").html(template);
             });
 
@@ -113,12 +113,12 @@ $(document).ready(function () {
             "ngldemo/index":"Index",
             "ngldemo/login":"Login",
             "ngldemo/home":"Home",
-            "ngldemo/launch_activity":"Launch_Activity",
+            "ngldemo/activity":"Activity",
             "ngldemo/splash":"Splash"
         },
 
         Index:function () {
-            homeView = new IndexView();
+            indexView = new IndexView();
 
         },
 
@@ -132,13 +132,13 @@ $(document).ready(function () {
 
         },
 
-        Launch_Activity:function () {
-            loginView = new Launch_ActivityView();
+        Activity:function () {
+            activityView = new ActivityView();
 
         },
 
         Splash:function () {
-            demoView = new SplashView();
+            splashView = new SplashView();
 
         }
 

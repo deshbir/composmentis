@@ -1,0 +1,26 @@
+<script src="@{'/public/javascripts/activityengine/kinetic-v3.9.3.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/activityengine/raf.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/activityengine/animate.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/activityengine/scroller.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/activityengine/easyScroller.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/activityengine/container.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/activityengine/activity.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        // Handler for .ready() called.
+        window.addEventListener('load', initialize, false);
+        window.addEventListener('resize', onResize, false);
+        var navParent = document.getElementById("navParent");
+        if(navParent != null && navParent.children== undefined){
+            // addListenerToButtons(navParent.children);
+        }
+    });
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+#{if play.configuration["application.delivery"] == "traditional"}
+<!-- This section is not needed for single page apps -->
+<html>
+<head>
+#{layout-html-header /}
+</head>
+
+<body #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
+
+#{/if}
+
+#{layout-navigation-top /}
+
+<!-- Main Page -->
+<div id="main-body" class="container">
+#{doLayout /}
+</div>
+
+#{layout-navigation-bottom /}
+
+
+#{if play.configuration["application.delivery"] == "traditional"}
+<!-- This section is not needed for single page apps -->
+<!-- Le javascript
+================================================== -->
+#{layout-scripts-global/}
+#{layout-scripts-activity-engine/}
+<!-- Placed at the end of the document so the pages load faster -->
+</body>
+</html>
+#{/if}

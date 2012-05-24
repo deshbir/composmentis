@@ -28,7 +28,7 @@ public class NGLDemo extends Global {
 
     }
 
-    public static void launch_activity() {
+    public static void activity() {
         render();
     }
 

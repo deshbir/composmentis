@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+#{if play.configuration["application.delivery"] == "traditional"}
+<!-- This section is not needed for single page apps -->
+<html>
+<head>
+#{layout-html-header /}<!-- HTML HEAD Title, Meta tags, CSS includes -->
+</head>
+
+<body #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
+#{/if}
+
+#{layout-navigation-top /}<!-- Top  Navbar for logo, brand, menu, and language selection -->
+
+<!-- Main Page -->
+<div id="main-body" class="container">
+#{doLayout /}
+</div>
+
+<!-- Footer -->
+#{layout-navigation-bottom /}
+
+#{if play.configuration["application.delivery"] == "traditional"}
+<!-- This section is not needed for single page apps -->
+<!-- Le javascript
+================================================== -->
+#{layout-scripts-global/}
+<!-- Placed at the end of the document so the pages load faster -->
+</body>
+
+#{/if}
