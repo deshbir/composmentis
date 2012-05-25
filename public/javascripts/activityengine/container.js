@@ -83,12 +83,12 @@ function getContainerWidth(maxOptions) {
     while (availWidth < reqWidth ) {
         totalOptions = Math.round(totalOptions/2);
         reqWidth = containerWidth*totalOptions;
-        useOptionNum = true;
+        reducedLayout = true;
     }
 
     //updating rowspacing
-    if(useOptionNum){
-        rowSpacing = containerHeight/2;
+    if(reducedLayout){
+        rowSpacing = containerHeight/3;
     }
     else{
         rowSpacing = containerHeight;
@@ -153,4 +153,27 @@ function readQuestionsFromXml(fileName) {
 
 function changeLanguage(languageParam) {
     language = languageParam;
+}
+
+function showNext(){
+    if(currentQuestion < questions.length-1){
+        currentQuestion = currentQuestion+1;
+        displayQuestion(currentQuestion);
+    }
+    else
+        return;
+}
+
+function showPrevious(){
+    if(currentQuestion > 0){
+        currentQuestion = currentQuestion-1;
+        displayQuestion(currentQuestion);
+    }
+    else
+        return;
+}
+
+function restartActivity() {
+    reConfigure();
+    initialize();
 }
