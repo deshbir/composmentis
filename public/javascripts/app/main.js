@@ -1,94 +1,63 @@
 $(document).ready(function () {
 
-    var IndexView = Backbone.View.extend({
+    var NGLBaseView = Backbone.View.extend({
 
-        //template:_.template($('#index-template').html()),
-
-        initialize:function () {
-            this.render();
+        initialize:function (theme, deliverymode) {
+            this.render(theme, deliverymode);
         },
 
-        render:function () {
+        buildUri:function(controller, theme, deliverymode, action) {
 
-            TemplateCache.templateManager.get('ngldemo/index', function (template) {
+            var serverUri;
+
+            if( typeof theme == 'undefined' || typeof deliverymode == 'undefined') {
+                serverUri = controller + '/' + action;
+            }
+            else    {
+                serverUri = controller + '/' + theme + '/' + deliverymode + '/' + action;
+            }
+
+            return serverUri ;
+        },
+
+        defaultRender:function (controller, theme, deliverymode, action) {
+            var serverUri = this.buildUri(controller, theme, deliverymode, action);
+            TemplateCache.templateManager.get(serverUri, function (template) {
                 $("#backbone_container").html(template);
             });
-
-            //$("#container").html(this.template);
         }
-
     });
 
-    var LoginView = Backbone.View.extend({
 
-        //template:_.template($('#login-template').html()),
-
-        initialize:function () {
-            this.render();
-        },
-
-        render:function () {
-
-            TemplateCache.templateManager.get('ngldemo/login', function (template) {
-                $("#backbone_container").html(template);
-            });
-
-            //$("#container").html(this.template);
+    var IndexView = NGLBaseView.extend({
+        render:function (theme, deliverymode) {
+            this.defaultRender('ngldemo', theme, deliverymode, 'index');
         }
-
     });
 
-    var SplashView = Backbone.View.extend({
-
-        //template:_.template($('#login-template').html()),
-
-        initialize:function () {
-            this.render();
-        },
-
-        render:function () {
-
-            TemplateCache.templateManager.get('ngldemo/splash', function (template) {
-                $("#backbone_container").html(template);
-            });
-
-            //$("#container").html(this.template);
+    var LoginView = NGLBaseView.extend({
+        render:function (theme, deliverymode) {
+            this.defaultRender('ngldemo', theme, deliverymode, 'login');
         }
-
     });
 
-    var HomeView = Backbone.View.extend({
-
-        //template:_.template($('#login-template').html()),
-
-        initialize:function () {
-            this.render();
-        },
-
-        render:function () {
-
-            TemplateCache.templateManager.get('ngldemo/home', function (template) {
-                $("#backbone_container").html(template);
-            });
-
-            //$("#container").html(this.template);
+    var SplashView = NGLBaseView.extend({
+        render:function (theme, deliverymode) {
+            this.defaultRender('ngldemo', theme, deliverymode, 'splash');
         }
-
     });
 
-    var ActivityView = Backbone.View.extend({
+    var HomeView = NGLBaseView.extend({
+        render:function (theme, deliverymode) {
+            this.defaultRender('ngldemo', theme, deliverymode, 'home');
+        }
+    });
 
-        //template:_.template($('#login-template').html()),
+    var ActivityView = NGLBaseView.extend({
 
-        initialize:function () {
-            this.render();
-        },
+        render:function (theme, deliverymode) {
 
-        render:function () {
-
-            TemplateCache.templateManager.get('ngldemo/activity', function (template) {
-                $("#backbone_container").html(template);
-            });
+            this.defaultRender('ngldemo', theme, deliverymode, 'activity');
 
             $LAB.setOptions({AlwaysPreserveOrder:true})
                 .script(['/public/javascripts/activityengine/kinetic-v3.9.3.js',
@@ -98,14 +67,11 @@ $(document).ready(function () {
                 '/public/javascripts/activityengine/easyScroller.js',
                 '/public/javascripts/activityengine/container.js',
                 '/public/javascripts/activityengine/activity.js',
-                '/public/javascripts/activityengine/activity-engine-init.js']).wait(function () {
+                '/public/javascripts/activityengine/activity-engine-init.js',
+                '/public/javascripts/activityengine/bind-activity-controls.js']).wait(function () {
                     ActivityEngineInit.init();
                 });
-
-            //$("#container").html(this.template);
-
         }
-
     });
 
     var AppRouter = Backbone.Router.extend({
@@ -122,28 +88,28 @@ $(document).ready(function () {
             "ngldemo/:theme/:deliverymode/splash":"Splash"
         },
 
-        Index:function () {
-            indexView = new IndexView();
+        Index:function (theme, deliverymode) {
+            indexView = new IndexView(theme, deliverymode);
 
         },
 
-        Home:function () {
-            homeView = new HomeView();
+        Home:function (theme, deliverymode) {
+            homeView = new HomeView(theme, deliverymode);
 
         },
 
-        Login:function () {
-            loginView = new LoginView();
+        Login:function (theme, deliverymode) {
+            loginView = new LoginView(theme, deliverymode);
 
         },
 
-        Activity:function () {
-            activityView = new ActivityView();
+        Activity:function (theme, deliverymode) {
+            activityView = new ActivityView(theme, deliverymode);
 
         },
 
-        Splash:function () {
-            splashView = new SplashView();
+        Splash:function (theme, deliverymode) {
+            splashView = new SplashView(theme, deliverymode);
 
         }
 
