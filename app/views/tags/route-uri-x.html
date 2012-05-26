@@ -1,0 +1,2 @@
+#{if play.configuration["application.delivery"] == "traditional"}/${_controller}/flash.get("application.theme")/flash.get("application.delivery")/${_action}#{/if}
+#{else}#/${_controller}/${flash.get("application.theme")}/${flash.get("application.delivery")}/${_action}#{/else}

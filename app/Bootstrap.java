@@ -14,7 +14,7 @@ public class Bootstrap extends Job {
 
             try
             {
-                Fixtures.loadModels("initial-data.yml");
+                //Fixtures.loadModels("initial-data.yml");
             }
             catch (Exception e)
             {

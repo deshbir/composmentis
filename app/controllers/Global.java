@@ -97,10 +97,38 @@ public class Global extends Controller {
         if (params.get("deliverymode")!= null)    {
             flash.put("application.delivery", params.get("deliverymode"));
         }
+    }
 
+    /*
+     Custom View Renderer to handle theme and delivery mode variations.
+     */
+    static void renderX() {
 
+        String defaultTemplate = template();
+        String appTheme = flash.get("application.theme");
+        String appDeliveryMode = flash.get("application.delivery");
 
+        if(defaultTemplate != null)
+        {
+            /* This shouldn't be happening. But if it does, lets default */
+            render();
+            //EXIT
+        }
+        else
+        {
+            int locSepViewHtml = defaultTemplate.lastIndexOf('/');
+            Logger.info(String.valueOf(locSepViewHtml));
+            if( locSepViewHtml > 0)
+            {
+                String part1 = defaultTemplate.substring(0, locSepViewHtml);
+                String part2 = defaultTemplate.substring(locSepViewHtml+1, defaultTemplate.length());
+                //check if a "theme" override exists.
 
+                String candidateOverrideView = part1 + "/" + appTheme + "/" + part2;
+                Logger.info(candidateOverrideView);
+                render(defaultTemplate);
+            }
+        }
     }
 
 
