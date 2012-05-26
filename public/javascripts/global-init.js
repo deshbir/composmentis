@@ -1,3 +1,9 @@
+/*
+GLOBAL Initialization script
+
+ */
+
+
 /*! Normalized address bar hiding for iOS & Android (c) @scottjehl MIT License */
 (function( win ){
     var doc = win.document;

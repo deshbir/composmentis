@@ -5,11 +5,19 @@
 <meta name="author" content="Compro Technologies Pvt. Ltd.">
 <!-- Le stylesheets-->
 #{if "ar".equals(lang.toString())}
-<link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/bootstrap-rtl.css'}"/>
-<link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/responsive-rtl.css'}"/>
+#{greenscript.css "/public/bootstrap/less/bootstrap-rtl.css", media:"screen", output:true /}
+#{greenscript.css "/public/bootstrap/less/responsive-rtl.css", media:"screen", output:true /}
 #{/if}#{else}
-<link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/bootstrap.less'}"/>
-<link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/responsive.less'}"/>
+
+#{if flash.get("application.delivery") == "offline"}
+<link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/bootstrap.css'}"/>
+<link rel="stylesheet" media="screen" href="@{'/public/bootstrap/less/responsive.css'}"/>
+#{/if}#{else}
+#{greenscript.css "/public/bootstrap/less/bootstrap.less", media:"screen", output:true /}
+#{greenscript.css "/public/bootstrap/less/responsive.less", media:"screen", output:true /}
+#{/else}
+
+
 #{/else}
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
