@@ -11,39 +11,39 @@ import models.*;
 public class NGLDemo extends Global {
 
     public static void singlepage() {
-        render();
+        renderX();
     }
 
     public static void index() {
-       render();
+       renderX();
     }
 
     public static void home() {
-        render();
+        renderX();
 
     }
 
     public static void login() {
-        render();
+        renderX();
     }
 
     public static void authenticate() {
         String userName = params.get("username");
         session.put("user", userName);
-        home();
+        renderTemplate("NGLDemo/home");
     }
 
     public static void logout() {
         session.remove("user");
-        index();
+        renderTemplate("NGLDemo/index");
     }
 
     public static void activity() {
-        render();
+        renderX();
     }
 
     public static void splash() {
-        render();
+        renderX();
     }
 
 }

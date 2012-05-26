@@ -102,11 +102,9 @@ public class Global extends Controller {
     /*
      Custom View Renderer to handle theme and delivery mode variations.
      */
-    static void renderX() {
+    static void renderX(Object... args) {
 
         String defaultTemplate = template();
-        String appTheme = flash.get("application.theme");
-        String appDeliveryMode = flash.get("application.delivery");
 
         if(defaultTemplate != null)
         {
@@ -116,19 +114,35 @@ public class Global extends Controller {
         }
         else
         {
-            int locSepViewHtml = defaultTemplate.lastIndexOf('/');
-            Logger.info(String.valueOf(locSepViewHtml));
-            if( locSepViewHtml > 0)
-            {
-                String part1 = defaultTemplate.substring(0, locSepViewHtml);
-                String part2 = defaultTemplate.substring(locSepViewHtml+1, defaultTemplate.length());
-                //check if a "theme" override exists.
-
-                String candidateOverrideView = part1 + "/" + appTheme + "/" + part2;
-                Logger.info(candidateOverrideView);
-                render(defaultTemplate);
-            }
+            renderTemplate(defaultTemplate, args);
         }
+    }
+
+
+    static void renderTemplateX(String templateName, Object... args) {
+
+        String appTheme = flash.get("application.theme");
+        String appDeliveryMode = flash.get("application.delivery");
+
+        int locSepViewHtml = templateName.lastIndexOf('/');
+
+        if( locSepViewHtml > 0)
+        {
+            String part1 = templateName.substring(0, locSepViewHtml);
+            String part2 = templateName.substring(locSepViewHtml+1, templateName.length());
+
+            //check if a "theme" override exists.
+            String candidateOverrideView = part1 + "/" + appTheme + "/" + part2;
+            if(templateExists(candidateOverrideView))   {
+                Logger.info("Overriding View - " + candidateOverrideView);
+                renderTemplate(candidateOverrideView, args);
+            }
+            else    {
+                renderTemplate(templateName, args);
+            }
+
+        }
+
     }
 
 
