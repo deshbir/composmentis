@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 #{set title:'NGL Looking Ahead' /}
-#{if play.configuration["application.delivery"] == "traditional"}
+#{if flash.get("application.delivery") == "traditional"}
 <!-- This section is not needed for single page apps -->
 <html>
 <head>
@@ -8,6 +8,9 @@
 </head>
 <body #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
 #{/if}
+
+${flash.get("application.delivery")}
+${flash.get("application.theme")}
 
 <!-- Top Green section - the Big Hero Unit -->
 <div id="hero" class="container">
@@ -20,7 +23,7 @@
                     <!-- This is shown for mobile devices - collapsed icon -->
                     <i class="icon-align-justify"></i>
                 </a>
-                <a class="brand" href="#"><img src="@{'/public/images/ngldemo/logo.png'}" alt="">NGL</a>
+                <a class="brand" href="#{route-uri-x controller:'ngldemo' , action:'splash'/}"><img src="@{'/public/images/ngldemo/logo.png'}" alt="">NGL</a>
                 <div class="nav-collapse">
                     <ul class="nav pull-right">
                     #{if session.get("user") != null }
@@ -31,9 +34,10 @@
                                 <li class="divider"></li>
                                 <li><a href="?lang=en">Change Password</a></li>
                                 <li><a href="?lang=ja">Preferences</a></li>
-                                <li><a href="#{route-uri "/ngldemo/logout" /}">Sign out</a></li>
+                                <li><a href="#{route-uri-x controller:'ngldemo' , action:'logout' /}">Sign out</a></li>
                             </ul>
                         </li>
+                        <li class="divider-vertical"></li>
                     #{/if}
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">&{'global.header.langsel'}<span>(${lang.toString()})</span><b class="caret"></b></a>
@@ -53,11 +57,11 @@
             <h1>&{'home.hero.heading1'}</h1>
             <p>&{'home.hero.heading2'}</p>
             #{if session.get("user") == null }
-                <p><a class="btn btn-large" href="#{route-uri "/ngldemo/login" /}">&{'registration.new'} <small>(&{'registration.reg'})</small></a></p>
-                <p><a class="btn btn-large" href="#{route-uri "/ngldemo/login" /}">&{'registration.returning'} <small>(&{'registration.signin'})</small></a></p>
+                <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo', action:'login' /}">&{'registration.new'} <small>(&{'registration.reg'})</small></a></p>
+                <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo' , action:'login' /}">&{'registration.returning'} <small>(&{'registration.signin'})</small></a></p>
             #{/if}
             #{else}
-                <p><a class="btn btn-large" href="#{route-uri "/ngldemo/home" /}">&{'courses.title.2'} <small>(${session.get("user")})</small></a></p>
+                <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo' , action:'home' /}">&{'courses.title.2'} <small>(${session.get("user")})</small></a></p>
             #{/else}
         </div>
 
@@ -160,7 +164,7 @@
     </div>
 </div>
 
-#{if play.configuration["application.delivery"] == "traditional"}
+#{if flash.get("application.delivery") == "traditional"}
 <!-- This section is not needed for single page apps -->
 <!-- Le javascript
 ================================================== -->

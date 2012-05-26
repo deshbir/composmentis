@@ -3,11 +3,8 @@
 # ~~~~
 
 # Home page
-#{if play.configuration["application.delivery"] == "traditional"}
-GET     /                                       NGLDemo.splash
-#{/if}#{else}
 GET     /                                       NGLDemo.singlepage
-#{/else}
+
 
 # Modules
 *       /admin                                  module:crud

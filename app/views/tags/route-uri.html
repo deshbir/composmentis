@@ -1,2 +1,2 @@
-#{if play.configuration["application.delivery"] == "traditional"}${_arg}#{/if}
+#{if flash.get("application.delivery") == "traditional"}${_arg}#{/if}
 #{else}#${_arg}#{/else}

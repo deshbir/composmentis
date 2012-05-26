@@ -43,9 +43,9 @@ $(document).ready(function () {
 
     var AuthenticateView = NGLBaseView.extend({
         render:function (theme, deliverymode) {
-            var userName;
-            userName = $(".loginform #username").val();
-            this.defaultRender('ngldemo', theme, deliverymode, 'authenticate?username=' + userName);
+            var username;
+            username= $(".loginform #username").val();
+            this.defaultRender('ngldemo', theme, deliverymode, 'authenticate?username=' + username);
         }
     });
 
