@@ -41,6 +41,21 @@ $(document).ready(function () {
         }
     });
 
+    var AuthenticateView = NGLBaseView.extend({
+        render:function (theme, deliverymode) {
+            var userName;
+            userName = $(".loginform #username").val();
+            this.defaultRender('ngldemo', theme, deliverymode, 'authenticate?username=' + userName);
+        }
+    });
+
+    var LogoutView = NGLBaseView.extend({
+        render:function (theme, deliverymode) {
+            this.defaultRender('ngldemo', theme, deliverymode, 'logout');
+        }
+    });
+
+
     var SplashView = NGLBaseView.extend({
         render:function (theme, deliverymode) {
             this.defaultRender('ngldemo', theme, deliverymode, 'splash');
@@ -80,6 +95,10 @@ $(document).ready(function () {
             "ngldemo/:theme/:deliverymode/index":"Index",
             "ngldemo/login":"Login",
             "ngldemo/:theme/:deliverymode/login":"Login",
+            "ngldemo/authenticate":"Authenticate",
+            "ngldemo/:theme/:deliverymode/authenticate":"Authenticate",
+            "ngldemo/logout":"Logout",
+            "ngldemo/:theme/:deliverymode/logout":"Logout",
             "ngldemo/home":"Home",
             "ngldemo/:theme/:deliverymode/home":"Home",
             "ngldemo/activity":"Activity",
@@ -100,6 +119,16 @@ $(document).ready(function () {
 
         Login:function (theme, deliverymode) {
             loginView = new LoginView(theme, deliverymode);
+
+        },
+
+        Authenticate:function (theme, deliverymode) {
+            authenticateView = new AuthenticateView(theme, deliverymode);
+
+        },
+
+        Logout:function (theme, deliverymode) {
+            loginView = new LogoutView(theme, deliverymode);
 
         },
 

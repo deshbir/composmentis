@@ -49,6 +49,7 @@ login.button.action=Log in
 login.button.small=submit
 
 courses.title=Courses
+courses.title.2=My Courses
 courses.addnewresources.h1=Add new resources
 courses.productcode.button=Register product code
 courses.productcode.p=Do you have a new product code packaged as part of your NGL textbook (looks like TLE365-4F9T2MERUYX82)?

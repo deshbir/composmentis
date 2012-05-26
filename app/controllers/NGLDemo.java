@@ -25,7 +25,17 @@ public class NGLDemo extends Global {
 
     public static void login() {
         render();
+    }
 
+    public static void authenticate() {
+        String userName = params.get("username");
+        session.put("user", userName);
+        home();
+    }
+
+    public static void logout() {
+        session.remove("user");
+        index();
     }
 
     public static void activity() {
