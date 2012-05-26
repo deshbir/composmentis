@@ -118,6 +118,15 @@ public class Global extends Controller {
         }
     }
 
+    static void redirectX(String controller, String action) {
+
+        String appTheme = flash.get("application.theme");
+        String appDeliveryMode = flash.get("application.delivery");
+
+        String url = "/" + controller + "/" + appTheme + "/" +   appDeliveryMode + "/" + action;
+
+        redirect(url);
+    }
 
     static void renderTemplateX(String templateName, Object... args) {
 
