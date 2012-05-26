@@ -30,12 +30,12 @@ public class NGLDemo extends Global {
     public static void authenticate() {
         String userName = params.get("username");
         session.put("user", userName);
-        renderTemplate("NGLDemo/home");
+        renderTemplate("NGLDemo/home.html");
     }
 
     public static void logout() {
         session.remove("user");
-        renderTemplate("NGLDemo/index");
+        renderTemplate("NGLDemo/index.html");
     }
 
     public static void activity() {
