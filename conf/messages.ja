@@ -10,6 +10,7 @@ registration.new=新規ユーザー
 registration.reg=登録
 registration.returning=返すユーザー
 registration.signin=サインイン
+
 home.hero.tour=ツアーを見る
 home.footer.teachers.heading1=教師のための
 home.footer.teachers.l1=既成のHeinleオンライン演習、模擬試験、および活動の数百
@@ -56,3 +57,4 @@ activity.tools.tableofcontents=逶ョ谺
 activity.tools.1of10=10の1
 login.button.action=ログイン
 login.button.small=提出する
+courses.title.2=私のコース

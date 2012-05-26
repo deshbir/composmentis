@@ -15,22 +15,28 @@
                 <div class="nav-collapse">
 
                     <ul class="nav pull-right">
-                        <li class="active"><a href="#">Courses</a></li>
-                        <li><a href="#">Assignments</a></li>
+                    #{if session.get("user") != null }
+                        <li class="${request.action =~ /home/ ? 'active' : ''}"><a href=#{route-uri "/ngldemo/home" /}>Courses</a></li>
+                        <li class="${request.action =~ /activity/ ? 'active' : ''}"><a href=#{route-uri "/ngldemo/activity" /}>Assignments</a></li>
                         <li><a href="#">Materials</a></li>
                         <li><a href="#">Grades</a></li>
-                        <li><a href="#">Library</a></li>
                         <li class="divider-vertical"></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="@{'/public/images/glyphicons/glyphicons_003_user.png'}"><b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="?lang=en">Deshbir Singh Dugal (profile)</a></li>
+                                <li><a href="?lang=en">${session.get("user")} (profile)</a></li>
                                 <li class="divider"></li>
                                 <li><a href="?lang=en">Change Password</a></li>
                                 <li><a href="?lang=ja">Preferences</a></li>
-                                <li><a href="?lang=ar">Sign out</a></li>
+                                <li><a href="#{route-uri "/ngldemo/logout" /}">Sign out</a></li>
                             </ul>
                         </li>
+                    #{/if}
+                    #{else}
+                        <li><a href="#">Help</a></li>
+                        <li class="divider-vertical"></li>
+                        <li><a href="#">Register</a></li>
+                    #{/else}
                         <li class="divider-vertical"></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">&{'global.header.langsel'}<span>(${lang.toString()})</span><b class="caret"></b></a>

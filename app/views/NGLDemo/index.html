@@ -23,6 +23,18 @@
                 <a class="brand" href="#"><img src="@{'/public/images/ngldemo/logo.png'}" alt="">NGL</a>
                 <div class="nav-collapse">
                     <ul class="nav pull-right">
+                    #{if session.get("user") != null }
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="@{'/public/images/glyphicons/glyphicons_003_user.png'}"><b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="?lang=en">${session.get("user")} (profile)</a></li>
+                                <li class="divider"></li>
+                                <li><a href="?lang=en">Change Password</a></li>
+                                <li><a href="?lang=ja">Preferences</a></li>
+                                <li><a href="#{route-uri "/ngldemo/logout" /}">Sign out</a></li>
+                            </ul>
+                        </li>
+                    #{/if}
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">&{'global.header.langsel'}<span>(${lang.toString()})</span><b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -40,8 +52,13 @@
             <div class="span6">
             <h1>&{'home.hero.heading1'}</h1>
             <p>&{'home.hero.heading2'}</p>
-            <p><a class="btn btn-large" href="#{route-uri "/ngldemo/login" /}">&{'registration.new'} <small>(&{'registration.reg'})</small></a></p>
-            <p><a class="btn btn-large" href="#{route-uri "/ngldemo/login" /}">&{'registration.returning'} <small>(&{'registration.signin'})</small></a></p>
+            #{if session.get("user") == null }
+                <p><a class="btn btn-large" href="#{route-uri "/ngldemo/login" /}">&{'registration.new'} <small>(&{'registration.reg'})</small></a></p>
+                <p><a class="btn btn-large" href="#{route-uri "/ngldemo/login" /}">&{'registration.returning'} <small>(&{'registration.signin'})</small></a></p>
+            #{/if}
+            #{else}
+                <p><a class="btn btn-large" href="#{route-uri "/ngldemo/home" /}">&{'courses.title.2'} <small>(${session.get("user")})</small></a></p>
+            #{/else}
         </div>
 
         <div class="span5 offset1">

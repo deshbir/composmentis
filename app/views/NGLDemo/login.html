@@ -1,11 +1,12 @@
 #{extends 'ngldemo/layouts/layout.html' /}
 #{set title:'NGL Looking Ahead | Sign in' /}
+
 <h1 class="ngl-page-header">&{'login.h1'}</h1>
 
 <div class="row">
     <div class="span12">
 
-        <form class="well loginform" action="#home"
+        <form class="well loginform" action="#{route-uri '/ngldemo/authenticate'/}"
               method="post"
               accept-charset="utf-8" enctype="application/x-www-form-urlencoded">
 
@@ -18,12 +19,17 @@
             <div class="alert alert-success">&{flash.success}</div>
         #{/if}
             <fieldset>
-                <input type="text" name="username" class="input-xlarge" placeholder="&{'login.email'}" value="${flash.username}">
+                <input type="text" id="username" name="username" class="input-xlarge" placeholder="&{'login.email'}" value="${flash.username}">
                 <input type="password" name="password" class="input-xlarge" placeholder="&{'login.password'}">
                 <label class="checkbox">
                     <input type="checkbox" name="remember" ${flash.remember ? 'checked="true"' : ''}> &{'login.rememberme'}</label>
             </fieldset>
-            <p><a href="#{route-uri '/ngldemo/home'/} " class="btn btn-large">&{'login.button.action'} <small>(&{'login.button.small'})</small></a></p>
+        #{if play.configuration["application.delivery"] == "traditional"}
+            <p><button type="submit" class="btn btn-large">&{'login.button.action'} <small>(&{'login.button.small'})</small></button></p>
+        #{/if} #{else}
+            <p><a href="#{route-uri '/ngldemo/authenticate'/}" class="btn btn-large">&{'login.button.action'} <small>(&{'login.button.small'})</small></a></p>
+        #{/else}
+
         </form>
     </div>
 </div>
