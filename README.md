@@ -5,13 +5,13 @@ composmentis
 	index.html  -- DOWNLOAD HTML - http://host:port/ngldemo/myelt/offline/splash
 	- update /public/ to public/
     - set global_offline_mode (script tag) to 1   === AUTO
-    - change .less to .css   === AUTO
-    - include cordova    === AUTO
+##    - change .less to .css   === AUTO
+##    - include cordova    === AUTO
 
 	<public>   --- copy from project
 		javascripts
 		  - update /public/ to public/ in app/main.js
-		   - update /public/ to public/ in activity-engine/container.js  === FIX
+##		   - update /public/ to public/ in activity-engine/container.js  === FIX
 		content
 		css
 		images

@@ -23,7 +23,17 @@ $(document).ready(function () {
         defaultRender:function (controller, theme, deliverymode, action) {
             var serverUri = this.buildUri(controller, theme, deliverymode, action);
             TemplateCache.templateManager.get(serverUri, function (template) {
-                $("#backbone_container").html(template);
+
+                $('#backbone_container').fadeOut(0, function() {
+                    $(this).html(template).fadeIn(400);
+                });
+                //$("#backbone_container").html(template);
+                //$("#backbone_container").css({ display:none});
+                //$("#backbone_container").hide("slide", {}, 1000);
+
+                                //$("#backbone_container").show("slide", { direction: "right" }, 1000);
+
+
             });
         }
     });
