@@ -6,7 +6,7 @@
 #{layout-html-header /}
 </head>
 
-<body #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
+<body class="theme-${flash.get("application.theme")}" #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
 
 #{/if}
 

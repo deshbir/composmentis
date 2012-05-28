@@ -7,9 +7,13 @@ body    {
 }
 
 .splash    {
-    padding: 40px;
+
+    padding: 20px;
     margin: 20px auto;
-    background-color: @NGLThemeColor;
+    border: 3px solid;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
 
     h1 {
         font-size: 24px;
@@ -20,7 +24,6 @@ body    {
     h2  {
         font-size: 18px;
         line-height: 22px;
-
         small   {
             display: block;
             margin-bottom: 10px;
@@ -37,6 +40,11 @@ body    {
         display: block;
         margin: 10px;
         width: 40%
+    }
+
+    dt  {
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 }
 
@@ -163,8 +171,10 @@ body    {
     }
 
     .nav .active > a, .navbar .nav .active > a:hover {
-        background-color: #d4d8d6;
-        border: 1px solid #b5b5b5;
+        //background-color: #d4d8d6;
+        //border: 1px solid #b5b5b5;
+        background-color: transparent;
+        border: 1px solid @grayLight;
     }
 
     .nav .dropdown-toggle .caret, .navbar .nav .open.dropdown .caret {

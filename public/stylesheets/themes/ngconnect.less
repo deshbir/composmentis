@@ -1,1 +1,27 @@
-@NGLThemeColor: #c57e0c;
+@NGConnectThemeColor: #79e0fe;
+.theme-ngconnect  {
+    #hero  {
+    //Overrided the NGLTheme color
+        background-color: @NGConnectThemeColor;
+    }
+
+    #main-header  {
+        background-color: @NGConnectThemeColor;
+    }
+
+    .navbar {
+        .navbar-inner {
+            background-color: @NGConnectThemeColor;
+        }
+    }
+    // Active nav items
+    .navbar .nav .active > a,
+    .navbar .nav .active > a:hover {
+        background-color: @NGConnectThemeColor;
+    }
+
+    // Dividers (basically a vertical hr)
+    .navbar .divider-vertical {
+        background-color: @NGConnectThemeColor;
+    }
+}

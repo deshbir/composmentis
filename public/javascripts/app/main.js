@@ -40,7 +40,17 @@ $(document).ready(function () {
 
 
     var IndexView = NGLBaseView.extend({
+
         render:function (theme, deliverymode) {
+
+            /* Initialize NGL Theme  - Index is assumed to be the home page*/
+            if( typeof theme != 'undefined')  {
+
+                $("body").removeClass("theme-myelt theme-ngconnect"); //Fix this function to be generic
+                $("body").addClass("theme-" + theme);
+            }
+            /* End of theme setup */
+
             this.defaultRender('ngldemo', theme, deliverymode, 'index');
         }
     });

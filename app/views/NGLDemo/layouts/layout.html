@@ -6,7 +6,7 @@
 #{layout-html-header /}<!-- HTML HEAD Title, Meta tags, CSS includes -->
 </head>
 
-<body #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
+<body class="theme-${flash.get("application.theme")}" #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
 #{/if}
 
 #{layout-navigation-top /}<!-- Top  Navbar for logo, brand, menu, and language selection -->

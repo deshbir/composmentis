@@ -6,7 +6,7 @@
 <head>
 #{layout-html-header /}
 </head>
-<body class="theme-${flash.get("application.theme")}" #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
+<body class="theme-myelt" #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
 #{/if}
 
 <!-- Top Green section - the Big Hero Unit -->
@@ -82,6 +82,50 @@
     </div>
 </div>  <!-- End of Hero Unit -->
 
+<!-- Three column, but responsive, product descriptions -->
+<div id="products" class="container">
+    <div class="row">
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_030_pencil.png'}">
+            <h3>eEnglish</h3>
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_010_envelope.png'}">
+            <h3>Grammar Cafe</h3>
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_039_notes.png'}">
+            <h3>TOEFL iBT&reg; Online</h3>
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_042_pie_chart.png'}">
+            <h3>Milestones</h3>
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_060_compass.png'}">
+            <h3>World Pass Online</h3>
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_163_iphone.png'}">
+            <h3>My FCE</h3>
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_043_group.png'}">
+            <h3>Visions</h3>
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
+    </div>
+</div>
 
 <div id="support" class="container">
     <div class="row">

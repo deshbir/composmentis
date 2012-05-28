@@ -3,7 +3,7 @@
 <head>
 #{layout-html-header /}<!-- HTML HEAD Title, Meta tags, CSS includes -->
 </head>
-<body #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
+<body class="theme-${flash.get("application.theme")}" #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
 
 <!-- AJAX Error dialog-->
 <div id="error-modal" class="modal fade hide">

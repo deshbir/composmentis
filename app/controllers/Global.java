@@ -106,7 +106,7 @@ public class Global extends Controller {
 
         String defaultTemplate = template();
 
-        if(defaultTemplate != null)
+        if(defaultTemplate == null)
         {
             /* This shouldn't be happening. But if it does, lets default */
             render();
@@ -114,7 +114,8 @@ public class Global extends Controller {
         }
         else
         {
-            renderTemplate(defaultTemplate, args);
+            renderTemplateX(defaultTemplate, args);
+
         }
     }
 
@@ -141,9 +142,10 @@ public class Global extends Controller {
             String part2 = templateName.substring(locSepViewHtml+1, templateName.length());
 
             //check if a "theme" override exists.
+
             String candidateOverrideView = part1 + "/" + appTheme + "/" + part2;
             if(templateExists(candidateOverrideView))   {
-                Logger.info("Overriding View - " + candidateOverrideView);
+                //Logger.info("Overriding View - " + candidateOverrideView);
                 renderTemplate(candidateOverrideView, args);
             }
             else    {

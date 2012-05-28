@@ -4,7 +4,7 @@
 
 global.header.brand=NGL
 global.header.langsel=Language
-global.footer.copyright=Copyright 2012 HEINLE, Cengage Learning
+global.footer.copyright=Copyright 2012 National Geographic Learning, Cengage Learning
 
 global.loremipsum.2=Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor.
 global.loremipsum.3=Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor. Aenean volutpat velit lectus, non lacinia ante.

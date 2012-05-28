@@ -1,1 +1,31 @@
-@NGLThemeColor: #b9e890;
+@MyELTThemeColor: #b6d7a9;
+
+.theme-myelt  {
+    #hero  {
+        //Overrided the NGLTheme color
+        background-color: @MyELTThemeColor;
+    }
+    #main-header  {
+        background-color: @MyELTThemeColor;
+    }
+
+    .navbar {
+        .navbar-inner {
+            background-color: @MyELTThemeColor;
+        }
+    }
+
+// Active nav items
+    .navbar .nav .active > a,
+    .navbar .nav .active > a:hover {
+        background-color: @MyELTThemeColor;
+    }
+
+// Dividers (basically a vertical hr)
+    .navbar .divider-vertical {
+        background-color: @MyELTThemeColor;
+    }
+
+
+}
+
