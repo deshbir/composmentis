@@ -1,94 +1,32 @@
 #{extends 'NGLDemo/layouts/layout.html' /}
 #{set title:'NGL Looking Ahead | Courses' /}
 
-<h1 class="ngl-page-header">&{'courses.title'}</h1>
+<h1 class="ngl-page-header"><strong>World Cultures and Geography</strong></h1>
 
 <div class="row">
-    <div class="span8">
-        <div class="accordion" id="courselist">
-            <div class="accordion-group">
-                <div class="accordion-heading">
-
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="courselist" href="#course1">
-                        <img src="@{'/public/images/glyphicons/glyphicons_153_more_windows.png'}">
-                        <span>Learning English, Part 1</span>
-                        <small>CNB00321</small>
-                    </a>
+    <div class="span7">
+        <div id="carouseltop" class="carousel slide">
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="http://placehold.it/730x440/D2D2D2&text=" alt="">
                 </div>
-                <div id="course1" class="accordion-body collapse in">
-                    <div class="accordion-inner">
-                        <div class="row-fluid">
-                            <div class="span8">
-                                <h2>&{'courses.course.Instructors'}: <strong>John Doe</strong></h2>
-                                <p><small>1st June 2012 to 31st July 2012</small></p>
-                                <p>&{'global.loremipsum.3'}</p>
-                                <a class="btn" href="#{route-uri-x controller:'ngldemo', action:'activity'/}">&{'courses.course.launch'} &gt;&gt;</a></p>
-                                <a class="btn" href="#{route-uri-x controller:'ngldemo', action:'activity' /}">&{'courses.course.grades'} &gt;&gt;</a></p>
-                            </div>
-                            <div class="span4">
-                                <h2>&{'courses.course.related'}:</h2>
-                                <ul class="unstyled">
-                                    <li><a>Pathways Level 1</a></li>
-                                    <li><a>Pathways Level 2</a></li>
-                                    <li><a>Pathways Level 3</a></li>
-                                    <li><a>Pathways Level 4</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                <div class="item">
+                    <img src="http://placehold.it/730x440/D2D2D2&text=" alt="">
                 </div>
             </div>
-            <div class="accordion-group">
-                <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="courselist" href="#course2">
-                        <img src="@{'/public/images/glyphicons/glyphicons_153_more_windows.png'}">
-                        <span>Learning English, Part 2</span>
-                        <small>CNB00322</small>
-                    </a>
-                </div>
-                <div id="course2" class="accordion-body collapse">
-                    <div class="accordion-inner">
-                    &{'global.loremipsum.3'}&{'global.loremipsum.3'}
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-group">
-                <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="courselist" href="#course3">
-                        <img src="@{'/public/images/glyphicons/glyphicons_153_more_windows.png'}">
-                        <span>Pronunciation</span>
-                        <small>CNB00101</small>
-                    </a>
-                </div>
-                <div id="course3" class="accordion-body collapse">
-                    <div class="accordion-inner">
-                    &{'global.loremipsum.3'}&{'global.loremipsum.3'}
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-group">
-                <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="courselist" href="#course4">
-                        <img src="@{'/public/images/glyphicons/glyphicons_153_more_windows.png'}">
-                        <span>TOEFL</span>
-                        <small>TFL0001</small>
-                    </a>
-                </div>
-                <div id="course4" class="accordion-body collapse">
-                    <div class="accordion-inner">
-                    &{'global.loremipsum.3'}&{'global.loremipsum.3'}
-                    </div>
-                </div>
-            </div>
+            <!-- Carousel nav -->
+            <a class="carousel-control left" href="#carouseltop" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#carouseltop" data-slide="next">&rsaquo;</a>
         </div>
+        <a class="btn" href="#{route-uri-x controller:'ngldemo', action:'reader'/}">Start Reading &gt;&gt;</a>
+        <a class="btn" href="#{route-uri-x controller:'ngldemo', action:'reader' /}">&{'courses.course.grades'} &gt;&gt;</a>
     </div>
-    <div class="span4">
-        <h2>&{'courses.addnewresources.h1'}...</h2>
-        <ul class="unstyled resources-list">
-            <li>&{'courses.productcode.p'} <a class="btn" href="#">&{'courses.productcode.button'}</a></li>
-            <li>&{'courses.coursekey.p'} <a class="btn" href="#">&{'courses.coursekey.button'}</a></li>
-            <li>&{'courses.enroll.p'} <a class="btn" href="#">&{'courses.enroll.button'}</a></li>
-        </ul>
+    <div class="span5 large-button-icons">
+        <p><a class="btn" href="#"><i class="icon-facetime-video"></i>Digital Library</a></p>
+        <p><a class="btn" href="#"><i class="icon-th"></i>Interactive Map Tool</a></p>
+        <p><a class="btn" href="#"><i class="icon-cog"></i>Student Resources</a></p>
+        <p><a class="btn" href="#"><i class="icon-th-list"></i>My Assignments</a></p>
 
         <h2>&{'courses.relatedlinks.h1'}...</h2>
         <ul class="unstyled">
@@ -98,17 +36,26 @@
     </div>
 </div>
 
-<h1 class="ngl-page-header">&{'dictionaries.title'}</h1>
+<h1 class="ngl-page-header">Student Tools</h1>
 <div class="row">
-    <div class="span4 media">
-        <h3>American English</h3>
+    <div class="span6 media">
+        <h3>Magazine Maker</h3>
         <a class="pull-left" href="#"><img src="@{'/public/images/ngldemo/dummy_image_type2.png'}"></a>
         <div class="media-body">
             <p>&{'global.loremipsum.2'}</p>
         </div>
     </div>
-    <div class="span4 media">
-        <h3>Collins COBUILD</h3>
+    <div class="span6 media">
+        <h3>Connect to NG</h3>
+        <a class="pull-left" href="#"><img src="@{'/public/images/ngldemo/dummy_image_type2.png'}"></a>
+        <div class="media-body">
+            <p>&{'global.loremipsum.2'}</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="span6 media">
+        <h3>Maps and Graphs</h3>
         <a class="pull-left" href="#"><img src="@{'/public/images/ngldemo/dummy_image_type2.png'}"></a>
         <div class="media-body">
             <p>&{'global.loremipsum.2'}</p>

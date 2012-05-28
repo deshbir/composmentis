@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+#{if flash.get("application.delivery") == "traditional"}
+<!-- This section is not needed for single page apps -->
+<html>
+<head>
+#{layout-html-header /}
+</head>
+
+<body class="theme-${flash.get("application.theme")}" #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
+
+#{/if}
+
+#{layout-navigation-top /}
+
+<!-- Main Page -->
+#{doLayout /}
+
+#{layout-navigation-bottom /}
+
+
+#{if flash.get("application.delivery") == "traditional"}
+<!-- This section is not needed for single page apps -->
+<!-- Le javascript
+================================================== -->
+#{layout-scripts-global/}
+#{layout-scripts-activity-engine/}
+<!-- Placed at the end of the document so the pages load faster -->
+</body>
+</html>
+#{/if}

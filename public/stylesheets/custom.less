@@ -44,8 +44,15 @@ body    {
 
     dt  {
         padding-top: 10px;
-        padding-bottom: 10px;
     }
+
+    dd  {
+        font-size: 14px;
+        line-height: 18px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
 }
 
 #hero  {
@@ -171,10 +178,11 @@ body    {
     }
 
     .nav .active > a, .navbar .nav .active > a:hover {
-        //background-color: #d4d8d6;
-        //border: 1px solid #b5b5b5;
         background-color: transparent;
-        border: 1px solid @grayLight;
+        border: 1px solid @grayDark;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
     }
 
     .nav .dropdown-toggle .caret, .navbar .nav .open.dropdown .caret {

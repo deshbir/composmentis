@@ -20,7 +20,9 @@
                     <!-- This is shown for mobile devices - collapsed icon -->
                     <i class="icon-align-justify"></i>
                 </a>
-                <a class="brand" href="#{route-uri-x controller:'ngldemo' , action:'splash'/}"><img src="@{'/public/images/ngldemo/logo.png'}" alt="">NGL</a>
+                <a class="brand" href="#{route-uri-x controller:'ngldemo' , action:'splash'/}">
+                    <img src="@{'/public/images/ngldemo/logo.png'}" alt="">#{text-product-name /}
+                </a>
                 <div class="nav-collapse">
                     <ul class="nav pull-right">
                     #{if session.get("user") != null }
@@ -57,72 +59,62 @@
         </div>
     </div>
     <div class="row">
-            <div class="span6">
-            <h1>&{'home.hero.heading1'}</h1>
-            <p>&{'home.hero.heading2'}</p>
+            <div class="span7">
+            <h1>&{'home.hero.myng.heading1'}</h1>
+            <p>&{'home.hero.myng.heading2'}</p>
+            <p><a class="btn btn-large" href="">&{'home.hero.tour'}</a></p>
+        </div>
+
+        <div class="span5">
             #{if session.get("user") == null }
-                <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo', action:'login' /}">&{'registration.new'} <small>(&{'registration.reg'})</small></a></p>
-                <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo' , action:'login' /}">&{'registration.returning'} <small>(&{'registration.signin'})</small></a></p>
+                <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo', action:'login' /}">&{'registration.returning.students'} <small>(&{'registration.go'})</small></a></p>
+                <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo' , action:'login' /}">&{'registration.returning.educators'} <small>(&{'registration.go'})</small></a></p>
             #{/if}
             #{else}
                 <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo' , action:'home' /}">&{'courses.title.2'} <small>(${session.get("user")})</small></a></p>
             #{/else}
-        </div>
 
-        <div class="span5 offset1">
-            <div id="carouseltop" class="carousel slide">
-                <!-- Carousel items -->
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <img src="@{'/public/images/ngldemo/home/gc.png'}" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="@{'/public/images/ngldemo/home/gc.png'}" alt="">
-                    </div>
-                </div>
-                <!-- Carousel nav -->
-                <a class="carousel-control left" href="#carouseltop" data-slide="prev">&lsaquo;</a>
-                <a class="carousel-control right" href="#carouseltop" data-slide="next">&rsaquo;</a>
-            </div>
-            <p><a class="btn btn-large" href="">&{'home.hero.tour'}</a></p>
         </div>
     </div>
 </div>  <!-- End of Hero Unit -->
-
-
-<div id="support" class="container">
+<!-- Three column, but responsive, product descriptions -->
+<div id="products" class="container">
     <div class="row">
         <div class="span4">
-            <h2>&{'home.footer.teachers.heading1'}</h2>
-            <ul>
-                <li>&{'home.footer.teachers.l1'}</li>
-                <li>&{'home.footer.teachers.l2'}</li>
-                <li>&{'home.footer.teachers.l3'}</li>
-                <li>&{'home.footer.teachers.l4'}</li>
-                <li>&{'home.footer.teachers.l5'}</li>
-                <li>&{'home.footer.teachers.l6'}</li>
-            </ul>
+            <img src="@{'/public/images/glyphicons/glyphicons_030_pencil.png'}">
+            <h3>Reach</h3>
+            <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
-            <h2>&{'home.footer.students.heading1'}</h2>
-            <ul>
-                <li>&{'home.footer.students.l1'}</li>
-                <li>&{'home.footer.students.l2'}</li>
-                <li>&{'home.footer.students.l3'}</li>
-                <li>&{'home.footer.students.l4'}</li>
-            </ul>
+            <img src="@{'/public/images/glyphicons/glyphicons_010_envelope.png'}">
+            <h3>Reach for Reading</h3>
+            <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
-            <h2>&{'home.footer.about.heading1'}</h2>
-            <p>&{'home.footer.about.p1'}</p>
+            <img src="@{'/public/images/glyphicons/glyphicons_039_notes.png'}">
+            <h3>Science</h3>
+            <p>&{'global.loremipsum.3'}</p>
         </div>
     </div>
-    <div id="footer" class="row">
-        <div class="span12">
-            <p>&{'global.footer.copyright'}</p>
+    <div class="row">
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_042_pie_chart.png'}">
+            <h3>World Cultures and Geography</h3>
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_060_compass.png'}">
+            <h3>Our World</h3>
+            <p>&{'global.loremipsum.3'}</p>
+        </div>
+        <div class="span4">
+            <img src="@{'/public/images/glyphicons/glyphicons_163_iphone.png'}">
+            <h3>Comprehension Coach</h3>
+            <p>&{'global.loremipsum.3'}</p>
         </div>
     </div>
 </div>
+#{section-html-site-support /}
 
 #{if flash.get("application.delivery") == "traditional"}
 <!-- This section is not needed for single page apps -->

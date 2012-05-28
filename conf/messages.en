@@ -15,10 +15,15 @@ global.model.instructorled=Instructor-led
 registration.new=New Users
 registration.reg=Register
 registration.returning=Returning Users
+registration.returning.students=For Students
+registration.returning.educators=For Educators
 registration.signin=Sign In
+registration.go=Go
 
 home.hero.heading1=Online classroom for english learning
+home.hero.myng.heading1=Welcome to myNGConnect!
 home.hero.heading2=Looking for a quick and easy way to implement new and exciting ideas in your classroom?
+home.hero.myng.heading2=One-stop portal for online materials available with your favorite National Geographic School Publishing instructional programs.
 home.hero.tour=Take a tour
 
 home.help=Help
@@ -31,7 +36,7 @@ home.header.login.preferences=Preferences
 home.header.login.signout=Sign out
 
 home.footer.teachers.heading1=For Teachers
-home.footer.teachers.l1=Hundreds of pre-built Heinle online exercises, practice tests, and activities
+home.footer.teachers.l1=Hundreds of pre-built NGL online exercises, practice tests, and activities
 home.footer.teachers.l2=Assign activities in a few quick, easy steps
 home.footer.teachers.l3=Consolidate and reinforce classroom learning or for self study
 home.footer.teachers.l4=Track individual student and classroom progress
@@ -47,7 +52,7 @@ home.footer.students.l4=Work with interactive activities including audio and vid
 home.footer.about.heading1=About
 home.footer.about.p1=NGL delivers engaging activities to English language learners which reinforce and consolidate the language and skills covered in each Heinle program.
 
-global.footer.copyright=Copyright 2012 HEINLE, Cengage Learning
+global.footer.copyright=Copyright 2012 National Geographic Learning, Cengage Learning
 
 login.h1=Log in to your Account
 login.h2=Enter your credentials

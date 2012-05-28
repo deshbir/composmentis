@@ -9,6 +9,26 @@
         background-color: @NGConnectThemeColor;
     }
 
+    #main-body  {
+        .large-button-icons {
+            .btn    {
+                width: 90%;
+                font-size: 22px;
+                line-height: 48px;
+                i   {
+                    font-size: 36px;
+                    float:left;
+                    margin-top: 5px;
+                    margin-left: 20px;
+                }
+            }
+
+            h2 {
+                margin-top: 10px;
+            }
+        }
+    }
+
     .navbar {
         .navbar-inner {
             background-color: @NGConnectThemeColor;
@@ -23,5 +43,29 @@
     // Dividers (basically a vertical hr)
     .navbar .divider-vertical {
         background-color: @NGConnectThemeColor;
+    }
+
+
+
+    #pagecontent {
+        float: none;
+        width: 984px;
+        text-align: left;
+        margin-left: auto;
+        margin-right: auto;
+
+        padding: 0px;
+        /* -- */
+    }
+
+    .eeditionpagediv {
+        float: left;
+        width: 50%;
+
+        img {
+
+              opacity : 0.7;
+              filter: alpha(opacity=40); // msie
+        }
     }
 }

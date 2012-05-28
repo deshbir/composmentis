@@ -8,7 +8,9 @@
                     <!-- This is shown for mobile devices - collapsed icon -->
                     <i class="icon-align-justify"></i>
                 </a>
-                <a class="brand" href="#{route-uri-x controller:'ngldemo' , action:'index'/}"><img src="@{'/public/images/ngldemo/logo.png'}" alt="">NGL</a>
+                <a class="brand" href="#{route-uri-x controller:'ngldemo' , action:'index'/}">
+                    <img src="@{'/public/images/ngldemo/logo.png'}" alt="">#{text-product-name /}
+                </a>
                 <div id="loadingIcon">
                     <img src="@{'/public/images/ajax_loader.gif'}">
                 </div>
