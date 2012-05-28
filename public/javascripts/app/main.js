@@ -2,11 +2,11 @@ $(document).ready(function () {
 
     var NGLBaseView = Backbone.View.extend({
 
-        initialize:function (theme, deliverymode) {
-            this.render(theme, deliverymode);
+        initialize:function (theme, deliverymode, lang) {
+            this.render(theme, deliverymode, lang);
         },
 
-        buildUri:function(controller, theme, deliverymode, action) {
+        buildUri:function(controller, theme, deliverymode, action, lang) {
 
             var serverUri;
 
@@ -17,11 +17,27 @@ $(document).ready(function () {
                 serverUri = controller + '/' + theme + '/' + deliverymode + '/' + action;
             }
 
+            if(typeof lang != 'undefined')  {
+                serverUri = serverUri + '?lang=' + lang;
+            }
+
             return serverUri ;
         },
 
-        defaultRender:function (controller, theme, deliverymode, action) {
-            var serverUri = this.buildUri(controller, theme, deliverymode, action);
+        defaultRender:function (controller, theme, deliverymode, action, lang) {
+
+            /* Initialize NGL Theme  - Index is assumed to be the home page*/
+            if( typeof theme != 'undefined')  {
+
+                $("body").removeClass("theme-myelt theme-ngconnect"); //Fix this function to be generic
+                $("body").addClass("theme-" + theme);
+            }
+            /* End of theme setup */
+
+
+            var serverUri = this.buildUri(controller, theme, deliverymode, action, lang);
+            app_router.lastVisitedAction = action;
+            app_router.lastVisitedController = controller;
             TemplateCache.templateManager.get(serverUri, function (template) {
 
                 $('#backbone_container').fadeOut(0, function() {
@@ -41,58 +57,68 @@ $(document).ready(function () {
 
     var IndexView = NGLBaseView.extend({
 
-        render:function (theme, deliverymode) {
+        render:function (theme, deliverymode, lang) {
 
-            /* Initialize NGL Theme  - Index is assumed to be the home page*/
-            if( typeof theme != 'undefined')  {
-
-                $("body").removeClass("theme-myelt theme-ngconnect"); //Fix this function to be generic
-                $("body").addClass("theme-" + theme);
-            }
-            /* End of theme setup */
-
-            this.defaultRender('ngldemo', theme, deliverymode, 'index');
+            this.defaultRender('ngldemo', theme, deliverymode, 'index', lang);
         }
     });
 
     var LoginView = NGLBaseView.extend({
-        render:function (theme, deliverymode) {
-            this.defaultRender('ngldemo', theme, deliverymode, 'login');
+        render:function (theme, deliverymode, lang) {
+            this.defaultRender('ngldemo', theme, deliverymode, 'login', lang);
         }
     });
 
     var AuthenticateView = NGLBaseView.extend({
-        render:function (theme, deliverymode) {
+        render:function (theme, deliverymode, lang) {
             var username;
             username= $(".loginform #username").val();
-            this.defaultRender('ngldemo', theme, deliverymode, 'authenticate?username=' + username);
+            this.defaultRender('ngldemo', theme, deliverymode, 'authenticate?username=' + username, lang);
         }
     });
 
     var LogoutView = NGLBaseView.extend({
-        render:function (theme, deliverymode) {
-            this.defaultRender('ngldemo', theme, deliverymode, 'logout');
+        render:function (theme, deliverymode, lang) {
+            this.defaultRender('ngldemo', theme, deliverymode, 'logout', lang);
         }
     });
 
 
     var SplashView = NGLBaseView.extend({
-        render:function (theme, deliverymode) {
-            this.defaultRender('ngldemo', theme, deliverymode, 'splash');
+        render:function (theme, deliverymode, lang) {
+            this.defaultRender('ngldemo', theme, deliverymode, 'splash', lang);
         }
     });
 
     var HomeView = NGLBaseView.extend({
-        render:function (theme, deliverymode) {
-            this.defaultRender('ngldemo', theme, deliverymode, 'home');
+        render:function (theme, deliverymode, lang) {
+            this.defaultRender('ngldemo', theme, deliverymode, 'home', lang);
+        }
+    });
+
+    var SwitchlanguageView = NGLBaseView.extend({
+
+        render:function (theme, deliverymode, lang) {
+
+            var serverUri;
+
+            if( typeof theme == 'undefined' || typeof deliverymode == 'undefined') {
+                serverUri = app_router.lastVisitedController + '/' + app_router.lastVisitedAction + '/' + lang;
+            }
+            else    {
+                serverUri = app_router.lastVisitedController + '/' + theme + '/' + deliverymode + '/' + app_router.lastVisitedAction + '/' + lang;
+            }
+
+            app_router.navigate(serverUri, {trigger: true, replace: true});
+
         }
     });
 
     var ActivityView = NGLBaseView.extend({
 
-        render:function (theme, deliverymode) {
+        render:function (theme, deliverymode, lang) {
 
-            this.defaultRender('ngldemo', theme, deliverymode, 'activity');
+            this.defaultRender('ngldemo', theme, deliverymode, 'activity', lang);
 
             $LAB.setOptions({AlwaysPreserveOrder:true})
                 .script(['/public/javascripts/activityengine/kinetic-v3.9.3.js',
@@ -110,55 +136,69 @@ $(document).ready(function () {
     });
 
     var AppRouter = Backbone.Router.extend({
+        lastVisitedAction:null,
+        lastVisitedController:null,
         routes:{
             "ngldemo/index":"Index",
             "ngldemo/:theme/:deliverymode/index":"Index",
+            "ngldemo/:theme/:deliverymode/index/:lang":"Index",
             "ngldemo/login":"Login",
             "ngldemo/:theme/:deliverymode/login":"Login",
+            "ngldemo/:theme/:deliverymode/login/:lang":"Login",
             "ngldemo/authenticate":"Authenticate",
             "ngldemo/:theme/:deliverymode/authenticate":"Authenticate",
+            "ngldemo/:theme/:deliverymode/authenticate/:lang":"Authenticate",
             "ngldemo/logout":"Logout",
             "ngldemo/:theme/:deliverymode/logout":"Logout",
+            "ngldemo/:theme/:deliverymode/logout/:lang":"Logout",
             "ngldemo/home":"Home",
+            "ngldemo/:theme/:deliverymode/home/:lang":"Home",
             "ngldemo/:theme/:deliverymode/home":"Home",
             "ngldemo/activity":"Activity",
             "ngldemo/:theme/:deliverymode/activity":"Activity",
+            "ngldemo/:theme/:deliverymode/activity/:lang":"Activity",
             "ngldemo/splash":"Splash",
-            "ngldemo/:theme/:deliverymode/splash":"Splash"
+            "ngldemo/:theme/:deliverymode/splash":"Splash",
+            "ngldemo/language/:lang":"Switchlanguage",
+            "ngldemo/:theme/:deliverymode/language/:lang":"Switchlanguage"
         },
 
-        Index:function (theme, deliverymode) {
-            indexView = new IndexView(theme, deliverymode);
-
+        Switchlanguage:function (theme, deliverymode, lang) {
+            switchlanguageView = new SwitchlanguageView(theme, deliverymode, lang);
         },
 
-        Home:function (theme, deliverymode) {
-            homeView = new HomeView(theme, deliverymode);
-
-        },
-
-        Login:function (theme, deliverymode) {
-            loginView = new LoginView(theme, deliverymode);
+        Index:function (theme, deliverymode, lang) {
+            indexView = new IndexView(theme, deliverymode, lang);
 
         },
 
-        Authenticate:function (theme, deliverymode) {
-            authenticateView = new AuthenticateView(theme, deliverymode);
+        Home:function (theme, deliverymode, lang) {
+            homeView = new HomeView(theme, deliverymode, lang);
 
         },
 
-        Logout:function (theme, deliverymode) {
-            loginView = new LogoutView(theme, deliverymode);
+        Login:function (theme, deliverymode, lang) {
+            loginView = new LoginView(theme, deliverymode, lang);
 
         },
 
-        Activity:function (theme, deliverymode) {
-            activityView = new ActivityView(theme, deliverymode);
+        Authenticate:function (theme, deliverymode, lang) {
+            authenticateView = new AuthenticateView(theme, deliverymode, lang);
 
         },
 
-        Splash:function (theme, deliverymode) {
-            splashView = new SplashView(theme, deliverymode);
+        Logout:function (theme, deliverymode, lang) {
+            loginView = new LogoutView(theme, deliverymode, lang);
+
+        },
+
+        Activity:function (theme, deliverymode, lang) {
+            activityView = new ActivityView(theme, deliverymode, lang);
+
+        },
+
+        Splash:function (theme, deliverymode, lang) {
+            splashView = new SplashView(theme, deliverymode, lang);
 
         }
 

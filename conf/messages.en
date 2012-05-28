@@ -4,7 +4,7 @@
 
 global.header.brand=NGL
 global.header.langsel=Language
-global.footer.copyright=Copyright 2012 National Geographic Learning, Cengage Learning
+global.footer.copyright=Copyright 2012 HEINLE, Cengage Learning
 
 global.loremipsum.2=Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor.
 global.loremipsum.3=Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor. Aenean volutpat velit lectus, non lacinia ante.
@@ -20,6 +20,15 @@ registration.signin=Sign In
 home.hero.heading1=Online classroom for english learning
 home.hero.heading2=Looking for a quick and easy way to implement new and exciting ideas in your classroom?
 home.hero.tour=Take a tour
+
+home.help=Help
+home.header.courses=Courses
+home.header.assignment=Assignments
+home.header.materials=Materials
+home.header.grades=Grades
+home.header.login.changepassword=Change Password
+home.header.login.preferences=Preferences
+home.header.login.signout=Sign out
 
 home.footer.teachers.heading1=For Teachers
 home.footer.teachers.l1=Hundreds of pre-built Heinle online exercises, practice tests, and activities
@@ -73,8 +82,3 @@ activity.tools.retake=Retake
 activity.tools.tableofcontents=Table of Contents
 activity.tools.shownanswers=Show Answers
 activity.tools.1of10=1 of 10
-
-
-
-
-

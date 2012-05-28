@@ -16,34 +16,41 @@
 
                     <ul class="nav pull-right">
                     #{if session.get("user") != null }
-                        <li class="${request.action =~ /home/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'home' /}>Courses</a></li>
-                        <li class="${request.action =~ /activity/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'activity' /}>Assignments</a></li>
-                        <li><a href="#">Materials</a></li>
-                        <li><a href="#">Grades</a></li>
+                        <li class="${request.action =~ /home/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'home' /}>&{'home.header.courses'}</a></li>
+                        <li class="${request.action =~ /activity/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'activity' /}>&{'home.header.assignment'}</a></li>
+                        <li><a href="#">&{'home.header.materials'}</a></li>
+                        <li><a href="#">&{'home.header.grades'}</a></li>
                         <li class="divider-vertical"></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="@{'/public/images/glyphicons/glyphicons_003_user.png'}"><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="?lang=en">${session.get("user")} (profile)</a></li>
                                 <li class="divider"></li>
-                                <li><a href="?lang=en">Change Password</a></li>
-                                <li><a href="?lang=ja">Preferences</a></li>
-                                <li><a href="#{route-uri-x controller:'ngldemo', action:'logout' /}">Sign out</a></li>
+                                <li><a href="?lang=en">&{'home.header.login.changepassword'}</a></li>
+                                <li><a href="?lang=ja">&{'home.header.login.preferences'}</a></li>
+                                <li><a href="#{route-uri-x controller:'ngldemo', action:'logout' /}">&{'home.header.login.signout'}</a></li>
                             </ul>
                         </li>
                     #{/if}
                     #{else}
-                        <li><a href="#">Help</a></li>
+                        <li><a href="#">&{'home.help'}</a></li>
                         <li class="divider-vertical"></li>
-                        <li><a href="#">Register</a></li>
+                        <li><a href="#">&{'registration.reg'}</a></li>
                     #{/else}
                         <li class="divider-vertical"></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">&{'global.header.langsel'}<span>(${lang.toString()})</span><b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#/ngldemo/language/en">English</a></li>
+                            #{if flash.get("application.delivery") == "traditional"}
+                                <li><a href="?lang=en">English</a></li>
                                 <li><a href="?lang=ja">Japanease</a></li>
                                 <li><a href="?lang=ar">Arabic</a></li>
+                            #{/if}
+                            #{else}
+                                <li><a href="#{route-uri-x controller:'ngldemo' , action:'language/en'/}">English</a></li>
+                                <li><a href="#{route-uri-x controller:'ngldemo' , action:'language/ja'/}">Japanease</a></li>
+                                <li><a href="#{route-uri-x controller:'ngldemo' , action:'language/ar'/}">Arabic</a></li>
+                            #{/else}
                             </ul>
                         </li>
                     </ul>
