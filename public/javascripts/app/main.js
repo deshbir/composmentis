@@ -46,6 +46,14 @@ $(document).ready(function () {
         {
             //Use this for global initializations - applicable to all views
             $('.dropdown-toggle').dropdown();
+
+            //global variables
+            app_router.lastVisitedAction = action;
+            app_router.lastVisitedController = controller;
+            if (typeof lang != 'undefined') {
+                app_router.lastSelectedLang = lang;
+            }
+
             //Custom Initialization - specific to individual views
             if (jQuery.isFunction(this.afterRender))  {
                 this.afterRender();
@@ -54,11 +62,7 @@ $(document).ready(function () {
 
         defaultRender:function (controller, theme, deliverymode, action, lang) {
 
-
-
             var serverUri = this.buildUri(controller, theme, deliverymode, action, lang);
-            app_router.lastVisitedAction = action;
-            app_router.lastVisitedController = controller;
 
             //Pre-View Load Initialization
             this.defaultBeforeRender(controller, theme, deliverymode, action, lang);
@@ -159,7 +163,7 @@ $(document).ready(function () {
             '/public/javascripts/activityengine/activity-engine-init.js',
             '/public/javascripts/activityengine/animationactivity.js',
             '/public/javascripts/activityengine/bind-activity-controls.js']).wait(function () {
-                ActivityEngineInit.init();
+                ActivityEngineInit.init(app_router.lastSelectedLang);
             });
         }
     });
@@ -167,6 +171,8 @@ $(document).ready(function () {
     var AppRouter = Backbone.Router.extend({
         lastVisitedAction:null,
         lastVisitedController:null,
+        lastSelectedLang:'en',
+
         routes:{
             "ngldemo/index":"Index",
             "ngldemo/:theme/:deliverymode/index":"Index",
@@ -238,7 +244,7 @@ $(document).ready(function () {
 
     if (window.location.href.indexOf("#") == -1) {
 
-        if(window.location.href.indexOf("offline") == -1)	{
+        if(window.location.href.indexOf("offline") > -1)	{
             //Assuming that offline version uses myelt skin
             app_router.navigate("ngldemo/myelt/singlepage/index", {trigger:true});
         }

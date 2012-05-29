@@ -36,40 +36,38 @@ AnimationActivity.GlobalObject = {
  * The function to be called to start painting the Canvas
  */
 
-	paint : function () {
+    paint : function (language) {
+
+        Kinetic.Stage.prototype.language = language;
+        // calculating width of the container, based upon the number of questions.
+
+        var containerParentWidth = document.getElementById("containerParent").offsetWidth;
+        this.margin = (containerParentWidth-this.canvasWidth)*3/8;
+
+        this.canvasWidth = this.canvasWidth + this.margin*2;
+
+        // creating a different layer for each question
+        for(var questionNum= 0; questionNum < this.questions.length; questionNum++){
+            this.layers[questionNum] = new Kinetic.Layer();
+            this.layers[questionNum].name=(questionNum)+"";
+        }
+
+        // creating this.stage to add different this.layers.
+        this.stage = new Kinetic.Stage({
+            container: 'containerDiv',
+            width: this.canvasWidth,
+        });
 
 
-	    // Width of the activity is based upon the maximum options in any question.
-	    
+        // paint all the this.questions in respective this.layers.
+        this.paintActivity(this.questions, this.layers, this.maxOptions);
+        //adding response layers(correct, incorrect images)
+        this.addResponseLayers(this.stage);
 
-
-	    // calculating width of the container, based upon the number of this.questions.
-		
-	    var containerParentWidth = document.getElementById("containerParent").offsetWidth;
-	    this.margin = (containerParentWidth-this.canvasWidth)*3/8;
-		
-	    this.canvasWidth = this.canvasWidth + this.margin*2;
-
-
-	    // creating a different this.layers for each question
-	    for(var questionNum= 0; questionNum < this.questions.length; questionNum++){
-		this.layers[questionNum] = new Kinetic.Layer();
-		this.layers[questionNum].name=(questionNum)+"";
-	    }
-
-	    // creating this.stage to add different this.layers.
-	    this.stage = new Kinetic.Stage({
-		container: 'containerDiv',
-		width: this.canvasWidth,
-	    });
-
-	    // paint all the this.questions in respective this.layers.
-	    this.paintActivity(this.questions, this.layers, this.maxOptions);
-
-	    // bringing first question to top.
-	    this.layers[0].moveToTop();
-	    this.scrollCanvas();
-	},
+        // bringing first question to top.
+        this.layers[0].moveToTop();
+        this.scrollCanvas();
+    },
 
 
 	enableScrolling : function () {
@@ -125,39 +123,39 @@ AnimationActivity.GlobalObject = {
 	 * positions prior to resizing.
 	 */
 
-	onResize : function (currentQuestion)  {
-		
-	//save the old state before re-painting
-	    var oldContainers = this.containerBoxNameMap ;
-	    var oldOptionBoxes = this.optionBoxes ;
+    onResize : function (currentQuestion, language)  {
 
-	    this.reConfigure();
-	    this.containerBoxNameMap = new Object();
-	    this.optionBoxes = new Array();
+        //save the old state before re-painting
+        var oldContainers = this.containerBoxNameMap ;
+        var oldOptionBoxes = this.optionBoxes ;
+
+        this.reConfigure();
+        this.containerBoxNameMap = new Object();
+        this.optionBoxes = new Array();
 
 
-	//margins between the hidden containers and draggable options
-	marginLeft = (this.containerWidth)/2;
-	marginTop = (this.containerHeight - this.optionHeight)/2;
-	    this.paint();
+        //margins between the hidden containers and draggable options
+        marginLeft = (this.containerWidth)/2;
+        marginTop = (this.containerHeight - this.optionHeight)/2;
+        this.paint(language);
 
-	    for(var i=0; i < oldOptionBoxes.length; i++ ){
-		if(this.optionBoxes[i].owner.name != oldOptionBoxes[i].owner.name){
+        for(var i=0; i < oldOptionBoxes.length; i++ ){
+            if(this.optionBoxes[i].owner.name != oldOptionBoxes[i].owner.name){
 
-		    this.optionBoxes[i].transitionTo({
-			rotation: 0,
-			x: this.containerBoxNameMap [oldOptionBoxes[i].owner.name].attrs.x + marginLeft,
-			y:  this.containerBoxNameMap [oldOptionBoxes[i].owner.name].attrs.y + marginTop,
-			alpha: 1,
-			duration:.01
-		    });
-		    this.optionBoxes[i].owner = this.containerBoxNameMap [oldOptionBoxes[i].owner.name];
-		    this.containerBoxNameMap [oldOptionBoxes[i].owner.name].empty = false;
-		}
-	    }
+                this.optionBoxes[i].transitionTo({
+                    rotation: 0,
+                    x: this.containerBoxNameMap [oldOptionBoxes[i].owner.name].attrs.x + marginLeft,
+                    y:  this.containerBoxNameMap [oldOptionBoxes[i].owner.name].attrs.y + marginTop,
+                    alpha: 1,
+                    duration:.01
+                });
+                this.optionBoxes[i].owner = this.containerBoxNameMap [oldOptionBoxes[i].owner.name];
+                this.containerBoxNameMap [oldOptionBoxes[i].owner.name].empty = false;
+            }
+        }
 
-	    this.displayQuestion(currentQuestion);
-	},
+        this.displayQuestion(currentQuestion);
+    },
 
 
 /*

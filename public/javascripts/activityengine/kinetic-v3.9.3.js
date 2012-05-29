@@ -145,9 +145,9 @@ Kinetic.GlobalObject = {
 
 window.requestAnimFrame = (function(callback) {
     return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
-    function(callback) {
-        window.setTimeout(callback, 1000 / 60);
-    };
+        function(callback) {
+            window.setTimeout(callback, 1000 / 60);
+        };
 })();
 
 ///////////////////////////////////////////////////////////////////////
@@ -496,11 +496,11 @@ Kinetic.Node.prototype = {
         };
 
         /*
-        this.attrs.centerOffset = {
-        x: 0,
-        y: 0
-        };
-        */
+         this.attrs.centerOffset = {
+         x: 0,
+         y: 0
+         };
+         */
 
         //this.move(-1 * this.attrs.centerOffset.x, -1 * this.attrs.centerOffset.y);
 
@@ -1554,9 +1554,9 @@ Kinetic.Stage.prototype = {
             }
 
             /*
-            * NOTE: these event handlers require target shape
-            * handling
-            */
+             * NOTE: these event handlers require target shape
+             * handling
+             */
 
             // handle onmouseover
             else if(!isDragging && this._isNewTarget(shape, evt)) {
@@ -2175,9 +2175,9 @@ Kinetic.Shape.prototype = {
      *  based on its fill, stroke, and strokeWidth, properties
      */
     fillStroke: function() {
-    	if(this.attrs.name=="1l,12b"){
-    		alert("outer");
-    	}
+        if(this.attrs.name=="1l,12b"){
+            alert("outer");
+        }
         var context = this.getContext();
 
         if(this.attrs.fill !== undefined) {
@@ -2191,7 +2191,7 @@ Kinetic.Shape.prototype = {
         if(hasStroke || hasStrokeWidth) {
             var stroke = hasStroke ? this.attrs.stroke : 'black';
             var strokeWidth = hasStrokeWidth ? this.attrs.strokeWidth : 2;
-		
+
             context.lineWidth = strokeWidth;
             context.strokeStyle = stroke;
             context.stroke();
@@ -2840,9 +2840,11 @@ Kinetic.Text = function(config) {
         switch (this.attrs.align) {
             case 'center':
                 x = textWidth / -2 - p1;
+
                 break;
             case 'right':
                 x = -1 * textWidth - p1;
+
                 break;
         }
 
@@ -2860,6 +2862,8 @@ Kinetic.Text = function(config) {
         context.beginPath();
         this.applyLineJoin();
         context.rect(x, y, textWidth + p1 * 2, textHeight + p2 * 2);
+
+        // console.log("Rect X,Y" + x +"," +y);
         context.closePath();
         this.fillStroke();
         context.restore();
@@ -2870,7 +2874,12 @@ Kinetic.Text = function(config) {
         // draw text
         if(this.attrs.textFill !== undefined) {
             context.fillStyle = this.attrs.textFill;
-            context.fillText(this.attrs.text, tx, ty);
+            if (this.getStage().language == 'ar') {
+
+                context.fillText(this.attrs.text, tx+textWidth, ty);
+            } else {
+                context.fillText(this.attrs.text, tx, ty);
+            }
         }
         if(this.attrs.textStroke !== undefined || this.attrs.textStrokeWidth !== undefined) {
             // defaults
@@ -2978,13 +2987,13 @@ Kinetic.Text.prototype = {
         this.attrs.paddingLeft = paddingLeft;
         this.attrs.paddingTop = paddingTop;
     },
-     /**
+    /**
      * get paddingLeft
      */
     getPaddingLeft: function() {
         return this.attrs.paddingLeft;
     },
-     /**
+    /**
      * get paddingTop
      */
     getPaddingTop: function() {
@@ -3060,20 +3069,20 @@ Kinetic.Text.prototype = {
 Kinetic.GlobalObject.extend(Kinetic.Text, Kinetic.Shape);
 
 /*
-* Last updated November 2011
-* By Simon Sarris
-* www.simonsarris.com
-* sarris@acm.org
-*
-* Free to use and distribute at will
-* So long as you are nice to people, etc
-*/
+ * Last updated November 2011
+ * By Simon Sarris
+ * www.simonsarris.com
+ * sarris@acm.org
+ *
+ * Free to use and distribute at will
+ * So long as you are nice to people, etc
+ */
 
 /*
-* The usage of this class was inspired by some of the work done by a forked
-* project, KineticJS-Ext by Wappworks, which is based on Simon's Transform
-* class.
-*/
+ * The usage of this class was inspired by some of the work done by a forked
+ * project, KineticJS-Ext by Wappworks, which is based on Simon's Transform
+ * class.
+ */
 
 /**
  * Matrix object
@@ -3177,11 +3186,11 @@ Kinetic.Transform.prototype = {
 };
 
 /*
-* The Tween class was ported from an Adobe Flash Tween library
-* to JavaScript by Xaric.  In the context of KineticJS, a Tween is
-* an animation of a single Node property.  A Transition is a set of
-* multiple tweens
-*/
+ * The Tween class was ported from an Adobe Flash Tween library
+ * to JavaScript by Xaric.  In the context of KineticJS, a Tween is
+ * an animation of a single Node property.  A Transition is a set of
+ * multiple tweens
+ */
 
 /**
  * Transition constructor.  KineticJS transitions contain
@@ -3533,7 +3542,7 @@ Kinetic.Tweens = {
         return (a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b);
     },
     'elastic-ease-in-out': function(t, b, c, d, a, p) {
-    	// added s = 0
+        // added s = 0
         var s = 0;
         if(t === 0) {
             return b;

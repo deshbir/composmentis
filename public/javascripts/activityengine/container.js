@@ -3,17 +3,17 @@ var Container = {};
 Container.GlobalObject = {
 	currentQuestion : 0,
 	activity : null,
-			
 
-	initialize : function(activity) {
-		this.activity = activity;
-		
-		this.activity.questions = this.readQuestionsFromXml("sample_dndfs.xml");
-		this.activity.maxOptions = this.getMaxOptions(this.activity.questions);
-		this.activity.canvasWidth = this.getContainerWidth(activity, activity.maxOptions);
-		this.activity.paint();
-		
-	},
+
+    initialize : function(activity, language) {
+        this.activity = activity;
+
+        this.activity.questions = this.readQuestionsFromXml("sample_dndfs.xml");
+        this.activity.maxOptions = this.getMaxOptions(this.activity.questions);
+        this.activity.canvasWidth = this.getContainerWidth(activity, activity.maxOptions);
+        this.activity.paint(language);
+
+    },
 
 
 /*
@@ -112,56 +112,38 @@ getContainerWidth :function(activity, maxOptions)  {
 	/*
 	 * Function to read questions from the input XML file.
 	 */
+    readQuestionsFromXml :function(fileName)  {
+        var questions = new Array();
+        $.ajax({
+            type: "GET",
+            url: "/public/content/" + fileName,
+            dataType: "xml",
+            success: function(xml) {
+                $(xml).find("questionset").each(function(){
+                    var question= new Question();
+                    question.blankCount = $(this).find("question").find("content").text();
 
-	readQuestionsFromXml :function(fileName)  {
-	    var questions = new Array();
-	    var questionPath="activity/questionsets";
-	    var optionPath="activity/questionsets/questionset/options";
-	    if (window.XMLHttpRequest) {
-		// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp=new XMLHttpRequest();
-	    }
+                    var options = new Array();
+                    $(this).find("option").each(function(){
+                        options.push($(this).find("content").text());
+                    });
+                    question.options = options;
 
-	    xmlhttp.open("GET","../../content/" + fileName,false);
-	    xmlhttp.send();
-	    xmlDoc=xmlhttp.responseXML;
-	    if (window.XMLHttpRequest) {
-		var questionNodes=xmlDoc.getElementsByTagName("questionset");
-		//var questionResult = questionNodes.iterateNext();
+                    var answers = new Array();
+                    $(this).find("answer").each(function(){
+                        answers.push($(this).find("content").text());
+                    });
+                    question.answers = answers;
+                    questions.push(question);
+                });
 
+            },
+            async:false
+        });
 
-		for( var questionNum = 0; questionNum< questionNodes.length ; questionNum++){
-		    var question= new Question();
-		    question.blankCount = questionNodes[questionNum].getElementsByTagName("question")[0].childNodes[1].childNodes[0].nodeValue;
+        return questions;
+    },
 
-
-		    var options = new Array();
-		    var optionElements = questionNodes[questionNum].getElementsByTagName("options")[0].getElementsByTagName("option");
-		    for(var optionNum = 0; optionNum < optionElements.length ; optionNum++){
-			options[optionNum] = optionElements[optionNum].childNodes[1].childNodes[0].nodeValue;
-
-		    }
-
-		    question.options = options;
-
-
-
-		    var answers = new Array();
-		    var answerElements = questionNodes[questionNum].getElementsByTagName("answers")[0].getElementsByTagName("answer");
-
-		    for(var answerNum = 0; answerNum < answerElements.length ; answerNum++){
-
-			answers[answerNum] = answerElements[answerNum].childNodes[1].childNodes[0].nodeValue;
-
-		    }
-		    question.answers = answers;
-
-		    questions[questionNum] = question;
-		}
-
-	    }
-	    return questions;
-	},
 
 	changeLanguage : function(languageParam)  {
 	    language = languageParam;
@@ -184,13 +166,13 @@ getContainerWidth :function(activity, maxOptions)  {
 		else
 		return;
 	},
-	
-	resize : function(activity)  {
-		
-		this.activity.canvasWidth = this.getContainerWidth(this.activity, activity.maxOptions);
-		
-		this.activity.onResize(this.currentQuestion);
-	}
+
+    resize : function(activity, language)  {
+
+        this.activity.canvasWidth = this.getContainerWidth(this.activity, activity.maxOptions);
+
+        this.activity.onResize(this.currentQuestion, language);
+    }
 
 
 	

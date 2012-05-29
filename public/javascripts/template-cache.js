@@ -3,10 +3,18 @@ TemplateCache = new function() {
 	this.templateManager = {
 		templates: {},
 		get: function(id, callback){
+
+
+
 			var template = this.templates[id];
 			if (template) {
 				callback(template);
            } else if (global_offline_mode){
+
+                if (typeof id != 'undefined') {
+                    id = id.split('?')[0]
+                }
+
                 var template = preloaderViews[id];
                 callback(template);
 			} else {

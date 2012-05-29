@@ -1,12 +1,12 @@
 ActivityEngineInit = new function() {
 
-    this.init = function() {
+    this.init = function(lang) {
         // Handler for .ready() called.
         container = Container.GlobalObject;
         activity = AnimationActivity.GlobalObject;
-        container.initialize(activity);
+        container.initialize(activity, lang);
         window.addEventListener('resize', function (){
-                container.resize(activity); },
+                container.resize(activity, lang); },
             false);
         var navParent = document.getElementById("navParent");
         if(navParent != null && navParent.children== undefined){
@@ -19,6 +19,5 @@ ActivityEngineInit = new function() {
                 container.showNext(); }
         );
     }
-
 
 };
