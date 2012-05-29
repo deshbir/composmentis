@@ -59,19 +59,19 @@
         </div>
     </div>
     <div class="row">
-            <div class="span7">
+            <div class="span8">
             <h1>&{'home.hero.myng.heading1'}</h1>
             <p>&{'home.hero.myng.heading2'}</p>
-            <p><a class="btn btn-large" href="">&{'home.hero.tour'}</a></p>
+            <p><a class="btn btn-large" href="#">&{'home.hero.tour'}</a></p>
         </div>
 
-        <div class="span5">
+        <div class="span4 large-home-buttons">
             #{if session.get("user") == null }
-                <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo', action:'login' /}">&{'registration.returning.students'} <small>(&{'registration.go'})</small></a></p>
-                <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo' , action:'login' /}">&{'registration.returning.educators'} <small>(&{'registration.go'})</small></a></p>
+                <p><a class="btn" href="#{route-uri-x controller:'ngldemo', action:'login' /}">&{'registration.returning.students'} <small>(&{'registration.go'})</small> <i class="icon-forward"></i></a></p>
+                <p><a class="btn" href="#{route-uri-x controller:'ngldemo' , action:'login' /}">&{'registration.returning.educators'} <small>(&{'registration.go'})</small> <i class="icon-forward"></i></a></p>
             #{/if}
             #{else}
-                <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo' , action:'home' /}">&{'courses.title.2'} <small>(${session.get("user")})</small></a></p>
+                <p><a class="btn" href="#{route-uri-x controller:'ngldemo' , action:'home' /}">My Textbooks <small>(${session.get("user")})</small>  <i class="icon-book"></i></a></p>
             #{/else}
 
         </div>
@@ -81,35 +81,30 @@
 <div id="products" class="container">
     <div class="row">
         <div class="span4">
-            <img src="@{'/public/images/glyphicons/glyphicons_030_pencil.png'}">
-            <h3>Reach</h3>
+
+            <h3><i class="icon-chevron-right"></i> Reach</h3>
             <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
-            <img src="@{'/public/images/glyphicons/glyphicons_010_envelope.png'}">
-            <h3>Reach for Reading</h3>
+            <h3><i class="icon-chevron-right"></i> Reach for Reading</h3>
             <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
-            <img src="@{'/public/images/glyphicons/glyphicons_039_notes.png'}">
-            <h3>Science</h3>
+            <h3><i class="icon-chevron-right"></i> Science</h3>
             <p>&{'global.loremipsum.3'}</p>
         </div>
     </div>
     <div class="row">
         <div class="span4">
-            <img src="@{'/public/images/glyphicons/glyphicons_042_pie_chart.png'}">
-            <h3>World Cultures and Geography</h3>
+            <h3><i class="icon-chevron-right"></i> World Cultures and Geography</h3>
             <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
-            <img src="@{'/public/images/glyphicons/glyphicons_060_compass.png'}">
-            <h3>Our World</h3>
+            <h3><i class="icon-chevron-right"></i> Our World</h3>
             <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
-            <img src="@{'/public/images/glyphicons/glyphicons_163_iphone.png'}">
-            <h3>Comprehension Coach</h3>
+            <h3><i class="icon-chevron-right"></i> Comprehension Coach</h3>
             <p>&{'global.loremipsum.3'}</p>
         </div>
     </div>
