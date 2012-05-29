@@ -21,9 +21,21 @@ TemplateCache = new function() {
 				}
 			    });
 			}
-		}
-	}
-	
+		},
+        clearTemplateCache : function(){
+            this.templates = {};
+        },
+
+        clearOneTemplateCache : function(name){
+            var t = this.templates;
+            for (var id in t) {
+                if (id.indexOf(name) > -1) {
+                   delete this.templates[id];
+               }
+            }
+        }
+    }
+
 };
 
 

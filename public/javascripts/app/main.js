@@ -24,8 +24,9 @@ $(document).ready(function () {
             return serverUri ;
         },
 
-        defaultRender:function (controller, theme, deliverymode, action, lang) {
-
+        defaultBeforeRender:function(controller, theme, deliverymode, action, lang)
+        {
+            //Use this for global initializations - applicable to all views
             /* Initialize NGL Theme  - Index is assumed to be the home page*/
             if( typeof theme != 'undefined')  {
 
@@ -35,20 +36,42 @@ $(document).ready(function () {
             /* End of theme setup */
 
 
+            //Custom Initialization - specific to individual views
+            if (jQuery.isFunction(this.beforeRender))  {
+                this.beforeRender();
+            }
+        },
+
+        defaultAfterRender:function(controller, theme, deliverymode, action, lang)
+        {
+            //Use this for global initializations - applicable to all views
+            $('.dropdown-toggle').dropdown();
+            //Custom Initialization - specific to individual views
+            if (jQuery.isFunction(this.afterRender))  {
+                this.afterRender();
+            }
+        },
+
+        defaultRender:function (controller, theme, deliverymode, action, lang) {
+
+
+
             var serverUri = this.buildUri(controller, theme, deliverymode, action, lang);
             app_router.lastVisitedAction = action;
             app_router.lastVisitedController = controller;
+
+            //Pre-View Load Initialization
+            this.defaultBeforeRender(controller, theme, deliverymode, action, lang);
+
+            var that = this;
             TemplateCache.templateManager.get(serverUri, function (template) {
 
                 $('#backbone_container').fadeOut(0, function() {
                     $(this).html(template).fadeIn(400);
                 });
-                //$("#backbone_container").html(template);
-                //$("#backbone_container").css({ display:none});
-                //$("#backbone_container").hide("slide", {}, 1000);
 
-                                //$("#backbone_container").show("slide", { direction: "right" }, 1000);
-
+                //Post-View Load Initializations
+                that.defaultAfterRender(controller, theme, deliverymode, action, lang);
 
             });
         }
@@ -58,7 +81,6 @@ $(document).ready(function () {
     var IndexView = NGLBaseView.extend({
 
         render:function (theme, deliverymode, lang) {
-
             this.defaultRender('ngldemo', theme, deliverymode, 'index', lang);
         }
     });
@@ -80,6 +102,9 @@ $(document).ready(function () {
     var LogoutView = NGLBaseView.extend({
         render:function (theme, deliverymode, lang) {
             this.defaultRender('ngldemo', theme, deliverymode, 'logout', lang);
+        },
+        afterRender:function (){
+            TemplateCache.templateManager.clearOneTemplateCache('index');
         }
     });
 
@@ -109,6 +134,8 @@ $(document).ready(function () {
                 serverUri = app_router.lastVisitedController + '/' + theme + '/' + deliverymode + '/' + app_router.lastVisitedAction + '/' + lang;
             }
 
+            TemplateCache.templateManager.clearTemplateCache();
+
             app_router.navigate(serverUri, {trigger: true, replace: true});
 
         }
@@ -117,21 +144,22 @@ $(document).ready(function () {
     var ActivityView = NGLBaseView.extend({
 
         render:function (theme, deliverymode, lang) {
-
             this.defaultRender('ngldemo', theme, deliverymode, 'activity', lang);
+        },
 
-            $LAB.setOptions({AlwaysPreserveOrder:true})
-                .script(['/public/javascripts/activityengine/kinetic-v3.9.3.js',
-                '/public/javascripts/activityengine/raf.js',
-                '/public/javascripts/activityengine/animate.js',
-                '/public/javascripts/activityengine/scroller.js',
-                '/public/javascripts/activityengine/easyScroller.js',
-                '/public/javascripts/activityengine/container.js',
-                '/public/javascripts/activityengine/activity.js',
-                '/public/javascripts/activityengine/activity-engine-init.js',
-                '/public/javascripts/activityengine/bind-activity-controls.js']).wait(function () {
-                    ActivityEngineInit.init();
-                });
+        afterRender:function (){
+        $LAB.setOptions({AlwaysPreserveOrder:true})
+            .script(['/public/javascripts/activityengine/kinetic-v3.9.3.js',
+            '/public/javascripts/activityengine/raf.js',
+            '/public/javascripts/activityengine/animate.js',
+            '/public/javascripts/activityengine/scroller.js',
+            '/public/javascripts/activityengine/easyScroller.js',
+            '/public/javascripts/activityengine/container.js',
+            '/public/javascripts/activityengine/activity.js',
+            '/public/javascripts/activityengine/activity-engine-init.js',
+            '/public/javascripts/activityengine/bind-activity-controls.js']).wait(function () {
+                ActivityEngineInit.init();
+            });
         }
     });
 
