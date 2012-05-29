@@ -17,7 +17,7 @@ registration.reg=Register
 registration.returning=Returning Users
 registration.returning.students=For Students
 registration.returning.educators=For Educators
-registration.signin=Sign In
+registration.signin=Sign In          zz
 registration.go=Go
 
 home.hero.heading1=Online classroom for english learning

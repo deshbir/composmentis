@@ -18,10 +18,19 @@
 
                     <ul class="nav pull-right">
                     #{if session.get("user") != null }
+
+                       #{if flash.get("application.theme") == "myelt" }
                         <li class="${request.action =~ /home/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'home' /}>&{'home.header.courses'}</a></li>
                         <li class="${request.action =~ /activity/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'activity' /}>&{'home.header.assignment'}</a></li>
                         <li><a href="#">&{'home.header.materials'}</a></li>
                         <li><a href="#">&{'home.header.grades'}</a></li>
+                       #{/if}
+                       #{else}
+                         <li class="${request.action =~ /home/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'home' /}>Home</a></li>
+                         <li class="${request.action =~ /reader/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'reader' /}>Reader</a></li>
+                         <li class="${request.action =~ /activity/ ? 'active' : ''}"><a href="#">Library</a></li>
+                       #{/else}
+
                         <li class="divider-vertical"></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="@{'/public/images/glyphicons/glyphicons_003_user.png'}"><b class="caret"></b></a>
