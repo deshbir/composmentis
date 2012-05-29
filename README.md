@@ -19,10 +19,14 @@ composmentis
 	<offline-data>  -- create folder
 
 		preloaded-views.js - new file
-		                "ngldemo/ngconnect/singlepage/index":"Index",
-			            "ngldemo/ngconnect/singlepage/login":"Login",
-			            "ngldemo/ngconnect/singlepage/home":"Home",
-			            "ngldemo/ngconnect/singlepage/activity":"Activity",
-			            "ngldemo/ngconnect/singlepage/splash":"Splash"
+		                "ngldemo/myelt/singlepage/index":"Index",
+		                "ngldemo/myelt/singlepage/authenticate" ?
+
+			            "ngldemo/myelt/singlepage/login":"Login",
+			            "ngldemo/myelt/singlepage/logout":"Login",
+
+			            "ngldemo/myelt/singlepage/home":"Home",
+			            "ngldemo/myelt/singlepage/activity":"Activity",
+			            "ngldemo/myelt/singlepage/splash":"Splash"
 		preloaded-models.js
 
