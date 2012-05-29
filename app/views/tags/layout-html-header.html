@@ -25,6 +25,10 @@
 <![endif]-->
 
 <script>
-    var global_offline_mode = 0;
+    #{if flash.get("application.delivery") == "offline"}
+        var global_offline_mode = 1;
+    #{/if}#{else}
+        var global_offline_mode = 0;
+    #{/else}
 </script>
 <link rel="shortcut icon" href="@{'/public/images/favicon.ico'}" type="image/x-icon">

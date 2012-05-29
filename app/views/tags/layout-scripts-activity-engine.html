@@ -12,17 +12,31 @@
         charset="${_response_encoding}"></script>
 <script src="@{'/public/javascripts/activityengine/activity.js'}" type="text/javascript"
         charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/activityengine/animationactivity.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
 <script src="@{'/public/javascripts/activityengine/bind-activity-controls.js'}" type="text/javascript"
         charset="${_response_encoding}"></script>
 
 <script type="text/javascript">
     jQuery(document).ready(function() {
         // Handler for .ready() called.
-        window.addEventListener('load', initialize, false);
-        window.addEventListener('resize', onResize, false);
+        container = Container.GlobalObject;
+        activity = AnimationActivity.GlobalObject;
+        window.addEventListener('load', function (){
+                    container.initialize(activity);},
+                false);
+        window.addEventListener('resize', function (){
+                    container.resize(activity); },
+                false);
         var navParent = document.getElementById("navParent");
         if(navParent != null && navParent.children== undefined){
-            // addListenerToButtons(navParent.children);
+            container.addListenerToButtons(activity, navParent.children);
         }
+        $(".btn-prev").click(function (){
+                    container.showPrevious(); }
+        );
+        $(".btn-next").click(function (){
+                    container.showNext(); }
+        );
     });
 </script>

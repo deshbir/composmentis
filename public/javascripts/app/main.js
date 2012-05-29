@@ -157,6 +157,7 @@ $(document).ready(function () {
             '/public/javascripts/activityengine/container.js',
             '/public/javascripts/activityengine/activity.js',
             '/public/javascripts/activityengine/activity-engine-init.js',
+            '/public/javascripts/activityengine/animationactivity.js',
             '/public/javascripts/activityengine/bind-activity-controls.js']).wait(function () {
                 ActivityEngineInit.init();
             });
@@ -236,7 +237,14 @@ $(document).ready(function () {
     Backbone.history.start();
 
     if (window.location.href.indexOf("#") == -1) {
-        app_router.navigate("ngldemo/splash", {trigger:true});
+
+        if(window.location.href.indexOf("offline") == -1)	{
+            //Assuming that offline version uses myelt skin
+            app_router.navigate("ngldemo/myelt/singlepage/index", {trigger:true});
+        }
+        else {
+            app_router.navigate("ngldemo/splash", {trigger:true});
+        }
     }
 
     $.ajaxSetup({
