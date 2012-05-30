@@ -152,20 +152,38 @@ $(document).ready(function () {
         },
 
         afterRender:function (){
-        $LAB.setOptions({AlwaysPreserveOrder:true})
-            .script(['/public/javascripts/activityengine/kinetic-v3.9.3.js',
-            '/public/javascripts/activityengine/raf.js',
-            '/public/javascripts/activityengine/animate.js',
-            '/public/javascripts/activityengine/scroller.js',
-            '/public/javascripts/activityengine/easyScroller.js',
-            '/public/javascripts/activityengine/container.js',
-            '/public/javascripts/activityengine/activity.js',
-            '/public/javascripts/activityengine/activity-engine-init.js',
-            '/public/javascripts/activityengine/animationactivity.js',
-            '/public/javascripts/activityengine/bind-activity-controls.js']).wait(function () {
-                ActivityEngineInit.init(app_router.lastSelectedLang);
-            });
+            $LAB.setOptions({AlwaysPreserveOrder:true})
+                .script(['/public/javascripts/activityengine/kinetic-v3.9.3.js',
+                '/public/javascripts/activityengine/raf.js',
+                '/public/javascripts/activityengine/animate.js',
+                '/public/javascripts/activityengine/scroller.js',
+                '/public/javascripts/activityengine/easyScroller.js',
+                '/public/javascripts/activityengine/container.js',
+                '/public/javascripts/activityengine/activity.js',
+                '/public/javascripts/activityengine/activity-engine-init.js',
+                '/public/javascripts/activityengine/animationactivity.js',
+                '/public/javascripts/activityengine/bind-activity-controls.js']).wait(function () {
+                    ActivityEngineInit.init(app_router.lastSelectedLang);
+                });
         }
+    });
+
+    var ReaderView = NGLBaseView.extend({
+
+        render:function (theme, deliverymode, lang) {
+            this.defaultRender('ngldemo', theme, deliverymode, 'reader', lang);
+        },
+
+        afterRender:function (){
+            $LAB.setOptions({AlwaysPreserveOrder:true})
+                .script(['/public/javascripts/reader/data-book1.js',
+                '/public/javascripts/reader/jquery.showLoading.js',
+                '/public/javascripts/reader/jquery.touchwipe.1.1.1.js',
+                '/public/javascripts/reader/eedition.js']).wait(function () {
+                    /*ActivityEngineInit.init(app_router.lastSelectedLang);*/
+                });
+        }
+
     });
 
     var AppRouter = Backbone.Router.extend({
@@ -192,6 +210,8 @@ $(document).ready(function () {
             "ngldemo/activity":"Activity",
             "ngldemo/:theme/:deliverymode/activity":"Activity",
             "ngldemo/:theme/:deliverymode/activity/:lang":"Activity",
+            "ngldemo/:theme/:deliverymode/reader":"Reader",
+            "ngldemo/:theme/:deliverymode/reader/:lang":"Reader",
             "ngldemo/splash":"Splash",
             "ngldemo/:theme/:deliverymode/splash":"Splash",
             "ngldemo/language/:lang":"Switchlanguage",
@@ -229,6 +249,11 @@ $(document).ready(function () {
 
         Activity:function (theme, deliverymode, lang) {
             activityView = new ActivityView(theme, deliverymode, lang);
+
+        },
+
+        Reader:function (theme, deliverymode, lang) {
+            readerView = new ReaderView(theme, deliverymode, lang);
 
         },
 

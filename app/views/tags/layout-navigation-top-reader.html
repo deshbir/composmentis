@@ -1,0 +1,44 @@
+<!-- Top Green Container-->
+
+<div class="navbar navbar-reader navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="btn btn-navbar " data-toggle="collapse"
+               data-target=".nav-collapse">
+                <!-- This is shown for mobile devices - collapsed icon -->
+                <i class="icon-align-justify"></i>
+            </a>
+            <a class="brand" href="#{route-uri-x controller:'ngldemo' , action:'index'/}">
+                <i class="icon-book"></i>
+                <h2>Science</h2>
+                </br>
+                <h3>Earth Science - Unit 1</h3>
+            </a>
+            <ul class="nav">
+                <li class="divider-vertical divider-brand"></li>
+            </ul>
+            <div class="nav-collapse">
+                <ul class="nav">
+
+                </ul>
+                <ul class="nav pull-right">
+                  <li class="${request.action =~ /home/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'home' /}>Home</a></li>
+                  <li class="${request.action =~ /reader/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'reader' /}>Books</a></li>
+                  <li class="${request.action =~ /activity/ ? 'active' : ''}"><a href="#">Library</a></li>
+                  <li class="divider-vertical pull-right"></li>
+                  <li class="dropdown pull-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="@{'/public/images/glyphicons/glyphicons_003_user.png'}"><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="?lang=en">${session.get("user")} (profile)</a></li>
+                            <li class="divider"></li>
+                            <li><a href="?lang=en">&{'home.header.login.changepassword'}</a></li>
+                            <li><a href="?lang=ja">&{'home.header.login.preferences'}</a></li>
+                            <li><a href="#{route-uri-x controller:'ngldemo', action:'logout' /}">&{'home.header.login.signout'}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>   <!-- End of Nav bar-->
+

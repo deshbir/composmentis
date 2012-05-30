@@ -1,5 +1,8 @@
 @NGConnectThemeColor: #79e0fe;
 .theme-ngconnect  {
+
+
+
     #hero  {
     //Overrided the NGLTheme color
         background-color: @NGConnectThemeColor;
@@ -10,6 +13,28 @@
     }
 
     #main-body  {
+
+        .reader-book-heading   {
+
+            padding-top: 0px;
+
+            small {
+                font-size: 13px;
+                font-weight: bold;
+                margin-bottom: 0px;
+                padding: 0px;
+                line-height: 1;
+                color: @grayLight;
+            }
+
+            strong {
+                display: block;
+                line-height: 0.7;
+                padding: 0px;
+                margin-top: 0px;
+            }
+        }
+
         .large-button-icons {
             .btn    {
                 width: 90%;
@@ -17,6 +42,8 @@
                 line-height: 46px;
                 i   {
                     font-size: 30px;
+                    text-shadow: 1px 1px 1px #000;
+                    color: @gray;
                     float:left;
                     margin-top: 5px;
                     margin-left: 20px;
@@ -24,24 +51,49 @@
             }
 
             h2 {
-                margin-top: 10px;
+                margin-top: 20px;
+            }
+            li  {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+        }
+
+        .ngl-book-carousel  {
+            .btn    {
+                font-size: 18px;
+                line-height: 40px;
+                i   {
+                    font-size: 24px;
+                    text-shadow: 1px 1px 1px #000;
+                    color: @gray;
+                    margin-right: 10px
+                }
             }
         }
     }
 
     #hero   {
         .large-home-buttons {
-            padding-top: 10px;
+            padding-top: 30px;
+
             .btn    {
                 width: 90%;
                 font-size: 24px;
-                line-height: 45px;
-                padding-bottom: 10px;
+                line-height: 1.5;
 
                 i   {
-                    font-size: 30px;
-                    margin-top: 5px;
-                    margin-left: 10px;
+                    float: left;
+                    font-weight: 200;
+                    font-size: 45px;
+                    color: @gray;
+                    text-shadow: 1px 1px 1px #000;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                }
+                small  {
+                    display: block;
+                    font-size: 16px;
                 }
             }
         }
@@ -63,24 +115,56 @@
         background-color: @NGConnectThemeColor;
     }
 
-    #pagecontent {
-        float: none;
-        width: 984px;
-        text-align: left;
-        margin-left: auto;
-        margin-right: auto;
 
-        padding: 0px;
-        /* -- */
-    }
+    .navbar-reader  {
+        border: 2px solid;
 
-    .eeditionpagediv {
-        float: left;
-        width: 50%;
+        .nav    {
+            margin-bottom: 4px;
+        }
 
-        img {
-              //opacity : 0.7;
-              //filter: alpha(opacity=70); // msie
+        .brand {
+            font-size: 20px;
+            padding-top: 5px;
+            h2 {
+                float: left;
+                font-size: 18px;
+                line-height: 1.1;
+                padding-top: 2px;
+                width: 180px;
+            }
+            h3 {
+                font-size: 16px;
+                font-weight: normal;
+                line-height: 1;
+
+            }
+            i {
+                float: left;
+                padding-right: 10px;
+                font-size: 38px;
+                line-height: 1;
+                padding-top: 0px;
+                padding-bottom: 0px;
+            }
+
+        }
+        .divider-vertical {
+            height: 30px;
+            margin-top: 5px;
+        }
+        .divider-brand  {
+            margin-top: 10px;
         }
     }
+
+
+
+    .footer-reader  {
+        p    {
+            padding-top: 100px;
+        }
+    }
+
+
 }

@@ -30,3 +30,6 @@ composmentis
 			            "ngldemo/myelt/singlepage/splash":"Splash"
 		preloaded-models.js
 
+
+References:
+'Font Awesome - http://fortawesome.github.com/Font-Awesome'

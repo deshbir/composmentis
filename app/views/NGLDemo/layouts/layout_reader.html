@@ -4,16 +4,22 @@
 <html>
 <head>
 #{layout-html-header /}
+
+<link rel="stylesheet" media="all" href="/public/stylesheets/reader.css" />
 </head>
 
 <body class="theme-${flash.get("application.theme")}" #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
 
 #{/if}
 
-#{layout-navigation-top /}
+#{layout-navigation-top-reader /}
 
 <!-- Main Page -->
 #{doLayout /}
+
+#{layout-navigation-bottom-reader /}
+
+
 
 
 
@@ -22,7 +28,12 @@
 <!-- Le javascript
 ================================================== -->
 #{layout-scripts-global/}
-#{layout-scripts-activity-engine/}
+
+<script type="text/javascript" src="/public/javascripts/reader/jquery.showLoading.js"></script>
+<script type="text/javascript" src="/public/javascripts/reader/jquery.touchwipe.1.1.1.js"></script>
+<script type="text/javascript" src="/public/javascripts/reader/eedition.js"></script>
+<script type="text/javascript" src="/public/javascripts/reader/data-book1.js"></script>
+
 <!-- Placed at the end of the document so the pages load faster -->
 </body>
 </html>

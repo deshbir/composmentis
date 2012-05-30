@@ -2,14 +2,41 @@
 #{set title:'NGL Looking Ahead | Activity' /}
 
 
-<div id="pagecontent">
+<section id="pagecontent">
     <div id="eedition-container">
         <div id="eeditionpagedivA" class="eeditionpagediv">
-            <img id="eeditionpageA" src="http://www.comprotechnologies.com/wcg/assets/images/eedition/book1/c04_es_01_01_006_600.jpg" alt="Page A"/>
+            <img id="eeditionpageA" src="/public/images/reader/eedition/defaultPage.png" alt="Page A"/>
         </div>
         <div id="eeditionpagedivB" class="eeditionpagediv">
-            <img id="eeditionpageB" src="http://www.comprotechnologies.com/wcg/assets/images/eedition/book1/c04_es_01_01_007_600.jpg" alt="Page B"/>
+            <img id="eeditionpageB" src="/public/images/reader/eedition/defaultPage.png" alt="Page B"/>
         </div>
     </div>
-    <div id="overlays"></div>
-</div>
+
+    <div id="overlays">
+    </div>
+
+    <div id="book-toolbar" class="book-toolbar-wrapper">
+        <div  class="book-toolbar">
+            <div class="tool-row1">
+                <div id="currentPage" class="ee-nav" align="center">1-1 / 12</div>
+            </div>
+            <div class="tool-row2">
+
+                <div id="prevPageEdition" class="ee-prev" title="Previous page"></div>
+                <div id="nextPageEdition" class="ee-next" title="Next page"></div>
+            </div>
+
+            <div class="tool-row3">
+                <div id="zoomInEdition" class="ee-zoomin" title="Zoom In"></div>
+                <div id="zoomOutEdition" class="ee-zoomout" title="Zoom Out"></div>
+            </div>
+
+            <div class="tool-row4">
+                <div id="page-layout" class="ee-layout-single" title="Single Page"></div>
+            </div>
+            <div class="tool-row5">
+                <div id="fullscreenEdition" class="enter_fullscreen" title="Enter Fullscreen"></div>
+            </div>
+        </div>
+    </div>
+</section>

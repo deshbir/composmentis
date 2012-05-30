@@ -21,7 +21,7 @@
                     <i class="icon-align-justify"></i>
                 </a>
                 <a class="brand" href="#{route-uri-x controller:'ngldemo' , action:'splash'/}">
-                    <img src="@{'/public/images/ngldemo/logo.png'}" alt="">#{text-product-name /}
+                    <img src="@{'/public/images/ngldemo/placeholder_ng_logo.png'}" alt="">#{text-product-name /}
                 </a>
                 <div class="nav-collapse">
                     <ul class="nav pull-right">
@@ -67,11 +67,12 @@
 
         <div class="span4 large-home-buttons">
             #{if session.get("user") == null }
-                <p><a class="btn" href="#{route-uri-x controller:'ngldemo', action:'login' /}">&{'registration.returning.students'} <small>(&{'registration.go'})</small> <i class="icon-forward"></i></a></p>
-                <p><a class="btn" href="#{route-uri-x controller:'ngldemo' , action:'login' /}">&{'registration.returning.educators'} <small>(&{'registration.go'})</small> <i class="icon-forward"></i></a></p>
+                <p><a class="btn" href="#{route-uri-x controller:'ngldemo', action:'login' /}"><i class="icon-star-empty"></i><span>&{'registration.returning.students'} <small>(&{'registration.signin'})</small></span></a></p>
+                <p><a class="btn" href="#{route-uri-x controller:'ngldemo' , action:'login' /}"><i class="icon-calendar"></i><span>&{'registration.returning.educators'} <small>(&{'registration.signin'})</small></span></a></p>
             #{/if}
             #{else}
-                <p><a class="btn" href="#{route-uri-x controller:'ngldemo' , action:'home' /}">My Textbooks <small>(${session.get("user")})</small>  <i class="icon-book"></i></a></p>
+                <p><a class="btn" href="#{route-uri-x controller:'ngldemo' , action:'home' /}"><i class="icon-home"></i><span>My Home <small>(${session.get("user")})</small></span></a></p>
+                <p><a class="btn" href="#{route-uri-x controller:'ngldemo' , action:'reader' /}"><i class="icon-bookmark"></i><span>My Books <small>(Resume: Earth Science)</small></span></a></p>
             #{/else}
 
         </div>
@@ -81,30 +82,35 @@
 <div id="products" class="container">
     <div class="row">
         <div class="span4">
-
-            <h3><i class="icon-chevron-right"></i> Reach</h3>
+            <img src="@{'/public/images/glyphicons/glyphicons_080_retweet.png'}">
+            <h3>Reach</h3>
             <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
-            <h3><i class="icon-chevron-right"></i> Reach for Reading</h3>
+            <img src="@{'/public/images/glyphicons/glyphicons_081_refresh.png'}">
+            <h3>Reach for Reading</h3>
             <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
-            <h3><i class="icon-chevron-right"></i> Science</h3>
+            <img src="@{'/public/images/glyphicons/glyphicons_320_filter.png'}">
+            <h3>Science</h3>
             <p>&{'global.loremipsum.3'}</p>
         </div>
     </div>
     <div class="row">
         <div class="span4">
-            <h3><i class="icon-chevron-right"></i> World Cultures and Geography</h3>
+            <img src="@{'/public/images/glyphicons/glyphicons_340_globe.png'}">
+            <h3>World Cultures and Geography</h3>
             <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
-            <h3><i class="icon-chevron-right"></i> Our World</h3>
+            <img src="@{'/public/images/glyphicons/glyphicons_242_google_maps.png'}">
+            <h3>Our World</h3>
             <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
-            <h3><i class="icon-chevron-right"></i> Comprehension Coach</h3>
+            <img src="@{'/public/images/glyphicons/glyphicons_077_headset.png'}">
+            <h3>Comprehension Coach</h3>
             <p>&{'global.loremipsum.3'}</p>
         </div>
     </div>
