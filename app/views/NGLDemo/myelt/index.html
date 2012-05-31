@@ -20,7 +20,7 @@
                     <!-- This is shown for mobile devices - collapsed icon -->
                     <i class="icon-align-justify"></i>
                 </a>
-                <a class="brand" href="#{route-uri-x controller:'ngldemo' , action:'splash'/}"><img src="@{'/public/images/ngldemo/placeholder_ng_logo.png'}" alt="">NGL</a>
+                <a class="brand" href="#{route-uri-x controller:'ngldemo' , action:'splash'/}"><img src="@{'/public/images/ngldemo/placeholder_ng_logo.png'}" alt="">#{text-product-name /}</a>
                 <div class="nav-collapse">
                     <ul class="nav pull-right">
                     #{if session.get("user") != null }
@@ -59,6 +59,7 @@
             #{/if}
             #{else}
                 <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo' , action:'home' /}">&{'courses.title.2'} <small>(${session.get("user")})</small></a></p>
+                <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo' , action:'activity' /}">Resume Activity <small>(Milestones)</small></a></p>
             #{/else}
         </div>
 
