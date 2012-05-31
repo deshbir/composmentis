@@ -33,3 +33,16 @@ composmentis
 
 References:
 'Font Awesome - http://fortawesome.github.com/Font-Awesome'
+
+
+1. Index.html - manual
+2. main.js - launch of index
+	Chnage in
+
+	$('#backbone_container').fadeOut(0, function() {
+                    $(this).html(template);
+                    $(this).fadeIn(400);
+         });
+3. Preloaded.js - change offline to singlepage
+4. reader.css - chnage public/ to ../
+5. remove gs and update bootstrap & responsive css
