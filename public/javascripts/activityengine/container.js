@@ -116,7 +116,7 @@ getContainerWidth :function(activity, maxOptions)  {
 	    var questions = new Array();
 	   $.ajax({
 			type: "GET",
-			url: "/public/content/" + fileName,
+			url: "../../../public/content/" + fileName,
 			dataType: "xml",
 			success: function(xml) {
 				$(xml).find("questionset").each(function(){
