@@ -4056,7 +4056,7 @@ to {
     font-weight: bold;
     margin-bottom: 0px;
     padding: 0px;
-    line-height: 1;
+    line-height: 13px;
     color: #999999;
 }
 .theme-ngconnect #main-body .reader-book-heading strong {
@@ -4139,13 +4139,12 @@ to {
 .theme-ngconnect .navbar-reader .brand {
     font-size: 20px;
     padding-top: 5px;
+    white-space: nowrap;
 }
 .theme-ngconnect .navbar-reader .brand h2 {
-    float: left;
     font-size: 18px;
     line-height: 1.1;
     padding-top: 2px;
-    width: 180px;
 }
 .theme-ngconnect .navbar-reader .brand h3 {
     font-size: 16px;
@@ -4194,14 +4193,35 @@ to {
     .theme-ngconnect #main-body .ngl-book-carousel .btn {
         width: 90%;
     }
-    .navbar .brand {
+    .theme-ngconnect .navbar .brand {
         font-size: 26px;
+    }
+    .theme-ngconnect .navbar-reader {
+        margin-bottom: 0px;
+    }
+    .theme-ngconnect .navbar-reader .container-fluid {
+        padding-left: 5px;
+    }
+    .theme-ngconnect #pagecontent {
+        margin-top: 0px;
     }
 
 }
 @media (max-width: 767px) {
+    .theme-ngconnect .navbar-reader {
+        margin-bottom: 0px;
+    }
+    .theme-ngconnect #pagecontent {
+        margin-top: 0px;
+    }
 
 }
 @media (min-width: 768px) and (max-width: 979px) {
+    .theme-ngconnect .navbar-reader {
+        margin-bottom: 0px;
+    }
+    .theme-ngconnect #pagecontent {
+        margin-top: 0px;
+    }
 
 }

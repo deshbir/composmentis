@@ -601,6 +601,7 @@
     .splash {
         padding: 10px;
         margin: 0px auto;
+        border: 0px;
     }
     .splash .btn {
         width: 80%;
@@ -675,6 +676,9 @@
 
 }
 @media (max-width: 767px) {
+    .splash {
+        border: 0px;
+    }
     /* Navbar customization */
     .navbar .nav > li > a, .navbar .dropdown-menu a {
         color: #000000;
