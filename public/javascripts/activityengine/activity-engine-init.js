@@ -13,11 +13,17 @@ ActivityEngineInit = new function() {
             container.addListenerToButtons(activity, navParent.children);
         }
         $(".btn-prev").click(function (){
-                container.showPrevious(); }
-        );
+                container.showPrevious();
+        });
         $(".btn-next").click(function (){
-                container.showNext(); }
-        );
+                container.showNext();
+        });
+        $(".btn-submit").click(function (){
+            container.validateAnswers();
+        });
+        $(".btn-retake").click(function (){
+                container.restartActivity();
+        });
     }
 
 };

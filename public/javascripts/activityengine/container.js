@@ -3,17 +3,16 @@ var Container = {};
 Container.GlobalObject = {
 	currentQuestion : 0,
 	activity : null,
+			
 
-
-    initialize : function(activity, language) {
-        this.activity = activity;
-
-        this.activity.questions = this.readQuestionsFromXml("sample_dndfs.xml");
-        this.activity.maxOptions = this.getMaxOptions(this.activity.questions);
-        this.activity.canvasWidth = this.getContainerWidth(activity, activity.maxOptions);
-        this.activity.paint(language);
-
-    },
+	initialize : function(activity, language) {
+		this.activity = activity;
+		this.activity.questions = this.readQuestionsFromXml("sample_dndfs.xml");
+		this.activity.maxOptions = this.getMaxOptions(this.activity.questions);
+		this.activity.canvasWidth = this.getContainerWidth(activity, activity.maxOptions);
+		this.activity.paint(language);
+		
+	},
 
 
 /*
@@ -112,69 +111,154 @@ getContainerWidth :function(activity, maxOptions)  {
 	/*
 	 * Function to read questions from the input XML file.
 	 */
-    readQuestionsFromXml :function(fileName)  {
-        var questions = new Array();
-        $.ajax({
-            type: "GET",
-            url: "/public/content/" + fileName,
-            dataType: "xml",
-            success: function(xml) {
-                $(xml).find("questionset").each(function(){
-                    var question= new Question();
-                    question.blankCount = $(this).find("question").find("content").text();
 
-                    var options = new Array();
-                    $(this).find("option").each(function(){
-                        options.push($(this).find("content").text());
-                    });
-                    question.options = options;
+	readQuestionsFromXml :function(fileName)  {
+	    var questions = new Array();
+	   $.ajax({
+			type: "GET",
+			url: "/public/content/" + fileName,
+			dataType: "xml",
+			success: function(xml) {
+				$(xml).find("questionset").each(function(){
+										var question= new Question();
+										question.blankCount = $(this).find("question").find("content").text();	
+										
+										var options = new Array();
+										$(this).find("option").each(function(){
+																		options.push($(this).find("content").text());
+																	});
+										question.options = options;
+										
+										 var answers = new Array();
+										$(this).find("answer").each(function(){
+											answers.push($(this).find("content").text());
+										});
+										question.answers = answers;
+										questions.push(question);
 
-                    var answers = new Array();
-                    $(this).find("answer").each(function(){
-                        answers.push($(this).find("content").text());
-                    });
-                    question.answers = answers;
-                    questions.push(question);
-                });
 
-            },
-            async:false
-        });
-
-        return questions;
-    },
-
+		
+				});
+		 
+			},
+			async:false
+		});
+	    
+		
+	    return questions;
+	},
 
 	changeLanguage : function(languageParam)  {
-	    language = languageParam;
+	    this.activity.language = languageParam;
 	},
 
 	showNext : function (){
 		if(this.currentQuestion < this.activity.questions.length-1){
 			this.currentQuestion = this.currentQuestion+1;
+
 			this.activity.displayQuestion(this.currentQuestion);
+			this.showResult();
+			
+		} else {
+			return;
 		}
-		else
-		return;
 	},
 
 	showPrevious : function (){
 		if(this.currentQuestion > 0){
 			this.currentQuestion = this.currentQuestion-1;
 			this.activity.displayQuestion(this.currentQuestion);
+			this.showResult();
 		}
 		else
 		return;
 	},
-
-    resize : function(activity, language)  {
-
-        this.activity.canvasWidth = this.getContainerWidth(this.activity, activity.maxOptions);
-
-        this.activity.onResize(this.currentQuestion, language);
-    }
-
-
 	
+	resize : function(activity, language)  {
+		
+		this.activity.canvasWidth = this.getContainerWidth(this.activity, activity.maxOptions);
+		
+		this.activity.onResize(this.currentQuestion, language);
+		this.showResult();
+		
+	},
+	
+/*
+* function to retake a single question
+*/
+	restartActivity : function () {
+		this.activity.layers[this.currentQuestion].moveToTop();
+		this.activity.questions[this.currentQuestion].isCorrect = false;
+		this.activity.questions[this.currentQuestion].isAttempted = false;
+		var boxCount = 0;
+		for (var questionNum = 0; questionNum < this.currentQuestion; questionNum++){
+			boxCount += this.activity.questions[questionNum].options.length;
+		}
+
+		for(var i = boxCount ; i < boxCount + this.activity.questions[this.currentQuestion].options.length; i++){
+			 this.activity.optionBoxes[i].transitionTo({
+							rotation: 0,
+							x:  this.activity.optionBoxes[i].startX,
+							y:  this.activity.optionBoxes[i].startY,
+							duration:.01
+				});
+		}
+	},
+	
+	 validateAnswers : function() {
+		// Validate all questions on submit
+		// for(var qNum = 0; qNum < this.activity.questions.length; qNum++ ){
+			var qNum = this.currentQuestion;
+			var studentResponse = "";
+			this.activity.questions[qNum].isAttempted=true;
+			
+			for(var oNum = 0; oNum < this.activity.questions[qNum].options.length; oNum++) {
+					var optionBoxName = qNum+"l,"+(oNum+1)+"b";
+					var box = this.activity.containerBoxNameMap[optionBoxName];
+					if(box.empty == true) {
+						// if the option is left blank
+						this.activity.questions[qNum].isCorrect = false;
+						break;
+						
+					} else {
+						studentResponse = studentResponse +" "+ box.child.attrs.text;
+					}
+			}
+			
+			//move to next question if not attempted completely
+			// Used for Validating all questions on submit
+			/*if(studentResponse == ""){
+				continue;
+			}*/
+			
+			//replacing multiple spaces with single spaces if any
+			studentResponse = studentResponse.replace( /  +/g, ' ' );
+			studentResponse = studentResponse.replace(/^\s+|\s+$/g,"");
+			
+			for(var num = 0; num < this.activity.questions[qNum].answers.length; num++){
+				
+				//correct if true otherwise its incorrect by default
+				if(studentResponse == this.activity.questions[qNum].answers[num]){
+					this.activity.questions[qNum].isCorrect = true;
+					break;
+				}
+			}
+		//}
+		this.showResult();
+	},  
+
+	showResult : function() {
+		if(this.activity.questions[this.currentQuestion].isAttempted == true) {
+			var imageLayer = this.activity.incorrectLayer;
+				if(this.activity.questions[this.currentQuestion].isCorrect == true) {
+					this.activity.animate(true);
+				} else {
+					this.activity.animate(false);
+				}
+			} else {
+			// else if not Attempted
+			
+			}
+		}
 }
 

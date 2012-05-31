@@ -161,8 +161,7 @@ $(document).ready(function () {
                 '/public/javascripts/activityengine/container.js',
                 '/public/javascripts/activityengine/activity.js',
                 '/public/javascripts/activityengine/activity-engine-init.js',
-                '/public/javascripts/activityengine/animationactivity.js',
-                '/public/javascripts/activityengine/bind-activity-controls.js']).wait(function () {
+                '/public/javascripts/activityengine/animationactivity.js']).wait(function () {
                     ActivityEngineInit.init(app_router.lastSelectedLang);
                 });
         }
