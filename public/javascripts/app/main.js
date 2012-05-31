@@ -211,8 +211,6 @@ $(document).ready(function () {
             "ngldemo/:theme/:deliverymode/activity/:lang":"Activity",
             "ngldemo/:theme/:deliverymode/reader":"Reader",
             "ngldemo/:theme/:deliverymode/reader/:lang":"Reader",
-            "ngldemo/splash":"Splash",
-            "ngldemo/:theme/:deliverymode/splash":"Splash",
             "ngldemo/language/:lang":"Switchlanguage",
             "ngldemo/:theme/:deliverymode/language/:lang":"Switchlanguage"
         },
@@ -263,6 +261,8 @@ $(document).ready(function () {
 
     });
 
+
+    //Application START POINT - Initialize backbone.
     var app_router = new AppRouter;
     Backbone.history.start();
 
@@ -271,9 +271,6 @@ $(document).ready(function () {
         if(window.location.href.indexOf("offline") > -1)	{
             //Assuming that offline version uses myelt skin
             app_router.navigate("ngldemo/myelt/singlepage/index", {trigger:true});
-        }
-        else {
-            app_router.navigate("ngldemo/splash", {trigger:true});
         }
     }
 
