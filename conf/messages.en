@@ -34,6 +34,7 @@ home.header.grades=Grades
 home.header.login.changepassword=Change Password
 home.header.login.preferences=Preferences
 home.header.login.signout=Sign out
+home.header.login.switchonlinefromoffline=Switch to online mode
 
 home.footer.teachers.heading1=For Teachers
 home.footer.teachers.l1=Hundreds of pre-built NGL online exercises, practice tests, and activities

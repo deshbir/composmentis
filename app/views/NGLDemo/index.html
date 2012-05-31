@@ -31,13 +31,19 @@
                             <ul class="dropdown-menu">
                                 <li><a href="?lang=en">${session.get("user")} (profile)</a></li>
                                 <li class="divider"></li>
-                                <li><a href="?lang=en">Change Password</a></li>
-                                <li><a href="?lang=ja">Preferences</a></li>
-                                <li><a href="#{route-uri-x controller:'ngldemo' , action:'logout' /}">Sign out</a></li>
+                                #{if flash.get("application.delivery") == "offline"}
+                                    <li><a href="#">&{'home.header.login.switchonlinefromoffline'}</a></li>
+                                #{/if}
+                                #{else}
+                                    <li><a href="?lang=en">&{'home.header.login.changepassword'}</a></li>
+                                    <li><a href="?lang=ja">&{'home.header.login.preferences'}</a></li>
+                                    <li><a href="#{route-uri-x controller:'ngldemo', action:'logout' /}">&{'home.header.login.signout'}</a></li>
+                                #{/else}
                             </ul>
                         </li>
-                        <li class="divider-vertical"></li>
                     #{/if}
+                    #{if flash.get("application.delivery") != "offline"}
+                        <li class="divider-vertical"></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">&{'global.header.langsel'}<span>(${lang.toString()})</span><b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -53,6 +59,7 @@
                             #{/else}
                             </ul>
                         </li>
+                    #{/if}
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

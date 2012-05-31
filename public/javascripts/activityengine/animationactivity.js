@@ -75,78 +75,103 @@ AnimationActivity.GlobalObject = {
 	    this.layers[0].moveToTop();
 	    this.scrollCanvas();
 	},
-	addResponseLayers : function(stage){
-		
-		var imageWidth = 80;
-		var imageHeight = 80;
-		var correctLayer = new Kinetic.Layer();
-		var incorrectLayer = new Kinetic.Layer();
-		var correctImage = new Image();
-		correctImage.src = "../../../public/images/correct120by120.png";
-		
-		var incorrectImage = new Image();
-		incorrectImage.src = "../../../public/images/incorrect120by120.png";
-		
-		var rect1 = new Kinetic.Rect({
-						x:0,
-						y:0,
-						width:stage.getWidth(),
-						height:stage.getHeight(),
-						fill:"rgb(232,232,232)",
-						alpha:0.5
-		  });
-		  correctLayer.add(rect1);
-		  var rect2 = new Kinetic.Rect({
-						x:0,
-						y:0,
-						width:stage.getWidth(),
-						height:stage.getHeight(),
-						fill:"rgb(232,232,232)",
-						alpha:0.5
-		  });
-		  incorrectLayer.add(rect2);
-        
-		 correctImage.onload = function() {
-			  var tickImage = new Kinetic.Image({
-				x: (stage.getWidth() -imageWidth) /2 ,
-				y: (stage.getHeight() - imageHeight)/2,
-				image: correctImage,
-				width: imageWidth,
-				height: imageHeight,
-				alpha: 1,
-				align:"center"
-			  });
-			  correctLayer.add(tickImage);
-		  };
-		  
-		  
-          incorrectImage.onload = function() {
-			  var crossImage = new Kinetic.Image({
-				x: (stage.getWidth() -imageWidth) /2 ,
-				y: (stage.getHeight() - imageHeight)/2,
-				image: incorrectImage,
-				width: imageWidth,
-				height: imageHeight,
-				alpha: 1,
-				centerOffset:[10,10]
-			  });
-			 
-			  incorrectLayer.add(crossImage);
-		};
-		  
-		  
-		  // add the shape to the layer
-		  stage.add(correctLayer);
-		  correctLayer.moveToBottom();
 
-  		  
-		  stage.add(incorrectLayer);
-		  incorrectLayer.moveToBottom();
+    /*
+     *function to add the tick and cross images for correct and incorrect response
+     */
+    addResponseLayers : function(stage){
 
-		  this.correctLayer = correctLayer;
-		  this.incorrectLayer = incorrectLayer;
-	},
+        var imageWidth = 80;
+        var imageHeight = 80;
+        //changing the dimensions of the response layers if they are already present i.e on resizing
+        if(this.correctLayer !=null){
+            this.correctLayer.children[0].setWidth(stage.getWidth());
+            this.correctLayer.children[0].setHeight(stage.getHeight());
+            this.incorrectLayer.children[0].setWidth(stage.getWidth());
+            this.incorrectLayer.children[0].setHeight(stage.getHeight());
+            this.correctLayer.children[1].attrs.x=(stage.getWidth() -imageWidth)/2;
+            this.correctLayer.children[1].attrs.y=(stage.getHeight() - imageHeight)/2;
+            this.incorrectLayer.children[1].attrs.x=(stage.getWidth() -imageWidth)/2;
+            this.incorrectLayer.children[1].attrs.y=(stage.getHeight() - imageHeight)/2;
 
+            // add the shape to the layer
+            stage.add(this.correctLayer);
+            this.correctLayer.moveToBottom();
+
+
+            stage.add(this.incorrectLayer);
+            this.incorrectLayer.moveToBottom();
+            return;
+
+        }
+        //building the new layer if they are not already present
+        else{
+            var correctLayer = new Kinetic.Layer();
+            var incorrectLayer = new Kinetic.Layer();
+            var correctImage = new Image();
+            correctImage.src = "../public/images/correct120by120.png";
+
+            var incorrectImage = new Image();
+            incorrectImage.src = "../public/images/incorrect120by120.png";
+
+            var rect1 = new Kinetic.Rect({
+                x:0,
+                y:0,
+                width:stage.getWidth(),
+                height:stage.getHeight(),
+                fill:"rgb(232,232,232)",
+                alpha:0.5
+            });
+            correctLayer.add(rect1);
+            var rect2 = new Kinetic.Rect({
+                x:0,
+                y:0,
+                width:stage.getWidth(),
+                height:stage.getHeight(),
+                fill:"rgb(232,232,232)",
+                alpha:0.5
+            });
+            incorrectLayer.add(rect2);
+
+            correctImage.onload = function() {
+                var tickImage = new Kinetic.Image({
+                    x: (stage.getWidth() -imageWidth) /2 ,
+                    y: (stage.getHeight() - imageHeight)/2,
+                    image: correctImage,
+                    width: imageWidth,
+                    height: imageHeight,
+                    alpha: 1,
+                });
+                correctLayer.add(tickImage);
+            };
+
+
+            incorrectImage.onload = function() {
+                var crossImage = new Kinetic.Image({
+                    x: (stage.getWidth() -imageWidth) /2 ,
+                    y: (stage.getHeight() - imageHeight)/2,
+                    image: incorrectImage,
+                    width: imageWidth,
+                    height: imageHeight,
+                    alpha: 1
+                });
+
+                incorrectLayer.add(crossImage);
+            };
+
+
+            // add the shape to the layer
+            stage.add(correctLayer);
+            correctLayer.moveToBottom();
+
+
+            stage.add(incorrectLayer);
+            incorrectLayer.moveToBottom();
+
+            this.correctLayer = correctLayer;
+            this.incorrectLayer = incorrectLayer;
+        }
+    },
 
 	enableScrolling : function () {
 	    var body = document.body;

@@ -67,3 +67,4 @@ home.header.login.signout=サインアウト
 home.header.login.preferences=設定
 home.header.login.changepassword=パスワードを変更する
 home.help=助け
+home.header.login.switchonlinefromoffline=オンラインモードに切り替え
