@@ -46,6 +46,7 @@ $(document).ready(function () {
         {
             //Use this for global initializations - applicable to all views
             $('.dropdown-toggle').dropdown();
+            $('.carousel').carousel();
 
             //global variables
             app_router.lastVisitedAction = action;
