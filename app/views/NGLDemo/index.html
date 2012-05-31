@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-#{set title:'NGL Looking Ahead' /}
+#{set title:'NGL Looking Ahead | Home' /}
 #{if flash.get("application.delivery") == "traditional"}
 <!-- This section is not needed for single page apps -->
 <html>
@@ -42,19 +42,21 @@
                             </ul>
                         </li>
                     #{/if}
-                    #{if flash.get("application.delivery") != "offline"}
+                    #{if flash.get("application.delivery") != "offline" && session.user != null}
                         <li class="divider-vertical"></li>
+                    #{/if}
+                    #{if flash.get("application.delivery") != "offline" }
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">&{'global.header.langsel'}<span>(${lang.toString()})</span><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                             #{if flash.get("application.delivery") == "traditional"}
                                 <li><a href="?lang=en">English</a></li>
-                                <li><a href="?lang=ja">Japanease</a></li>
+                                <li><a href="?lang=ja">Japanese</a></li>
                                 <li><a href="?lang=ar">Arabic</a></li>
                             #{/if}
                             #{else}
                                 <li><a href="#{route-uri-x controller:'ngldemo' , action:'language/en'/}">English</a></li>
-                                <li><a href="#{route-uri-x controller:'ngldemo' , action:'language/ja'/}">Japanease</a></li>
+                                <li><a href="#{route-uri-x controller:'ngldemo' , action:'language/ja'/}">Japanese</a></li>
                                 <li><a href="#{route-uri-x controller:'ngldemo' , action:'language/ar'/}">Arabic</a></li>
                             #{/else}
                             </ul>
