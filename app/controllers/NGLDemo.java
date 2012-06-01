@@ -29,8 +29,17 @@ public class NGLDemo extends Global {
 
     public static void authenticate() {
         String userName = params.get("username");
-        session.put("user", userName);
-        redirectX("ngldemo", "home");
+
+        /*Logger.info("userName:" + userName);
+        if (userName==null || userName.length() ==0) {
+            Logger.info("inside error zone");
+            flash.equals("User name can not be null.");
+            renderTemplateX("login");
+        }  else {
+        */
+            session.put("user", userName);
+            redirectX("ngldemo", "home");
+        //}
     }
 
     public static void logout() {

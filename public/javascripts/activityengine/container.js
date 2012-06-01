@@ -3,11 +3,12 @@ var Container = {};
 Container.GlobalObject = {
 	currentQuestion : 0,
 	activity : null,
-			
 
+	
 	initialize : function(activity, language) {
 		this.activity = activity;
-		this.activity.questions = this.readQuestionsFromXml("sample_dndfs.xml");
+		//this.activity.questions = this.readQuestionsFromXml("sample_dndfs.xml");
+		this.activity.questions = this.parseQuestionsFromJson(this.actvityInput());
 		this.activity.maxOptions = this.getMaxOptions(this.activity.questions);
 		this.activity.canvasWidth = this.getContainerWidth(activity, activity.maxOptions);
 		this.activity.paint(language);
@@ -116,7 +117,7 @@ getContainerWidth :function(activity, maxOptions)  {
 	    var questions = new Array();
 	   $.ajax({
 			type: "GET",
-			url: "../../../public/content/" + fileName,
+			url: "../../public/content/" + fileName,
 			dataType: "xml",
 			success: function(xml) {
 				$(xml).find("questionset").each(function(){
@@ -145,6 +146,36 @@ getContainerWidth :function(activity, maxOptions)  {
 		});
 	    
 		
+	    return questions;
+	},
+	
+	
+
+parseQuestionsFromJson :function(jsonObject)  {
+		var questions = new Array();
+		var questionSetArray = jsonObject.activity.questionsets.questionset;
+		
+		for(var questionNum = 0; questionNum<questionSetArray.length; questionNum++) {
+				var question= new Question();
+
+				question.blankCount = questionSetArray[questionNum].question.content.text;	
+
+				var options = new Array();
+				for(var optionNum = 0; optionNum<questionSetArray[questionNum].options.option.length; optionNum++) {
+					options.push(questionSetArray[questionNum].options.option[optionNum].content.text);
+					console.log('options:'+questionSetArray[questionNum].options.option[optionNum].content.text);
+				}
+				question.options = options;
+
+				var answers = new Array();
+				for(var answersNum = 0; answersNum<questionSetArray[questionNum].answers.answer.length; answersNum++) {
+					answers.push(questionSetArray[questionNum].answers.answer[answersNum].content.text);
+					console.log('answer:'+questionSetArray[questionNum].answers.answer[answersNum].content.text);
+				}
+				question.answers = answers;
+
+				questions.push(question);
+			}		
 	    return questions;
 	},
 
@@ -250,6 +281,7 @@ getContainerWidth :function(activity, maxOptions)  {
 	showResult : function() {
 		if(this.activity.questions[this.currentQuestion].isAttempted == true) {
 			var imageLayer = this.activity.incorrectLayer;
+			console.log(imageLayer);
 				if(this.activity.questions[this.currentQuestion].isCorrect == true) {
 					this.activity.animate(true);
 				} else {
@@ -259,6 +291,316 @@ getContainerWidth :function(activity, maxOptions)  {
 			// else if not Attempted
 			
 			}
+		},
+	actvityInput : function () { 
+			return {
+		  "activity": {
+			"-templateid": "DNDFS",
+			"-defaultscore": "1",
+			"-generatorid": "PageSeeder",
+			"directions": {
+			  "content": {
+				"type": "text",
+				"tag": "directions",
+				"cdata-section": "Drag the correct option from the set of <b>scrambled words</b> and drop that option from its default position into its correct slot in a predetermined screen area (the drop slots) to form a correct and meaningful sentence. Click Submit to check your answers."
+			  }
+			},
+			"questionsets": {
+			  "questionset": [
+				{
+				  "question": {
+					"content": {
+					  "type": "number",
+					  "tag": "blankCount",
+					  "text": "6"
+					}
+				  },
+				  "options": {
+					"option": [
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "a watch"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "gives"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "her"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "Ahmed"
+						}
+					  }
+					]
+				  },
+				  "answers": {
+					"answer": [{
+					  "content": {
+						"type": "text",
+						"tag": "answerText",
+						"text": "Ahmed gives her a watch"
+					  }
+					}]
+				  }
+				},
+				{
+				  "question": {
+					"content": {
+					  "type": "number",
+					  "tag": "blankCount",
+					  "text": "5"
+					}
+				  },
+				  "options": {
+					"option": [
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "Geeta plays"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "Raj plays"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "carrom"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "badminton"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "while"
+						}
+					  }
+					]
+				  },
+				  "answers": {
+					"answer": [
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "answerText",
+						  "text": "Raj plays badminton while Geeta plays carrom"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "answerText",
+						  "text": "Geeta plays badminton while Raj plays carrom"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "answerText",
+						  "text": "Raj plays carrom while Geeta plays badminton"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "answerText",
+						  "text": "Geeta plays carrom while Raj plays badminton"
+						}
+					  }
+					]
+				  }
+				},
+				{
+				  "question": {
+					"content": {
+					  "type": "number",
+					  "tag": "blankCount",
+					  "text": "4"
+					}
+				  },
+				  "options": {
+					"option": [
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "a lot"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "calls"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "she"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "me"
+						}
+					  }
+					]
+				  },
+				  "answers": {
+					"answer": [{
+					  "content": {
+						"type": "text",
+						"tag": "answerText",
+						"text": "she calls me a lot"
+					  }
+					}]
+				  }
+				},
+				{
+				  "question": {
+					"content": {
+					  "type": "number",
+					  "tag": "blankCount",
+					  "text": "4"
+					}
+				  },
+				  "options": {
+					"option": [
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "it"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "sent"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "I"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "to him"
+						}
+					  }
+					]
+				  },
+				  "answers": {
+					"answer": [{
+					  "content": {
+						"type": "text",
+						"tag": "answerText",
+						"text": "I sent it to him"
+					  }
+					}]
+				  }
+				},
+				{
+				  "question": {
+					"content": {
+					  "type": "number",
+					  "tag": "blankCount",
+					  "text": "5"
+					}
+				  },
+				  "options": {
+					"option": [
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "a gift"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "gave"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "yesterday"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "him"
+						}
+					  },
+					  {
+						"content": {
+						  "type": "text",
+						  "tag": "optionText",
+						  "text": "she"
+						}
+					  }
+					]
+				  },
+				  "answers": {
+					"answer": [{
+					  "content": {
+						"type": "text",
+						"tag": "answerText",
+						"text": "she gave him a gift yesterday"
+					  }
+					}]
+				  }
+				}
+			  ]
+			}
+		  }
 		}
+	}
+
 }
+
+ 
 

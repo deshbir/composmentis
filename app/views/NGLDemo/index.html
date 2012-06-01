@@ -42,7 +42,7 @@
                             </ul>
                         </li>
                     #{/if}
-                    #{if flash.get("application.delivery") != "offline" && session.user != null}
+                    #{if (flash.get("application.delivery") != "offline" && session.user != null)}
                         <li class="divider-vertical"></li>
                     #{/if}
                     #{if flash.get("application.delivery") != "offline" }
