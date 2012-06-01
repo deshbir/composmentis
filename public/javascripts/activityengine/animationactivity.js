@@ -116,10 +116,10 @@ AnimationActivity.GlobalObject = {
             var correctLayer = new Kinetic.Layer();
             var incorrectLayer = new Kinetic.Layer();
             var correctImage = new Image();
-            correctImage.src = "../public/images/correct120by120.png";
+            correctImage.src = "../../../public/images/correct120by120.png";
 
             var incorrectImage = new Image();
-            incorrectImage.src = "../public/images/incorrect120by120.png";
+            incorrectImage.src = "../../../public/images/incorrect120by120.png";
 
             var rect1 = new Kinetic.Rect({
                 x:0,

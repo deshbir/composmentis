@@ -143,9 +143,7 @@ public class Global extends Controller {
 
             //check if a "theme" override exists.
 
-            String candidateOverrideView = part1 + "/" + appTheme + "/" + appDeliveryMode + "/" + part2;
-
-            Logger.info("candidateOverrideView: " + candidateOverrideView);
+            String candidateOverrideView = part1 + "/" + appTheme + "/" + part2;
             if(templateExists(candidateOverrideView))   {
                 //Logger.info("Overriding View - " + candidateOverrideView);
                 renderTemplate(candidateOverrideView, args);
