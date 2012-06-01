@@ -9,7 +9,7 @@ TemplateCache = new function() {
 			var template = this.templates[id];
 			if (template) {
 				callback(template);
-           } else if (global_offline_mode){
+           } else if (NGLApplicationConf.offline_mode){
 
                 if (typeof id != 'undefined') {
                     id = id.split('?')[0]

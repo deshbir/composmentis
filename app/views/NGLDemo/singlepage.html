@@ -24,6 +24,7 @@
 </div>
 
 <div id="backbone_container">
+#{if flash.get("application.delivery") != "offline"}
     <div class="container splash">
         <div class="row">
             <div class="span12">
@@ -71,8 +72,10 @@
                 </blockquote>
             </div>
         </div>
+    </div>
         <!-- End of Splash-->
-     </div>
+    #{/if}
+</div>
 
        <!-- Le javascript
        ================================================== -->

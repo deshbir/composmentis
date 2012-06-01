@@ -26,9 +26,17 @@
 
 <script>
     #{if flash.get("application.delivery") == "offline"}
-        var global_offline_mode = 1;
+        NGLApplicationConf  = new function() {
+            this.offline_mode = 1;
+            this.skin="myelt";
+            //this.skin="ngconnect";
+        };
     #{/if}#{else}
-        var global_offline_mode = 0;
+        NGLApplicationConf  = new function() {
+            this.offline_mode = 0;
+            this.skin="myelt";
+            //this.skin="ngconnect";
+        };
     #{/else}
 </script>
 <link rel="shortcut icon" href="@{'/public/images/favicon.ico'}" type="image/x-icon">

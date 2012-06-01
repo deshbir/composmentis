@@ -72,7 +72,8 @@ $(document).ready(function () {
             TemplateCache.templateManager.get(serverUri, function (template) {
 
                 $('#backbone_container').fadeOut(0, function() {
-                    $(this).html(template).fadeIn(400);
+                    $(this).html(template);
+                    $(this).fadeIn(400);
                 });
 
                 //Post-View Load Initializations
@@ -267,14 +268,14 @@ $(document).ready(function () {
     var app_router = new AppRouter;
     Backbone.history.start();
 
+    //Check if the URL has # link -- i.e. this is the first time launch or startup.
     if (window.location.href.indexOf("#") == -1) {
-
-        if(window.location.href.indexOf("offline") > -1)	{
-            //Assuming that offline version uses myelt skin
-            app_router.navigate("ngldemo/myelt/singlepage/index", {trigger:true});
+        if(NGLApplicationConf.offline_mode == 1)	{
+            app_router.navigate("ngldemo/" + NGLApplicationConf.skin + "/singlepage/index", {trigger:true});
         }
     }
 
+    //Setup global error handling
     $.ajaxSetup({
         global:true
     });
