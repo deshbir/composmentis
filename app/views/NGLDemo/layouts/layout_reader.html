@@ -5,7 +5,8 @@
 <head>
 #{layout-html-header /}
 
-<link rel="stylesheet" media="all" href="/public/stylesheets/reader.css" />
+<link rel="stylesheet" media="all" href="/public/stylesheets/eedition-structure.css" />
+<link rel="stylesheet" media="all" href="/public/stylesheets/eedition-query.css" />
 </head>
 
 <body class="theme-${flash.get("application.theme")}" #{if "ar".equals(lang.toString())}dir="rtl"#{/if}>
@@ -25,9 +26,8 @@
 #{layout-scripts-global/}
 
 <script type="text/javascript" src="/public/javascripts/reader/jquery.showLoading.js"></script>
-<script type="text/javascript" src="/public/javascripts/reader/jquery.touchwipe.1.1.1.js"></script>
 <script type="text/javascript" src="/public/javascripts/reader/eedition.js"></script>
-<script type="text/javascript" src="/public/javascripts/reader/data-book1.js"></script>
+<script type="text/javascript" src="/public/javascripts/reader/book1.js"></script>
 
 <!-- Placed at the end of the document so the pages load faster -->
 </body>

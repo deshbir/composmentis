@@ -1,0 +1,122 @@
+/* all-home-query.css - START*/
+
+
+/* For the range of 320 - 640 */
+@media screen and (min-width: 320px) and (max-width: 640px)
+{    
+    /* This should remain blank, as the main CSS part should cater this range. */    
+
+
+
+    #eeditionpagedivA
+    {
+        width:100%;
+        float:none;
+        margin-left:auto;
+        margin-right:auto;
+    } 
+
+    #eeditionpagedivB
+    {
+        display:none;  
+
+    }
+
+    .ee-zoomin
+    {
+        background: url("../images/reader/common/ZoomPlus_Disable.png") no-repeat scroll 0 0 transparent;    
+        background-position:center; 
+        float: left;
+        cursor: pointer;
+        min-height: 22px;
+        min-width: 21px;
+        padding: 10px 12px 10px 11px;
+    }
+    .ee-zoomin:hover
+    {
+        background: url("../images/reader/common/ZoomPlus.png") no-repeat scroll 0 0 transparent;   
+        background-position:center; 
+        float: left;
+        cursor: pointer;
+        min-height: 22px;
+        min-width: 21px;
+        padding: 10px 12px 10px 11px;
+
+    }
+
+    .ee-zoomout
+    {
+        background: url("../images/reader/common/ZoomMinus_Disable.png") no-repeat scroll 0 0 transparent;    
+        background-position:center; 
+        float: left;
+        cursor: pointer;
+        min-height: 21px;
+        min-width: 21px; 
+        padding: 10px 12px 10px 11px;
+    }
+    .ee-zoomout:hover
+    {
+        background: url("../images/reader/common/ZoomMinus.png") no-repeat scroll 0 0 transparent;    
+        background-position:center; 
+        float: left;
+        cursor: pointer;
+        min-height: 21px;
+        min-width: 21px;
+        padding: 10px 12px 10px 11px;
+    }
+}
+@media screen and (min-width: 320px) and (max-width: 480px)
+{
+
+}
+@media screen and (min-width: 481px) and (max-width: 640px)
+{
+
+}
+
+/* For the range of 641 - 960 */
+@media screen and (min-width: 641px) and (max-width: 960px)
+{   
+
+    #eeditionpagedivA
+    {
+        width:100%;
+        float:none;
+        margin-left:auto;
+        margin-right:auto;        
+    }     
+
+    #eeditionpagedivB
+    {
+        display:none;  
+
+    }    
+}
+@media screen and (min-width: 641px) and (max-width: 768px)
+{
+
+}
+@media screen and (min-width: 769px) and (max-width: 960px)
+{
+
+}
+
+/* For the range of 961 - above */
+@media screen and (min-width: 961px)
+{
+
+
+}
+@media screen and (min-width: 961px) and (max-width: 1024px)
+{
+
+}
+@media screen and (min-width: 1025px) and (max-width: 1280px)
+{
+
+}
+@media screen and (min-width: 1281px)
+{
+
+}
+/* all-home-query.css END*/

@@ -1,7 +1,6 @@
 #{extends 'NGLDemo/layouts/layout_reader.html' /}
 #{set title:'NGL Looking Ahead | Reader' /}
 
-
 <section id="pagecontent">
     <div id="eedition-container">
         <div id="eeditionpagedivA" class="eeditionpagediv">
@@ -10,33 +9,37 @@
         <div id="eeditionpagedivB" class="eeditionpagediv">
             <img id="eeditionpageB" src="/public/images/reader/eedition/defaultPage.png" alt="Page B"/>
         </div>
+
     </div>
 
-    <div id="overlays">
+    <div id="ee-overlays">
     </div>
 
-    <div id="book-toolbar" class="book-toolbar-wrapper">
-        <div  class="book-toolbar">
-            <div class="tool-row1">
-                <div id="currentPage" class="ee-nav" align="center">1-1 / 12</div>
+    <div id="ee-book-toolbar" class="ee-book-toolbar-wrapper">
+        <div class="ee-book-toolbar">
+            <div class="ee-tool-row1">
+                <div id="ee-currentPage" class="ee-nav" align="center">1-1 / 12</div>
             </div>
-            <div class="tool-row2">
+            <div class="ee-tool-row2">
 
                 <div id="prevPageEdition" class="ee-prev" title="Previous page"></div>
                 <div id="nextPageEdition" class="ee-next" title="Next page"></div>
             </div>
 
-            <div class="tool-row3">
+            <div class="ee-tool-row3">
                 <div id="zoomInEdition" class="ee-zoomin" title="Zoom In"></div>
                 <div id="zoomOutEdition" class="ee-zoomout" title="Zoom Out"></div>
             </div>
 
-            <div class="tool-row4">
-                <div id="page-layout" class="ee-layout-single" title="Single Page"></div>
+            <div class="ee-tool-row4">
+                <div id="ee-page-layout" class="ee-layout-single" title="Switch to single page view"></div>
             </div>
-            <div class="tool-row5">
-                <div id="fullscreenEdition" class="enter_fullscreen" title="Enter Fullscreen"></div>
+            <div class="ee-tool-row5">
+                <div id="ee-fullscreenEdition" class="ee-enter_fullscreen" title="Enter Fullscreen"></div>
             </div>
         </div>
     </div>
+
+
 </section>
+

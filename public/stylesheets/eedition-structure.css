@@ -1,0 +1,468 @@
+/* structure.css - START*/
+
+#pagecontent
+{
+    max-width: none;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left;
+    float: none;
+    width: 100%;
+
+    padding: 0;
+    border: 0;
+    height: auto;
+
+}
+
+#pagecontent, #eedition-container, #eeditionpagedivA, #eeditionpagedivB {
+    padding: 0;
+    border: 0;
+    height: auto;
+}
+
+
+#pagecontent img
+{    
+    max-width: 100%;
+    width: 100%;
+    border: none;
+}
+
+
+.menu-bar
+{
+    max-width: none;    
+}
+
+#eedition-container
+{
+    float:left;
+    width:100%;
+}
+
+.eeditionpagediv
+{
+    float:left;
+    width:50%;    
+}
+
+.eeditionpagedivFirst
+{
+    width:100%;
+    float:none;
+    margin-left:auto;
+    margin-right:auto;
+} 
+
+.eeditionpagedivSecond
+{
+    display:none;  
+
+} 
+
+
+
+/*
+.enter_fullscreen,.exit_fullscreen {
+    background: url("../images/reader/eedition/fullscreen.png") no-repeat scroll 50% 0 transparent;
+    padding: 5% 0 5% 0;
+    background-position:center; 
+    cursor: pointer;
+    display: inline-block;
+    height: 22px;
+    width: 10%;
+}
+.exit_fullscreen {
+    background-image: url("../images/reader/eedition/exit-fullscreen.png");
+}
+*/
+.audio1
+{
+    cursor:pointer;
+    position: absolute;
+    max-width: 24px;
+}
+#ee-overlays
+{
+    position: absolute;    
+}
+
+
+.ee-overlay
+{
+    cursor:pointer;
+    position: absolute;    
+}
+
+.ee-overlay-sp-0
+{    
+    width:36px;    
+}
+
+.ee-overlay-sp-1
+{    
+    width:44px;    
+}
+
+.ee-overlay-sp-2
+{    
+    width:56px;    
+}
+
+.ee-overlay-sp-3
+{    
+    width:72px;    
+}
+
+.ee-overlay-sp-4
+{    
+    width:90px;   
+}
+
+.ee-overlay-sp-5
+{    
+    width:108px;    
+}
+
+
+.ee-overlay-dp-2
+{    
+    width:28px;    
+}
+
+.ee-overlay-dp-3
+{    
+    width:36px;    
+}
+
+.ee-overlay-dp-4
+{    
+    width:44px;   
+}
+
+.ee-overlay-dp-5
+{    
+    width:56px;    
+}
+
+.ee-overlay-dp-6
+{    
+    width:72px;    
+}
+
+.ee-overlay-dp-7
+{    
+    width:90px;    
+}
+
+.ee-overlay-dp-8
+{    
+    width:108px;    
+}
+
+
+.loading-indicator {
+    height: 80px;
+    width: 80px;
+    background: url( '../images/reader/loading.gif' );
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.loading-indicator-overlay {
+    background-color: #FFFFFF;
+    opacity: 0.6;
+    filter: alpha(opacity = 60);
+}
+
+.ee-book-toolbar-wrapper
+{
+    position:fixed;
+    bottom:0px;
+    width:100%;
+    left:0
+}
+
+.ee-book-toolbar
+{
+    margin: 0 auto;
+    opacity: 0.1;
+    width: 500px;
+}
+.ee-book-toolbar:hover, .ee-book-toolbar-visible
+{
+    opacity: 1.0;
+}
+.ee-tool-row1
+{   -webkit-border-radius: 8px 0px 0px 8px;
+    -moz-border-radius: 8px 0px 0px 8px;
+    border-radius: 8px 0px 0px 8px;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+    color: #10385a;
+    float: left; 
+}
+.ee-tool-row2
+{   -webkit-border-radius: 0px 0px 0px 0px;
+    -moz-border-radius: 0px 0px 0px 0px;
+    border-radius: 0px 0px 0px 0px;
+    margin-left: 2px;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+    color: #10385a;
+    float: left;
+
+}
+
+.ee-tool-row3
+{   -webkit-border-radius:   0px 0px 0px 0px;
+    -moz-border-radius:   0px 0px 0px 0px;
+    border-radius:   0px 0px 0px 0px;
+    margin-left: 2px;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+    color: #10385a;
+    float: left;
+}
+.ee-tool-row4
+{   -webkit-border-radius: 0px 0px 0px 0px;
+    -moz-border-radius: 0px 0px 0px 0px;
+    border-radius: 0px 0px 0px 0px;
+    margin-left: 2px;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+    color: #10385a;
+    float: left;
+    width:60px;
+}
+.ee-tool-row5
+{   -webkit-border-radius:  0px 8px 8px 0px; 
+    -moz-border-radius:  0px 8px 8px 0px; 
+    border-radius:  0px 8px 8px 0px; 
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+    margin-left: 2px;
+    color: #10385a;
+    float: left;
+    width:60px;
+}
+.ee-nav
+{    
+    color: #fff;
+    font-family: "Trebuchet MS","Arial","Helvetica","Verdana","sans-serif";
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    min-width: 116px;
+    font-weight: bold;
+    min-height: 22px;
+    font-size: 16px;
+}
+
+.ee-prev
+{    
+    background: url("../images/reader/common/Previous_Disable.png") no-repeat scroll 0 0 transparent;    
+    background-position:center; 
+    float: left;
+    cursor: pointer;
+    min-height: 22px;
+    min-width: 15px;
+    padding: 10px 15px 10px 14px;
+}
+.ee-prev:hover
+{
+    background: url("../images/reader/common/Previous.png") no-repeat scroll 0 0 transparent;    
+    background-position:center; 
+    float: left;
+    cursor: pointer;
+    min-height: 22px;
+    min-width: 15px;
+    padding: 10px 15px 10px 14px;
+}
+
+.ee-next
+{
+    background: url("../images/reader/common/Next_Disable.png") no-repeat scroll 0 0 transparent;   
+    background-position:center; 
+    float: left;
+    cursor: pointer;
+    min-height: 22px;
+    min-width: 15px;
+    padding: 10px 15px 10px 14px;
+}
+.ee-next:hover
+{
+    background: url("../images/reader/common/Next.png") no-repeat scroll 0 0 transparent;   
+    background-position:center; 
+    float: left;
+    cursor: pointer;
+    min-height: 22px;
+    min-width: 15px;
+    padding: 10px 15px 10px 14px;
+}
+
+.ee-zoomin
+{
+    background: url("../images/reader/common/ZoomPlus_Disable.png") no-repeat scroll 0 0 transparent;    
+    background-position:center; 
+    float: left;
+    cursor: pointer;
+    min-height: 22px;
+    min-width: 21px;
+    padding: 10px 12px 10px 11px;
+}
+.ee-zoomin:hover
+{
+    background: url("../images/reader/common/ZoomPlus.png") no-repeat scroll 0 0 transparent;   
+    background-position:center; 
+    float: left;
+    cursor: pointer;
+    min-height: 22px;
+    min-width: 21px;
+    padding: 10px 12px 10px 11px;
+
+}
+
+.ee-zoomout
+{
+    background: url("../images/reader/common/ZoomMinus_Disable.png") no-repeat scroll 0 0 transparent;    
+    background-position:center; 
+    float: left;
+    cursor: pointer;
+    min-height: 21px;
+    min-width: 21px; 
+    padding: 10px 12px 10px 11px;
+}
+.ee-zoomout:hover
+{
+    background: url("../images/reader/common/ZoomMinus.png") no-repeat scroll 0 0 transparent;    
+    background-position:center; 
+    float: left;
+    cursor: pointer;
+    min-height: 21px;
+    min-width: 21px;
+    padding: 10px 12px 10px 11px;
+}
+
+.ee-layout-double
+{
+    background: url("../images/reader/common/DoublePage_Disable.png") no-repeat scroll 0 0 transparent;   
+    background-position:center; 
+    float: left;
+    cursor: pointer;
+    min-height: 22px;
+    min-width: 33px;
+    width: 45px;
+    padding: 10px 10px 10px 10px;
+}
+.ee-layout-double:hover
+{
+    background: url("../images/reader/common/DoublePage.png") no-repeat scroll 0 0 transparent;    
+    background-position:center; 
+    float: left;
+    cursor: pointer;
+    min-height: 22px;
+    min-width: 33px;
+    width: 45px;
+    padding: 10px 10px 10px 10px;
+}
+.ee-layout-single
+{
+    background: url("../images/reader/common/SinglePage_Disable.png") no-repeat scroll 0 0 transparent;   
+    background-position:center; 
+    float: left;
+    cursor: pointer;
+    min-height: 22px;
+    min-width: 33px;
+    width: 45px;
+    padding: 10px 10px 10px 10px;
+}
+.ee-layout-single:hover
+{
+    background: url("../images/reader/common/SinglePage.png") no-repeat scroll 0 0 transparent;    
+    background-position:center; 
+    float: left;
+    cursor: pointer;
+    min-height: 22px;
+    min-width: 33px;
+    width: 45px;
+    padding: 10px 10px 10px 10px;
+}
+.ee-exit_fullscreen 
+{
+    background: url("../images/reader/common/Fullscreen_Disable.png") no-repeat scroll 0 0 transparent;
+    background-position:center; 
+    cursor: pointer;
+    min-width: 22px;
+    min-height: 22px;
+    padding: 10px 10px 10px 10px;
+}
+.ee-exit_fullscreen:hover
+{
+    background: url("../images/reader/common/Fullscreen.png") no-repeat scroll 0 0 transparent;
+    background-position:center; 
+    cursor: pointer;
+    min-width: 22px;
+    min-height: 22px;
+    padding: 10px 10px 10px 10px;     
+}
+.ee-enter_fullscreen
+{
+    background: url("../images/reader/common/Minimize_Disable.png") no-repeat scroll 0 0 transparent;
+    background-position:center; 
+    cursor: pointer;
+    min-width: 22px;
+    min-height: 22px;
+    padding: 10px 10px 10px 10px;
+}
+.ee-enter_fullscreen:hover
+{
+    background: url("../images/reader/common/Minimize.png") no-repeat scroll 0 0 transparent;
+    background-position:center; 
+    cursor: pointer;
+    min-width: 22px;
+    min-height: 22px;
+    padding: 10px 10px 10px 10px;
+}
+.font-color-page-count
+{
+    color: #A0BeDe
+}
+.menu-bar
+{
+    dispaly: none;
+}
+#ee-home
+{
+    margin-top: 10px;
+    background-color: #14385D;
+    display: table;
+}
+#ee-home > p
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+.ee-disable-state
+{
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.5;
+}
+.ee-zoom-msg
+{
+    top:250px;
+    left: 0;
+    position: fixed;
+    width: 100%;
+}
+.ee-zoom-innerdiv
+{
+    -webkit-border-radius:  8px 8px 8px 8px; 
+    -moz-border-radius:  8px 8px 8px 8px; 
+    border-radius:  8px 8px 8px 8px; 
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.6);
+    color: #FFFFFF;
+    height: 22px;
+    margin: 0 auto 30px;
+    width: 200px;
+    padding: 10px;
+    text-align: center;
+}
+/* structure.css - END*/
