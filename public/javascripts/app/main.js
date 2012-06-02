@@ -183,6 +183,14 @@ $(document).ready(function () {
                 '/public/javascripts/reader/eedition.js']).wait(function () {
                     /*ActivityEngineInit.init(app_router.lastSelectedLang);*/
                 });
+
+            /*
+             require(['public/javascripts/reader/data-book1.js',
+             'public/javascripts/reader/jquery.showLoading.js',
+             'public/javascripts/reader/jquery.touchwipe.1.1.1.js',
+             'public/javascripts/reader/eedition.js'], function () {//todo-functionality} );
+            */
+
         }
 
     });
