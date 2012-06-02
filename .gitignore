@@ -22,3 +22,7 @@ composmentis.iws
 modules
 cobertura.ser
 public/gs
+offline/air/public
+offline/android/bin
+offline/android/gen
+offline/android/assets/www
