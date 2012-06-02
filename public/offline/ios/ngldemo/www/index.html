@@ -1,64 +1,83 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <title></title>
-  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
-	<meta charset="utf-8">
-
-
-	<!-- iPad/iPhone specific css below, add after your main css >
-	<link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />		
-	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />		
-	-->
-	<!-- If your application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
-	<script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
-    <script type="text/javascript">
-
-
-	// If you want to prevent dragging, uncomment this section
-	/*
-	function preventBehavior(e) 
-	{ 
-      e.preventDefault(); 
-    };
-	document.addEventListener("touchmove", preventBehavior, false);
-	*/
-	
-	/* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
-	see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
-	for more details -jm */
-	/*
-	function handleOpenURL(url)
-	{
-		// TODO: do something with the url passed in.
-	}
-	*/
-	
-	function onBodyLoad()
-	{		
-		document.addEventListener("deviceready", onDeviceReady, false);
-	}
-	
-	/* When this function is called, Cordova has been initialized and is ready to roll */
-	/* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
-	see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
-	for more details -jm */
-	function onDeviceReady()
-	{
-		// do your thing!
-		navigator.notification.alert("Cordova is working")
-	}
+    <head>
+        <meta charset="utf-8">
+            <title>NGL Looking Ahead</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="NGL Looking Ahead Demo, 2012">
+                    <meta name="author" content="Compro Technologies Pvt. Ltd.">
+                        <!-- Le stylesheets-->
+                        <link rel="stylesheet" media="screen" href="public/bootstrap/less/bootstrap.css"/>
+                        <link rel="stylesheet" media="screen" href="public/bootstrap/less/responsive.css"/>
+                        
+                        <script>
+                            NGLApplicationConf  = new function() {
+                                this.offline_mode = 1;
+                                this.skin="ngconnect";
+                                //this.skin="ngconnect";
+                            };
+                            </script>
+                        
+                        <link rel="shortcut icon" href="public/images/favicon.ico" type="image/x-icon">
+                            <!-- HTML HEAD Title, Meta tags, CSS includes -->
+                            <link rel="stylesheet" media="all" href="public/stylesheets/reader.css" />
+    </head>
     
-    </script>
-  </head>
-  <body onload="onBodyLoad()">
-	<h1>Hey, it's Cordova!</h1>
-	<p>Don't know how to get started? Check out our <em><a target="_blank" href="http://docs.phonegap.com/en/edge/guide_getting-started_ios_index.md.html#Getting%20Started%20with%20iOS">Getting Started Guide</a></em>
-	<br />
-	<ol>
-		<li>Check your console log for any white-list rejection errors.</li>
-		<li>Add your allowed <strong>hosts</strong> in Cordova.plist/ExternalHosts (wildcards OK, don't enter the URL scheme)</li>
-	</ol>
-  </body>
+    <body class="theme-myelt" >
+        
+        <!-- AJAX Error dialog-->
+        <div id="error-modal" class="modal fade hide">
+            <div class='modal-header'>
+                <button class='close' data-dismiss='modal'>&times;</button>
+                <h2>Oops!</h2>
+                <h3 class="error-status-code"></h3>
+                <h4 class="error-message"></h4>
+                <h5 class="error-url"></h5>
+            </div>
+            <div class='modal-body'></div>
+            <div class='modal-footer'>
+                <a href='#' class='btn' data-dismiss='modal' >Close</a>
+            </div>
+        </div>
+        
+        <div id="backbone_container">
+            
+        </div>
+        
+        <!-- Le javascript
+         ================================================== -->
+        <script type="text/javascript" src="public/javascripts/jquery-1.7.1.min.js"  ></script>
+        <script type="text/javascript" src="public/bootstrap/js/bootstrap-transition.js"  ></script>
+        <script type="text/javascript" src="public/bootstrap/js/bootstrap-modal.js"  ></script>
+        <script type="text/javascript" src="public/bootstrap/js/bootstrap-dropdown.js"  ></script>
+        <script type="text/javascript" src="public/bootstrap/js/bootstrap-collapse.js"  ></script>
+        <script type="text/javascript" src="public/bootstrap/js/bootstrap-carousel.js"  ></script>
+        <script type="text/javascript" src="public/bootstrap/js/bootstrap-button.js"  ></script>
+        <script type="text/javascript" src="public/javascripts/global-init.js"  ></script>
+        
+        <!-- This scripts are needed for offline apps only-->
+        <script src="public/offline/preloaded-views.js" type="text/javascript"
+            charset="utf-8"></script>
+        <script src="cordova-1.7.0.js" type="text/javascript"
+            charset="utf-8"></script>
+        
+        
+        <script type="text/javascript">
+            
+            jQuery(document).ready(function() {
+                                   $('.carousel').carousel();
+                                   $().dropdown();
+                                   });
+            
+            </script>
+        
+        <script type="text/javascript" src="public/javascripts/underscore-1.3.3.js"  ></script>
+        <script type="text/javascript" src="public/javascripts/template-cache.js"  ></script>
+        <script type="text/javascript" src="public/javascripts/mustache-0.5.0-dev.js"  ></script>
+        <script type="text/javascript" src="public/javascripts/backbone.js"  ></script>
+        <script type="text/javascript" src="public/javascripts/LAB-2.0.3.js"  ></script>
+        <script type="text/javascript" src="public/javascripts/app/main.js"  ></script>
+        
+        <!-- Placed at the end of the document so the pages load faster -->
+    </body>
 </html>
