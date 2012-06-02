@@ -1,105 +1,183 @@
 var eReaderJS = {
 
-    Initilaze: function(pageNumber, bookDataObject)
+    initHardVars: function()
     {
-        this.eeCurrentpage = pageNumber;
-        this.bookData = bookDataObject;
-        this.nwidth = 100;
-        this.fullscreenOn = false;
-       
-        this.eePageLayout = 0; //0:default. 1:single, 2:double
-        this.eeSmallScreen = false;        
-        this.eeOverlayCalcBase = 1200;
-        this.eeZoomState = -1;
-        this.eeZoomChangedA = false;
-        this.eeZoomChangedB = false;
-        this.eeImageIconPath = "/public/images/reader/common/image_icon";
-        this.eeVideoIconPath = "/public/images/reader/common/video_icon";
-        this.eeAudioIconPath = "/public/images/reader/common/audio_icon";
-        this.eeIsSecondpageAg = false;
+        this.eeImageIconPath = "/public/images/reader/eedition/overlays/image_icon";
+        this.eeVideoIconPath = "/public/images/reader/eedition/overlays/video_icon";
+        this.eeAudioIconPath = "/public/images/reader/eedition/overlays/audio_icon";
         this.eeVideoIconPathPostfix = {
             "default": ".svg",
             "hover"  : "-hover.svg"
         };
-        this.bookHashMap = {
-            "book1":"assets/data/book1.json", 
-            "book2":"assets/data/book2.json"
-        };
         
-        
-        this.tabEventAdded = false;
-
+        this.eeDefaultPageSource =  "/public/images/reader/eedition/defaultPage.png";
+    },
+    
+    
+   
+   
+    initZoomSatesVars:function()
+    {
+        this.eeZoomState = -1;
         this.totalZoomStates = 9;
 
         this.spMinStateIndex = 0;
-        //this.spMaxStateIndex = 5;
-        this.spMaxStateIndex = 2;
+        this.spMaxStateIndex = 5;
         this.dpMinStateIndex = 2;
-        //this.dpMaxStateIndex = 8;
-        this.dpMaxStateIndex = 4;
-        this.eeDefaultPageSource =  "/public/images/reader/eedition/defaultPage.png";
-        this.eeLastAudioId = "";
-        this.eePageALastSource = "";
-        this.eePageBLastSource = "";
+        this.dpMaxStateIndex = 8;
+        this.eeBestFitStartState = 3;
 
         this.zoomingStateData = [ 
         {
+            readerwidth:600,
             pcwidth:'600px', 
             spfile:'_600.jpg', 
             dpfile:'', 
             zsindex:'0'
         },
         {
+            readerwidth:720,
             pcwidth:'720px', 
             spfile:'_720.jpg', 
             dpfile:'', 
             zsindex:'1'
         },
         {
+            readerwidth:940,
             pcwidth:'940px', 
             spfile:'_940.jpg', 
             dpfile:'_470.jpg', 
             zsindex:'2'
         },
         {
+            readerwidth:1200,
             pcwidth:'1200px', 
             spfile:'_1200.jpg', 
             dpfile:'_600.jpg', 
             zsindex:'3'
         },
         {
+            readerwidth:1500,
             pcwidth:'1500px', 
             spfile:'_1500.jpg', 
             dpfile:'_720.jpg', 
             zsindex:'4'
         },
         {
+            readerwidth:1800,
             pcwidth:'1800px', 
             spfile:'_1800.jpg', 
             dpfile:'_940.jpg', 
             zsindex:'5'
         },
         {
+            readerwidth:2400,
             pcwidth:'2400px', 
             spfile:'', 
             dpfile:'_1200.jpg', 
             zsindex:'6'
         },
         {
+            readerwidth:3000,
             pcwidth:'3000px', 
             spfile:'', 
             dpfile:'_1500.jpg',     
             zsindex:'7'
         },
         {
+            readerwidth:3600,
             pcwidth:'3600px', 
             spfile:'', 
             dpfile:'_1800.jpg', 
             zsindex:'8'
         }
         ];
-
     },
+    
+    eeUpdateZoomStateData:function()
+    {
+        
+        if(this.eeMimimumImages)        
+        { 
+            //out 470 720, 1200, 1800  -- can be deleted.
+            // in 600 940, 1500
+            this.zoomingStateData[0].spfile = '_600.jpg';
+            this.zoomingStateData[0].dpfile = '';
+            
+            this.zoomingStateData[1].spfile = '_940.jpg';
+            this.zoomingStateData[1].dpfile = '';
+            
+            this.zoomingStateData[2].spfile = '_940.jpg';
+            this.zoomingStateData[2].dpfile = '_600.jpg';
+            
+            this.zoomingStateData[3].spfile = '_1500.jpg';
+            this.zoomingStateData[3].dpfile = '_600.jpg';
+            
+            this.zoomingStateData[4].spfile = '_1500.jpg';
+            this.zoomingStateData[4].dpfile = '_940.jpg';
+            
+            this.zoomingStateData[5].spfile = '';
+            this.zoomingStateData[5].dpfile = '_940.jpg';            
+                        
+            this.zoomingStateData[6].spfile = '';
+            this.zoomingStateData[6].dpfile = '_1500.jpg';
+            
+            this.zoomingStateData[7].spfile = '';
+            this.zoomingStateData[7].dpfile = '_1500.jpg';
+            
+            this.zoomingStateData[8].spfile = '';
+            this.zoomingStateData[8].dspfile = '';
+            
+            this.totalZoomStates = 8;
+            
+            this.spMinStateIndex = 0;
+            this.spMaxStateIndex = 4;
+            this.dpMinStateIndex = 2;
+            this.dpMaxStateIndex = 7;
+        }
+    /*
+        if(this.eeMinimumZoomStates)
+        {
+            this.totalZoomStates = 8;
+            
+            this.spMinStateIndex = 0;
+            this.spMaxStateIndex = 4;
+            this.dpMinStateIndex = 2;
+            this.dpMaxStateIndex = 7;           
+        }
+        */
+            
+    }, 
+    
+    initIntermediateVars: function()
+    {
+        this.eeZoomChangedA = false;
+        this.eeZoomChangedB = false;        
+        this.eeLastAudioId = "";
+        this.eePageALastSource = "";
+        this.eePageBLastSource = "";
+        this.eeIsSecondpageAg = false;
+        this.tabEventAdded = false;
+        
+    },
+    
+    initCalcBaseVars: function()
+    {
+        this.eeOverlayCalcBase = 1200;
+        this.eeViewPortMargin = 0;
+        this.eeSmallScreenLimit = 1024;        
+    },
+    
+    initPreferencesVars: function()
+    {
+        this.fullscreenOn = false;
+        this.eePageLayout = 0; //0:default. 1:single, 2:double
+        this.eeSmallScreen = false;
+        this.eeMimimumImages = false;
+        this.eeSingleAudio = false;
+        //this.eeMinimumZoomStates = false;
+        this.eeImageViewerEnabled = true;
+    },    
     
 
     checkAndUpdateExtenders:function()
@@ -247,59 +325,26 @@ var eReaderJS = {
                 } 
         
             }
-        }
-    
+        }   
     
         return retGroup;    
     },
 
     eeGetZoomStateForBestFit:function()
     {
-        var zoomState = -1;
-    
         var winWidth = $(window).width();
-    
-        if(winWidth > 0 && winWidth <= 960)
-        {            
-            if(winWidth <= 720)
-            {                
-                zoomState = 0; //pcwidth:600
-            } 
-            else // 721 to 960
-            {                
-                zoomState = 1; //pcwidth:720
-            }
-        }        
-        else
-        {            
-            if(winWidth > 960 && winWidth <= 1200)
-            {
-                zoomState = 2; //pcwidth:940
-            }        
-            else
-            {
-                if(winWidth > 1200 && winWidth < 1600)                
-                {
-                    zoomState = 3; //pcwidth:1200
-                }        
-                else
-                {
-                
-                    if(winWidth >= 1600 && winWidth < 1920)                
-                    {
-                        zoomState = 4;//pcwidth:1500
         
-                    } 
-                    else
-                    { 
-                        zoomState = 5; //pcwidth:1800
-                    }
-                }
-                zoomState = 3; //pcwidth:1200
+        var zoomState = this.eeBestFitStartState;
+        
+        for(var j = zoomState; j >= 0; j--)
+        {            
+            if(this.zoomingStateData[j].readerwidth < winWidth)
+            {
+                zoomState = j;                 
+                break;
             }
         }
-        return zoomState;
-    
+        return zoomState;    
     },
 
     eeUpdateInitialZoomStateAndPageNo:function ()
@@ -311,7 +356,7 @@ var eReaderJS = {
         
             this.eeZoomState = this.eeGetZoomStateForBestFit();                
        
-            if($(window).width() < 1024)
+            if($(window).width() < this.eeSmallScreenLimit - this.eeViewPortMargin)
             {        
                 this.eeSmallScreen = true;
             }
@@ -324,7 +369,7 @@ var eReaderJS = {
 
     eeUpdateResizedZoomStateAndPageNo:function ()
     {    
-        if($(window).width() < 1024)
+        if($(window).width() < this.eeSmallScreenLimit - this.eeViewPortMargin)
         {
             if(this.eeSmallScreen == false)//pagelayout == 0 check not required
             {
@@ -373,8 +418,8 @@ var eReaderJS = {
             }
             }
         }
-        this.eeZoomChangedA = true;
-        this.eeZoomChangedB = true;    
+    this.eeZoomChangedA = true;
+    this.eeZoomChangedB = true;    
     },
 
     eeCheckAndRemovePreviousAudio: function()
@@ -415,8 +460,11 @@ var eReaderJS = {
                 var pagWd = Number($("#eeditionpagedivA").width());    
                    
                 var assetUrl=assetGrp.assets.asset[0].url;
-                assetUrl="/public/audio/book1/sci_bib_4_es_1_rwm_001";
-                   
+                
+                if(this.eeSingleAudio == true)
+                {
+                    assetUrl = "/public/audio/book1/sci_bib_4_es_1_rwm_001";
+                }                   
                     
                 if(this.eePageLayout != 1 && this.eeSmallScreen != true &&  this.eeIsSecondpageAg == true)
                 {                        
@@ -474,36 +522,34 @@ var eReaderJS = {
             }        
             else if(assetGrp.type == "img")
             {
-                /*
-
-
                 this.eeCheckAndRemovePreviousAudio();
         
-                for(var j = 1; j <= assetCount; j++)
+                if(this.eeImageViewerEnabled)
                 {
-                    var imageUrl=assetGrp.assets.asset[j - 1].url;
-                    var imageTitle=assetGrp.assets.asset[j - 1].title;
+                    for(var j = 1; j <= assetCount; j++)
+                    {
+                        var imageUrl=assetGrp.assets.asset[j - 1].url;
+                        var imageTitle=assetGrp.assets.asset[j - 1].title;
 
-                    assetGrp.assets.asset[j - 1].caption = imageTitle;
-                    assetGrp.assets.asset[j - 1].title = imageTitle;
-                    assetGrp.assets.asset[j - 1].href = 'imageviewer.html?url='+imageUrl;
-                }
+                        assetGrp.assets.asset[j - 1].caption = imageTitle;
+                        assetGrp.assets.asset[j - 1].title = imageTitle;
+                        assetGrp.assets.asset[j - 1].href = 'imageviewer.html?url='+imageUrl;
+                    }
         
-                if(this.eeSmallScreen == false)//pagelayout == 0 check not required
-                {
-                    $.fancybox(
-                        assetGrp.assets.asset,
-                        {
-                            'type' : 'iframe'
-                        }
-                        );
+                    if(this.eeSmallScreen == false)//pagelayout == 0 check not required
+                    {
+                        $.fancybox(
+                            assetGrp.assets.asset,
+                            {
+                                'type' : 'iframe'
+                            }
+                            );
+                    }
+                    else
+                    {
+                        this.showPhotoSwipe(window, window.Code.PhotoSwipe, assetGrp.assets.asset)
+                    }
                 }
-                else
-                {
-                    this.showPhotoSwipe(window, window.Code.PhotoSwipe, assetGrp.assets.asset)
-                }
-
-                */
             }
             else
             {
@@ -540,7 +586,7 @@ var eReaderJS = {
     
     eeAddOverLayIcon:function(olid)
     {
-        $('#ee-overlays').append('<div id=\"' + olid + '\" class="ee-overlay"><img class="ee-overlay-img" src="/public/images/reader/common/image_icon.svg"/></div>');
+        $('#ee-overlays').append('<div id=\"' + olid + '\" class="ee-overlay"><img class="ee-overlay-img" src="/public/images/reader/eedition/overlays/image_icon.svg"/></div>');
         $('#' + olid).click(function(){
             wcid = $(this).attr("wcid");
             wctype = $(this).attr("wctype");
@@ -731,6 +777,7 @@ var eReaderJS = {
 
     updateImageSource:function ()
     {
+        
         var leftPageImage = "";
         var rightPageImage = "";
         if(this.eePageLayout == 1 || this.eeSmallScreen == true)
@@ -761,7 +808,8 @@ var eReaderJS = {
             }
         }
         else
-        {        
+        {   
+            
             if(this.zoomingStateData[this.eeZoomState].dpfile != "")
             {
                 if(this.eeCurrentpage > 0)
@@ -909,15 +957,15 @@ var eReaderJS = {
                 $("#zoomInEdition").removeClass("ee-disable-state");
             }
         
-            if(this.eeZoomState > this.spMinStateIndex)
+            if(this.eeZoomState > this.spMinStateIndex) //0,1,2,3,4,5
             {
                 $("#zoomOutEdition").removeAttr("wcdisabled");
-                $("#zoomInEdition").removeClass("ee-disable-state");
+                $("#zoomOutEdition").removeClass('ee-disable-state');
             }
             else
             {
                 $("#zoomOutEdition").attr("wcdisabled", "true");
-                $("#zoomInEdition").addClass('ee-disable-state');
+                $("#zoomOutEdition").addClass('ee-disable-state');
             }
         }
         else
@@ -1063,14 +1111,14 @@ var eReaderJS = {
         }
         */
     
-//        if($(window).width() <= 1024)
-//        {
-//            $('#ee-book-toolbar > div').addClass('ee-book-toolbar-visible');
-//        }
-//        else
-//        {
-//            $('#ee-book-toolbar > div').removeClass('ee-book-toolbar-visible');
-//        }
+    //        if($(window).width() <= 1024)
+    //        {
+    //            $('#ee-book-toolbar > div').addClass('ee-book-toolbar-visible');
+    //        }
+    //        else
+    //        {
+    //            $('#ee-book-toolbar > div').removeClass('ee-book-toolbar-visible');
+    //        }
     },
 
 
@@ -1144,6 +1192,8 @@ var eReaderJS = {
 
     eeZoomButtonClicked: function (zoomDir)
     {   
+        //alert("SmallScreen:" + this.eeSmallScreen + "  PageLayout:" + this.eePageLayout + "  ZoomState:" + this.eeZoomState);
+        
         if(zoomDir == 'in')
         {
             $("#ee-book-toolbar").removeAttr('style');
@@ -1175,13 +1225,7 @@ var eReaderJS = {
         else if(zoomDir == 'out')
         {
             if(this.eeZoomState > 0)
-            {
-                if(this.eePageLayout != 1 && this.eeSmallScreen != true)
-                {
-                    if(this.eeZoomState==3)
-                    {
-                }
-                }
+            {                
                 if(this.eePageLayout != 1 && this.eeSmallScreen != true) // it is double 
                 {
                     if(this.eeZoomState > this.dpMinStateIndex)
@@ -1204,6 +1248,8 @@ var eReaderJS = {
         }
         this.updatePageContent();
         this.eeAddScrollHandler();
+        
+        //alert("SmallScreen:" + this.eeSmallScreen + "  PageLayout:" + this.eePageLayout + "  ZoomState:" + this.eeZoomState);
     },
 
     eeNavigateNext:function (changeBy)
@@ -1428,22 +1474,13 @@ var eReaderJS = {
 
     eeAddZoomEventHandlers:function ()
     {
-        $('#zoomInEdition').click(function(){
+        $('#zoomInEdition').click(function()
+        {
             if($(this).attr("wcdisabled") != 'true')
             {
                 eReaderJS.eeZoomButtonClicked('in');
             }
-        }); 
-    
-        $('#zoomInEdition').click(function(){
-            if($(this).attr("wcdisabled") == 'true')
-            {
-                $('#ee-zoom-msg').remove();
-                $("#eedition-container").append("<div id='ee-zoom-msg' class='ee-zoom-msg'><div class='ee-zoom-innerdiv'>Zoomin Max Limit..</div></div>") ;
-                $('#ee-zoom-msg').delay(3000).fadeOut();
-            }
-        }); 
-        
+        });        
         
         $('#zoomOutEdition').click(function()
         {
@@ -1451,26 +1488,11 @@ var eReaderJS = {
             {
                 eReaderJS.eeZoomButtonClicked('out');
             }
-        }); 
-        $('#zoomOutEdition').click(function()
-        {
-            if($(this).attr("wcdisabled") == 'true')
-            {
-                $('#ee-zoom-msg').remove();
-                $("#eedition-container").append("<div id='ee-zoom-msg' class='ee-zoom-msg'><div class='ee-zoom-innerdiv'>Zoomout Min Limit..</div></div>") ;
-                $('#ee-zoom-msg').delay(3000).fadeOut();
-            }
-        }); 
-    
-        $('#zoomInEdition').click( function(){
-            if($(this).attr("wcdisabled") != 'true')
-            {
-                eReaderJS.eeZoomButtonClicked('in');
-            }
-        });     
+        });            
         
     
-        $('#ee-fullscreenEdition').click(function(){
+        $('#ee-fullscreenEdition').click(function()
+        {
             eReaderJS.eeFullscreenClicked();
         }); 
 
@@ -1566,40 +1588,103 @@ var eReaderJS = {
         })
     },
 */
-    Setup:function ()
-    {
-        //alert(this.eeZoomState);
-        
-        //$(document).ready(function()
-        //{
-            
-        //domreadyMenubar();
-        
-        
-        this.eeUpdateInitialZoomStateAndPageNo();
-            
-        this.updateImageLayout();
-            
-        
-        /*
-        $('#eedition-container').showLoading();
-        $.getJSON("assets/data/book1.json",function(data){
-            $('#eedition-container').hideLoading();
-            this.bookData = data;
-            this.domreadyEeditionpage();
-        })
-         */
-        this.domreadyEeditionpage();
-        this.eeAddTabEventHandlers();
-    //}); 
     
-    }
+    //////////////////////////
+    ////  API Functions   ////
+    //////////////////////////    
+    initilaze: function(pageNumber, bookDataObject)
+    {
+        this.initHardVars();
+        this.initZoomSatesVars();
+        this.initCalcBaseVars();
+        this.initIntermediateVars();
+        this.initPreferencesVars();
+        
+        this.eeCurrentpage = pageNumber;
+        this.bookData = bookDataObject;
+    },
+    
+    customize:function(useSingleAudio, useMimimumImages, enableImageViewer)
+    {
+        this.eeMimimumImages = useMimimumImages;
+        this.eeSingleAudio = useSingleAudio;
+        //this.eeMinimumZoomStates = useMinimumZoomStates;
+        this.eeImageViewerEnabled = enableImageViewer;
+        this.eeUpdateZoomStateData();
+        
+    },
+    
+    setup:function ()
+    {
+        this.eeUpdateInitialZoomStateAndPageNo();            
+        this.updateImageLayout();        
+        this.domreadyEeditionpage();
+        this.eeAddTabEventHandlers();    
+    },
+    
+    getCurrentPage:function ()
+    {
+        return this.eeCurrentpage;
+    },
+    
+    nextPage:function ()
+    {
+        var currentpage = this.eeCurrentpage;
+        this.eeCheckAndShowNextPage();
+        if(currentpage < this.eeCurrentpage)
+        {
+            return true;            
+        }
+        else
+        {
+            return false;
+        }        
+    },
+    
+    previousPage:function ()
+    {
+        var currentpage = this.eeCurrentpage;
+        this.eeCheckAndShowPreviousPage();
+        if(currentpage > this.eeCurrentpage)
+        {
+            return true;            
+        }
+        else
+        {
+            return false;
+        }   
+    },
+    
+    
+    zoomIn:function ()
+    {
+        var zoomState = this.eeZoomState;
+        this.eeZoomButtonClicked('in');
+        if(zoomState < this.eeZoomState)
+        {
+            return true;            
+        }
+        else
+        {
+            return false;
+        }   
+    },
+    
+    zoomOut:function ()
+    {
+        var zoomState = this.eeZoomState;
+        this.eeZoomButtonClicked('out');
+        if(zoomState > this.eeZoomState)
+        {
+            return true;            
+        }
+        else
+        {
+            return false;
+        }   
+    }    
+    
 };
-
-$(document).ready(function() {
-    eReaderJS.Initilaze(0, bookData);
-    eReaderJS.Setup();    
-});
 
 $(window).load(function () {        
     eReaderJS.setInitialToolbarPosition();

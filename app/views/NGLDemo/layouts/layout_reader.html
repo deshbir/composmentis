@@ -29,6 +29,14 @@
 <script type="text/javascript" src="/public/javascripts/reader/eedition.js"></script>
 <script type="text/javascript" src="/public/javascripts/reader/book1.js"></script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+    eReaderJS.initilaze(0, bookData);
+    eReaderJS.customize(true, false, false);
+    eReaderJS.setup();
+    });
+</script>
+
 <!-- Placed at the end of the document so the pages load faster -->
 </body>
 </html>

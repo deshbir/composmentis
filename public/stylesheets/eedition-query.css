@@ -21,48 +21,33 @@
         display:none;  
 
     }
-
-    .ee-zoomin
+    .ee-tool-row1
     {
-        background: url("../images/reader/common/ZoomPlus_Disable.png") no-repeat scroll 0 0 transparent;    
-        background-position:center; 
-        float: left;
-        cursor: pointer;
-        min-height: 22px;
-        min-width: 21px;
-        padding: 10px 12px 10px 11px;
+        -webkit-border-radius: 8px 8px 8px 8px;
+        -moz-border-radius: 8px 8px 8px 8px;
+        border-radius: 8px 8px 8px 8px;
+        margin-top: -66px;
+        margin-left: 70px;
     }
-    .ee-zoomin:hover
+    .ee-tool-row2
     {
-        background: url("../images/reader/common/ZoomPlus.png") no-repeat scroll 0 0 transparent;   
-        background-position:center; 
-        float: left;
-        cursor: pointer;
-        min-height: 22px;
-        min-width: 21px;
-        padding: 10px 12px 10px 11px;
-
+        -webkit-border-radius: 8px 0px 0px 8px;
+        -moz-border-radius: 8px 0px 0px 8px;
+        border-radius: 8px 0px 0px 8px;
     }
-
-    .ee-zoomout
+    .ee-tool-row3
     {
-        background: url("../images/reader/common/ZoomMinus_Disable.png") no-repeat scroll 0 0 transparent;    
-        background-position:center; 
-        float: left;
-        cursor: pointer;
-        min-height: 21px;
-        min-width: 21px; 
-        padding: 10px 12px 10px 11px;
+        -webkit-border-radius: 0px 8px 8px 0px;
+        -moz-border-radius: 0px 8px 8px 0px;
+        border-radius: 0px 8px 8px 0px;
     }
-    .ee-zoomout:hover
+    .ee-tool-row5
     {
-        background: url("../images/reader/common/ZoomMinus.png") no-repeat scroll 0 0 transparent;    
-        background-position:center; 
-        float: left;
-        cursor: pointer;
-        min-height: 21px;
-        min-width: 21px;
-        padding: 10px 12px 10px 11px;
+        display: none;
+    }
+    .ee-book-toolbar
+    {
+        width: 260px;
     }
 }
 @media screen and (min-width: 320px) and (max-width: 480px)

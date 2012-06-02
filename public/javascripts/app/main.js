@@ -177,11 +177,23 @@ $(document).ready(function () {
 
         afterRender:function (){
             $LAB.setOptions({AlwaysPreserveOrder:true})
-                .script(['/public/javascripts/reader/data-book1.js',
+                .script(['/public/javascripts/reader/book1.js',
                 '/public/javascripts/reader/jquery.showLoading.js',
-                '/public/javascripts/reader/jquery.touchwipe.1.1.1.js',
                 '/public/javascripts/reader/eedition.js']).wait(function () {
-                    /*ActivityEngineInit.init(app_router.lastSelectedLang);*/
+
+                    /*
+                        param 1 - start page number. 0 is cover page.
+                    */
+                    eReaderJS.initilaze(5, bookData);
+
+                    /*
+                        param 1 - singleaudio
+                        param 2 - limit images
+                        param 3 - enable image icon launch/view
+                     */
+                    eReaderJS.customize(true, true, false);
+                    eReaderJS.setup();
+
                 });
 
             /*

@@ -30,7 +30,6 @@
     border: none;
 }
 
-
 .menu-bar
 {
     max-width: none;    
@@ -66,7 +65,7 @@
 
 /*
 .enter_fullscreen,.exit_fullscreen {
-    background: url("../images/reader/eedition/fullscreen.png") no-repeat scroll 50% 0 transparent;
+    background: url("../images/eedition/fullscreen.png") no-repeat scroll 50% 0 transparent;
     padding: 5% 0 5% 0;
     background-position:center; 
     cursor: pointer;
@@ -75,7 +74,7 @@
     width: 10%;
 }
 .exit_fullscreen {
-    background-image: url("../images/reader/eedition/exit-fullscreen.png");
+    background-image: url("../images/eedition/exit-fullscreen.png");
 }
 */
 .audio1
@@ -189,7 +188,7 @@
 {
     margin: 0 auto;
     opacity: 0.1;
-    width: 500px;
+    width: 550px;
 }
 .ee-book-toolbar:hover, .ee-book-toolbar-visible
 {
@@ -231,7 +230,6 @@
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
     color: #10385a;
     float: left;
-    width:60px;
 }
 .ee-tool-row5
 {   -webkit-border-radius:  0px 8px 8px 0px; 
@@ -241,17 +239,16 @@
     margin-left: 2px;
     color: #10385a;
     float: left;
-    width:60px;
 }
 .ee-nav
 {    
     color: #fff;
     font-family: "Trebuchet MS","Arial","Helvetica","Verdana","sans-serif";
     text-align: center;
-    padding: 10px 10px 10px 10px;
+    padding: 20px 6px 12px 6px;
     min-width: 116px;
     font-weight: bold;
-    min-height: 22px;
+    min-height: 32px;
     font-size: 16px;
 }
 
@@ -261,9 +258,9 @@
     background-position:center; 
     float: left;
     cursor: pointer;
-    min-height: 22px;
-    min-width: 15px;
-    padding: 10px 15px 10px 14px;
+    min-height: 32px;
+    min-width: 22px;
+    padding: 16px 21px;
 }
 .ee-prev:hover
 {
@@ -271,9 +268,9 @@
     background-position:center; 
     float: left;
     cursor: pointer;
-    min-height: 22px;
-    min-width: 15px;
-    padding: 10px 15px 10px 14px;
+    min-height: 32px;
+    min-width: 22px;
+    padding: 16px 21px;
 }
 
 .ee-next
@@ -282,9 +279,9 @@
     background-position:center; 
     float: left;
     cursor: pointer;
-    min-height: 22px;
-    min-width: 15px;
-    padding: 10px 15px 10px 14px;
+    min-height: 32px;
+    min-width: 22px;
+    padding: 16px 21px;
 }
 .ee-next:hover
 {
@@ -292,9 +289,9 @@
     background-position:center; 
     float: left;
     cursor: pointer;
-    min-height: 22px;
-    min-width: 15px;
-    padding: 10px 15px 10px 14px;
+    min-height: 32px;
+    min-width: 22px;
+    padding: 16px 21px;
 }
 
 .ee-zoomin
@@ -303,9 +300,9 @@
     background-position:center; 
     float: left;
     cursor: pointer;
-    min-height: 22px;
-    min-width: 21px;
-    padding: 10px 12px 10px 11px;
+    min-height: 32px;
+    min-width: 32px;
+    padding: 16px;
 }
 .ee-zoomin:hover
 {
@@ -313,9 +310,9 @@
     background-position:center; 
     float: left;
     cursor: pointer;
-    min-height: 22px;
-    min-width: 21px;
-    padding: 10px 12px 10px 11px;
+    min-height: 32px;
+    min-width: 32px;
+    padding: 16px;
 
 }
 
@@ -325,9 +322,9 @@
     background-position:center; 
     float: left;
     cursor: pointer;
-    min-height: 21px;
-    min-width: 21px; 
-    padding: 10px 12px 10px 11px;
+    min-height: 32px;
+    min-width: 32px; 
+    padding: 16px;
 }
 .ee-zoomout:hover
 {
@@ -335,9 +332,9 @@
     background-position:center; 
     float: left;
     cursor: pointer;
-    min-height: 21px;
-    min-width: 21px;
-    padding: 10px 12px 10px 11px;
+    min-height: 32px;
+    min-width: 32px;
+    padding: 16px;
 }
 
 .ee-layout-double
@@ -346,10 +343,9 @@
     background-position:center; 
     float: left;
     cursor: pointer;
-    min-height: 22px;
-    min-width: 33px;
-    width: 45px;
-    padding: 10px 10px 10px 10px;
+    min-height: 32px;
+    min-width: 48px;
+    padding: 16px 8px;
 }
 .ee-layout-double:hover
 {
@@ -357,10 +353,9 @@
     background-position:center; 
     float: left;
     cursor: pointer;
-    min-height: 22px;
-    min-width: 33px;
-    width: 45px;
-    padding: 10px 10px 10px 10px;
+    min-height: 32px;
+    min-width: 48px;
+    padding: 16px 8px;
 }
 .ee-layout-single
 {
@@ -368,10 +363,9 @@
     background-position:center; 
     float: left;
     cursor: pointer;
-    min-height: 22px;
-    min-width: 33px;
-    width: 45px;
-    padding: 10px 10px 10px 10px;
+    min-height: 32px;
+    min-width: 48px;
+    padding: 16px 8px;
 }
 .ee-layout-single:hover
 {
@@ -379,46 +373,45 @@
     background-position:center; 
     float: left;
     cursor: pointer;
-    min-height: 22px;
-    min-width: 33px;
-    width: 45px;
-    padding: 10px 10px 10px 10px;
+    min-height: 32px;
+    min-width: 48px;
+    padding: 16px 8px;
 }
 .ee-exit_fullscreen 
 {
     background: url("../images/reader/common/Fullscreen_Disable.png") no-repeat scroll 0 0 transparent;
     background-position:center; 
     cursor: pointer;
-    min-width: 22px;
-    min-height: 22px;
-    padding: 10px 10px 10px 10px;
+    min-width: 32px;
+    min-height: 32px;
+    padding: 16px;
 }
 .ee-exit_fullscreen:hover
 {
     background: url("../images/reader/common/Fullscreen.png") no-repeat scroll 0 0 transparent;
     background-position:center; 
     cursor: pointer;
-    min-width: 22px;
-    min-height: 22px;
-    padding: 10px 10px 10px 10px;     
+    min-width: 32px;
+    min-height: 32px;
+    padding: 16px;
 }
 .ee-enter_fullscreen
 {
     background: url("../images/reader/common/Minimize_Disable.png") no-repeat scroll 0 0 transparent;
     background-position:center; 
     cursor: pointer;
-    min-width: 22px;
-    min-height: 22px;
-    padding: 10px 10px 10px 10px;
+    min-width: 32px;
+    min-height: 32px;
+    padding: 16px;
 }
 .ee-enter_fullscreen:hover
 {
     background: url("../images/reader/common/Minimize.png") no-repeat scroll 0 0 transparent;
     background-position:center; 
     cursor: pointer;
-    min-width: 22px;
-    min-height: 22px;
-    padding: 10px 10px 10px 10px;
+    min-width: 32px;
+    min-height: 32px;
+    padding: 16px;
 }
 .font-color-page-count
 {
