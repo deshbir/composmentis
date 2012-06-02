@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'ngldemo' target in the 'ngldemo' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#endif
