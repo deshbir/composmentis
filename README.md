@@ -6,16 +6,19 @@ composmentis
 		- update /public/ to public/
 
 	- update bootstrap & responsive css
+
 	<public>   --- copy from project
 		javascripts
-		  - update /public/ to public/ in app/main.js
+		  - replace /public/ to public/ in app/main.js
 		content
 		css
 		   - update font paths in bootstrap.css
-           - update /public/ to public/ in reader.css
+		     replace - /public/bootstrap/less/../../font to ../../font
+           - update /public/ to public/ in reader/book1.js & reader/edition.js
 		images
 
 		preloaded-views.js - update the template view
+		  - change  /public/ to public/
 		  - change offline to singlepage in all paths
 
 

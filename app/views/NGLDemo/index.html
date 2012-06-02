@@ -80,7 +80,7 @@
                 <p><a class="btn" href="#{route-uri-x controller:'ngldemo' , action:'login' /}"><i class="icon-calendar"></i><span>&{'registration.returning.educators'} <small>(&{'registration.signin'})</small></span></a></p>
             #{/if}
             #{else}
-                <p><a class="btn" href="#{route-uri-x controller:'ngldemo' , action:'home' /}"><i class="icon-home"></i><span>Science Home <small>(${session.get("user")})</small></span></a></p>
+                <p><a class="btn" href="#{route-uri-x controller:'ngldemo' , action:'home' /}"><i class="icon-home"></i><span>Science Home <small>(#{text-user-name /})</small></span></a></p>
                 <p><a class="btn" href="#{route-uri-x controller:'ngldemo' , action:'reader' /}"><i class="icon-bookmark"></i><span>Start Reading <small>(Earth Science)</small></span></a></p>
             #{/else}
 

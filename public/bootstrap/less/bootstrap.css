@@ -3695,13 +3695,19 @@ to {
 .invisible {
     visibility: hidden;
 }
+body {
+    background-color: #454545;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 .splash {
+    background-color: #ffffff;
     padding: 20px;
     margin: 20px auto;
-    border: 3px solid;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
+    border: 3px solid #000000;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
 }
 .splash p {
     font-size: 16px;
@@ -3871,6 +3877,9 @@ to {
     /* -- */
 
 }
+#main-header .navbar {
+    padding-top: 10px;
+}
 /*-- Main Page Body */
 #main-body {
     background-color: #ffffff;
@@ -3993,6 +4002,7 @@ to {
 #main-body #containerParent {
     padding-top: 40px;
     padding-bottom: 40px;
+    min-height: 40px;
 }
 #main-body #containerDiv {
     border: 2px solid #2c2c2c;
@@ -4028,19 +4038,22 @@ to {
     clear: both;
 }
 .theme-myelt #hero {
-    background-color: #b6d7a9;
+    background-color: #afd49f;
 }
 .theme-myelt #main-header {
-    background-color: #b6d7a9;
+    background-color: #afd49f;
 }
 .theme-myelt .navbar .navbar-inner {
-    background-color: #b6d7a9;
+    background-color: #afd49f;
 }
 .theme-myelt .navbar .nav .active > a, .theme-myelt .navbar .nav .active > a:hover {
-    background-color: #b6d7a9;
+    background-color: #afd49f;
 }
 .theme-myelt .navbar .divider-vertical {
-    background-color: #b6d7a9;
+    background-color: #afd49f;
+}
+.reader-body {
+    margin-top: 0px;
 }
 .theme-ngconnect #hero {
     background-color: #79e0fe;

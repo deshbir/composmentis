@@ -598,10 +598,17 @@
 }
 /* ---------- Responsive ------------ */
 @media (max-width: 480px) {
+    body {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
     .splash {
         padding: 10px;
         margin: 0px auto;
         border: 0px;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
     }
     .splash .btn {
         width: 80%;
@@ -676,8 +683,17 @@
 
 }
 @media (max-width: 767px) {
+    body {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
     .splash {
         border: 0px;
+        margin: 0px auto;
+        border: 0px;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
     }
     /* Navbar customization */
     .navbar .nav > li > a, .navbar .dropdown-menu a {

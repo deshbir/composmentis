@@ -67,7 +67,7 @@
                 <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo' , action:'login' /}">&{'registration.returning'} <small>(&{'registration.signin'})</small></a></p>
             #{/if}
             #{else}
-                <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo' , action:'home' /}">&{'courses.title.2'} <small>(${session.get("user")})</small></a></p>
+                <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo' , action:'home' /}">&{'courses.title.2'} <small>(#{text-user-name /})</small></a></p>
                 <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo' , action:'activity' /}">Resume Activity <small>(Milestones)</small></a></p>
             #{/else}
         </div>
@@ -125,13 +125,6 @@
         <div class="span4">
             <img src="@{'/public/images/glyphicons/glyphicons_163_iphone.png'}">
             <h3>My FCE</h3>
-            <p>&{'global.loremipsum.3'}</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span4">
-            <img src="@{'/public/images/glyphicons/glyphicons_043_group.png'}">
-            <h3>Visions</h3>
             <p>&{'global.loremipsum.3'}</p>
         </div>
     </div>

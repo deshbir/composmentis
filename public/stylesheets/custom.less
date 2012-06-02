@@ -1,19 +1,25 @@
 @baseFontFamily:    'Lucida Casual', 'Comic Sans MS', 'HelveticaNeue';
 @NGLThemeColor: #e4e8e6;
+@NGLBodyBackgroundColor: #454545;
+@NGLFooterBackgroundColor: #333333;
+
 //@NGLThemeColor:    #F9E689;
 
 body    {
     //background: url(/public/images/16x16_ccc_transparent.gif);
+    background-color: @NGLBodyBackgroundColor;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .splash    {
-
+    background-color: @white;
     padding: 20px;
     margin: 20px auto;
-    border: 3px solid;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
+    border: 3px solid @black;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
 
     p  {
         font-size: 16px;
@@ -101,7 +107,7 @@ body    {
 }
 
 #support  {
-    background-color: #333333;
+    background-color: @NGLFooterBackgroundColor;
     padding: 20px 20px 0px 20px;
     color: #f5f5f5;
 
@@ -206,6 +212,11 @@ body    {
 /* Main Page Header */
 #main-header  {
 
+    //Extra padding for non-index page nav bars
+    .navbar {
+        padding-top: 10px;
+    }
+
     background-color: @NGLThemeColor;
     padding: 0px 20px 0px 20px;
 
@@ -219,7 +230,7 @@ body    {
 
 /*-- Main Page Body */
 #main-body   {
-   background-color: #ffffff;
+   background-color: @white;
    padding: 0px 20px 20px 20px;
 /* Remove later*/
     border-left: 2px solid;
@@ -353,7 +364,7 @@ body    {
 
 /*-- Main Page Footer */
 #main-footer {
-        background-color: #333333;
+        background-color: @NGLFooterBackgroundColor;
         padding: 10px 20px 0px 20px;
         color: #f5f5f5;
         text-align: center;
