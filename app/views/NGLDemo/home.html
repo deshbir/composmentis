@@ -1,7 +1,7 @@
 #{extends 'NGLDemo/layouts/layout.html' /}
 #{set title:'NGL Looking Ahead | Science' /}
 
-<h1 class="ngl-page-header reader-book-heading"><small>NATIONAL GEOGRAPHIC</small><strong>Science</strong></h1>
+<h1 class="ngl-page-header reader-book-heading"><small>NATIONAL GEOGRAPHIC</small><strong>&{'products.science.h1'}</strong></h1>
 
 <div class="row">
     <div class="span7 ngl-book-carousel">
@@ -9,13 +9,13 @@
             <!-- Carousel items -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="@{'/public/images/ngldemo/placeholder_730_480_1.gif'}" alt="">
+                    <img src="@{'/public/images/ngldemo/placeholder_730_480_1.gif'}" alt="Big Ideas Book - Earth Science">
                 </div>
                 <div class="item">
-                    <img src="@{'/public/images/ngldemo/placeholder_730_480_2.gif'}" alt="">
+                    <img src="@{'/public/images/ngldemo/placeholder_730_480_2.gif'}" alt="Big Ideas Book - Physical Science">
                 </div>
                 <div class="item">
-                    <img src="@{'/public/images/ngldemo/placeholder_730_480_3.gif'}" alt="">
+                    <img src="@{'/public/images/ngldemo/placeholder_730_480_3.gif'}" alt="Big Ideas Book - Life Science">
                 </div>
             </div>
             <!-- Carousel nav -->
@@ -23,36 +23,36 @@
             <a class="carousel-control right" href="#carouseltop" data-slide="next">&rsaquo;</a>
         </div>
         <p>
-            <a class="btn" href="#{route-uri-x controller:'ngldemo', action:'reader'/}"><i class="icon-book"></i>Start Reading <small>(Earth Science)</small></a>
+            <a class="btn" href="#{route-uri-x controller:'ngldemo', action:'reader'/}"><i class="icon-book"></i>&{'products.books.start'} <small>(Earth Science)</small></a>
         </p>
     </div>
 
     <div class="span5 large-button-icons">
-        <p><a class="btn" href="#"><i class="icon-facetime-video"></i>Digital Library <small>(Lorem ipsum dolor sit amet, consectetur)</small></a></p>
-        <p><a class="btn" href="#"><i class="icon-th"></i>Games <small>(Lorem ipsum dolor sit amet, consectetur)</small></a></p>
-        <p><a class="btn" href="#"><i class="icon-cog"></i>Student Resources <small>(Lorem ipsum dolor sit amet, consectetur)</small></a></p>
-        <p><a class="btn" href="#"><i class="icon-th-list"></i>My Assignments <small>(Lorem ipsum dolor sit amet, consectetur)</small></a></p>
+        <p><a class="btn" href="#"><i class="icon-facetime-video"></i>&{'products.science.buttons.1'} <small>(&{'global.loremipsum.1'})</small></a></p>
+        <p><a class="btn" href="#"><i class="icon-th"></i>&{'products.science.buttons.2'} <small>(&{'global.loremipsum.1'})</small></a></p>
+        <p><a class="btn" href="#"><i class="icon-cog"></i>&{'products.science.buttons.3'} <small>(&{'global.loremipsum.1'})</small></a></p>
+        <p><a class="btn" href="#"><i class="icon-th-list"></i>&{'products.science.buttons.4'} <small>(&{'global.loremipsum.1'})</small></a></p>
 
         <h2>&{'courses.relatedlinks.h1'}</h2>
         <ul >
-            <li><a>Lorem ipsum dolor sit amet, consectetur.</a></li>
-            <li><a>Lorem ipsum dolor sit amet.</a></li>
+            <li><a>&{'global.loremipsum.1'}</a></li>
+            <li><a>&{'global.loremipsum.1'}</a></li>
         </ul>
     </div>
 </div>
 
-<h1 class="ngl-page-header">Student Tools</h1>
+<h1 class="ngl-page-header">&{'products.studenttools.h1'}</h1>
 <div class="row">
     <div class="span6 media">
         <h3>National Geographic KIDS</h3>
-        <a class="pull-left" href="#"><img src="@{'/public/images/ngldemo/placeholder_148_120.png'}"></a>
+        <a class="pull-left" href="#"><img src="@{'/public/images/ngldemo/placeholder_148_120.png'}" alt="National Geographic KIDS"></a>
         <div class="media-body">
             <p>&{'global.loremipsum.2'} &{'global.loremipsum.2'}</p>
         </div>
     </div>
     <div class="span6 media">
         <h3>National Geographic Explorer</h3>
-        <a class="pull-left" href="#"><img src="@{'/public/images/ngldemo/placeholder_148_120.png'}"></a>
+        <a class="pull-left" href="#"><img src="@{'/public/images/ngldemo/placeholder_148_120.png'}" alt="National Geographic Explorer"></a>
         <div class="media-body">
             <p>&{'global.loremipsum.2'} &{'global.loremipsum.2'}</p>
         </div>

@@ -9,7 +9,7 @@
                     <i class="icon-align-justify"></i>
                 </a>
                 <a class="brand" href="#{route-uri-x controller:'ngldemo' , action:'index'/}">
-                    <img src="@{'/public/images/ngldemo/placeholder_ng_logo.png'}" alt="">#{text-product-name /}
+                    <img src="@{'/public/images/ngldemo/placeholder_ng_logo.png'}" alt="#{text-product-name /} logo">#{text-product-name /}
                 </a>
                 <div id="loadingIcon">
                     <img src="@{'/public/images/ajax_loader.gif'}">
@@ -26,9 +26,9 @@
                         <li><a href="#">&{'home.header.grades'}</a></li>
                        #{/if}
                        #{else}
-                         <li class="${request.action =~ /home/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'home' /}>Home</a></li>
-                         <li class="${request.action =~ /reader/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'reader' /}>Books</a></li>
-                         <li class="${request.action =~ /activity/ ? 'active' : ''}"><a href="#">Library</a></li>
+                         <li class="${request.action =~ /home/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'home' /}>&{'products.menu.home'}</a></li>
+                         <li class="${request.action =~ /reader/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'reader' /}>&{'products.menu.books'}</a></li>
+                         <li class="${request.action =~ /activity/ ? 'active' : ''}"><a href="#">&{'products.menu.Library'}</a></li>
                        #{/else}
 
                         <li class="divider-vertical"></li>

@@ -4,8 +4,8 @@
 
 global.header.brand=NGL
 global.header.langsel=Language
-global.footer.copyright=Copyright 2012 HEINLE, Cengage Learning
 
+global.loremipsum.1=Lorem ipsum dolor sit amet, consectetur
 global.loremipsum.2=Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor.
 global.loremipsum.3=Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor. Aenean volutpat velit lectus, non lacinia ante.
 
@@ -75,10 +75,26 @@ courses.enroll.p=Looking for an existing instructor-led course?
 courses.relatedlinks.h1=Related links...
 
 courses.course.Instructors=Instructor(s)
-courses.course.launch=Start Assignments & Tests
+courses.course.launch=Start Assignments / Tests
+courses.course.resume=Resume Assignment
+
 courses.course.grades=View Gradebook / Progress
 
 courses.course.related=Related Materials / books
+
+
+products.science.h1=Science
+products.menu.home=Home
+products.menu.books=Books
+products.menu.Library=Library
+
+products.science.buttons.1=Digital Library
+products.science.buttons.2=Games
+products.science.buttons.3=Student Resources
+products.science.buttons.4=My Assignments
+
+products.studenttools.h1=Student Tools
+products.books.start=Start Reading
 
 dictionaries.title=Dictionaries
 coursematerials.title=Course Materials
