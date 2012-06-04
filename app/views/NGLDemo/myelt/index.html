@@ -33,8 +33,8 @@
                                     <li><a href="#">&{'home.header.login.switchonlinefromoffline'}</a></li>
                                 #{/if}
                                 #{else}
-                                    <li><a href="?lang=en">&{'home.header.login.changepassword'}</a></li>
-                                    <li><a href="?lang=ja">&{'home.header.login.preferences'}</a></li>
+                                    <li><a href="#">&{'home.header.login.changepassword'}</a></li>
+                                    <li><a href="#">&{'home.header.login.preferences'}</a></li>
                                     <li><a href="#{route-uri-x controller:'ngldemo' , action:'logout' /}">&{'home.header.login.signout'}</a></li>
                                 #{/else}
                             </ul>
@@ -47,9 +47,9 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">&{'global.header.langsel'}<span>(${lang.toString()})</span><b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="?lang=en">English</a></li>
-                                <li><a href="?lang=ja">Japanese</a></li>
-                                <li><a href="?lang=ar">Arabic</a></li>
+                                <li><a href="#{route-uri-x controller:'ngldemo' , action:'language/en'/}">English</a></li>
+                                <li><a href="#{route-uri-x controller:'ngldemo' , action:'language/ja'/}">Japanese</a></li>
+                                <li><a href="#{route-uri-x controller:'ngldemo' , action:'language/ar'/}">Arabic</a></li>
                             </ul>
                         </li>
                     #{/if}

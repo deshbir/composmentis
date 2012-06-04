@@ -11,7 +11,7 @@ composmentis
 	<public>   --- copy from project
 		javascripts
 		  - replace /public/ to public/ in app/main.js
-		  - replace ../../../public to public in animationactivity.js
+
 		css
 		   - update font paths in bootstrap.css
 		     replace - /public/bootstrap/less/../../font to ../../font

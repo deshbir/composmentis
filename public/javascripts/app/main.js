@@ -141,11 +141,48 @@ $(document).ready(function () {
             }
 
             TemplateCache.templateManager.clearTemplateCache();
-
             app_router.navigate(serverUri, {trigger: true, replace: true});
 
+            //Post-View Load Initializations
+            this.AfterRender(theme, deliverymode, lang);
+        },
+
+        AfterRender:function (theme, deliverymode, lang) {
+            if(typeof lang != 'undefined' && lang == "ar")  {
+                loadjscssfile("/public/bootstrap/less/bootstrap-rtl.css", "css");
+                loadjscssfile("/public/bootstrap/less/responsive-rtl.css", "css");
+            } else {
+                removejscssfile("/public/bootstrap/less/bootstrap-rtl.css", "css");
+                removejscssfile("/public/bootstrap/less/responsive-rtl.css", "css");
+            }
         }
     });
+
+    function removejscssfile(filename, filetype){
+        var targetelement=(filetype=="js")? "script" : (filetype=="css")? "link" : "none" //determine element type to create nodelist from
+        var targetattr=(filetype=="js")? "src" : (filetype=="css")? "href" : "none" //determine corresponding attribute to test for
+        var allsuspects=document.getElementsByTagName(targetelement)
+        for (var i=allsuspects.length; i>=0; i--){ //search backwards within nodelist for matching elements to remove
+            if (allsuspects[i] && allsuspects[i].getAttribute(targetattr)!=null && allsuspects[i].getAttribute(targetattr).indexOf(filename)!=-1)
+                allsuspects[i].parentNode.removeChild(allsuspects[i]) //remove element by calling parentNode.removeChild()
+        }
+    };
+
+    function loadjscssfile(filename, filetype){
+        if (filetype=="js"){ //if filename is a external JavaScript file
+            var fileref=document.createElement('script')
+            fileref.setAttribute("type","text/javascript")
+            fileref.setAttribute("src", filename)
+        }
+        else if (filetype=="css"){ //if filename is an external CSS file
+            var fileref=document.createElement("link")
+            fileref.setAttribute("rel", "stylesheet")
+            fileref.setAttribute("type", "text/css")
+            fileref.setAttribute("href", filename)
+        }
+        if (typeof fileref!="undefined")
+            document.getElementsByTagName("head")[0].appendChild(fileref)
+    };
 
     var ActivityView = NGLBaseView.extend({
 
@@ -154,28 +191,9 @@ $(document).ready(function () {
         },
 
         afterRender:function (){
-            /*$LAB.setOptions({AlwaysPreserveOrder:true})
-                .script(['/public/javascripts/activityengine/kinetic-v3.9.3.js',
-                '/public/javascripts/activityengine/raf.js',
-                '/public/javascripts/activityengine/animate.js',
-                '/public/javascripts/activityengine/scroller.js',
-                '/public/javascripts/activityengine/easyScroller.js',
-                '/public/javascripts/activityengine/container.js',
-                '/public/javascripts/activityengine/activity.js',
-                '/public/javascripts/activityengine/activity-engine-init.js',
-                '/public/javascripts/activityengine/animationactivity.js']).wait(function () {
-                    ActivityEngineInit.init(app_router.lastSelectedLang);
-                });
-            */
+
             require(['/public/javascripts/activityengine/kinetic-v3.9.3.js',
-                '/public/javascripts/activityengine/raf.js',
-                '/public/javascripts/activityengine/animate.js',
-                '/public/javascripts/activityengine/scroller.js',
-                '/public/javascripts/activityengine/easyScroller.js',
-                '/public/javascripts/activityengine/container.js',
-                '/public/javascripts/activityengine/activity.js',
-                '/public/javascripts/activityengine/activity-engine-init.js',
-                '/public/javascripts/activityengine/animationactivity.js'], function () {
+                '/public/javascripts/activityengine/activity.js'], function () {
 
                 ActivityEngineInit.init(app_router.lastSelectedLang);
             });
@@ -191,19 +209,6 @@ $(document).ready(function () {
         },
 
         afterRender:function (){
-            /*$LAB.setOptions({AlwaysPreserveOrder:true})
-                .script(['/public/javascripts/reader/book1.js',
-                '/public/javascripts/reader/jquery.showLoading.js',
-                '/public/javascripts/reader/eedition.js']).wait(function () {
-
-                    eReaderJS.initilaze(5, bookData);
-
-
-                    eReaderJS.customize(true, true, false);
-                    eReaderJS.setup();
-
-                });
-             */
 
              require(['/public/javascripts/reader/book1.js',
              '/public/javascripts/reader/jquery.showLoading.js',
