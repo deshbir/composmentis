@@ -154,7 +154,7 @@ $(document).ready(function () {
         },
 
         afterRender:function (){
-            $LAB.setOptions({AlwaysPreserveOrder:true})
+            /*$LAB.setOptions({AlwaysPreserveOrder:true})
                 .script(['/public/javascripts/activityengine/kinetic-v3.9.3.js',
                 '/public/javascripts/activityengine/raf.js',
                 '/public/javascripts/activityengine/animate.js',
@@ -166,6 +166,21 @@ $(document).ready(function () {
                 '/public/javascripts/activityengine/animationactivity.js']).wait(function () {
                     ActivityEngineInit.init(app_router.lastSelectedLang);
                 });
+            */
+            require(['/public/javascripts/activityengine/kinetic-v3.9.3.js',
+                '/public/javascripts/activityengine/raf.js',
+                '/public/javascripts/activityengine/animate.js',
+                '/public/javascripts/activityengine/scroller.js',
+                '/public/javascripts/activityengine/easyScroller.js',
+                '/public/javascripts/activityengine/container.js',
+                '/public/javascripts/activityengine/activity.js',
+                '/public/javascripts/activityengine/activity-engine-init.js',
+                '/public/javascripts/activityengine/animationactivity.js'], function () {
+
+                ActivityEngineInit.init(app_router.lastSelectedLang);
+            });
+
+
         }
     });
 
@@ -176,32 +191,38 @@ $(document).ready(function () {
         },
 
         afterRender:function (){
-            $LAB.setOptions({AlwaysPreserveOrder:true})
+            /*$LAB.setOptions({AlwaysPreserveOrder:true})
                 .script(['/public/javascripts/reader/book1.js',
                 '/public/javascripts/reader/jquery.showLoading.js',
                 '/public/javascripts/reader/eedition.js']).wait(function () {
 
-                    /*
-                        param 1 - start page number. 0 is cover page.
-                    */
                     eReaderJS.initilaze(5, bookData);
 
-                    /*
-                        param 1 - singleaudio
-                        param 2 - limit images
-                        param 3 - enable image icon launch/view
-                     */
+
                     eReaderJS.customize(true, true, false);
                     eReaderJS.setup();
 
                 });
+             */
 
-            /*
-             require(['public/javascripts/reader/data-book1.js',
-             'public/javascripts/reader/jquery.showLoading.js',
-             'public/javascripts/reader/jquery.touchwipe.1.1.1.js',
-             'public/javascripts/reader/eedition.js'], function () {//todo-functionality} );
-            */
+             require(['/public/javascripts/reader/book1.js',
+             '/public/javascripts/reader/jquery.showLoading.js',
+             '/public/javascripts/reader/eedition.js'], function () {
+
+                /*
+                 param 1 - start page number. 0 is cover page.
+                 */
+                eReaderJS.initilaze(5, bookData);
+
+                /*
+                 param 1 - singleaudio
+                 param 2 - limit images
+                 param 3 - enable image icon launch/view
+                 */
+                eReaderJS.customize(true, true, false);
+                eReaderJS.setup();
+             });
+
 
         }
 

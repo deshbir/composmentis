@@ -62,7 +62,7 @@
             <div class="span6">
             <h1>&{'home.hero.heading1'}</h1>
             <p>&{'home.hero.heading2'}</p>
-            #{if session.get("user") == null }
+            #{if session.get("user") == null && flash.get("application.delivery") != "offline"}
                 <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo', action:'login' /}">&{'registration.new'} <small>(&{'registration.reg'})</small></a></p>
                 <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo' , action:'login' /}">&{'registration.returning'} <small>(&{'registration.signin'})</small></a></p>
             #{/if}

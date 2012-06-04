@@ -400,6 +400,19 @@ dt {
 dd {
     margin-left: 9px;
 }
+.dl-horizontal dt {
+    float: left;
+    width: 180px;
+    clear: left;
+    text-align: right;
+    padding-right: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.dl-horizontal dd {
+    margin-left: 130px;
+}
 hr {
     margin: 18px 0;
     border: 0;
@@ -3729,9 +3742,6 @@ body {
 .splash h6 {
     margin-bottom: 10px;
 }
-.splash dt {
-    padding-top: 10px;
-}
 .splash dd {
     font-size: 16px;
     line-height: 18px;
@@ -3741,6 +3751,9 @@ body {
 .splash dd small {
     font-size: 13px;
     line-height: 16px;
+}
+.splash dl {
+    margin-bottom: 10px;
 }
 #hero {
     background-color: #e4e8e6;
@@ -4054,6 +4067,9 @@ body {
 }
 .reader-body {
     margin-top: 0px;
+}
+#pagecontent {
+    margin-top: 60px;
 }
 .theme-ngconnect #hero {
     background-color: #79e0fe;
