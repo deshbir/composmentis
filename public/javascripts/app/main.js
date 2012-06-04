@@ -88,6 +88,13 @@ $(document).ready(function () {
 
         render:function (theme, deliverymode, lang) {
             this.defaultRender('ngldemo', theme, deliverymode, 'index', lang);
+        },
+
+        afterRender:function (){
+            //Reader reset - if its defined.
+            if(typeof eReaderJS == 'undefined') {
+                eReaderJS.reset();
+            }
         }
     });
 
@@ -124,6 +131,14 @@ $(document).ready(function () {
     var HomeView = NGLBaseView.extend({
         render:function (theme, deliverymode, lang) {
             this.defaultRender('ngldemo', theme, deliverymode, 'home', lang);
+
+        },
+
+        afterRender:function (){
+            //Reader reset - if its defined.
+            if(typeof eReaderJS == 'undefined') {
+                eReaderJS.reset();
+            }
         }
     });
 
@@ -148,6 +163,8 @@ $(document).ready(function () {
         },
 
         AfterRender:function (theme, deliverymode, lang) {
+
+           /*
             if(typeof lang != 'undefined' && lang == "ar")  {
                 loadjscssfile("/public/bootstrap/less/bootstrap-rtl.css", "css");
                 loadjscssfile("/public/bootstrap/less/responsive-rtl.css", "css");
@@ -155,6 +172,7 @@ $(document).ready(function () {
                 removejscssfile("/public/bootstrap/less/bootstrap-rtl.css", "css");
                 removejscssfile("/public/bootstrap/less/responsive-rtl.css", "css");
             }
+            */
         }
     });
 
