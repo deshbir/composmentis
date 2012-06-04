@@ -14,7 +14,7 @@ public class Global extends Controller {
     @Before
     static void globalBeforeInterceptor() {
         //Basic Auth
-        /*
+
         String password = request.password;
         if ( password == null ) {
             unauthorized( "Compro Technologies DEMO site" );
@@ -22,7 +22,7 @@ public class Global extends Controller {
         else if (!password.equalsIgnoreCase("ngl2012"))
         {
             unauthorized( "Compro Technologies DEMO site" );
-        }*/
+        }
 
 
         //Get Language Selections from Request & Cookie
