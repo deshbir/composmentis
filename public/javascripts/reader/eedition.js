@@ -375,14 +375,17 @@ var eReaderJS = {
             {
                 if(this.eeZoomState > this.spMaxStateIndex)
                 {
-                    this.eeZoomState = this.spMaxStateIndex;
+                    //this.eeZoomState = this.eeGetZoomStateForBestFit();//this.spMaxStateIndex;
                     this.eeZoomChangedA = true;
                     this.eeZoomChangedB = true;
                 //alert("001 solved")
-                }
+                }                
+                
                 this.eeSmallScreen = true; 
-                $("#ee-page-layout").removeClass("ee-layout-double");
-                $("#ee-page-layout").removeClass("ee-layout-single");
+                this.eeZoomState = this.eeGetZoomStateForBestFit();
+                
+                //$("#ee-page-layout").removeClass("ee-layout-double");
+                //$("#ee-page-layout").removeClass("ee-layout-single");
             }
         }
         else
@@ -395,20 +398,24 @@ var eReaderJS = {
                 }
                 if(this.eeZoomState < this.dpMinStateIndex)//here additional check may be needed for pagelayout != 1
                 {
-                    this.eeZoomState = this.dpMinStateIndex;
+                    //this.eeZoomState = this.dpMinStateIndex;
                     this.eeZoomChangedA = true;
                     this.eeZoomChangedB = true;
                 //alert("002 solved")// may 
                 }
+                
                 this.eeSmallScreen = false;
+                this.eeZoomState = this.eeGetZoomStateForBestFit();
             
                 if(this.eePageLayout == 1 )
                 {
+                    $("#ee-page-layout").removeClass("ee-layout-single");
                     $("#ee-page-layout").addClass("ee-layout-double");
                     $("#ee-page-layout").attr('title','Switch to double page view');
                 }
                 else
                 {
+                    $("#ee-page-layout").removeClass("ee-layout-double");
                     $("#ee-page-layout").addClass("ee-layout-single");
                     $("#ee-page-layout").attr('title','Switch to single page view');                    
                 }
@@ -418,8 +425,8 @@ var eReaderJS = {
             }
             }
         }
-    this.eeZoomChangedA = true;
-    this.eeZoomChangedB = true;    
+        this.eeZoomChangedA = true;
+        this.eeZoomChangedB = true;    
     },
 
     eeCheckAndRemovePreviousAudio: function()
@@ -464,7 +471,8 @@ var eReaderJS = {
                 if(this.eeSingleAudio == true)
                 {
                     assetUrl = "/public/audio/book1/sci_bib_4_es_1_rwm_001";
-                }                   
+                }
+                 
                     
                 if(this.eePageLayout != 1 && this.eeSmallScreen != true &&  this.eeIsSecondpageAg == true)
                 {                        
@@ -884,8 +892,8 @@ var eReaderJS = {
             
             if(this.eeSmallScreen == true)
             {
-                $("#ee-page-layout").removeClass("ee-layout-single");
-                $("#ee-page-layout").removeClass("ee-layout-double");
+                //$("#ee-page-layout").removeClass("ee-layout-single");
+                //$("#ee-page-layout").removeClass("ee-layout-double");
             }
             else if(this.eePageLayout == 1) 
             {
@@ -1538,17 +1546,30 @@ var eReaderJS = {
     
     eeToolBarFadeIn:function()
     {
-        $('#ee-book-toolbar > div').stop().fadeTo("slow",1, function(){
+        $('#ee-book-toolbar > div').stop().fadeTo(250,1, function(){
             //alert("fade in complete");
+            eReaderJS.eeToolBarFadeInHold();
+        });
+    },
+    
+    eeToolBarFadeInHold:function()
+    {
+        $('#ee-book-toolbar > div').stop().fadeTo(4000,1, function(){
+            //alert("fade out complete");
             eReaderJS.eeToolBarFadeOut();
         });
     },
     
     eeToolBarFadeOut:function()
     {
-        $('#ee-book-toolbar > div').stop().fadeTo(8000,0.1, function(){
+        $('#ee-book-toolbar > div').stop().fadeTo(1000,0.1, function(){
             //alert("fade out complete");
-            $("#ee-book-toolbar > div").removeAttr("style");
+            //$("#ee-book-toolbar > div").removeAttr("style");
+            
+            if (navigator.appVersion.indexOf("Win")!=-1 || navigator.appVersion.indexOf("Mac")!=-1 || navigator.appVersion.indexOf("X11")!=-1 || navigator.appVersion.indexOf("Linux")!=-1)
+            {
+                this.removeAttribute("style",0);
+            }
         });
     },
     
@@ -1620,6 +1641,19 @@ var eReaderJS = {
         this.updateImageLayout();        
         this.domreadyEeditionpage();
         this.eeAddTabEventHandlers();    
+    },
+    
+    reset:function ()
+    {
+        if(eReaderJS.eePageALastSource != "")
+        { 
+            $('#eeditionpageA').hideLoading();
+        }
+            
+        if(eReaderJS.eePageBLastSource != "")
+        { 
+            $('#eeditionpageB').hideLoading();
+        }            
     },
     
     getCurrentPage:function ()

@@ -21,34 +21,6 @@
         display:none;  
 
     }
-    .ee-tool-row1
-    {
-        -webkit-border-radius: 8px 8px 8px 8px;
-        -moz-border-radius: 8px 8px 8px 8px;
-        border-radius: 8px 8px 8px 8px;
-        margin-top: -66px;
-        margin-left: 70px;
-    }
-    .ee-tool-row2
-    {
-        -webkit-border-radius: 8px 0px 0px 8px;
-        -moz-border-radius: 8px 0px 0px 8px;
-        border-radius: 8px 0px 0px 8px;
-    }
-    .ee-tool-row3
-    {
-        -webkit-border-radius: 0px 8px 8px 0px;
-        -moz-border-radius: 0px 8px 8px 0px;
-        border-radius: 0px 8px 8px 0px;
-    }
-    .ee-tool-row5
-    {
-        display: none;
-    }
-    .ee-book-toolbar
-    {
-        width: 260px;
-    }
 }
 @media screen and (min-width: 320px) and (max-width: 480px)
 {
@@ -61,21 +33,49 @@
 
 /* For the range of 641 - 960 */
 @media screen and (min-width: 641px) and (max-width: 960px)
-{   
-
+{
+    .ee-book-toolbar
+    {
+        width: 420px;
+    }
+    .ee-nav
+    {
+        min-width: 116px;
+    }
+    .ee-tool-row1
+    {   -webkit-border-radius: 8px 0px 0px 8px;
+        -moz-border-radius: 8px 0px 0px 8px;
+        border-radius: 8px 0px 0px 8px;
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    
+    .ee-tool-row2
+    {
+        -webkit-border-radius: 0px 0px 0px 0px;
+        -moz-border-radius: 0px 0px 0px 0px;
+        border-radius: 0px 0px 0px 0px;
+    }
+    
+    .ee-tool-row3
+    {
+        -webkit-border-radius:  0px 8px 8px 0px; 
+        -moz-border-radius:  0px 8px 8px 0px; 
+        border-radius:  0px 8px 8px 0px;
+    }
+    
     #eeditionpagedivA
     {
         width:100%;
         float:none;
         margin-left:auto;
         margin-right:auto;        
-    }     
+    }
 
     #eeditionpagedivB
     {
         display:none;  
-
-    }    
+    }
 }
 @media screen and (min-width: 641px) and (max-width: 768px)
 {
@@ -89,12 +89,44 @@
 /* For the range of 961 - above */
 @media screen and (min-width: 961px)
 {
-
+    .ee-book-toolbar
+    {
+        width: 550px;
+    }
+    .ee-nav
+    {
+        min-width: 116px;
+    }
+    .ee-tool-row1
+    {   -webkit-border-radius: 8px 0px 0px 8px;
+        -moz-border-radius: 8px 0px 0px 8px;
+        border-radius: 8px 0px 0px 8px;
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    
+    .ee-tool-row2
+    {
+        -webkit-border-radius: 0px 0px 0px 0px;
+        -moz-border-radius: 0px 0px 0px 0px;
+        border-radius: 0px 0px 0px 0px;
+    }
+    .ee-tool-row4
+    {
+        display: block;
+    }
+    
+    .ee-tool-row3
+    {
+        -webkit-border-radius:   0px 0px 0px 0px;
+        -moz-border-radius:   0px 0px 0px 0px;
+        border-radius:   0px 0px 0px 0px;
+    }
 
 }
 @media screen and (min-width: 961px) and (max-width: 1024px)
 {
-
+    
 }
 @media screen and (min-width: 1025px) and (max-width: 1280px)
 {

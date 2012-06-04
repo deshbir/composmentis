@@ -11,11 +11,13 @@ composmentis
 	<public>   --- copy from project
 		javascripts
 		  - replace /public/ to public/ in app/main.js
+		  - replace ../../../public to public in animationactivity.js
+		  - update /public/ to public/ in reader/book1.js & reader/edition.js
 
 		css
 		   - update font paths in bootstrap.css
 		     replace - /public/bootstrap/less/../../font to ../../font
-           - update /public/ to public/ in reader/book1.js & reader/edition.js
+
 
 		preloaded-views.js - update the template view
 		  - change  /public/ to public/
