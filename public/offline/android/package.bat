@@ -1,0 +1,1 @@
+cp bin/NGLLookingAhead.apk ../bin/android/ng/
