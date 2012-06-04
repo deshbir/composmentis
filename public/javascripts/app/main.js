@@ -193,7 +193,8 @@ $(document).ready(function () {
         afterRender:function (){
 
             require(['/public/javascripts/activityengine/kinetic-v3.9.3.js',
-                '/public/javascripts/activityengine/activity.js'], function () {
+                '/public/javascripts/activityengine/activity.js',
+                '/public/javascripts/activityengine/activityengineinit.js'], function () {
 
                 ActivityEngineInit.init(app_router.lastSelectedLang);
             });

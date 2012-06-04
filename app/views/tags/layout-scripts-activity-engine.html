@@ -2,12 +2,16 @@
         charset="${_response_encoding}"></script>
 <script src="@{'/public/javascripts/activityengine/activity.js'}" type="text/javascript"
         charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/activityengine/activityengineinit.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
 
 <script type="text/javascript">
 
-    jQuery(document).ready(function() {
+    //jQuery(document).ready(function() {
 
+    document.body.onload = function() {
         ActivityEngineInit.init('${lang.toString()}');
+    }
+    //});
 
-    });
 </script>
