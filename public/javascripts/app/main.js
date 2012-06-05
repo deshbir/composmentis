@@ -47,6 +47,7 @@ $(document).ready(function () {
             //Use this for global initializations - applicable to all views
             $('.dropdown-toggle').dropdown();
             $('.carousel').carousel();
+            $('[rel*="tooltip"]').tooltip();
 
             //global variables
             app_router.lastVisitedAction = action;
@@ -181,7 +182,7 @@ $(document).ready(function () {
         }
     });
 
-    function removejscssfile(filename, filetype){
+    function removejscssfile (filename, filetype){
         var targetelement=(filetype=="js")? "script" : (filetype=="css")? "link" : "none" //determine element type to create nodelist from
         var targetattr=(filetype=="js")? "src" : (filetype=="css")? "href" : "none" //determine corresponding attribute to test for
         var allsuspects=document.getElementsByTagName(targetelement)

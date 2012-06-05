@@ -32,11 +32,11 @@
                                 <li><a href="?lang=en">${session.get("user")} (profile)</a></li>
                                 <li class="divider"></li>
                                 #{if flash.get("application.delivery") == "offline"}
-                                    <li><a href="#">&{'home.header.login.switchonlinefromoffline'}</a></li>
+                                    <li><a rel="tooltip" data-original-title="This link is not active in Demo." href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'home.header.login.switchonlinefromoffline'}</a></li>
                                 #{/if}
                                 #{else}
-                                    <li><a href="#">&{'home.header.login.changepassword'}</a></li>
-                                    <li><a href="#">&{'home.header.login.preferences'}</a></li>
+                                    <li><a rel="tooltip" data-original-title="This link is not active in Demo." href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'home.header.login.changepassword'}</a></li>
+                                    <li><a rel="tooltip" data-original-title="This link is not active in Demo." href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'home.header.login.preferences'}</a></li>
                                     <li><a href="#{route-uri-x controller:'ngldemo', action:'logout' /}">&{'home.header.login.signout'}</a></li>
                                 #{/else}
                             </ul>
@@ -55,9 +55,9 @@
                                 <li><a href="?lang=ar">Arabic</a></li>
                             #{/if}
                             #{else}
-                                <li><a href="#{route-uri-x controller:'ngldemo' , action:'language/en'/}">English</a></li>
-                                <li><a href="#{route-uri-x controller:'ngldemo' , action:'language/ja'/}">Japanese</a></li>
-                                <li><a href="#{route-uri-x controller:'ngldemo' , action:'language/ar'/}">Arabic</a></li>
+                                <li><a rel="tooltip" data-original-title="This link is not active in Demo." href="#{route-uri-x controller:'ngldemo' , action:'language/en'/}">English</a></li>
+                                <li><a rel="tooltip" data-original-title="This link is not active in Demo." href="#{route-uri-x controller:'ngldemo' , action:'language/ja'/}">Japanese</a></li>
+                                <li><a rel="tooltip" data-original-title="This link is not active in Demo." href="#{route-uri-x controller:'ngldemo' , action:'language/ar'/}">Arabic</a></li>
                             #{/else}
                             </ul>
                         </li>
@@ -71,7 +71,7 @@
             <div class="span8">
             <h1>&{'home.hero.myng.heading1'}</h1>
             <p>&{'home.hero.myng.heading2'}</p>
-            <p><a class="btn btn-large" href="#{route-uri-x controller:'ngldemo', action:'notactive' /}">&{'home.hero.tour'}</a></p>
+            <p><a class="btn btn-large" rel="tooltip" data-original-title="This link is not active in Demo." href="#{route-uri-x controller:'ngldemo', action:'notactive' /}">&{'home.hero.tour'}</a></p>
         </div>
 
         <div class="span4 large-home-buttons">
