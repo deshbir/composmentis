@@ -92,7 +92,7 @@ $(document).ready(function () {
 
         afterRender:function (){
             //Reader reset - if its defined.
-            if(typeof eReaderJS == 'undefined') {
+            if(typeof eReaderJS != 'undefined') {
                 eReaderJS.reset();
             }
         }
@@ -136,7 +136,7 @@ $(document).ready(function () {
 
         afterRender:function (){
             //Reader reset - if its defined.
-            if(typeof eReaderJS == 'undefined') {
+            if(typeof eReaderJS != 'undefined') {
                 eReaderJS.reset();
             }
         }
@@ -225,6 +225,15 @@ $(document).ready(function () {
 
         render:function (theme, deliverymode, lang) {
             this.defaultRender('ngldemo', theme, deliverymode, 'reader', lang);
+        },
+
+        beforeRender:function() {
+
+            //Add body class for special Reader styles.
+            //Note, the default before render SHOULD have cleared/cleaned any pre-existing styles.
+
+            $("body").addClass("reader-body");
+
         },
 
         afterRender:function (){
