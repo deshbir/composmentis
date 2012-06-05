@@ -215,11 +215,15 @@ $(document).ready(function () {
 
         afterRender:function (){
 
-            require(['/public/javascripts/activityengine/kinetic-v3.9.3.js',
-                '/public/javascripts/activityengine/activity.js',
-                '/public/javascripts/activityengine/activityengineinit.js'], function () {
+            require(['/public/javascripts/activityengine/kinetic-v3.9.3.js'], function () {
 
-                ActivityEngineInit.init(app_router.lastSelectedLang);
+                require(['/public/javascripts/activityengine/activity.js'], function () {
+
+                    require(['/public/javascripts/activityengine/activityengineinit.js'], function () {
+
+                        ActivityEngineInit.init(app_router.lastSelectedLang);
+                    });
+                });
             });
 
 
@@ -243,24 +247,24 @@ $(document).ready(function () {
 
         afterRender:function (){
 
-             require(['/public/javascripts/reader/book1.js',
-             '/public/javascripts/reader/jquery.showLoading.js',
-             '/public/javascripts/reader/eedition.js'], function () {
+            require(['/public/javascripts/reader/book1.js',
+                '/public/javascripts/reader/jquery.showLoading.js'], function () {
 
-                /*
-                 param 1 - start page number. 0 is cover page.
-                 */
-                eReaderJS.initilaze(5, bookData);
+                require(['/public/javascripts/reader/eedition.js'], function () {
+                    /*
+                     param 1 - start page number. 0 is cover page.
+                     */
+                    eReaderJS.initilaze(5, bookData);
 
-                /*
-                 param 1 - singleaudio
-                 param 2 - limit images
-                 param 3 - enable image icon launch/view
-                 */
-                eReaderJS.customize(true, true, false);
-                eReaderJS.setup();
-             });
-
+                    /*
+                     param 1 - singleaudio
+                     param 2 - limit images
+                     param 3 - enable image icon launch/view
+                     */
+                    eReaderJS.customize(true, true, false);
+                    eReaderJS.setup();
+                });
+            });
 
         }
 

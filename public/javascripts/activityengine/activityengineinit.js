@@ -1,5 +1,3 @@
-require(["/public/javascripts/activityengine/activity.js"], function() {
-
     ActivityEngineInit = new function() {
         console.log('ActivityEngineInit');
         this.init = function(lang) {
@@ -29,5 +27,3 @@ require(["/public/javascripts/activityengine/activity.js"], function() {
         }
 
     };
-
-});

@@ -2,8 +2,6 @@
  *Prototyping new Properties to Kinetic JS Objects
  */
 
-require(["/public/javascripts/activityengine/kinetic-v3.9.3.js"], function() {
-    console.log('activity.js');
     Kinetic.Layer.prototype.name="";
     Kinetic.Layer.prototype.usedX=0;
     Kinetic.Layer.prototype.usedY=0;
@@ -1157,6 +1155,11 @@ require(["/public/javascripts/activityengine/kinetic-v3.9.3.js"], function() {
             }
 
             for(var i = boxCount ; i < boxCount + this.activity.questions[this.currentQuestion].options.length; i++){
+                this.activity.optionBoxes[i].owner.empty =true;
+
+                this.activity.optionBoxes[i].owner.child = null;
+                //this.activity.optionBoxes[i].owner = null;
+                this.activity.optionBoxes[i].owner = this.activity.containerBoxNameMap[this.currentQuestion +"l," +(this.activity.questions[this.currentQuestion].options.length + i+1)+"b"];
                 this.activity.optionBoxes[i].transitionTo({
                     rotation: 0,
                     x:  this.activity.optionBoxes[i].startX,
@@ -1536,4 +1539,3 @@ require(["/public/javascripts/activityengine/kinetic-v3.9.3.js"], function() {
             }
         }
     };
-});
