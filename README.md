@@ -11,7 +11,7 @@ composmentis
 	<public>   --- copy from project
 		javascripts
 		  - replace /public/ to public/ in app/main.js
-		  - replace ../../../public to public in animationactivity.js
+		  - replace ../../../public to public in activity.js
 		  - update /public/ to public/ in reader/book1.js & reader/edition.js
 
 		css
