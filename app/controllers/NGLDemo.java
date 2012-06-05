@@ -55,4 +55,8 @@ public class NGLDemo extends Global {
         renderX();
     }
 
+    public static void notactive() {
+        renderX();
+    }
+
 }

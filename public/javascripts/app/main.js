@@ -83,6 +83,11 @@ $(document).ready(function () {
         }
     });
 
+    var NotActiveView = NGLBaseView.extend({
+        render:function (theme, deliverymode, lang) {
+            this.defaultRender('ngldemo', theme, deliverymode, 'notactive', lang);
+        }
+    });
 
     var IndexView = NGLBaseView.extend({
 
@@ -288,7 +293,13 @@ $(document).ready(function () {
             "ngldemo/:theme/:deliverymode/reader":"Reader",
             "ngldemo/:theme/:deliverymode/reader/:lang":"Reader",
             "ngldemo/language/:lang":"Switchlanguage",
-            "ngldemo/:theme/:deliverymode/language/:lang":"Switchlanguage"
+            "ngldemo/:theme/:deliverymode/language/:lang":"Switchlanguage",
+            "ngldemo/:theme/:deliverymode/notactive":"NotActive",
+            "ngldemo/:theme/:deliverymode/notactive/:lang":"NotActive"
+        },
+
+        NotActive:function (theme, deliverymode, lang) {
+            notactiveView = new NotActiveView(theme, deliverymode, lang);
         },
 
         Switchlanguage:function (theme, deliverymode, lang) {
