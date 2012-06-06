@@ -9,6 +9,10 @@ var eReaderJS = {
             "default": ".svg",
             "hover"  : "-hover.svg"
         };
+        this.eeFallbackIconPathPostfix = {
+            "default": ".png",
+            "hover"  : "-hover.svg"
+        };
         
         this.eeDefaultPageSource =  "/public/images/reader/eedition/defaultPage.png";
     },
@@ -187,8 +191,16 @@ var eReaderJS = {
     },
     
     initPreferencesVars: function()
-    {
-        this.eeAIRApp = false;
+    {        
+        if(typeof air != 'undefined')
+        {
+            this.eeAIRApp =  true;
+        }
+        else
+        {
+            this.eeAIRApp =  false;
+        }
+            
         this.fullscreenOn = false;
         this.eePageLayout = 0; //0:default. 1:single, 2:double
         this.eeSmallScreen = false;
@@ -199,8 +211,23 @@ var eReaderJS = {
     },    
     
     eeSupportsSvg:function ()
-    {    
-        return document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Shape", "1.0")
+    {
+        if(this.eeAIRApp ==  true)
+        {
+            return false;
+        }
+        else
+        {
+            var userAgent = navigator.userAgent.toString().toLowerCase();
+            if(userAgent.indexOf('chrome') != -1 || userAgent.indexOf('safari') != -1)
+            {
+                return true;
+            }
+            else 
+            {
+                return document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Shape", "1.0")
+            }
+        }      
     },
 
     progressHandler:function(event)
@@ -238,7 +265,7 @@ var eReaderJS = {
 
     checkAndUpdateExtenders:function()
     {
-/*        
+    /*        
         var headerWidth = $("#globalheader").width();
         var pcWidth = $("#pagecontent").width();
         
@@ -440,8 +467,8 @@ var eReaderJS = {
                 this.eeSmallScreen = true; 
                 this.eeZoomState = this.eeGetZoomStateForBestFit();
                 
-                //$("#ee-page-layout").removeClass("ee-layout-double");
-                //$("#ee-page-layout").removeClass("ee-layout-single");
+            //$("#ee-page-layout").removeClass("ee-layout-double");
+            //$("#ee-page-layout").removeClass("ee-layout-single");
             }
         }
         else
@@ -517,7 +544,7 @@ var eReaderJS = {
                     assetUrl = "/public/audio/book1/sci_bib_4_es_1_rwm_001";
                 }
                 
-                if(this.eeAIRApp == false || this.eeAIRApp == undefined)
+                if(this.eeAIRApp == false)
                 {
                     if(this.eeAudio == undefined)
                     {
@@ -659,14 +686,14 @@ var eReaderJS = {
     
     eeAddOverLayIcon:function(olid)
     {
-    	if(this.eeSupportsSvg())
-    	{
-    		$('#ee-overlays').append('<div id=\"' + olid + '\" class="ee-overlay"><img class="ee-overlay-img" src="/public/images/reader/eedition/overlays/image_icon.svg"/></div>');
-    	}
-    	else
-    	{
-    		$('#ee-overlays').append('<div id=\"' + olid + '\" class="ee-overlay"><object class="ee-overlay-img" data="/public/images/reader/eedition/overlays/image_icon.svg" type="image/svg+xml"><img class="ee-overlay-img" src="/public/images/reader/eedition/overlays/image_icon.png"/></object></div>');
-    	}
+        if(this.eeSupportsSvg())
+        {
+            $('#ee-overlays').append('<div id=\"' + olid + '\" class="ee-overlay"><img class="ee-overlay-img" src="/public/images/reader/eedition/overlays/image_icon.svg"/></div>');
+        }
+        else
+        {
+            $('#ee-overlays').append('<div id=\"' + olid + '\" class="ee-overlay"><object class="ee-overlay-img" type="image/svg+xml"><img class="ee-overlay-img"/></object></div>');
+        }
         
         $('#' + olid).click(function(){
             wcid = $(this).attr("wcid");
@@ -752,13 +779,14 @@ var eReaderJS = {
                 
                 if(this.eeSupportsSvg())
                 {
-                	$(olid).children('img').attr("src", imgPath + this.eeVideoIconPathPostfix['default']); 
-               		$(olid).children('img').attr("presrc", imgPath);
+                    $(olid).children('img').attr("src", imgPath + this.eeVideoIconPathPostfix['default']); 
+                    $(olid).children('img').attr("presrc", imgPath);
                 }
                 else
                 {
-	                $(olid).children('object').attr("data", imgPath + this.eeVideoIconPathPostfix['default']); 
-               		$(olid).children('object').attr("presrc", imgPath);
+                    $(olid).children('object').attr("data", imgPath + this.eeVideoIconPathPostfix['default']); 
+                    $(olid).children('object').attr("presrc", imgPath);
+                    $(olid).children('object').children('img').attr("src", imgPath + this.eeFallbackIconPathPostfix['default']);
                 }
             
             } 
@@ -807,12 +835,15 @@ var eReaderJS = {
 
     eeRepositionOverlays:function ()
     {
-        $("#ee-overlays").css({
-            "top" : $("#eedition-container").position().top,
-            "left" : $("#eedition-container").position().left,
-            "width" : $("#eedition-container").width(),
-            "height" : $("#eedition-container").height()
-        });   
+        if($("#eedition-container") !=  null && $("#eedition-container").position() != null)
+        {
+            $("#ee-overlays").css({
+                "top" : $("#eedition-container").position().top,
+                "left" : $("#eedition-container").position().left,
+                "width" : $("#eedition-container").width(),
+                "height" : $("#eedition-container").height()
+            });  
+        }
     },
     
     showOverlayIconsPageA:function (bShow)
@@ -973,13 +1004,25 @@ var eReaderJS = {
             
             if(this.eeSmallScreen == true)
             {
-                //$("#ee-page-layout").removeClass("ee-layout-single");
-                //$("#ee-page-layout").removeClass("ee-layout-double");
+            //$("#ee-page-layout").removeClass("ee-layout-single");
+            //$("#ee-page-layout").removeClass("ee-layout-double");
             }
             else if(this.eePageLayout == 1) 
             {
                 $("#ee-page-layout").removeClass("ee-layout-single");
                 $("#ee-page-layout").addClass("ee-layout-double");
+            }
+            if(this.eeAIRApp)
+            {
+                $("#pagecontent").css({
+                    "width" : this.zoomingStateData[this.eeZoomState].sppcwidth
+                });
+            }
+            else
+            {
+                $("#pagecontent").css({
+                    "width" : this.zoomingStateData[this.eeZoomState].pcwidth
+                });
             }
         }
         else
@@ -995,12 +1038,21 @@ var eReaderJS = {
             }  
             
             $("#ee-page-layout").removeClass("ee-layout-double");
-            $("#ee-page-layout").addClass("ee-layout-single");            
-        }
-    
-        $("#pagecontent").css({
-            "width" : this.zoomingStateData[this.eeZoomState].pcwidth
-        }); 
+            $("#ee-page-layout").addClass("ee-layout-single");  
+            
+            if(this.eeAIRApp)
+            {
+                $("#pagecontent").css({
+                    "width" : this.zoomingStateData[this.eeZoomState].dppcwidth
+                });
+            }
+            else
+            {
+                $("#pagecontent").css({
+                    "width" : this.zoomingStateData[this.eeZoomState].pcwidth
+                });
+            }
+        }         
     },
 
     updatePageNavigator:function ()
@@ -1175,7 +1227,7 @@ var eReaderJS = {
     eeAddScrollHandler:function ()
     {
         $('#ee-book-toolbar').css('bottom', "0px");
-        /*
+    /*
         if($(window).height() + $(document).scrollTop() < $("#globalfooter").position().top)
         {
             if($(window).height() >= $(document).height())
@@ -1225,7 +1277,7 @@ var eReaderJS = {
     
         if(fullDir == 'enter')
         {
-/*            
+            /*            
             $("#globalheader").css({
                 "display" : 'none'
             });
@@ -1249,7 +1301,7 @@ var eReaderJS = {
         }
         else if(fullDir == 'exit')
         {
-/*            
+            /*            
             $("#globalheader").css({
                 "display" : 'block'
             });
@@ -1338,7 +1390,7 @@ var eReaderJS = {
         this.updatePageContent();
         this.eeAddScrollHandler();
         
-        //alert("SmallScreen:" + this.eeSmallScreen + "  PageLayout:" + this.eePageLayout + "  ZoomState:" + this.eeZoomState);
+    //alert("SmallScreen:" + this.eeSmallScreen + "  PageLayout:" + this.eePageLayout + "  ZoomState:" + this.eeZoomState);
     },
 
     eeNavigateNext:function (changeBy)
@@ -1503,7 +1555,7 @@ var eReaderJS = {
         this.eeUpdateResizedZoomStateAndPageNo();
     
         this.updatePageContent();
-/*    
+    /*    
         $("#commonFooterExtender").css({
             "height": $("#globalfooter").height()           
         });
@@ -1594,7 +1646,7 @@ var eReaderJS = {
         }); 
 
     },
-/*
+    /*
     eeAddMenuEventHandlers:function ()
     {
         $("#sub-menu > ul > li").bind({
@@ -1677,7 +1729,7 @@ var eReaderJS = {
     
         this.eeAddPageLoadingHandlers();
     
-//        this.eeAddMenuEventHandlers();
+        //        this.eeAddMenuEventHandlers();
     
         this.eeAddHomeEventHandlers();
     
@@ -1689,7 +1741,7 @@ var eReaderJS = {
     
         this.updatePageContent();    
     },
-/*
+    /*
     loadBookmap:function ()
     {
         $.getJSON("assets/data/bookmap.json",function(data)
@@ -1714,9 +1766,8 @@ var eReaderJS = {
         this.bookData = bookDataObject;
     },
     
-    customize:function(useSingleAudio, useMimimumImages, enableImageViewer, isAIRApp)
-    {
-        this.eeAIRApp = isAIRApp;
+    customize:function(useSingleAudio, useMimimumImages, enableImageViewer)
+    {        
         this.eeMimimumImages = useMimimumImages;
         this.eeSingleAudio = useSingleAudio;
         //this.eeMinimumZoomStates = useMinimumZoomStates;
@@ -1736,7 +1787,7 @@ var eReaderJS = {
     reset:function ()
     {
         $('#eeditionpageA').hideLoading();
-        $('#eeditionpageB').hideLoading();
+        $('#eeditionpageB').hideLoading();                    
     },
     
     getCurrentPage:function ()
