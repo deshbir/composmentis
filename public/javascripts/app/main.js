@@ -99,7 +99,7 @@ $(document).ready(function () {
             this.defaultRender('ngldemo', theme, deliverymode, 'index', lang);
         },
 
-        afterRender:function (){
+        beforeRender:function (){
             //Reader reset - if its defined.
             if(typeof eReaderJS != 'undefined') {
                 eReaderJS.reset();
@@ -143,7 +143,7 @@ $(document).ready(function () {
 
         },
 
-        afterRender:function (){
+        beforeRender:function (){
             //Reader reset - if its defined.
             if(typeof eReaderJS != 'undefined') {
                 eReaderJS.reset();

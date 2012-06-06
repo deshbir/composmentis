@@ -65,6 +65,7 @@
 <script type="text/javascript" src="public/bootstrap/js/bootstrap-collapse.js"></script>
 <script type="text/javascript" src="public/bootstrap/js/bootstrap-carousel.js"></script>
 <script type="text/javascript" src="public/bootstrap/js/bootstrap-button.js"></script>
+<script type="text/javascript" src="public/bootstrap/js/bootstrap-tooltip.js"></script>
 <script type="text/javascript" src="public/javascripts/global-init.js"></script>
 
 <script type="text/javascript" src="AIRAliases.js"></script>
@@ -74,6 +75,8 @@
     jQuery(document).ready(function () {
         $('.carousel').carousel();
         $().dropdown();
+        //adding tooltip on page
+        $('[rel*="tooltip"]').tooltip();
     });
 </script>
 

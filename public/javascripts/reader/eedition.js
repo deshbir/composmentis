@@ -30,7 +30,9 @@ var eReaderJS = {
         this.zoomingStateData = [ 
         {
             readerwidth:600,
-            pcwidth:'600px', 
+            pcwidth:'600px',
+            dppcwidth:'600px', 
+            sppcwidth:'600px', 
             spfile:'_600.jpg', 
             dpfile:'', 
             zsindex:'0'
@@ -38,6 +40,8 @@ var eReaderJS = {
         {
             readerwidth:720,
             pcwidth:'720px', 
+            dppcwidth:'720px', 
+            sppcwidth:'720px', 
             spfile:'_720.jpg', 
             dpfile:'', 
             zsindex:'1'
@@ -45,6 +49,8 @@ var eReaderJS = {
         {
             readerwidth:940,
             pcwidth:'940px', 
+            dppcwidth:'940px',
+            sppcwidth:'940px',
             spfile:'_940.jpg', 
             dpfile:'_470.jpg', 
             zsindex:'2'
@@ -52,6 +58,8 @@ var eReaderJS = {
         {
             readerwidth:1200,
             pcwidth:'1200px', 
+            dppcwidth:'1200px', 
+            sppcwidth:'1200px', 
             spfile:'_1200.jpg', 
             dpfile:'_600.jpg', 
             zsindex:'3'
@@ -59,6 +67,8 @@ var eReaderJS = {
         {
             readerwidth:1500,
             pcwidth:'1500px', 
+            dppcwidth:'1440px', 
+            sppcwidth:'1500px', 
             spfile:'_1500.jpg', 
             dpfile:'_720.jpg', 
             zsindex:'4'
@@ -66,20 +76,26 @@ var eReaderJS = {
         {
             readerwidth:1800,
             pcwidth:'1800px', 
+            sppcwidth:'1800px', 
+            dppcwidth:'1880px', 
             spfile:'_1800.jpg', 
             dpfile:'_940.jpg', 
             zsindex:'5'
         },
         {
             readerwidth:2400,
-            pcwidth:'2400px', 
+            pcwidth:'2400px',
+            dppcwidth:'2400px',
+            sppcwidth:'2400px',
             spfile:'', 
             dpfile:'_1200.jpg', 
             zsindex:'6'
         },
         {
             readerwidth:3000,
-            pcwidth:'3000px', 
+            pcwidth:'3000px',
+            dppcwidth:'3000px',
+            sppcwidth:'3000px',
             spfile:'', 
             dpfile:'_1500.jpg',     
             zsindex:'7'
@@ -87,6 +103,8 @@ var eReaderJS = {
         {
             readerwidth:3600,
             pcwidth:'3600px', 
+            dppcwidth:'3600px',
+            sppcwidth:'3600px',
             spfile:'', 
             dpfile:'_1800.jpg', 
             zsindex:'8'
@@ -170,6 +188,7 @@ var eReaderJS = {
     
     initPreferencesVars: function()
     {
+        this.eeAIRApp = false;
         this.fullscreenOn = false;
         this.eePageLayout = 0; //0:default. 1:single, 2:double
         this.eeSmallScreen = false;
@@ -179,6 +198,43 @@ var eReaderJS = {
         this.eeImageViewerEnabled = true;
     },    
     
+    eeSupportsSvg:function ()
+    {    
+        return document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Shape", "1.0")
+    },
+
+    progressHandler:function(event)
+    {
+    //alert("progressHandler: " + event);
+    },
+	
+    completeHandler:function(event)
+    {
+    //alert("progressHandler: " + event);
+    },
+	
+    id3Handler:function(event)
+    {
+    //alert("progressHandler: " + event);
+    },
+	
+    ioErrorHandler:function(event)
+    {
+    //alert("progressHandler: " + event);
+    },
+    
+    playAudioAIR:function(audioPath)
+    {
+        var request = new air.URLRequest(audioPath);
+        
+        var soundFactory = new air.Sound();    	
+        soundFactory.addEventListener(air.Event.COMPLETE, eReaderJS.completeHandler);
+        soundFactory.addEventListener(air.Event.ID3, eReaderJS.id3Handler);
+        soundFactory.addEventListener(air.IOErrorEvent.IO_ERROR, eReaderJS.ioErrorHandler);
+        soundFactory.addEventListener(air.ProgressEvent.PROGRESS, eReaderJS.progressHandler);
+        soundFactory.load(request);        
+        song = soundFactory.play();        
+    },
 
     checkAndUpdateExtenders:function()
     {
@@ -453,79 +509,88 @@ var eReaderJS = {
             var assetCount = assetGrp.assetcount;
         
             if(assetGrp.type == "aud")
-            {                    
-                if(this.eeAudio == undefined)
-                {
-                    this.eeOverlays = document.getElementById('ee-overlays');
-                    this.eeAudio = document.createElement('audio');
-                    this.eeAudio.autoplay = true;                            
-                    this.eeAudio.controls = true;
-                }
-                    
-                var leftVal = 0;
-                var topVal = 0;
-                var pagWd = Number($("#eeditionpagedivA").width());    
-                   
+            {
                 var assetUrl=assetGrp.assets.asset[0].url;
                 
                 if(this.eeSingleAudio == true)
                 {
                     assetUrl = "/public/audio/book1/sci_bib_4_es_1_rwm_001";
                 }
+                
+                if(this.eeAIRApp == false || this.eeAIRApp == undefined)
+                {
+                    if(this.eeAudio == undefined)
+                    {
+                        this.eeOverlays = document.getElementById('ee-overlays');
+                        this.eeAudio = document.createElement('audio');
+                        this.eeAudio.autoplay = true;                            
+                        this.eeAudio.controls = true;
+                    }
+                    
+                    var leftVal = 0;
+                    var topVal = 0;
+                    var pagWd = Number($("#eeditionpagedivA").width());    
+                   
+                
                  
                     
-                if(this.eePageLayout != 1 && this.eeSmallScreen != true &&  this.eeIsSecondpageAg == true)
-                {                        
-                    leftVal = Number(assetGrp.xposition)/Number(this.eeOverlayCalcBase)*pagWd +  + Number(pagWd);;
+                    if(this.eePageLayout != 1 && this.eeSmallScreen != true &&  this.eeIsSecondpageAg == true)
+                    {                        
+                        leftVal = Number(assetGrp.xposition)/Number(this.eeOverlayCalcBase)*pagWd +  + Number(pagWd);;
+                    }
+                    else
+                    {
+                        leftVal = Number(assetGrp.xposition)/Number(this.eeOverlayCalcBase)*pagWd;
+                    }
+                    
+                    topVal = Number(assetGrp.yposition)/Number(this.eeOverlayCalcBase)*pagWd - 35;
+                    
+                    var styleVal = "position:absolute;left:" + leftVal + "px;top:" + topVal + "px;";
+                    if(this.eeAudio.canPlayType('audio/ogg') == "probably")
+                    {
+                        this.eeAudio.src = assetUrl+'.ogg';
+                        this.eeOverlays.appendChild(this.eeAudio);
+                        this.eeLastAudioId = wcid;
+                        //position
+                        this.eeAudio.setAttribute("style",styleVal);
+                        this.eeAudio.play();
+                    }                
+                    else if(this.eeAudio.canPlayType('audio/mpeg') == "probably")
+                    {
+                        this.eeAudio.src = assetUrl+'.mp3';
+                        this.eeOverlays.appendChild(this.eeAudio);
+                        this.eeLastAudioId = wcid;
+                        //position
+                        this.eeAudio.setAttribute("style",styleVal);
+                        this.eeAudio.play();
+                    }
+                    if(this.eeAudio.canPlayType('audio/ogg') == "maybe")
+                    {
+                        this.eeAudio.src = assetUrl+'.ogg';
+                        this.eeOverlays.appendChild(this.eeAudio);
+                        this.eeLastAudioId = wcid;
+                        //position
+                        this.eeAudio.setAttribute("style",styleVal);
+                        this.eeAudio.play();
+                    }                
+                    else if(this.eeAudio.canPlayType('audio/mpeg') == "maybe")
+                    {
+                        this.eeAudio.src = assetUrl+'.mp3';
+                        this.eeOverlays.appendChild(this.eeAudio);
+                        this.eeLastAudioId = wcid;
+                        //position
+                        this.eeAudio.setAttribute("style",styleVal);
+                        this.eeAudio.play();
+                    }                
+                    else
+                    {
+                        alert("MP3 and OGG Audio files are not suported by your browser");
+                    } 
                 }
                 else
-                {
-                    leftVal = Number(assetGrp.xposition)/Number(this.eeOverlayCalcBase)*pagWd;
+                {                   
+                    this.playAudioAIR(assetUrl + ".mp3");
                 }
-                    
-                topVal = Number(assetGrp.yposition)/Number(this.eeOverlayCalcBase)*pagWd - 35;
-                    
-                var styleVal = "position:absolute;left:" + leftVal + "px;top:" + topVal + "px;";
-                if(this.eeAudio.canPlayType('audio/ogg') == "probably")
-                {
-                    this.eeAudio.src = assetUrl+'.ogg';
-                    this.eeOverlays.appendChild(this.eeAudio);
-                    this.eeLastAudioId = wcid;
-                    //position
-                    this.eeAudio.setAttribute("style",styleVal);
-                    this.eeAudio.play();
-                }                
-                else if(this.eeAudio.canPlayType('audio/mpeg') == "probably")
-                {
-                    this.eeAudio.src = assetUrl+'.mp3';
-                    this.eeOverlays.appendChild(this.eeAudio);
-                    this.eeLastAudioId = wcid;
-                    //position
-                    this.eeAudio.setAttribute("style",styleVal);
-                    this.eeAudio.play();
-                }
-                if(this.eeAudio.canPlayType('audio/ogg') == "maybe")
-                {
-                    this.eeAudio.src = assetUrl+'.ogg';
-                    this.eeOverlays.appendChild(this.eeAudio);
-                    this.eeLastAudioId = wcid;
-                    //position
-                    this.eeAudio.setAttribute("style",styleVal);
-                    this.eeAudio.play();
-                }                
-                else if(this.eeAudio.canPlayType('audio/mpeg') == "maybe")
-                {
-                    this.eeAudio.src = assetUrl+'.mp3';
-                    this.eeOverlays.appendChild(this.eeAudio);
-                    this.eeLastAudioId = wcid;
-                    //position
-                    this.eeAudio.setAttribute("style",styleVal);
-                    this.eeAudio.play();
-                }                
-                else
-                {
-                    alert("MP3 and OGG Audio files are not suported by your browser");
-                }                    
                 
             }        
             else if(assetGrp.type == "img")
@@ -594,7 +659,15 @@ var eReaderJS = {
     
     eeAddOverLayIcon:function(olid)
     {
-        $('#ee-overlays').append('<div id=\"' + olid + '\" class="ee-overlay"><img class="ee-overlay-img" src="/public/images/reader/eedition/overlays/image_icon.svg"/></div>');
+    	if(this.eeSupportsSvg())
+    	{
+    		$('#ee-overlays').append('<div id=\"' + olid + '\" class="ee-overlay"><img class="ee-overlay-img" src="/public/images/reader/eedition/overlays/image_icon.svg"/></div>');
+    	}
+    	else
+    	{
+    		$('#ee-overlays').append('<div id=\"' + olid + '\" class="ee-overlay"><object class="ee-overlay-img" data="/public/images/reader/eedition/overlays/image_icon.svg" type="image/svg+xml"><img class="ee-overlay-img" src="/public/images/reader/eedition/overlays/image_icon.png"/></object></div>');
+    	}
+        
         $('#' + olid).click(function(){
             wcid = $(this).attr("wcid");
             wctype = $(this).attr("wctype");
@@ -677,8 +750,16 @@ var eReaderJS = {
                 $(olid).attr("wcid", wcid);  
                 $(olid).attr("wctype", wctype);  
                 
-                $(olid).children('img').attr("src", imgPath + this.eeVideoIconPathPostfix['default']); 
-                $(olid).children('img').attr("presrc", imgPath);
+                if(this.eeSupportsSvg())
+                {
+                	$(olid).children('img').attr("src", imgPath + this.eeVideoIconPathPostfix['default']); 
+               		$(olid).children('img').attr("presrc", imgPath);
+                }
+                else
+                {
+	                $(olid).children('object').attr("data", imgPath + this.eeVideoIconPathPostfix['default']); 
+               		$(olid).children('object').attr("presrc", imgPath);
+                }
             
             } 
         }
@@ -1340,6 +1421,10 @@ var eReaderJS = {
             if(this.eePageLayout == 0 || this.eePageLayout == 2)
             {
                 this.eePageLayout = 1;
+                if(this.eeZoomState > this.spMaxStateIndex)
+                {
+                    this.eeZoomState = this.spMaxStateIndex;                    
+                }
                 $("#ee-page-layout").removeClass("ee-layout-single");
                 $("#ee-page-layout").addClass("ee-layout-double");        
                 $("#ee-page-layout").attr('title','Switch to double page view');
@@ -1352,6 +1437,10 @@ var eReaderJS = {
                     this.eeCurrentpage--;
                 }
             
+                if(this.eeZoomState < this.dpMinStateIndex)
+                {
+                    this.eeZoomState = this.dpMinStateIndex;                    
+                }
                 $("#ee-page-layout").removeClass("ee-layout-double");
                 $("#ee-page-layout").addClass("ee-layout-single");
                 $("#ee-page-layout").attr('title','Switch to single page view');
@@ -1625,8 +1714,9 @@ var eReaderJS = {
         this.bookData = bookDataObject;
     },
     
-    customize:function(useSingleAudio, useMimimumImages, enableImageViewer)
+    customize:function(useSingleAudio, useMimimumImages, enableImageViewer, isAIRApp)
     {
+        this.eeAIRApp = isAIRApp;
         this.eeMimimumImages = useMimimumImages;
         this.eeSingleAudio = useSingleAudio;
         //this.eeMinimumZoomStates = useMinimumZoomStates;
@@ -1645,15 +1735,8 @@ var eReaderJS = {
     
     reset:function ()
     {
-        if(eReaderJS.eePageALastSource != "")
-        { 
-            $('#eeditionpageA').hideLoading();
-        }
-            
-        if(eReaderJS.eePageBLastSource != "")
-        { 
-            $('#eeditionpageB').hideLoading();
-        }            
+        $('#eeditionpageA').hideLoading();
+        $('#eeditionpageB').hideLoading();
     },
     
     getCurrentPage:function ()
@@ -1716,7 +1799,12 @@ var eReaderJS = {
         {
             return false;
         }   
-    }    
+    },
+    
+    repositionOverlays:function ()
+    {
+        eReaderJS.eeRepositionOverlays.apply(eReaderJS);
+    }
     
 };
 
