@@ -1,5 +1,5 @@
     ActivityEngineInit = new function() {
-        console.log('ActivityEngineInit');
+        //console.log('ActivityEngineInit');
         this.init = function(lang) {
             // Handler for .ready() called.
             container = Container.GlobalObject;

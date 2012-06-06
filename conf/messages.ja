@@ -90,13 +90,13 @@ global.noactive.tooltip=このページ/機能は、デモのこのバージョ�
 home.header.login.profile=プロフィール
 
 ngconnect.noactive.para1=このページ/機能は、現在アクティブではありません。あなたは、戦略 "を見据えた"ナショナルジオグラフィック学習（NGL）のコンセプトデモを支持してデモのワイヤーフレームを見直して、多くの部品と、このデモのページ（バージョン0.1）はこの時点でアクティブではありません。
-ngconnect.noactive.para2=あなたには、ブラウザの[<strong>戻るボタン</ strong>の前のページに戻りますを使用することができます。また、デモのアクティブなページに戻るには、次の選択をしてください
+ngconnect.noactive.para2=あなたは、ブラウザの<strong>[戻る]ボタン前のページに戻るには</ strong>]を使用することができます。また、デモのアクティブなページに戻るには、次の選択のいずれかを確認してください。
 ngconnect.noactive.anchor.home=ホーム（科学）
-ngconnect.noactive.anchor.home.para=また、このページに移動する上部メニューバー上のリンクを使用することができます。
+ngconnect.noactive.anchor.home.para=また、このページにナビゲートするために上部のメニューバー上のリンクを使用することができます。
 ngconnect.noactive.anchor.bookreader=ブックリーダー
-ngconnect.noactive.anchor.bookreader.para=また、このページに移動する上部メニューバー上のリンクを使用することができます。
+ngconnect.noactive.anchor.bookreader.para=また、このページにナビゲートするために上部のメニューバー上のリンクを使用することができます。
 ngconnect.noactive.anchor.siteindex=サイトインデックス
-ngconnect.noactive.anchor.siteindex.para=また、このページに移動し、画面のあなたの左上隅のロゴをクリックすることができます。
+ngconnect.noactive.anchor.siteindex.para=また、このページに移動し、画面の左上隅のロゴをクリックすることができます。
 ngconnect.noactive.para3=代替の配信及び/又は皮膚のオプションの完全なセットについては、あなたが最初のページ（デモのオプション付き）に達するまで、あなたのページ（複数回）の左上隅をクリックして続けてください。
 ngconnect.noactive.para4=上記の作品の場合はなしで、このリンクをクリックしてください
 ngconnect.noactive.para4.beforelink=上記の作品の場合はなしで、このリンクをクリックしてください
