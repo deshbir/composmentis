@@ -1906,7 +1906,9 @@ Kinetic.Stage.prototype = {
         this.content.style.width = this.attrs.width + 'px';
         this.content.style.height = this.attrs.height + 'px';
         this.content.style.position = 'relative';
-        this.content.setAttribute("style","clear:both;float:right");
+        if (this.getStage().language == 'ar') {
+            this.content.setAttribute("style","clear:both;float:right");
+        }
         this.content.style.display = 'inline-block';
         this.content.className = 'kineticjs-content';
         this.container.appendChild(this.content);
