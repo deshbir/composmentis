@@ -33,6 +33,8 @@ $(document).ready(function () {
                 $("body").removeClass("theme-myelt theme-ngconnect"); //Fix this function to be generic
                 $("body").addClass("theme-" + theme);
             }
+            //removing tooltip from page
+            $('.tooltip').remove();
             /* End of theme setup */
 
 
@@ -47,6 +49,7 @@ $(document).ready(function () {
             //Use this for global initializations - applicable to all views
             $('.dropdown-toggle').dropdown();
             $('.carousel').carousel();
+            //adding tooltip on page
             $('[rel*="tooltip"]').tooltip();
 
             //global variables

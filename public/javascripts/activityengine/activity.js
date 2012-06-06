@@ -455,7 +455,7 @@
             var activity = this;
             marginLeft = (activity.containerWidth)/2;
             marginTop = (activity.containerHeight - activity.optionHeight)/2;
-            containerBox.on("touchstart",function(){
+            containerBox.on("touchstart mousedown",function(){
                 //if no box is tapped return
                 if(activity.activeBox == null){
                     return;
@@ -640,7 +640,7 @@
             var stage = this.stage;
 
             if(box.attrs.draggable==true) {
-                box.on("touchstart",function(){
+                box.on("touchstart mousedown",function(){
                     this.moveToTop();
                     activity.isDraggableElement = true;
                     if(activity.activeBox!=null){
