@@ -14,8 +14,8 @@
             </a>
             <div class="nav-collapse">
                 <ul class="nav pull-right">
-                  <li class="${request.action =~ /home/ ? 'active' : ''}"><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href=#{route-uri-x controller:'ngldemo' , action:'home' /}>&{'products.menu.home'}</a></li>
-                  <li class="${request.action =~ /reader/ ? 'active' : ''}"><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href=#{route-uri-x controller:'ngldemo' , action:'reader' /}>&{'products.menu.books'}</a></li>
+                  <li class="${request.action =~ /home/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'home' /}>&{'products.menu.home'}</a></li>
+                  <li class="${request.action =~ /reader/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'reader' /}>&{'products.menu.books'}</a></li>
                   <li class="${request.action =~ /activity/ ? 'active' : ''}"><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'products.menu.Library'}</a></li>
                   <li class="divider-vertical pull-right"></li>
                   <li class="dropdown pull-right">
