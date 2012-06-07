@@ -3805,6 +3805,11 @@ body .section-large-font p, body .section-large-font li, body .section-large-fon
     margin: 7px 10px 0 0;
     opacity: 0.8;
 }
+#products h2 {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.4;
+}
 #support {
     background-color: #333333;
     padding: 20px 20px 0px 20px;
