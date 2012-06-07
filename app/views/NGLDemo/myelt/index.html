@@ -20,22 +20,22 @@
                     <!-- This is shown for mobile devices - collapsed icon -->
                     <i class="icon-align-justify"></i>
                 </a>
-                <a class="brand" title="Return to NGL Wireframe options" href="#{route-splash-page /}"><img src="@{'/public/images/ngldemo/placeholder_ng_logo.png'}" alt="#{text-product-name /} logo">#{text-product-name /}</a>
+                <a class="brand" title="Return to NGL Wireframe options" href="#{route-splash-page /}"><img src="@{'/public/images/ngldemo/placeholder_ng_logo.png'}" alt="#{text-product-name /} logo"><span>#{text-product-name /}</span></a>
                 <div class="nav-collapse">
                     <ul class="nav pull-right">
                     #{if session.get("user") != null }
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="@{'/public/images/glyphicons/glyphicons_003_user.png'}" alt="User Preferences Menu"><b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="User Menu and Options" src="@{'/public/images/glyphicons/glyphicons_003_user.png'}" alt="User Preferences Menu"><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="?lang=en">${session.get("user")} (&{'home.header.login.profile'})</a></li>
                                 <li class="divider"></li>
                                 #{if flash.get("application.delivery") == "offline"}
-                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive' /}">&{'home.header.login.switchonlinefromoffline'}</a></li>
+                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.header.login.switchonlinefromoffline'}</a></li>
                                 #{/if}
                                 #{else}
-                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive' /}">&{'home.header.login.changepassword'}</a></li>
-                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive' /}">&{'home.header.login.preferences'}</a></li>
-                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo' , action:'logout' /}">&{'home.header.login.signout'}</a></li>
+                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.header.login.changepassword'}</a></li>
+                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.header.login.preferences'}</a></li>
+                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.header.login.signout'}</a></li>
                                 #{/else}
                             </ul>
                         </li>
@@ -94,7 +94,7 @@
                 <a class="carousel-control left" href="#carouseltop" data-slide="prev">&lsaquo;</a>
                 <a class="carousel-control right" href="#carouseltop" data-slide="next">&rsaquo;</a>
             </div>
-            <p><a class="btn btn-large" rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'home.hero.tour'}</a></p>
+            <p><a class="btn btn-large" rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.hero.tour'}</a></p>
         </div>
     </div>
 </div>  <!-- End of Hero Unit -->
@@ -103,35 +103,30 @@
 <div id="products" class="container">
     <div class="row">
         <div class="span4">
-            <img alt="eEnglish product icon" src="@{'/public/images/glyphicons/glyphicons_030_pencil.png'}">
-            <h3>eEnglish</h3>
+            <h2><img alt="eEnglish product icon" src="@{'/public/images/glyphicons/glyphicons_030_pencil.png'}">eEnglish</h2>
             <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
-            <img alt="Grammar Cafe product icon" src="@{'/public/images/glyphicons/glyphicons_010_envelope.png'}">
-            <h3>Grammar Cafe</h3>
+            <h2><img alt="Grammar Cafe product icon" src="@{'/public/images/glyphicons/glyphicons_010_envelope.png'}">Grammar Cafe</h2>
             <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
             <img alt="TOEFL iBT product logo" src="@{'/public/images/glyphicons/glyphicons_039_notes.png'}">
-            <h3>TOEFL iBT&reg; Online</h3>
+            <h2>TOEFL iBT&reg; Online</h2>
             <p>&{'global.loremipsum.3'}</p>
         </div>
     </div>
     <div class="row">
         <div class="span4">
-            <img alt="Milestones product icon" src="@{'/public/images/glyphicons/glyphicons_042_pie_chart.png'}">
-            <h3>Milestones</h3>
+            <h2><img alt="Milestones product icon" src="@{'/public/images/glyphicons/glyphicons_042_pie_chart.png'}">Milestones</h2>
             <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
-            <img alt="World Pass Online product icon" src="@{'/public/images/glyphicons/glyphicons_060_compass.png'}">
-            <h3>World Pass Online</h3>
+            <h2><img alt="World Pass Online product icon" src="@{'/public/images/glyphicons/glyphicons_060_compass.png'}">World Pass Online</h2>
             <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
-            <img alt="My FCE product icon" src="@{'/public/images/glyphicons/glyphicons_163_iphone.png'}">
-            <h3>My FCE</h3>
+            <h2><img alt="World Pass Online product icon" src="@{'/public/images/glyphicons/glyphicons_060_compass.png'}">My FCE</h2>
             <p>&{'global.loremipsum.3'}</p>
         </div>
     </div>

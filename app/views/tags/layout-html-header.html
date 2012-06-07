@@ -23,20 +23,4 @@
 <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-
-<script>
-    #{if flash.get("application.delivery") == "offline"}
-        NGLApplicationConf  = new function() {
-            this.offline_mode = 1;
-            this.skin="myelt";
-            //this.skin="ngconnect";
-        };
-    #{/if}#{else}
-        NGLApplicationConf  = new function() {
-            this.offline_mode = 0;
-            this.skin="myelt";
-            //this.skin="ngconnect";
-        };
-    #{/else}
-</script>
 <link rel="shortcut icon" href="@{'/public/images/favicon.ico'}" type="image/x-icon">

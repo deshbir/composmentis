@@ -86,7 +86,7 @@ products.studenttools.h1=学生のツールとリソース
 products.books.start=あなたの本を読
 global.loremipsum.1=馯みゅ じょじホ 檨ぬ儦る苯 檣秞襞クォい
 courses.course.resume=割り当てを再開
-global.noactive.tooltip=このページ/機能は、デモのこのバージョンではアクティブではありません。
+global.noactive.tooltip=デモではアクティブではありません
 home.header.login.profile=プロフィール
 
 ngconnect.noactive.para1=このページ/機能は、現在アクティブではありません。あなたは、戦略 "を見据えた"ナショナルジオグラフィック学習（NGL）のコンセプトデモを支持してデモのワイヤーフレームを見直して、多くの部品と、このデモのページ（バージョン0.1）はこの時点でアクティブではありません。

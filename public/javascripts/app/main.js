@@ -50,7 +50,7 @@ $(document).ready(function () {
             $('.dropdown-toggle').dropdown();
             $('.carousel').carousel();
             //adding tooltip on page
-            $('[rel*="tooltip"]').tooltip();
+            $('[rel*="tooltip"]').tooltip({delay:500,animation:false,placement:'bottom'});
 
             //global variables
             app_router.lastVisitedAction = action;

@@ -1,3 +1,19 @@
+<script>
+    #{if flash.get("application.delivery") == "offline"}
+    NGLApplicationConf  = new function() {
+        this.offline_mode = 1;
+        this.skin="myelt";
+        //this.skin="ngconnect";
+    };
+    #{/if}#{else}
+    NGLApplicationConf  = new function() {
+        this.offline_mode = 0;
+        this.skin="myelt";
+        //this.skin="ngconnect";
+    };
+    #{/else}
+</script>
+
 #{greenscript.js "javascripts/global-init", output: 'all'/}
 
 #{if flash.get("application.delivery") == "offline"}
@@ -13,7 +29,7 @@
     jQuery(document).ready(function() {
         $('.carousel').carousel();
         $().dropdown();
-        $('[rel*="tooltip"]').tooltip();
+        $('[rel*="tooltip"]').tooltip({delay:500,animation:false,placement:'bottom'});
     });
 
 </script>

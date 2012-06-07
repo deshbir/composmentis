@@ -21,22 +21,22 @@
                     <i class="icon-align-justify"></i>
                 </a>
                 <a class="brand" title="Return to NGL Wireframe options" href="#{route-splash-page /}">
-                    <img src="@{'/public/images/ngldemo/placeholder_ng_logo.png'}" alt="">#{text-product-name /}
+                    <img src="@{'/public/images/ngldemo/placeholder_ng_logo.png'}" alt="#{text-product-name /} logo"><span>#{text-product-name /}</span>
                 </a>
                 <div class="nav-collapse">
                     <ul class="nav pull-right">
                     #{if session.get("user") != null }
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="@{'/public/images/glyphicons/glyphicons_003_user.png'}"><b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="User Menu and Options" src="@{'/public/images/glyphicons/glyphicons_003_user.png'}"><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="?lang=en">${session.get("user")} (&{'home.header.login.profile'})</a></li>
                                 <li class="divider"></li>
                                 #{if flash.get("application.delivery") == "offline"}
-                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'home.header.login.switchonlinefromoffline'}</a></li>
+                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.header.login.switchonlinefromoffline'}</a></li>
                                 #{/if}
                                 #{else}
-                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'home.header.login.changepassword'}</a></li>
-                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'home.header.login.preferences'}</a></li>
+                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.header.login.changepassword'}</a></li>
+                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.header.login.preferences'}</a></li>
                                     <li><a href="#{route-uri-x controller:'ngldemo', action:'logout' /}">&{'home.header.login.signout'}</a></li>
                                 #{/else}
                             </ul>
@@ -71,7 +71,7 @@
             <div class="span8">
             <h1>&{'home.hero.myng.heading1'}</h1>
             <p>&{'home.hero.myng.heading2'}</p>
-            <p><a class="btn btn-large" rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive' /}">&{'home.hero.tour'}</a></p>
+            <p><a class="btn btn-large" rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.hero.tour'}</a></p>
         </div>
 
         <div class="span4 large-home-buttons">
@@ -91,35 +91,30 @@
 <div id="products" class="container">
     <div class="row">
         <div class="span4">
-            <img alt="Reach product icon" src="@{'/public/images/glyphicons/glyphicons_080_retweet.png'}">
-            <h3>Reach</h3>
+            <h2><img alt="Reach product icon" src="@{'/public/images/glyphicons/glyphicons_080_retweet.png'}">Reach</h2>
             <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
             <img alt="Reach for Reading product icon" src="@{'/public/images/glyphicons/glyphicons_081_refresh.png'}">
-            <h3>Reach for Reading</h3>
+            <h2>Reach for Reading</h2>
             <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
-            <img alt="Science product icon" src="@{'/public/images/glyphicons/glyphicons_320_filter.png'}">
-            <h3>Science</h3>
+            <h2><img alt="Science product icon" src="@{'/public/images/glyphicons/glyphicons_320_filter.png'}">Science</h2>
             <p>&{'global.loremipsum.3'}</p>
         </div>
     </div>
     <div class="row">
         <div class="span4">
-            <img alt="World Cultures & Goegraphy product icon" src="@{'/public/images/glyphicons/glyphicons_340_globe.png'}">
-            <h3>World Cultures and Geography</h3>
+            <h2><img alt="World Cultures & Goegraphy product icon" src="@{'/public/images/glyphicons/glyphicons_340_globe.png'}">World Cultures and Geography</h2>
             <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
-            <img alt="Our World product icon" src="@{'/public/images/glyphicons/glyphicons_242_google_maps.png'}">
-            <h3>Our World</h3>
+            <h2><img alt="Our World product icon" src="@{'/public/images/glyphicons/glyphicons_242_google_maps.png'}">Our World</h2>
             <p>&{'global.loremipsum.3'}</p>
         </div>
         <div class="span4">
-            <img alt="Comprehension Coach product icon" src="@{'/public/images/glyphicons/glyphicons_077_headset.png'}">
-            <h3>Comprehension Coach</h3>
+            <h2><img alt="Comprehension Coach product icon" src="@{'/public/images/glyphicons/glyphicons_077_headset.png'}">Comprehension Coach</h2>
             <p>&{'global.loremipsum.3'}</p>
         </div>
     </div>

@@ -13,25 +13,22 @@
                 <h3>Earth Science - Unit 1</h3>
             </a>
             <div class="nav-collapse">
-                <ul class="nav">
-
-                </ul>
                 <ul class="nav pull-right">
                   <li class="${request.action =~ /home/ ? 'active' : ''}"><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href=#{route-uri-x controller:'ngldemo' , action:'home' /}>&{'products.menu.home'}</a></li>
                   <li class="${request.action =~ /reader/ ? 'active' : ''}"><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href=#{route-uri-x controller:'ngldemo' , action:'reader' /}>&{'products.menu.books'}</a></li>
-                  <li class="${request.action =~ /activity/ ? 'active' : ''}"><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'products.menu.Library'}</a></li>
+                  <li class="${request.action =~ /activity/ ? 'active' : ''}"><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'products.menu.Library'}</a></li>
                   <li class="divider-vertical pull-right"></li>
                   <li class="dropdown pull-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="@{'/public/images/glyphicons/glyphicons_003_user.png'}"><b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="User Menu and Options" src="@{'/public/images/glyphicons/glyphicons_003_user.png'}"><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="?lang=en">${session.get("user")} (&{'home.header.login.profile'})</a></li>
                             <li class="divider"></li>
                             #{if flash.get("application.delivery") == "offline"}
-                                <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'home.header.login.switchonlinefromoffline'}</a></li>
+                                <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.header.login.switchonlinefromoffline'}</a></li>
                             #{/if}
                             #{else}
-                                <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'home.header.login.changepassword'}</a></li>
-                                <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'home.header.login.preferences'}</a></li>
+                                <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.header.login.changepassword'}</a></li>
+                                <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.header.login.preferences'}</a></li>
                                 <li><a href="#{route-uri-x controller:'ngldemo', action:'logout' /}">&{'home.header.login.signout'}</a></li>
                             #{/else}
                         </ul>

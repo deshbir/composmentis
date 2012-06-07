@@ -9,7 +9,7 @@
                     <i class="icon-align-justify"></i>
                 </a>
                 <a class="brand" href="#{route-uri-x controller:'ngldemo' , action:'index'/}">
-                    <img src="@{'/public/images/ngldemo/placeholder_ng_logo.png'}" alt="#{text-product-name /} logo">#{text-product-name /}
+                    <img src="@{'/public/images/ngldemo/placeholder_ng_logo.png'}" alt="#{text-product-name /} logo"><span>#{text-product-name /}</span>
                 </a>
                 <div id="loadingIcon">
                     <img src="@{'/public/images/ajax_loader.gif'}">
@@ -22,36 +22,36 @@
                        #{if flash.get("application.theme") == "myelt" }
                         <li class="${request.action =~ /home/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'home' /}>&{'home.header.courses'}</a></li>
                         <li class="${request.action =~ /activity/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'activity' /}>&{'home.header.assignment'}</a></li>
-                        <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'home.header.materials'}</a></li>
-                        <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'home.header.grades'}</a></li>
+                        <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.header.materials'}</a></li>
+                        <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.header.grades'}</a></li>
                        #{/if}
                        #{else}
                          <li class="${request.action =~ /home/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'home' /}>&{'products.menu.home'}</a></li>
                          <li class="${request.action =~ /reader/ ? 'active' : ''}"><a href=#{route-uri-x controller:'ngldemo' , action:'reader' /}>&{'products.menu.books'}</a></li>
-                         <li class="${request.action =~ /activity/ ? 'active' : ''}"><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'products.menu.Library'}</a></li>
+                         <li class="${request.action =~ /activity/ ? 'active' : ''}"><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'products.menu.Library'}</a></li>
                        #{/else}
 
                         <li class="divider-vertical"></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="@{'/public/images/glyphicons/glyphicons_003_user.png'}"><b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="User Menu and Options"  src="@{'/public/images/glyphicons/glyphicons_003_user.png'}"><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                <li><a href="#">${session.get("user")} (&{'home.header.login.profile'})</a></li>
                                <li class="divider"></li>
                                 #{if flash.get("application.delivery") == "offline"}
-                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'home.header.login.switchonlinefromoffline'}</a></li>
+                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.header.login.switchonlinefromoffline'}</a></li>
                                 #{/if}
                                 #{else}
-                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'home.header.login.changepassword'}</a></li>
-                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'home.header.login.preferences'}</a></li>
+                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.header.login.changepassword'}</a></li>
+                                    <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.header.login.preferences'}</a></li>
                                     <li><a href="#{route-uri-x controller:'ngldemo', action:'logout' /}">&{'home.header.login.signout'}</a></li>
                                 #{/else}
                             </ul>
                         </li>
                     #{/if}
                     #{else}
-                        <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'home.help'}</a></li>
+                        <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'home.help'}</a></li>
                         <li class="divider-vertical"></li>
-                        <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#{route-uri-x controller:'ngldemo', action:'notactive'/}">&{'registration.reg'}</a></li>
+                        <li><a rel="tooltip" data-original-title="&{'global.noactive.tooltip'}" href="#">&{'registration.reg'}</a></li>
                     #{/else}
                     #{if flash.get("application.delivery") != "offline"}
                             <li class="divider-vertical"></li>

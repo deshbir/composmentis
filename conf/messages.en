@@ -8,7 +8,7 @@ global.header.langsel=Language
 global.loremipsum.1=Lorem ipsum dolor sit amet, consectetur
 global.loremipsum.2=Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor.
 global.loremipsum.3=Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in diam sit amet sapien pharetra auctor. Aenean volutpat velit lectus, non lacinia ante.
-global.noactive.tooltip=This page/feature is not active in this version of the demo.
+global.noactive.tooltip=Not active in demo
 
 global.model.selflearner=Self Learner
 global.model.instructorled=Instructor-led
