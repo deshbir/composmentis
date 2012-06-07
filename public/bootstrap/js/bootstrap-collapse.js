@@ -57,6 +57,11 @@
       this.transition('addClass', 'show', 'shown')
       this.$element[dimension](this.$element[0][scroll])
 
+          //eReader - overlay fix.
+          if($('.reader-body #pagecontent #ee-overlays') != 'undefined')    {
+              $('.reader-body #pagecontent #ee-overlays').css({'display':'none'})
+          }
+
     }
 
   , hide: function () {
@@ -64,6 +69,11 @@
       this.reset(this.$element[dimension]())
       this.transition('removeClass', 'hide', 'hidden')
       this.$element[dimension](0)
+
+          //eReader - overlay fix.
+          if($('.reader-body #pagecontent #ee-overlays') != 'undefined')    {
+              $('.reader-body #pagecontent #ee-overlays').css({'display':'block'})
+        }
     }
 
   , reset: function ( size ) {

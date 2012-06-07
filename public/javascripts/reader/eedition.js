@@ -250,17 +250,26 @@ var eReaderJS = {
     //alert("progressHandler: " + event);
     },
     
-    playAudioAIR:function(audioPath)
+    playAudioAIR:function(audioPath, eeAudioId)
     {
-        var request = new air.URLRequest(audioPath);
+        if(this.eeAudio == undefined)
+        {       
+            this.eeAudio = new air.Sound();    	
+            this.eeAudio.addEventListener(air.Event.COMPLETE, eReaderJS.completeHandler);
+            this.eeAudio.addEventListener(air.Event.ID3, eReaderJS.id3Handler);
+            this.eeAudio.addEventListener(air.IOErrorEvent.IO_ERROR, eReaderJS.ioErrorHandler);
+            this.eeAudio.addEventListener(air.ProgressEvent.PROGRESS, eReaderJS.progressHandler);                    
+        }
+        else
+        {
+            this.eeCheckAndRemovePreviousAudio();            
+        }
         
-        var soundFactory = new air.Sound();    	
-        soundFactory.addEventListener(air.Event.COMPLETE, eReaderJS.completeHandler);
-        soundFactory.addEventListener(air.Event.ID3, eReaderJS.id3Handler);
-        soundFactory.addEventListener(air.IOErrorEvent.IO_ERROR, eReaderJS.ioErrorHandler);
-        soundFactory.addEventListener(air.ProgressEvent.PROGRESS, eReaderJS.progressHandler);
-        soundFactory.load(request);        
-        song = soundFactory.play();        
+        this.eeLastAudioId = eeAudioId;
+        var request = new air.URLRequest(audioPath);
+        this.eeAudio.load(request);
+        song = this.eeAudio.play();
+        
     },
 
     checkAndUpdateExtenders:function()
@@ -515,9 +524,16 @@ var eReaderJS = {
     eeCheckAndRemovePreviousAudio: function()
     {
         if(this.eeLastAudioId != "")
-        {
-            this.eeAudio.pause();
-            this.eeOverlays.removeChild(this.eeAudio);
+        {            
+            if(this.eeAIRApp !=  true)
+            {           
+                this.eeAudio.pause();
+                this.eeOverlays.removeChild(this.eeAudio);            
+            }
+            else
+            {
+                this.eeAudio.stop();                        
+            }
             this.eeLastAudioId = "";
         }
     },
@@ -615,8 +631,9 @@ var eReaderJS = {
                     } 
                 }
                 else
-                {                   
-                    this.playAudioAIR(assetUrl + ".mp3");
+                {
+                    
+                    this.playAudioAIR(assetUrl + ".mp3", wcid);
                 }
                 
             }        
@@ -699,7 +716,18 @@ var eReaderJS = {
             wcid = $(this).attr("wcid");
             wctype = $(this).attr("wctype");
             eReaderJS.eeOverlayIconClicked(wcid, wctype);        
-        })        
+        });
+        if(!this.eeSupportsSvg())
+        {
+            $('#' + olid).mouseover(function() {
+                $('#' + olid+ " > object > img").attr('src', $('#' + olid+ " > object").attr("presrc")+eReaderJS.eeFallbackIconPathPostfix['hover'] );
+            });
+            $('#' + olid).mouseout(function() {
+                $('#' + olid+ " > object > img").attr('src', $('#' + olid+ " > object").attr("presrc")+eReaderJS.eeFallbackIconPathPostfix['default'] );
+            });
+        }
+
+        
         $('#' + olid).css({
             "display" : "none"
         });
@@ -781,12 +809,36 @@ var eReaderJS = {
                 {
                     $(olid).children('img').attr("src", imgPath + this.eeVideoIconPathPostfix['default']); 
                     $(olid).children('img').attr("presrc", imgPath);
+                    if(wctype == "aud")
+                    {
+                        $(olid).children('img').attr("alt", 'Audio');
+                    }
+                    else if(wctype == "img")
+                    {
+                        $(olid).children('img').attr("alt", 'Image');
+                    }
+                    else if(wctype == "vid")
+                    {
+                        $(olid).children('img').attr("alt", 'Video');
+                    }
                 }
                 else
                 {
                     $(olid).children('object').attr("data", imgPath + this.eeVideoIconPathPostfix['default']); 
                     $(olid).children('object').attr("presrc", imgPath);
                     $(olid).children('object').children('img').attr("src", imgPath + this.eeFallbackIconPathPostfix['default']);
+                    if(wctype == "aud")
+                    {
+                        $(olid).children('object').children('img').attr("alt", 'Audio');
+                    }
+                    else if(wctype == "img")
+                    {
+                        $(olid).children('object').children('img').attr("alt", 'Image');
+                    }
+                    else if(wctype == "vid")
+                    {
+                        $(olid).children('object').children('img').attr("alt", 'Video');
+                    }
                 }
             
             } 
@@ -1517,6 +1569,16 @@ var eReaderJS = {
         $("#prevPageEdition").click(function(){
             _this.eeCheckAndShowPreviousPage();
         })
+        $(document).keydown(function(e){
+            if (e.keyCode == 37) { 
+                _this.eeCheckAndShowPreviousPage();
+                return false;
+            }
+            if (e.keyCode == 39) { 
+                _this.eeCheckAndShowNextPage();
+                return false;
+            }
+        });
     /*    
     $("#eedition-container").touchwipe({
         wipeLeft: function() {  
@@ -1709,7 +1771,16 @@ var eReaderJS = {
             
             if (navigator.appVersion.indexOf("Win")!=-1 || navigator.appVersion.indexOf("Mac")!=-1 || navigator.appVersion.indexOf("X11")!=-1 || navigator.appVersion.indexOf("Linux")!=-1)
             {
-                this.removeAttribute("style",0);
+                //this.removeAttribute("style",0);
+                //$('#ee-book-toolbar > div').removeAttr("style");
+                if(eReaderJS.eeAIRApp ==  true)
+                {
+                    $('#ee-book-toolbar > div').removeAttr("style");
+                }
+                else
+                {
+                    this.removeAttribute("style",0);
+                }
             }
         });
     },
@@ -1772,6 +1843,12 @@ var eReaderJS = {
         this.eeSingleAudio = useSingleAudio;
         //this.eeMinimumZoomStates = useMinimumZoomStates;
         this.eeImageViewerEnabled = enableImageViewer;
+        
+        if(typeof air != 'undefined')
+        {
+            this.eeMimimumImages = false;
+        }
+        
         this.eeUpdateZoomStateData();
         
     },
