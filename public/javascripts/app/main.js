@@ -77,7 +77,7 @@ $(document).ready(function () {
 
                 $('#backbone_container').fadeOut(0, function() {
                     $(this).html(template);
-                    $(this).fadeIn(400);
+                    $(this).fadeIn(200);
                 });
 
                 //Post-View Load Initializations

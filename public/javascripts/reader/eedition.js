@@ -11,7 +11,7 @@ var eReaderJS = {
         };
         this.eeFallbackIconPathPostfix = {
             "default": ".png",
-            "hover"  : "-hover.svg"
+            "hover"  : "-hover.png"
         };
         
         this.eeDefaultPageSource =  "/public/images/reader/eedition/defaultPage.png";
@@ -259,6 +259,8 @@ var eReaderJS = {
             this.eeAudio.addEventListener(air.Event.ID3, eReaderJS.id3Handler);
             this.eeAudio.addEventListener(air.IOErrorEvent.IO_ERROR, eReaderJS.ioErrorHandler);
             this.eeAudio.addEventListener(air.ProgressEvent.PROGRESS, eReaderJS.progressHandler);                    
+            var request = new air.URLRequest(audioPath);
+            this.eeAudio.load(request);
         }
         else
         {
@@ -266,9 +268,8 @@ var eReaderJS = {
         }
         
         this.eeLastAudioId = eeAudioId;
-        var request = new air.URLRequest(audioPath);
-        this.eeAudio.load(request);
-        song = this.eeAudio.play();
+        
+        this.soundChannel = this.eeAudio.play(0);
         
     },
 
@@ -532,7 +533,7 @@ var eReaderJS = {
             }
             else
             {
-                this.eeAudio.stop();                        
+                this.soundChannel.stop();                        
             }
             this.eeLastAudioId = "";
         }
